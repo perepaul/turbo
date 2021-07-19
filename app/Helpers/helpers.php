@@ -17,5 +17,5 @@ function admin_domain($path = '')
 
 function logo()
 {
-    return config('dir.logo');
+    return asset(config('dir.logo'));
 }
