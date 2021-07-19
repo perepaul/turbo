@@ -33,7 +33,7 @@
             <div class="row flex-align">
                 <div class="col-lg-4 col-md-3 col-8">
                     <div class="logo">
-                        <a href="index-2.html"><img src="/assets/front/images/logo.png" class="transition"
+                        <a href="index-2.html"><img src="{{logo()}}" class="transition"
                                 alt="Cryptcon"></a>
                     </div>
                 </div>
