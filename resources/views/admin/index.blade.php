@@ -402,7 +402,8 @@
                             <div class="card-body pb-0">
                                 <div class="pb-3 border-bottom mb-3">
                                     <div class="d-flex mb-3 flex-wrap align-items-end">
-                                        <img class="rounded me-3" src="/assets/back/images/contacts/pic11.jpg" width="40" alt="">
+                                        <img class="rounded me-3" src="/assets/back/images/contacts/pic11.jpg" width="40"
+                                            alt="">
                                         <div>
                                             <h6 class="fs-16 text-black font-w500 mb-0">Hawkins Maru</h6>
                                             <span class="fs-14">5m ago</span>
@@ -422,7 +423,8 @@
                                 </div>
                                 <div class="pb-3 border-bottom mb-3">
                                     <div class="d-flex mb-3 flex-wrap align-items-end">
-                                        <img class="rounded me-3" src="/assets/back/images/contacts/pic22.jpg" width="40" alt="">
+                                        <img class="rounded me-3" src="/assets/back/images/contacts/pic22.jpg" width="40"
+                                            alt="">
                                         <div>
                                             <h6 class="fs-16 text-black font-w500 mb-0">Bella Smith</h6>
                                             <span class="fs-14">20m ago</span>
@@ -444,7 +446,8 @@
                                 </div>
                                 <div class="pb-3 border-bottom mb-3">
                                     <div class="d-flex mb-3 flex-wrap align-items-end">
-                                        <img class="rounded me-3" src="/assets/back/images/contacts/pic33.jpg" width="40" alt="">
+                                        <img class="rounded me-3" src="/assets/back/images/contacts/pic33.jpg" width="40"
+                                            alt="">
                                         <div>
                                             <h6 class="fs-16 text-black font-w500 mb-0">John Doe</h6>
                                             <span class="fs-14">4h ago</span>
@@ -565,3 +568,11 @@
 
     </div>
 @endsection
+
+@push('js')
+    <!-- Apex Chart -->
+    <script src="/assets/back/vendor/apexchart/apexchart.js"></script>
+    <script src="/assets/back/js/dashboard/dashboard-1.js"></script>
+    <script src="/assets/back/js/dashboard/dotted-map-init.js"></script>
+
+@endpush

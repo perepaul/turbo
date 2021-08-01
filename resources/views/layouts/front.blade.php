@@ -8,7 +8,7 @@
 
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link type="image/x-icon" href="images/fav-icon.png" rel="icon">
+    <link type="image/x-icon" href="{{favicon()}}" rel="icon">
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/assets/front/css/style.css">
@@ -33,8 +33,8 @@
             <div class="row flex-align">
                 <div class="col-lg-4 col-md-3 col-8">
                     <div class="logo">
-                        <a href="index-2.html"><img src="{{logo()}}" class="transition"
-                                alt="Cryptcon"></a>
+                        <a href="index-2.html"><img src="{{logo()}}" class="transition" width="60"
+                                alt="Bidpips"></a>
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-9 col-4 text-right">

@@ -1016,14 +1016,12 @@
     <script src="/assets/back/vendor/chart.js/Chart.bundle.min.js"></script>
     <script src="/assets/back/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
 
-    <!-- Apex Chart -->
-    <script src="/assets/back/vendor/apexchart/apexchart.js"></script>
+
 
     <!-- Chart piety plugin files -->
     <script src="/assets/back/vendor/peity/jquery.peity.min.js"></script>
 
     <!-- Dashboard 1 -->
-    <script src="/assets/back/js/dashboard/dashboard-1.js"></script>
 
     <!-- JS for dotted map -->
     <script src="/assets/back/vendor/dotted-map/js/contrib/jquery.smallipop-0.3.0.min.js"></script>
@@ -1032,7 +1030,6 @@
 
     <script src="/assets/back/vendor/dotted-map/js/world.js"></script>
     <script src="/assets/back/vendor/dotted-map/js/smallimap.js"></script>
-    <script src="/assets/back/js/dashboard/dotted-map-init.js"></script>
 
 
 
@@ -1044,6 +1041,5 @@
 
 </body>
 
-<!-- Mirrored from griya.dexignzone.com/xhtml/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 10 Jul 2021 11:23:46 GMT -->
 
 </html>
