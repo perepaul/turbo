@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index(Request $request, $status)
     {
-        if (!in_array($status, ['active', 'inactive', 'pending'])) $status = 'active';
+        if (!in_array($status, ['active', 'inactive', 'pending','rejected'])) $status = 'active';
         $q = User::query()->where('status', $status);
         $users = $q->orderBy('created_at', 'desc')->paginate(1);
         return view('admin.users.index', compact('users'));
@@ -26,13 +26,13 @@ class UserController extends Controller
     {
         $user = User::find($id);
         if (!$user) abort(404);
-        auth('user')->loginUsingId($id);
+        auth('user')->loginUsingId($id,true);
         return redirect()->route('user.index');
     }
 
     public function status(Request $request,$id)
     {
-        if(!in_array($request->status,['active','pending','inactive'])){
+        if(!in_array($request->status,['active','pending','inactive','rejected'])){
             session()->flash('error','Invalid status type');
             return back();
         }

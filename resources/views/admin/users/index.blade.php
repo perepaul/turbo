@@ -29,7 +29,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-xl-3  col-lg-6 col-sm-12 align-items-center customers">
-                                    <img class="me-sm-4 me-3 img-fluid " width="95" src="images/customers/11.jpg"
+                                    <img class="me-sm-4 me-3 img-fluid " width="95" src="{{asset(config('dir.profile').$user->profile)}}"
                                         alt="DexignZone">
                                     <div class="media-body">
                                         {{-- <span class="text-primary d-block fs-16">#C01234</span> --}}
@@ -60,6 +60,7 @@
                                                     <option value="active" @if ($user->status == 'active') selected @endif>Active</option>
                                                     <option value="inactive" @if ($user->status == 'inactive') selected @endif>In Active</option>
                                                     <option value="pending" @if ($user->status == 'pending') selected @endif>Pending</option>
+                                                    <option value="rejected" @if ($user->status == 'rejected') selected @endif>Reject</option>
                                                 </select>
                                             </form>
                                         </div>

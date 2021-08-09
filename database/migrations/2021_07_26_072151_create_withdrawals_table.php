@@ -16,10 +16,11 @@ class CreateWithdrawalsTable extends Migration
         Schema::create('withdrawals', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('method_id');
             $table->string('reference');
             $table->decimal('amount');
             $table->string('address');
-            $table->enum('status',['pending','approved','declined']);
+            $table->enum('status',['pending','approved','declined'])->default('pending');
             $table->timestamps();
         });
     }

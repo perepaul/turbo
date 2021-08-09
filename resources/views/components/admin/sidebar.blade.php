@@ -12,6 +12,7 @@
             <li><a href="{{route('admin.users.index','active')}}">Active</a></li>
             <li><a href="{{route('admin.users.index','pending')}}">Pending</a></li>
             <li><a href="{{route('admin.users.index','inactive')}}">Inactive</a></li>
+            <li><a href="{{route('admin.users.index','rejected')}}">Rejected</a></li>
         </ul>
     </li>
     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
@@ -56,6 +57,7 @@
         </a>
         <ul aria-expanded="false">
             <li><a href="{{route('admin.settings.security.index')}}">Security</a></li>
+            <li><a href="{{route('admin.settings.methods.index')}}">Deposit Methods</a></li>
             <li><a href="{{route('admin.plan.index')}}">Subscription Plans</a></li>
             <li><a href="{{route('admin.currency.index')}}">Account Currency</a></li>
             <li><a href="{{route('admin.trade-currency.index')}}">Trade Currency</a></li>

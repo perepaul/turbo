@@ -21,12 +21,18 @@
     <title>@yield('title') | {{config('app.name')}}</title>
 
     <!-- FAVICONS ICON -->
-    <link rel="shortcut icon" type="image/png" href="/assets/back/images/favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="{{favicon()}}" />
     <link href="/assets/back/vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/back/vendor/dotted-map/css/contrib/jquery.smallipop-0.3.0.min.css" type="text/css"
         media="all" />
     <!-- Style css -->
     <link href="/assets/back/css/style.css" rel="stylesheet">
+    <style>
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+    </style>
     @stack('css')
 
 </head>
@@ -56,7 +62,7 @@
         ***********************************-->
         <div class="nav-header">
             <a href="index-2.html" class="brand-logo">
-                <svg class="logo-abbr" width="64" height="64" viewBox="0 0 64 64" fill="none"
+                {{-- <svg class="logo-abbr" width="64" height="64" viewBox="0 0 64 64" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <rect class="rect-primary-rect" width="64" height="64" rx="18" fill="#216FED" />
                     <path
@@ -87,7 +93,8 @@
                         d="M82.9776 33.552C78.2242 33.552 75.8476 31.0373 75.8476 26.008C75.8476 23.616 76.4762 21.8987 77.7336 20.856C79.0216 19.7827 81.0762 19.154 83.8976 18.97L88.8196 18.602V17.176C88.8196 16.256 88.6049 15.612 88.1756 15.244C87.7769 14.876 87.0869 14.692 86.1056 14.692C85.0936 14.692 83.6982 14.738 81.9196 14.83C80.1409 14.8913 78.6536 14.968 77.4576 15.06L77.2736 10.782C80.5856 9.89266 83.7136 9.44799 86.6576 9.44799C89.6016 9.44799 91.7176 10.0613 93.0056 11.288C94.3242 12.5147 94.9836 14.4773 94.9836 17.176V26.744C95.0449 27.5107 95.1676 28.032 95.3516 28.308C95.5662 28.584 95.9496 28.7833 96.5016 28.906L96.3176 33.552C94.7229 33.552 93.4502 33.4447 92.4996 33.23C91.5796 33.0153 90.6596 32.586 89.7396 31.942C87.5009 33.0153 85.2469 33.552 82.9776 33.552ZM84.3116 28.538C85.4769 28.538 86.7496 28.354 88.1296 27.986L88.8196 27.802V22.88L84.6336 23.248C82.9162 23.4013 82.0576 24.3213 82.0576 26.008C82.0576 27.6947 82.8089 28.538 84.3116 28.538Z"
                         fill="#273240" />
                     <path class="svg-title-path" d="M100.584 25.364H107.208V33H100.584V25.364Z" fill="#273240" />
-                </svg>
+                </svg> --}}
+                <img src="{{logo()}}" alt="" width="80">
             </a>
             <div class="nav-control">
                 <div class="hamburger">

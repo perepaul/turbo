@@ -9,7 +9,7 @@ class Withdrawal extends Model
 {
     use HasFactory;
 
-    protected $gaurded = ['id'];
+    protected $guarded = ['id'];
 
     public function user()
     {

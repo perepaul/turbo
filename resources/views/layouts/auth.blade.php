@@ -21,7 +21,7 @@
     <title>@yield('title') | Authentication</title>
 
     <!-- FAVICONS ICON -->
-    <link rel="shortcut icon" type="image/png" href="/assets/back/images/favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="{{favicon()}}" />
     <link href="/assets/back/css/style.css" rel="stylesheet">
 
 </head>

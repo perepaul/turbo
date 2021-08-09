@@ -4,4 +4,7 @@ return [
     'favicon' => env('FAVICON'),
     'attachments' => 'uploads/attachments/',
     'deposits' => 'uploads/deposits/',
+    'id' => 'uploads/identification/',
+    'profile' => 'uploads/profile/',
+    'methods' => 'uploads/methods/',
 ];

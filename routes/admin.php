@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\WithdrawController;
 use App\Http\Controllers\Admin\PreferenceController;
 use App\Http\Controllers\Admin\TradeCurrencyController;
 use App\Http\Controllers\Admin\AccountCurrencyController;
+use App\Http\Controllers\Admin\MethodController;
 use App\Models\Withdrawal;
 
 /*
@@ -93,9 +94,10 @@ Route::as('settings.')->prefix('settings')->group(function () {
         Route::post('update', [ProfileController::class, 'securityUpdate'])->name('update');
     });
 
-
     Route::as('preference.')->prefix('preferences')->group(function () {
         Route::get('', [PreferenceController::class, 'index'])->name('index');
         Route::post('update', [PreferenceController::class, 'preference'])->name('update');
     });
+
+    Route::resource('methods', MethodController::class)->except('show');
 });

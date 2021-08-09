@@ -38,6 +38,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function statusIs($value)
+    {
+        return $this->status == $value;
+    }
+
     public function setPasswordAttribute($value)
     {
         return $this->attributes['password'] = bcrypt($value);
@@ -45,10 +50,11 @@ class User extends Authenticatable
 
     public function getNameAttribute()
     {
-        return $this->firstname .' '. $this->lastname;
+        return $this->firstname . ' ' . $this->lastname;
     }
 
-    public function emails(){
+    public function emails()
+    {
         return $this->hasMany(Email::class);
     }
 
@@ -65,5 +71,10 @@ class User extends Authenticatable
     public function trades()
     {
         return $this->hasMany(Trade::class);
+    }
+
+    public function deposits()
+    {
+        return $this->hasMany(Deposit::class);
     }
 }

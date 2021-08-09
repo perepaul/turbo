@@ -3,66 +3,9 @@
 @section('content')
     <div class="container-fluid">
         <div class="mb-sm-4 d-flex flex-wrap align-items-center text-head ">
-            <h2 class="mb-3 me-auto">Order List</h2>
-            <div>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">Order List</a></li>
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">Order List</a></li>
-                </ol>
-            </div>
+            <h2 class="mb-3 me-auto">@yield('title')</h2>
         </div>
         <div class="row">
-            <div class="col-xl-3 col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div class="order-user">
-                                <i class="fas fa-user text-white bg-primary"></i>
-                            </div>
-                            <div class="ms-4 customer">
-                                <h2 class="mb-0  font-w600">245</h2>
-                                <p class="mb-0 font-w500">Total Trades</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div class="order-user">
-                                <i class="far fa-building bg-warning text-white"></i>
-                            </div>
-                            <div class="ms-4 customer">
-                                <h2 class="mb-0  font-w600">5,623</h2>
-                                <p class="mb-0  font-w500">Estimated returns</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row order-card text-center">
-                            <div class="col-4 customer">
-                                <h2 class="mb-0  font-w600">421</h2>
-                                <p class="mb-0 font-w500">Active</p>
-                            </div>
-                            <div class="col-4 customer">
-                                <h2 class="mb-0 font-w600">8,313</h2>
-                                <p class="mb-0  font-w500">Inactive</p>
-                            </div>
-                            <div class="col-4 border-0 customer">
-                                <h2 class="mb-0 font-w600">4.6</h2>
-                                <p class="mb-0 font-w500">Demo</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-body">
