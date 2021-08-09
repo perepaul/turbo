@@ -4,11 +4,11 @@
 <head>
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
-    <title>@yield('title') | {{config('app.name')}}</title>
+    <title>@yield('title') | {{ config('app.name') }}</title>
 
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link type="image/x-icon" href="{{favicon()}}" rel="icon">
+    <link type="image/x-icon" href="{{ favicon() }}" rel="icon">
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/assets/front/css/style.css">
@@ -33,7 +33,7 @@
             <div class="row flex-align">
                 <div class="col-lg-4 col-md-3 col-8">
                     <div class="logo">
-                        <a href="index-2.html"><img src="{{logo()}}" class="transition" width="60"
+                        <a href="index-2.html"><img src="{{ logo() }}" class="transition" width="60"
                                 alt="Bidpips"></a>
                     </div>
                 </div>
@@ -47,25 +47,15 @@
                             <li><a href="{{ route('front.about') }}">About</a></li>
                             <li><a href="{{ route('front.contact') }}">Contact</a></li>
                             <li><a href="{{ route('front.faq') }}">FAQ</a></li>
-
-                            {{-- <li class="mega-menu">
-                                <span class="opener plus"></span>
-                                <a href="about.html">Pages</a>
-                                <ul class="transition">
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="blog-list.html">Blog</a></li>
-                                    <li><a href="token-sale.html">Token Sale</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                    <li><a href="faq.html">FAQ</a></li>
-                                    <li><a href="404.html">404 Page</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="feature.html">Feature</a></li>
-                            <li><a href="roadmap.html">Roadmap</a></li>
-                            <li><a href="team.html">Team</a></li> --}}
                         </ul>
                         <div class="signin d-inline-block">
-                            <a href="{{route('user.index')}}" class="btn">Sign in</a>
+                            <a href="{{ route('user.index') }}" class="btn">
+                                @auth('user')
+                                    Dashboard
+                                @else
+                                    Sign in
+                                @endauth
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -76,7 +66,7 @@
     @yield('content')
 
     <footer class="bg-pattern darkblue ptb-100">
-        <div class="container"><a class="text-primary" href="{{route('front.index')}}">Home</a>
+        <div class="container"><a class="text-primary" href="{{ route('front.index') }}">Home</a>
             <div class="footer">
                 <div class="row">
                     <div class="col-lg-4 col-md-6">

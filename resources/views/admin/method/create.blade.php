@@ -32,12 +32,8 @@
                                     <input type="file" name="image" id="image" style="display:none"
                                         accept="image/png;image/jpg;image/jpeg">
                                     <label for="image" class="mt-3">
-                                        <span class="btn btn-outline-warning @if (!is_null(auth('user')->user()->image)) d-none @endif" >Upload <i class="fa fa-upload"></i></span>
+                                        <span class="btn btn-outline-warning" >Upload <i class="fa fa-upload"></i></span>
                                         <div class="preview">
-                                            {{-- @if ()
-                                                <img src="{{ asset(config('dir.id') . auth('user')->user()->image) }}"
-                                                    class="img-responsive" style="width:100%;height:auto;" />
-                                            @endif --}}
                                         </div>
                                     </label>
                                     <x-error :key="'image'" />
