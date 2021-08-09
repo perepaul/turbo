@@ -57,7 +57,7 @@
         </a>
         <ul aria-expanded="false">
             <li><a href="{{route('admin.settings.security.index')}}">Security</a></li>
-            <li><a href="{{route('admin.settings.methods.index')}}">Deposit Methods</a></li>
+            <li><a href="{{route('admin.settings.methods.index')}}">Payment Methods</a></li>
             <li><a href="{{route('admin.plan.index')}}">Subscription Plans</a></li>
             <li><a href="{{route('admin.currency.index')}}">Account Currency</a></li>
             <li><a href="{{route('admin.trade-currency.index')}}">Trade Currency</a></li>
