@@ -54,3 +54,13 @@ function generateReference($model = Trade::class)
     }
     return $reference;
 }
+
+function profile_picture($image = null)
+{
+    $picture = 'default.png';
+    if (auth('user')->user() && request()->isUser()) $picture = auth('user')->user()->profile;
+    if(!is_null($image)) $picture = $image;
+
+    if(empty($picture) || is_null($picture)) $picture = 'default.png';
+    return asset(config('dir.profile') . $picture);
+}

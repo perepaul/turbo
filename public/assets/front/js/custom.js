@@ -10,7 +10,7 @@ $(function () {
     "use strict";
     $('.menu li').each(function (index, element) {
         var active = $(element).children('a');
-        if (active.attr('href')  == location.href) active.addClass('active');
+        if (active.attr('href') == location.href) active.addClass('active');
 
     })
 

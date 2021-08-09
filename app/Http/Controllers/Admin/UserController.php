@@ -17,7 +17,7 @@ class UserController extends Controller
     {
         if (!in_array($status, ['active', 'inactive', 'pending','rejected'])) $status = 'active';
         $q = User::query()->where('status', $status);
-        $users = $q->orderBy('created_at', 'desc')->paginate(1);
+        $users = $q->orderBy('created_at', 'desc')->paginate();
         return view('admin.users.index', compact('users'));
     }
 
