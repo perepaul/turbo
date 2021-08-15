@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\WithdrawController;
 use App\Http\Controllers\Admin\PreferenceController;
 use App\Http\Controllers\Admin\TradeCurrencyController;
 use App\Http\Controllers\Admin\AccountCurrencyController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\MethodController;
 use App\Models\Withdrawal;
 
@@ -51,26 +52,26 @@ Route::get('/', [Dashboard::class, 'index'])->name('index');
 Route::as('users.')->prefix('users')->group(function () {
     Route::get('/{status}', [UserController::class, 'index'])->name('index');
     Route::get('{id}/login-as', [UserController::class, 'loginAs'])->name('login-as');
-    Route::post('{id}/status',[UserController::class,'status'])->name('status');
+    Route::post('{id}/status', [UserController::class, 'status'])->name('status');
     Route::get('{id}/edit', [UserController::class, 'edit'])->name('edit');
     Route::post('{id}/update', [UserController::class, 'update'])->name('update');
     Route::get('{id}/delete', [UserController::class, 'delete'])->name('delete');
 });
 Route::as('trades.')->prefix('trades')->group(function () {
     Route::get('/{status}', [TradesController::class, 'index'])->name('index');
-    Route::get('{id}/edit',[TradesController::class,'edit'])->name('edit');
-    Route::post('{id}/update',[TradesController::class,'update'])->name('update');
-    Route::get('{id}/end',[TradesController::class,'end'])->name('end');
+    Route::get('{id}/edit', [TradesController::class, 'edit'])->name('edit');
+    Route::post('{id}/update', [TradesController::class, 'update'])->name('update');
+    Route::get('{id}/end', [TradesController::class, 'end'])->name('end');
 });
 Route::as('deposits.')->prefix('deposits')->group(function () {
     Route::get('/{status}', [DepositController::class, 'index'])->name('index');
-    Route::get('{id}/approve',[DepositController::class,'approve'])->name('approve');
-    Route::get('{id}/decline',[DepositController::class,'decline'])->name('decline');
+    Route::get('{id}/approve', [DepositController::class, 'approve'])->name('approve');
+    Route::get('{id}/decline', [DepositController::class, 'decline'])->name('decline');
 });
 Route::as('withdrawals.')->prefix('withdrawals')->group(function () {
     Route::get('/{status}', [WithdrawController::class, 'index'])->name('index');
-    Route::get('{id}/approve',[WithdrawController::class,'approve'])->name('approve');
-    Route::get('{id}/decline',[WithdrawController::class,'decline'])->name('decline');
+    Route::get('{id}/approve', [WithdrawController::class, 'approve'])->name('approve');
+    Route::get('{id}/decline', [WithdrawController::class, 'decline'])->name('decline');
 });
 Route::as('emails.')->prefix('emails')->group(function () {
     Route::get('/', [EmailController::class, 'index'])->name('index');
@@ -84,6 +85,8 @@ Route::resource('currency', AccountCurrencyController::class)->except(['show']);
 Route::resource('trade-currency', TradeCurrencyController::class)->except(['show']);
 
 Route::as('settings.')->prefix('settings')->group(function () {
+    Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
+    Route::post('contact', [ContactController::class, 'update'])->name('contact.update');
     Route::as('profile.')->prefix('profile')->group(function () {
         Route::get('', [ProfileController::class, 'index'])->name('index');
         Route::post('update', [ProfileController::class, 'update'])->name('update');

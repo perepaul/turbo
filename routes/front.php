@@ -18,4 +18,5 @@ Route::namespace('Front')->group(function(){
     Route::get('about',[PagesController::class,'about'])->name('about');
     Route::get('contact',[PagesController::class,'contact'])->name('contact');
     Route::get('faq',[PagesController::class,'faq'])->name('faq');
+    Route::post('contact',[PagesController::class,'sendContact'])->name('send.conotact');
 });

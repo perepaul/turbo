@@ -66,8 +66,9 @@
     @yield('content')
 
     <footer class="bg-pattern darkblue ptb-100">
-        <div class="container"><a class="text-primary" href="{{ route('front.index') }}">Home</a>
-            <div class="footer">
+        <div class="container">
+            {{-- <a class="text-primary" href="{{ route('front.index') }}">Home</a> --}}
+            {{-- <div class="footer">
                 <div class="row">
                     <div class="col-lg-4 col-md-6">
                         <div class="footer-logo pb-25">
@@ -107,12 +108,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="copyright">
                 <div class="row">
                     <div class="col-lg-6">
-                        <p>© Cryptcon all Rights Reserved. Designed By <a
-                                href="https://templatescoder.com/">TemplatesCoder.com</a></p>
+                        <p>© All Rights Reserved.</p>
                     </div>
                     <div class="col-lg-6">
                         <ul>

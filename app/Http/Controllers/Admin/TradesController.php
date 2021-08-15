@@ -17,7 +17,7 @@ class TradesController extends Controller
     {
         if (!in_array($status, ['active', 'inactive'])) $status = 'active';
         $q = Trade::query()->where('status', $status);
-        $trades = $q->orderBy('created_at', 'desc')->paginate(1);
+        $trades = $q->orderBy('created_at', 'desc')->paginate();
         return view('admin.trades.index', compact('trades'));
     }
 
@@ -43,9 +43,10 @@ class TradesController extends Controller
     {
         $trade = Trade::find($id);
         $user = $trade->user;
-        $user->{'yes' == $trade->is_demo ? 'demo_balance' : 'trading_balance'} = $trade->profit;
+        $user->{'yes' == $trade->is_demo ? 'demo_balance' : 'trading_balance'} += $trade->profit;
         $user->save();
         $trade->status = 'inactive';
+        $trade->save();
         session()->flash('success','Trade ended');
         return redirect()->route('admin.trades.index', 'active');
     }
