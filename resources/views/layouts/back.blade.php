@@ -313,6 +313,7 @@
     <script src="/assets/back/js/custom.min.js"></script>
     <script src="/assets/back/js/deznav-init.js"></script>
     <script src="/assets/back/js/styleSwitcher.js"></script>
+    @include('includes.chat')
 
     @stack('js')
 
