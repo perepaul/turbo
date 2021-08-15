@@ -38,7 +38,7 @@ Route::middleware(['active','subscribed'])->group(function () {
         Route::get('market-data', [TradeController::class, 'market'])->name('market');
         Route::post('create', [TradeController::class, 'trade'])->name('create');
         Route::get('history', [TradeController::class, 'history'])->name('history');
-        Route::get('end', [TradeController::class, 'end'])->name('end');
+        Route::get('end/{id}', [TradeController::class, 'end'])->name('end');
     });
 
     Route::prefix('deposit')->name('deposit.')->group(function () {
