@@ -1,90 +1,93 @@
 @extends('layouts.back')
-@section('title','Trade history')
+@section('title', 'Trade history')
 @section('content')
-    <div class="container-fluid">
-        <div class="mb-sm-4 d-flex flex-wrap align-items-center text-head ">
-            <h2 class="mb-3 me-auto">@yield('title')</h2>
-
+<div class="container-fluid">
+    <div class="mb-sm-4 d-flex flex-wrap align-items-center text-head ">
+        <h2 class="mb-3 me-auto">@yield('title')</h2>
+    </div>
+    <div class="row">
+        <div class="col-xl-3 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="order-user">
+                            <i class="fas fa-user text-white bg-primary"></i>
+                        </div>
+                        <div class="ms-4 customer">
+                            <h2 class="mb-0  font-w600">{{ $trades->count() }}</h2>
+                            <p class="mb-0 font-w500">Total Trades</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row">
-            <div class="col-xl-3 col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div class="order-user">
-                                <i class="fas fa-user text-white bg-primary"></i>
-                            </div>
-                            <div class="ms-4 customer">
-                                <h2 class="mb-0  font-w600">{{$trades->count()}}</h2>
-                                <p class="mb-0 font-w500">Total Trades</p>
-                            </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="order-user">
+                            <i class="far fa-building bg-warning text-white"></i>
+                        </div>
+                        <div class="ms-4 customer">
+                            <h5 class="mb-0  font-w600">
+                                {{ format_money(
+    $trades->where('status', 'active')->where('is_demo', 'no')->sum('amount'),
+) }}
+                            </h5>
+                            <p class="mb-0  font-w300">Estimated returns</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div class="order-user">
-                                <i class="far fa-building bg-warning text-white"></i>
-                            </div>
-                            <div class="ms-4 customer">
-                                <h5 class="mb-0  font-w600">{{format_money($trades->where('status','active')->where('is_demo','no')->sum('amount'))}}</h5>
-                                <p class="mb-0  font-w300">Estimated returns</p>
-                            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row order-card text-center">
+                        <div class="col-4 customer">
+                            <h2 class="mb-0  font-w600">{{ $trades->where('status', 'active')->count() }}</h2>
+                            <p class="mb-0 font-w500">Active</p>
+                        </div>
+                        <div class="col-4 customer">
+                            <h2 class="mb-0 font-w600">{{ $trades->where('status', 'inactive')->count() }}</h2>
+                            <p class="mb-0  font-w500">Inactive</p>
+                        </div>
+                        <div class="col-4 border-0 customer">
+                            <h2 class="mb-0 font-w600">{{ $trades->where('is_demo', 'yes')->count() }}</h2>
+                            <p class="mb-0 font-w500">Demo</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row order-card text-center">
-                            <div class="col-4 customer">
-                                <h2 class="mb-0  font-w600">{{$trades->where('status','active')->count()}}</h2>
-                                <p class="mb-0 font-w500">Active</p>
-                            </div>
-                            <div class="col-4 customer">
-                                <h2 class="mb-0 font-w600">{{$trades->where('status','inactive')->count()}}</h2>
-                                <p class="mb-0  font-w500">Inactive</p>
-                            </div>
-                            <div class="col-4 border-0 customer">
-                                <h2 class="mb-0 font-w600">{{$trades->where('is_demo','yes')->count()}}</h2>
-                                <p class="mb-0 font-w500">Demo</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        </div>
 
-            <div class="col-xl-12">
-                <div class="table-responsive fs-14">
-                    <table class="table display mb-4 dataTablesCard order-table shadow-hover  card-table" id="example5">
-                        <thead>
+        <div class="col-xl-12">
+            <div class="table-responsive fs-14">
+                <table class="table display mb-4 dataTablesCard order-table shadow-hover  card-table" id="example5">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Date</th>
+                            <th>User</th>
+                            <th>Currrency</th>
+                            <th>Amount</th>
+                            <th>Type</th>
+                            <th>Demo?</th>
+                            <th>Profit/Loss</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($trades as $trade)
                             <tr>
-                                <th>Order ID</th>
-                                <th>Date</th>
-                                <th>User</th>
-                                <th>Currrency</th>
-                                <th>Amount</th>
-                                <th>Type</th>
-                                <th>Demo?</th>
-                                <th>Profit/Loss</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse ($trades as $trade)
-                            <tr>
-                                <td>{{$trade->reference}}</td>
-                                <td class="wspace-no">{{$trade->created_at->toDateString()}}</td>
-                                <td>{{$trade->user->name}}</td>
-                                <td class="text-ov">{{$trade->trade_currency->name}}</td>
-                                <td>{{format_money($trade->amount,$trade->user->currency->symbol)}}</td>
-                                <td>{{ucfirst($trade->type)}}</td>
-                                <td>{{ucfirst($trade->is_demo)}}</td>
-                                <td>{{format_money($trade->profit,$trade->user->currency->symbol)}}</td>
+                                <td>{{ $trade->reference }}</td>
+                                <td class="wspace-no">{{ $trade->created_at->toDateString() }}</td>
+                                <td>{{ $trade->user->name }}</td>
+                                <td class="text-ov">{{ $trade->trade_currency->name }}</td>
+                                <td>{{ format_money($trade->amount, $trade->user->currency->symbol) }}</td>
+                                <td>{{ ucfirst($trade->type) }}</td>
+                                <td>{{ ucfirst($trade->is_demo) }}</td>
+                                <td>{{ format_money($trade->profit, $trade->user->currency->symbol) }}</td>
                                 <td>
                                     <div class="dropdown ml-auto">
                                         <div class="btn-link" data-bs-toggle="dropdown">
@@ -105,21 +108,26 @@
                                             </svg>
                                         </div>
                                         <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item text-black" href="{{route('user.trade.end',$trade->id)}}">End Trade</a>
+                                            @if ($trade->status == 'active')
+                                                <a class="dropdown-item text-black"
+                                                    href="{{ route('user.trade.end', $trade->id) }}">Close Trade</a>
+                                            @else
+                                                <span class="dropdown-item text-black">Closed</span>
+                                            @endif
                                         </div>
                                     </div>
                                 </td>
                             </tr>
-                            @empty
+                        @empty
                             <tr>
                                 <td colspan="8" class="text-center">No Trades found</td>
                             </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                    {{$trades->links()}}
-                </div>
+                        @endforelse
+                    </tbody>
+                </table>
+                {{ $trades->links() }}
             </div>
         </div>
     </div>
+</div>
 @endsection

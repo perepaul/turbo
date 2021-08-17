@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\User;
+use App\Models\Trade;
 use Illuminate\Http\Request;
 use App\Models\TradeCurrency;
 use App\Http\Controllers\Controller;
@@ -57,6 +58,13 @@ class TradeController extends Controller
 
     public function end($id)
     {
-
+        $trade = Trade::find($id);
+        $user = $trade->user;
+        $user->{'yes' == $trade->is_demo ? 'demo_balance' : 'trading_balance'} += $trade->profit;
+        $user->save();
+        $trade->status = 'inactive';
+        $trade->save();
+        session()->flash('success','Trade Closed');
+        return redirect()->back();
     }
 }
