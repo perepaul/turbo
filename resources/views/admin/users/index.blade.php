@@ -80,10 +80,10 @@
                                     <div class="dropdown-menu dropdown-menu-right">
                                         @if (!is_null($user->id_front))
                                             <a class="dropdown-item"
-                                                href="{{ asset(config('dir.id') . $user->id_back) }}" target="_blank">
+                                                href="{{ asset(config('dir.id') . $user->id_front) }}" target="_blank">
                                                 <i class="fa fa-eye"></i> ID (front)</a>
                                         @endif
-                                        @if (!is_null($user->id_front))
+                                        @if (!is_null($user->id_back))
                                             <a class="dropdown-item"
                                                 href="{{ asset(config('dir.id') . $user->id_back) }}" target="_blank">
                                                 <i class="fa fa-eye"></i> ID (Back)</a>
