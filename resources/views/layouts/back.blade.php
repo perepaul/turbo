@@ -25,6 +25,7 @@
     <link href="/assets/back/vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/back/vendor/dotted-map/css/contrib/jquery.smallipop-0.3.0.min.css" type="text/css"
         media="all" />
+        <link rel="stylesheet" href="/assets/back/vendor/toastr/css/toastr.min.css">
     <!-- Style css -->
     <link href="/assets/back/css/style.css" rel="stylesheet">
     <style>
@@ -308,12 +309,62 @@
     <script src="/assets/back/vendor/dotted-map/js/world.js"></script>
     <script src="/assets/back/vendor/dotted-map/js/smallimap.js"></script>
 
+    <script src="/assets/back/vendor/toastr/js/toastr.min.js"></script>
+
 
 
     <script src="/assets/back/js/custom.min.js"></script>
     <script src="/assets/back/js/deznav-init.js"></script>
     <script src="/assets/back/js/styleSwitcher.js"></script>
     @include('includes.chat')
+
+    <script>
+        function toast(message, type = 'success') {
+            let data = {
+                timeOut: 500000000,
+                closeButton: !0,
+                debug: !1,
+                newestOnTop: !0,
+                progressBar: !0,
+                positionClass: "toast-top-right",
+                preventDuplicates: !0,
+                onclick: null,
+                showDuration: "300",
+                hideDuration: "1000",
+                extendedTimeOut: "1000",
+                showEasing: "swing",
+                hideEasing: "linear",
+                showMethod: "fadeIn",
+                hideMethod: "fadeOut",
+                tapToDismiss: !1
+            };
+            if (type == 'success') {
+                toastr.success(message, "Sucess", data)
+            } else {
+                toastr.error(message, "Error", data)
+            }
+        }
+    </script>
+
+    @if(session()->has('success'))
+        <script>
+            toast("{{session()->get('success')}}")
+        </script>
+    @endif
+    @if(session()->has('error'))
+        <script>
+            toast("{{session()->get('error')}}")
+        </script>
+    @endif
+
+    {{-- @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <script>
+                toast("{{ $error }}", 'error')
+            </script>
+        @endforeach
+    @endif --}}
+
 
     @stack('js')
 

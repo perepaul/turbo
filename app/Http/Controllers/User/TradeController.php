@@ -52,7 +52,7 @@ class TradeController extends Controller
     public function history()
     {
         $user = User::find(auth('user')->user()->id);
-        $trades = $user->trades()->orderBy('status', 'desc')->paginate();
+        $trades = $user->trades()->orderBy('created_at', 'desc')->paginate();
         return view('user.trade.history', compact('trades'));
     }
 
