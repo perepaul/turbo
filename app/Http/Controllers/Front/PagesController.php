@@ -38,8 +38,10 @@ class PagesController extends Controller
         if($request->has('validity') && !is_null($request->validity)  || !empty($request->validity)){
             return;
         }
-
-        Mail::to($valid['email'])->send(new SendContactMail($valid));
+        $settings = Contact::find(1);
+        if($settings){
+            Mail::to($settings->support_email)->send(new SendContactMail($valid));
+        }
         session()->flash('message','Email Sent Successfully');
         return redirect()->back();
     }
