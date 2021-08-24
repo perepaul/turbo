@@ -60,7 +60,7 @@ class TradeController extends Controller
     {
         $trade = Trade::find($id);
         $user = $trade->user;
-        $user->{'yes' == $trade->is_demo ? 'demo_balance' : 'trading_balance'} += $trade->profit;
+        $user->{'yes' == $trade->is_demo ? 'demo_balance' : 'balance'} += $trade->profit;
         $user->save();
         $trade->status = 'inactive';
         $trade->save();

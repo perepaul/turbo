@@ -30,7 +30,7 @@
                                     <td class="text-ov">{{ $deposit->address }}</td>
                                     <td>{{ format_money($deposit->amount, $deposit->user->currency->symbol) }}</td>
                                     <td>
-                                        <a href="{{ asset(config('dir.deposits').$deposit->image) }}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+                                        <a href="{{ asset(config('dir.deposits').$deposit->proof) }}" target="_blank"  class="btn btn-primary"><i class="fa fa-eye"></i></a>
                                         @if ($deposit->status == 'pending')
                                             <a href="{{ route('admin.deposits.approve', $deposit->id) }}"
                                                 class="btn btn-success"><i class="fa fa-check"></i></a>

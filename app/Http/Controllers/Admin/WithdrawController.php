@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Withdrawal;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\WithdrawalAcceptedMailable;
+use App\Mail\WithdrawalDeclinedMailable;
 
 class WithdrawController extends Controller
 {
@@ -15,7 +18,7 @@ class WithdrawController extends Controller
      */
     public function index(Request $request, $status)
     {
-        if (!in_array($status, ['pending', 'approved','declined'])) $status = 'approved';
+        if (!in_array($status, ['pending', 'approved', 'declined'])) $status = 'approved';
         // dd(Withdrawal::where('status','pending')->get());
         $q = Withdrawal::query()->where('status', $status);
         $withdrawals = $q->orderBy('created_at', 'desc')->paginate(1);
@@ -27,7 +30,9 @@ class WithdrawController extends Controller
         $withdrawal = Withdrawal::find($id);
         $withdrawal->status = 'approved';
         $withdrawal->save();
-        session()->flash('success','Withdrawal accepted');
+        $withdrawal->user()->update(['balance' => $withdrawal->user->balance - $withdrawal->amount]);
+        Mail::to($withdrawal->user)->send(new WithdrawalAcceptedMailable($withdrawal));
+        session()->flash('success', 'Withdrawal accepted');
         return back();
     }
 
@@ -36,7 +41,9 @@ class WithdrawController extends Controller
         $withdrawal = Withdrawal::find($id);
         $withdrawal->status = 'declined';
         $withdrawal->save();
-        session()->flash('success','Withdrawal accepted');
+        $withdrawal->user()->update(['balance' => $withdrawal->user->balance - $withdrawal->amount]);
+        Mail::to($withdrawal->user)->send(new WithdrawalDeclinedMailable($withdrawal));
+        session()->flash('success', 'Withdrawal accepted');
         return back();
     }
 }

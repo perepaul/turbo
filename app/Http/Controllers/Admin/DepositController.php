@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Deposit;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\DepositApprovedMailable;
+use App\Mail\DepositDeclinedMailable;
 
 class DepositController extends Controller
 {
@@ -25,16 +28,19 @@ class DepositController extends Controller
     {
         $deposit = Deposit::find($id);
         $deposit->status = 'approved';
+        $deposit->user()->update(['balance' => $deposit->amount]);
         $deposit->save();
+        Mail::to($deposit->user)->send(new DepositApprovedMailable($deposit));
         session()->flash('success','Approved Successfully');
         return back();
     }
 
-    public function declined($id)
+    public function decline($id)
     {
         $deposit = Deposit::find($id);
         $deposit->status = 'declined';
         $deposit->save();
+        Mail::to($deposit->user)->send(new DepositDeclinedMailable($deposit));
         session()->flash('success','Approved Successfully');
         return back();
     }

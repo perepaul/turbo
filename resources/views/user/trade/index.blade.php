@@ -16,7 +16,6 @@
                             <label for=""><strong>Pay with</strong></label>
                             <select name="payment_method" id="" class="form-control">
                                 <option @if(old('payment_method') == 'balance') selected @endif value="balance">Main Account</option>
-                                <option @if(old('payment_method') == 'trading_balance') selected @endif value="trading_balance">Trade Account</option>
                                 <option @if(old('payment_method') == 'demo_balance') selected @endif value="demo_balance">Demo Account</option>
                             </select>
                         </div>

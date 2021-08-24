@@ -4,16 +4,21 @@ namespace App\Http\Controllers\User;
 
 use App\Models\User;
 use App\Models\Method;
+use App\Models\Contact;
 use App\Models\Deposit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Mail\NewWithdrawalMailable;
+use App\Mail\WithdrawalInitiatedMailable;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Mail;
 
 class WithdrawController extends Controller
 {
     public function index()
     {
         $methods = Method::all();
-        return view('user.withdrawal.deposit', compact('methods'));
+        return view('user.withdrawal.withdraw', compact('methods'));
     }
 
     public function history()
@@ -37,12 +42,17 @@ class WithdrawController extends Controller
             session()->flash('error','Insufficient funds');
             return redirect()->back()->withInput();
         }
-        $user->withdrawals()->create([
+        $withdrawal = $user->withdrawals()->create([
             'method_id' => $request->input('method'),
             'amount' => $request->amount,
             'reference' => generateReference(Deposit::class),
             'address' => $request->address,
         ]);
+        $contact = Contact::find(1);
+        if(!is_null($contact->notification_email)){
+            Mail::to($contact->notification_email)->send(new NewWithdrawalMailable($withdrawal));
+        }
+        Mail::to($user)->send(new WithdrawalInitiatedMailable($withdrawal));
         session()->flash('success', 'Withdrawal initiated successfully');
         return redirect()->back();
     }

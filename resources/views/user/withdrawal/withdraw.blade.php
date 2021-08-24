@@ -12,9 +12,9 @@
                     <form action="{{ route('user.withdrawal.create') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label for=""><strong>Deposit method</strong></label>
+                            <label for=""><strong>Withdrawal method</strong></label>
                             <select name="method" id="" class="form-control">
-                                <option value="">Select Deposit Method</option>
+                                <option value="">Select withdrawal Method</option>
                                 @foreach ($methods as $method)
                                     <option @if (old('method') == $method->id) selected @endif value="{{ $method->id }}"
                                         data-target=".method{{ $method->id }}">
@@ -35,7 +35,7 @@
                             <x-error :key="'amount'" />
                         </div>
                         <div class="form-group">
-                            <label for=""><strong>Fee</strong></label>
+                            <label for=""><strong>Fee (%)</strong></label>
                             <input type="text" class="form-control" name="fee" value="5.00" disabled readonly>
                         </div>
                         <div class="form-group">
