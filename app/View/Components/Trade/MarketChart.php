@@ -6,14 +6,16 @@ use Illuminate\View\Component;
 
 class MarketChart extends Component
 {
+    public $width, $height;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($width=null,$height = null)
     {
-        //
+        $this->width = $width;
+        $this->height = $height;
     }
 
     /**

@@ -13,9 +13,7 @@
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 position-u wow fadeInRight">
-                <div class="banner-img">
-                    <img src="/assets/front/images/forex.jpg" alt="banner">
-                </div>
+                <x-trade.market-chart height="400" :width="'100%'" />
             </div>
         </div>
     </div>
@@ -307,7 +305,8 @@
     </div>
 </section>
 
-<x-trade.market-chart />
+<img src="/assets/front/images/forex.jpg" alt="banner">
+
 
 {{-- <section id="tokensale-part" class="token-sale darkblue parallax ptb-100">
     <div class="container">
