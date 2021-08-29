@@ -15,20 +15,24 @@
                                     <div class="mb-3 ">
                                         <select name="recipients[]" id="" class="form-control" multiple>
                                             @foreach ($users as $user)
-                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                                <option @if(!is_null(old('recipient')) && in_array($user->id, old('recipients'))) selected @endif value="{{ $user->id }}">{{ $user->name }}</option>
                                             @endforeach
                                         </select>
+                                        <x-error key="recipients.*" />
                                     </div>
                                     <div class="mb-3">
                                         <input type="text" class="form-control bg-transparent" placeholder=" Subject:"
-                                            name="subject">
+                                            name="subject" value="{{old('subject')}}">
+                                            <x-error :key="'subject'" />
                                     </div>
                                     <div class="mb-3">
                                         <textarea id="email-compose-editor" class=" form-control" rows="15" name="message"
-                                            placeholder="Enter text ..."></textarea>
+                                            placeholder="Enter text ...">{{trim(old('message'))}}</textarea>
+                                            <x-error :key="'message'" />
                                     </div>
                                     <h5 class="mb-4"><i class="fa fa-paperclip"></i> Attatchmen(s)</h5>
                                     <input name="attachments[]" type="file" multiple />
+                                    <x-error :key="'attachments.*'" />
                                     <div class="text-start mt-4 mb-3">
                                         <button class="btn btn-primary btn-sl-sm me-2" type="submit"><span class="me-2"><i
                                                     class="fa fa-paper-plane"></i></span>Send</button>

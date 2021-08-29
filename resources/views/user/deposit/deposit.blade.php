@@ -20,6 +20,7 @@
                                         {{ $method->name }}</option>
                                 @endforeach
                             </select>
+                            <x-error :key="'method'" />
                         </div>
                         @foreach ($methods as $method)
                             <div class="form-group method method{{ $method->id }}" style="display:none">

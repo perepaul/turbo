@@ -20,7 +20,7 @@ class EmailController extends Controller
      */
     public function index()
     {
-        $emails = Email::orderBy('created_at', 'desc')->paginate(1);
+        $emails = Email::orderBy('created_at', 'desc')->paginate();
         return view('admin.emails.index', compact('emails'));
     }
 
@@ -36,13 +36,13 @@ class EmailController extends Controller
             'subject' => 'required',
             'recipients' => 'required',
             'message' => 'required',
-            'attachments' => 'nullable|required',
-            'attachments.*' => 'mimes:jpg,png,jpeg,pdf'
+            'attachments' => 'nullable|sometimes|required',
+            'attachments.*' => 'sometimes|mimes:jpg,png,jpeg,pdf'
         ]);
         $attachData = [];
         DB::beginTransaction();
         try {
-            if ($valid['attachments']) {
+            if ($request->has('attachments')) {
                 foreach ($request->attachments as $attachment) {
                     $filename = rand() . now()->toDateTimeString() . '.' . $attachment->extension();
                     $dir = public_path(config('dir.attachments'));
@@ -62,11 +62,11 @@ class EmailController extends Controller
                 $user->emails()->save($mail);
             }
             DB::commit();
-            session()->flash('error', 'Failed to send emails');
+            session()->flash('success', 'Emails sent successfully');
             return redirect()->route('admin.emails.index');
         } catch (\Throwable $th) {
             DB::rollback();
-            Log::error($th->getMessage());
+            Log::error($th->getMessage()." File:".$th->getFile()." on Line: ". $th->getLine());
             session()->flash('error', 'Failed to send emails');
             foreach ($attachData as $data) {
                 unlink(public_path(config('dir.attachments') . $data));

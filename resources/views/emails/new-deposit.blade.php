@@ -11,8 +11,6 @@ Email : {{$deposit->user->email}}
 
 Amount : {{format_money($deposit->amount)}}
 
-Wallet Address : {{$withdrawal->address}}
-
 
 Thanks,<br>
 {{ config('app.name') }}

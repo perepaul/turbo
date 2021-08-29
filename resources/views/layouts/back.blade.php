@@ -351,9 +351,10 @@
             toast("{{session()->get('success')}}")
         </script>
     @endif
+
     @if(session()->has('error'))
         <script>
-            toast("{{session()->get('error')}}")
+            toast("{{session()->get('error')}}","error")
         </script>
     @endif
 
