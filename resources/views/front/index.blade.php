@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-lg-6 col-md-6 position-u flex-align wow fadeInLeft">
                 <div class="banner-contain">
-                    <h1 class="banner-heading">Invest, Trade and exchange Cryptos and Forex</h1>
+                    <h1 class="banner-heading">Get Into The Enhanced Digital World Of Trading</h1>
                     <p class="banner-des">Invest in the world's most popular and sought-after assets. Everything you are
                         looking for in an ultimate investment platform — on the device of your choice.</p>
                     <a href="{{ url("//".user_domain().'/register') }}" class="btn">Start Now!</a>
