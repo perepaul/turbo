@@ -118,7 +118,7 @@
                         <ul>
                             <li><a href="#">Terms & Condition</a></li>
                             <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="{{route('front.contact')}}">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
