@@ -1,139 +1,1191 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
 
-<head>
-    <!-- Basic Page Needs -->
-    <meta charset="utf-8">
-    <title>@yield('title') | {{ config('app.name') }}</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Mobile Specific Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link type="image/x-icon" href="{{ favicon() }}" rel="icon">
+        <!-- Title -->
+        <title>Home - {{config('app.name')}}</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="/assets/front/css/style.css">
-    <link rel="stylesheet" type="text/css" href="/assets/front/css/color.css">
-    <link rel="stylesheet" type="text/css" href="/assets/front/css/responsive.css">
-</head>
+        <!-- Favicon -->
+        <link rel="icon" href="/assets/front/img/core-img/favicon.ico">
 
-<body>
+        <!-- Core Stylesheet -->
+        <link rel="stylesheet" href="/assets/front/css/style.css">
 
-    <!-- Start preloader -->
-    <div id="preloader"></div>
-    <!-- End preloader -->
+        <!-- Responsive Stylesheet -->
+        <link rel="stylesheet" href="/assets/front/css/responsive.css">
 
-    <!-- Top scroll -->
-    <div class="top-scroll transition">
-        <a href="#banner" class="scrollTo"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
-    </div>
-    <!-- Top scroll End -->
+    </head>
 
-    <header class="transition">
-        <div class="container">
-            <div class="row flex-align">
-                <div class="col-lg-4 col-md-3 col-8">
-                    <div class="logo">
-                        <a href="index-2.html"><img src="{{ logo() }}" class="transition" width="60"
-                                alt="Bidpips"></a>
-                    </div>
-                </div>
-                <div class="col-lg-8 col-md-9 col-4 text-right">
-                    <div class="menu-toggle">
-                        <span></span>
-                    </div>
-                    <div class="menu">
-                        <ul class="d-inline-block">
-                            <li><a href="{{ route('front.index') }}/">Home</a></li>
-                            <li><a href="{{ route('front.about') }}">About</a></li>
-                            <li><a href="{{ route('front.contact') }}">Contact</a></li>
-                            <li><a href="{{ route('front.faq') }}">FAQ</a></li>
-                        </ul>
-                        <div class="signin d-inline-block">
-                            <a href="{{ route('user.index') }}" class="btn">
-                                @auth('user')
-                                    Dashboard
-                                @else
-                                    Sign in
-                                @endauth
-                            </a>
-                        </div>
-                    </div>
-                </div>
+    <body class="darker-blue">
+        <!-- Preloader -->
+        <div id="preloader">
+            <div class="preload-content">
+                <div id="dream-load"></div>
             </div>
         </div>
-    </header>
 
-    @yield('content')
+        <!-- ##### Header Area Start ##### -->
+        <header class="header-area wow fadeInDown" data-wow-delay="0.2s">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Classy Menu -->
+                    <nav class="classy-navbar justify-content-between" id="dreamNav">
 
-    <footer class="bg-pattern darkblue ptb-100">
-        <div class="container">
-            {{-- <a class="text-primary" href="{{ route('front.index') }}">Home</a> --}}
-            {{-- <div class="footer">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="footer-logo pb-25">
-                            <a href="index-2.html"><img src="images/logo.png" alt="Cryptcon"></a>
+                        <!-- Logo -->
+                        <a class="nav-brand" href="#"><img draggable="false" src="/assets/front/img/core-img/logo.png" alt="logo"> {{ucfirst(config('app.name'))}}.</a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
                         </div>
-                        <div class="footer-icon">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                            </ul>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- close btn -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul id="nav">
+                                    <li><a href="#home">Home</a></li>
+                                    <li><a href="#about">About</a></li>
+                                    <li><a href="#services">Services</a></li>
+                                    <li><a href="#roadmap">Roadmap</a></li>
+                                    <li><a href="#team">Team</a></li>
+                                    <li><a href="#contact">Contact</a></li>
+                                </ul>
+
+                                <!-- Button -->
+                                <a href="#" class="btn login-btn ml-50">Log in</a>
+                            </div>
+                            <!-- Nav End -->
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="footer-link">
-                            <ul>
-                                <li><a href="#">What is ico</a></li>
-                                <li><a href="#">ICO Apps</a></li>
-                                <li><a href="#">Join Us</a></li>
-                                <li><a href="token-sale.html">Tokens</a></li>
-                                <li><a href="#">Whitepaper</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                                <li><a href="roadmap.html">Roadmap</a></li>
-                                <li><a href="team.html">Teams</a></li>
-                                <li><a href="faq.html">Faq</a></li>
-                            </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <!-- ##### Header Area End ##### -->
+
+        <!-- ##### Welcome Area Start ##### -->
+        <section class="welcome_area clearfix dzsparallaxer auto-init ico fullwidth" data-options='{direction: "normal"}' id="home">
+            <div class="divimage dzsparallaxer--target" style="width: 101%; height: 130%; background-image: url(img/bg-img/bg-2.jpg)"></div>
+
+            <!-- Hero Content -->
+            <div class="hero-content dark-blue">
+                <!-- blip -->
+                <div class="dream-blip blip1"></div>
+                <div class="dream-blip blip2"></div>
+                <div class="dream-blip blip3"></div>
+                <div class="dream-blip blip4"></div>
+
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <!-- Welcome Content -->
+                        <div class="col-12 col-lg-6 col-md-12">
+                            <div class="welcome-content">
+                                <div class="promo-section">
+                                    <div class="integration-link">
+                                        <span class="integration-icon">
+                                            <img draggable="false" src="/assets/front/img/svg/img-dollar.svg" width="24" height="24" alt="">
+                                        </span>
+                                        <span class="integration-text">Discover a new ways to enjoy your World!</span>
+                                    </div>
+                                </div>
+                                <h1 class="wow fadeInUp" data-wow-delay="0.2s">Artificial Intelligence Crypto Revolution</h1>
+                                <p class="wow fadeInUp" data-wow-delay="0.3s">We have over 15 year exprience in business consultting arena. We have over 15 year exprience in business consultting arena and artficial intelligence.</p>
+                                <div class="dream-btn-group wow fadeInUp" data-wow-delay="0.4s">
+                                    <a href="#" class="btn dream-btn mr-3">Learn More</a>
+                                    <a href="#" class="btn dream-btn">Contact Us</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="subscribe">
-                            <div class="form-group">
-                                <label>Subscribe to our Newsleter</label>
-                                <input type="email" class="form-control" placeholder="Enter your email Address">
-                                <input type="submit" name="submit" value="Subscribe" class="submit">
+                        <!-- Welcome Video Area -->
+                        <div class="col-12 col-lg-6 col-md-12">
+                            <div class="main-ilustration wow fadeInUp" data-wow-delay="0.5s">
+
                             </div>
                         </div>
                     </div>
                 </div>
-            </div> --}}
-            <div class="copyright">
+            </div>
+        </section>
+        <!-- ##### Welcome Area End ##### -->
+
+        <div class="vertical-social">
+            <ul>
+                <li><a href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i></a></li>
+                {{-- <li><a href="#"><i class="fa fa-medium" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                <li><a href="#"> <i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li> --}}
+
+            </ul>
+        </div>
+
+        <!-- ##### trust Area Start ##### -->
+        <div class="trust-section section-padding-100">
+            <div class="section-heading text-center">
+
+                <div class="dream-dots justify-content-center wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <h2 class="wow fadeInUp" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">We are trusted</h2>
+                <p class="wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
+            </div>
+            <div class="container">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <p>© All Rights Reserved.</p>
+                    <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                        <!-- Single Cool Fact -->
+                        <div class="trust-item text-center wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="ico-platform-logo">
+                                <img draggable="false" src="img/ico-platforms/1.png" alt="">
+                            </div>
+                            <!-- Single Cool Detail -->
+                            <div class="check">
+                                <!-- <div class="value">8.9</div> -->
+                                <div class="check-icon"></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-lg-6">
-                        <ul>
-                            <li><a href="#">Terms & Condition</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="{{route('front.contact')}}">Contact Us</a></li>
-                        </ul>
+
+                    <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                        <!-- Single Cool Fact -->
+                        <div class="trust-item text-center wow fadeInUp" data-wow-delay="0.3s">
+                            <div class="ico-platform-logo">
+                                <img draggable="false" src="/assets/front/img/ico-platforms/2.png" alt="">
+                            </div>
+                            <!-- Single Cool Detail -->
+                            <div class="check">
+                                <div class="value">8.9</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                        <!-- Single Cool Fact -->
+                        <div class="trust-item text-center wow fadeInUp" data-wow-delay="0.4s">
+                            <div class="ico-platform-logo">
+                                <img draggable="false" src="/assets/front/img/ico-platforms/3.png" alt="">
+                            </div>
+                            <!-- Single Cool Detail -->
+                            <div class="check">
+                                <!-- <div class="value">8.9</div> -->
+                                <div class="check-icon"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                        <!-- Single Cool Fact -->
+                        <div class="trust-item text-center wow fadeInUp" data-wow-delay="0.5s">
+                            <div class="ico-platform-logo">
+                                <img draggable="false" src="/assets/front/img/ico-platforms/4.png" alt="">
+                            </div>
+                            <!-- Single Cool Detail -->
+                            <div class="check">
+                                <!-- <div class="value">8.9</div> -->
+                                <div class="check-icon"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                        <!-- Single Cool Fact -->
+                        <div class="trust-item text-center wow fadeInUp" data-wow-delay="0.6s">
+                            <div class="ico-platform-logo">
+                                <img draggable="false" src="/assets/front/img/ico-platforms/5.png" alt="">
+                            </div>
+                            <!-- Single Cool Detail -->
+                            <div class="check">
+                                <div class="value">7.4</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                        <!-- Single Cool Fact -->
+                        <div class="trust-item text-center wow fadeInUp" data-wow-delay="0.7s">
+                            <div class="ico-platform-logo">
+                                <img draggable="false" src="/assets/front/img/ico-platforms/6.png" alt="">
+                            </div>
+                            <!-- Single Cool Detail -->
+                            <div class="check">
+                                <!-- <div class="value">8.9</div> -->
+                                <div class="check-icon"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- ##### trust Area End ##### -->
+
+        <!-- ##### About Us Area Start ##### -->
+        <section class="about-us-area section-padding-0-100 clearfix" id="about">
+            <div class="container">
+                <div class="row align-items-center">
+
+                    <div class="col-12 col-lg-6">
+                        <div class="welcome-meter wow fadeInUp" data-wow-delay="0.7s">
+                            <img draggable="false" src="/assets/front/img/svg/about1.svg" class="img-responsive center-block" alt="">
+                            <!-- client meta -->
+                            <div class="growing-company text-center mt-30 wow fadeInUp" data-wow-delay="0.8s">
+                                <p>* Already growing up <span class="counter">5236</span> company</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6">
+                        <div class="who-we-contant">
+
+                            <div class="dream-dots wow fadeInUp" data-wow-delay="0.2s">
+                                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                            </div>
+                            <h4 class="wow fadeInUp" data-wow-delay="0.3s">We complete every project with extra care as customer need.</h4>
+                            <p class="wow fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at dictum risus, non suscipit arcu. Quisque aliquam posuere tortor, sit amet convallis nunc scelerisque in.</p>
+                            <p class="wow fadeInUp" data-wow-delay="0.5s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore eius molestiae facere, natus reprehenderit eaque eum, autem ipsam. Magni, error. Tempora odit laborum iure inventore possimus laboriosam qui nam. Fugit!</p>
+                            <a class="btn dream-btn mt-30 wow fadeInUp" data-wow-delay="0.6s" href="#">Read More</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- ##### About Us Area End ##### -->
+
+        <!-- ##### About Us Area Start ##### -->
+        <section class="about-us-area section-padding-0-100 clearfix">
+            <div class="container">
+                <div class="row align-items-center">
+
+                    <div class="col-12 col-lg-6">
+                        <div class="who-we-contant">
+
+                            <div class="dream-dots wow fadeInUp" data-wow-delay="0.2s">
+                                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                            </div>
+                            <h4 class="wow fadeInUp" data-wow-delay="0.3s">We complete every project with extra care as customer need.</h4>
+                            <p class="wow fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at dictum risus, non suscipit arcu. Quisque aliquam posuere tortor, sit amet convallis nunc scelerisque in.</p>
+                            <p class="wow fadeInUp" data-wow-delay="0.5s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo quo laboriosam, dolorum ducimus similique aliquam consequuntur saepe numquam suscipit praesentium fuga eveniet error assumenda eos quasi doloribus ullam autem,
+                                quisquam aliquam consequuntur saepe numquam suscipit similique!</p>
+                            <a class="btn dream-btn mt-30 wow fadeInUp" data-wow-delay="0.6s" href="#">Read More</a>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6">
+                        <div class="welcome-meter wow fadeInUp" data-wow-delay="0.7s">
+                            <img draggable="false" src="/assets/front/img/solution.png" class="center-block" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ##### About Us Area End ##### -->
+
+
+        <section class="demo-video section-before section-padding-100">
+            <div class="container">
+                <div class="section-heading text-center">
+
+                    <div class="dream-dots justify-content-center wow fadeInUp" data-wow-delay="0.2s">
+                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                    <h2 class="wow fadeInUp" data-wow-delay="0.3s">Watch our demo video</h2>
+                    <p class="wow fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
+                </div>
+                <!-- Welcome Video Area -->
+                <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-12">
+                    <div class="welcome-video-area wow fadeInUp" data-wow-delay="0.5s">
+                        <!-- Welcome Thumbnail -->
+                        <div class="welcome-thumb">
+                            <img draggable="false" src="/assets/front/img/bg-img/bg-4.jpg" alt="">
+                        </div>
+                        <!-- Video Icon -->
+                        <div class="video-icon">
+                            <a href="https://www.youtube.com/watch?v=gbXEPHsTkgU" class="btn dream-btn video-btn" id="videobtn"><i class="fa fa-play"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="clearfix"></div>
+
+        <!-- ##### Our Services Area Start ##### -->
+        <section class="our_services_area section-padding-100-70 clearfix" id="services">
+            <div class="container">
+
+                <div class="section-heading text-center">
+
+                    <div class="dream-dots justify-content-center wow fadeInUp" data-wow-delay="0.2s">
+                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                    <h2 class="wow fadeInUp" data-wow-delay="0.3s">Our Core Services</h2>
+                    <p class="wow fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <!-- Content -->
+                        <div class="service_single_content text-left mb-100 wow fadeInUp" data-wow-delay="0.2s">
+                            <!-- Icon -->
+                            <div class="service_icon">
+                                <img draggable="false" src="/assets/front/img/services/1.svg" alt="">
+                            </div>
+                            <h6>Smart Trading Modules</h6>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla neque quam, maximus ut accumsan ut, posuere sit Lorem ipsum.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <!-- Content -->
+                        <div class="service_single_content text-left mb-100 wow wow fadeInUp" data-wow-delay="0.3s">
+                            <!-- Icon -->
+                            <div class="service_icon">
+                                <img draggable="false" src="/assets/front/img/services/2.svg" alt="">
+                            </div>
+                            <h6>Adaptive Social Assistant</h6>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla neque quam, maximus ut accumsan ut, posuere sit Lorem ipsum.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <!-- Content -->
+                        <div class="service_single_content text-left mb-100 wow fadeInUp" data-wow-delay="0.4s">
+                            <!-- Icon -->
+                            <div class="service_icon">
+                                <img draggable="false" src="/assets/front/img/services/3.svg" alt="">
+                            </div>
+                            <h6>Analyzer of the News </h6>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla neque quam, maximus ut accumsan ut, posuere sit Lorem ipsum.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <!-- Content -->
+                        <div class="service_single_content text-left mb-100 wow fadeInUp" data-wow-delay="0.5s">
+                            <!-- Icon -->
+                            <div class="service_icon">
+                                <img draggable="false" src="/assets/front/img/services/4.svg" alt="">
+                            </div>
+                            <h6>Exchange Order Management</h6>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla neque quam, maximus ut accumsan ut, posuere sit Lorem ipsum.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <!-- Content -->
+                        <div class="service_single_content text-left mb-100 wow fadeInUp" data-wow-delay="0.6s">
+                            <!-- Icon -->
+                            <div class="service_icon">
+                                <img draggable="false" src="/assets/front/img/services/5.svg" alt="">
+                            </div>
+                            <h6>Module of Price Notification</h6>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla neque quam, maximus ut accumsan ut, posuere sit Lorem ipsum.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <!-- Content -->
+                        <div class="service_single_content text-left mb-100 wow fadeInUp" data-wow-delay="0.7s">
+                            <!-- Icon -->
+                            <div class="service_icon">
+                                <img draggable="false" src="/assets/front/img/services/6.svg" alt="">
+                            </div>
+                            <h6>Crypto Trading Platform</h6>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla neque quam, maximus ut accumsan ut, posuere sit Lorem ipsum.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ##### Our Services Area End ##### -->
+
+        <!-- ##### Our roadmap Area start ##### -->
+        <section class="roadmap" style="padding-bottom:0" id="roadmap">
+            <div class="section-heading text-center">
+
+                <div class="dream-dots justify-content-center wow fadeInUp" data-wow-delay="0.2s">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <h2 class="wow fadeInUp" data-wow-delay="0.3s">Our ICO Roadmap</h2>
+                <p class="wow fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="timeline-split">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="timeline section-box-margin">
+                                <div class="block block-left">
+                                    <h3>Platform Development Starts</h3>
+                                    <span class="date">May 12, 2021</span> <span class="between">to</span> <span class="date">Jun 19, 2021</span>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto adipisci provident officia animi.</p>
+                                </div>
+
+                                <div class="block block-right mt-30">
+                                    <h3>Groundwork Preparation for ICO</h3>
+                                    <span class="date">Aug 18, 2021</span> <span class="between">to</span> <span class="date">Sep 23, 2021</span>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto adipisci provident officia animi.</p>
+                                </div>
+
+                                <div class="block block-left mt-30">
+                                    <h3>Crypto Blockchain Release</h3>
+                                    <span class="date">Oct 08, 2021</span> <span class="between">to</span> <span class="date">Nov 16, 2021</span>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto adipisci provident officia animi.</p>
+                                </div>
+
+                                <div class="block block-right mt-30">
+                                    <h3>Release Bank & Cards Phase</h3>
+                                    <span class="date">Dec 28, 2020</span> <span class="between">to</span> <span class="date">Jan 29, 2020</span>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto adipisci provident officia animi.</p>
+                                </div>
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ##### Our roadmap Area End ##### -->
+
+
+        <!-- ##### Our features Area start ##### -->
+        <section class="features section-padding-100">
+
+            <div class="section-heading text-center">
+
+                <div class="dream-dots justify-content-center wow fadeInUp" data-wow-delay="0.2s">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <h2 class="wow fadeInUp" data-wow-delay="0.3s">Our Wallet Application</h2>
+                <p class="wow fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
+            </div>
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="services-column col-lg-5 col-lg-offset-1 col-md-10 offset-md-1 col-xs-10 offset-xs-1">
+                        <!--Services Block Four-->
+                        <div class="services-block-four">
+                            <div class="inner-box">
+                                <div class="icon-box">
+                                    <span class="icon ti-mobile"></span>
+                                </div>
+                                <h3><a href="#">Powerfull Mobile and Online App</a></h3>
+                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium modi assumenda beatae provident non hic eum dolores natus, vitae, quae, facere perferendis quas tempore. Consequuntur commodi facilis sed similique.</div>
+
+                            </div>
+                        </div>
+
+                        <!--Services Block Four-->
+                        <div class="services-block-four">
+                            <div class="inner-box">
+                                <div class="icon-box">
+                                    <span class="icon ti-widget"></span>
+                                </div>
+                                <h3><a href="#">Brings more Transparency and Speed</a></h3>
+                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati aut repudiandae harum, fugit, necessitatibus veritatis molestias a eligendi distinctio. Nostrum expedita deserunt maiores adipisci.</div>
+                            </div>
+                        </div>
+
+                        <!--Services Block Four-->
+                        <div class="services-block-four" style="margin-bottom:0">
+                            <div class="inner-box">
+                                <div class="icon-box">
+                                    <span class="icon ti-settings"></span>
+                                </div>
+                                <h3><a href="#">Special for Multiple Use Capabilities</a></h3>
+                                <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia maiores, ducimus animi a. Nulla ab dolor doloribus, aperiam, quam dolorum dicta vitae tempora, vero at quod error alias incidunt quidem.</div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="service-img-wrapper col-lg-6 col-md-12 col-sm-12">
+                        <div class="image-box">
+                            <img draggable="false" src="/assets/front/img/phone.png" class="center-block img-responsive phone-img" alt="">
+                            <img draggable="false" src="/assets/front/img/core-img/rings-bg.png" class="center-block img-responsive rings " alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ##### Our features Area End ##### -->
+
+        <!-- ##### Subscribe Area start ##### -->
+        <section class="container " style="padding-bottom: 0px" id="start">
+            <div class="subscribe">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="subscribe-wrapper">
+                            <div class="section-heading text-center">
+                                <h2 class="wow fadeInUp" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">Don’t Miss ICO News And Updates!</h2>
+                                <p class="wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
+                            </div>
+                            <div class="service-text">
+
+                                <div class="col-lg-8 col-lg-offset-2 col-md-8 offset-md-2 col-xs-12 text-center">
+                                    <div class="group">
+                                        <input type="text" name="subject" required="">
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>enter your email</label>
+                                        <button class="dream-btn"><i class="fa fa-paper-plane-o"></i></button>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 col-lg-offset-1 col-sm-12 text-center">
+                                    <span class="telegram-text">Join our chat: </span>
+                                    <a href="" class="button"><i class="fa fa-telegram"></i>Telegram</a>
+                                </div>
+                                <div class="col-lg-5 col-sm-12 text-center">
+                                    <ul class="list-unstyled list-inline social-list">
+                                        <li><a href=""><i class="fa fa-facebook-square"></i></a></li>
+                                        <li><a href=""><i class="fa fa-twitter-square"></i></a></li>
+                                        <li><a href=""><i class="fa fa-github-square"></i></a></li>
+                                        <li><a href=""><i class="fa fa-instagram"></i></a></li>
+                                        <li><a href=""><i class="fa fa-medium"></i></a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- ##### Subscribe Area End ##### -->
+
+        <!-- ##### FAQ & Timeline Area Start ##### -->
+        <div class="faq-timeline-area section-padding-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-7 col-md-12">
+                        <div class="section-heading">
+
+                            <div class="dream-dots wow fadeInUp" data-wow-delay="0.2s">
+                                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                            </div>
+                            <h2 class="wow fadeInUp" data-wow-delay="0.3s">Frequently Asked Questions</h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.4s" style="margin-left:0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
+                        </div>
+
+                        <div class="dream-faq-area">
+                            <dl>
+                                <!-- Single FAQ Area -->
+                                <dt class="wave wow fadeInUp" data-wow-delay="0.2s">What are the objectives of this token?</dt>
+                                <dd class="wow fadeInUp" data-wow-delay="0.3s">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore omnis quaerat nostrum, pariatur ipsam sunt accusamus enim necessitatibus est fugiat, assumenda dolorem, deleniti corrupti cupiditate ipsum, dolorum voluptatum esse error?</p>
+                                </dd>
+                                <!-- Single FAQ Area -->
+                                <dt class="wave wow fadeInUp" data-wow-delay="0.3s">What is Token Sale and pre-sale?</dt>
+                                <dd>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore omnis quaerat nostrum, pariatur ipsam sunt accusamus enim necessitatibus est fugiat, assumenda dolorem, deleniti corrupti cupiditate ipsum, dolorum voluptatum esse error?</p>
+                                </dd>
+                                <!-- Single FAQ Area -->
+                                <dt class="wave wow fadeInUp" data-wow-delay="0.4s">What is the pre-sale start date?</dt>
+                                <dd>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore omnis quaerat nostrum, pariatur ipsam sunt accusamus enim necessitatibus est fugiat, assumenda dolorem, deleniti corrupti cupiditate ipsum, dolorum voluptatum esse error?</p>
+                                </dd>
+                                <!-- Single FAQ Area -->
+                                <dt class="wave wow fadeInUp" data-wow-delay="0.5s">how may I take part in pre-sale?</dt>
+                                <dd>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore omnis quaerat nostrum, pariatur ipsam sunt accusamus enim necessitatibus est fugiat, assumenda dolorem, deleniti corrupti cupiditate ipsum, dolorum voluptatum esse error?</p>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-5 offset-lg-0 col-md-8 offset-md-2 col-sm-10 offset-sm-1">
+
+                        <div class="ico-counter">
+                            <div class="counter-down">
+
+                                <div class="content">
+                                    <div class="conuter-header">
+                                        <h3 class="text-center">TOKEN SALE ENDS IN</h3>
+                                    </div>
+                                    <div class="counterdown-content">
+
+                                        <!-- <div class="ico-sales-status mb-15 o-hidden">
+                                        <div class="pull-left">
+                                            <h3 class="dollar-earning">$7,575,357</h3>
+                                            <p style="padding-left:10px">Worth of DREAM tokens</p>
+                                        </div>
+                                        <div class="pull-right">
+                                            <h3 class="btc-earning">9.764 <span>BTC</span></h3>
+                                            <p>BTC Raised</p>
+                                        </div>
+                                    </div> -->
+                                        <!-- Countdown  -->
+                                        <div class="count-down titled circled text-center">
+                                            <div class="simple_timer"></div>
+                                        </div>
+                                        <div class="ico-progress">
+                                            <ul class="list-unstyled list-inline clearfix mb-10">
+                                                <li class="title">33m</li>
+                                                <li class="strength">75m</li>
+                                            </ul>
+                                            <!-- skill strength -->
+                                            <div class="current-progress">
+                                                <div class="progress-bar has-gradient" style="width: 75%"></div>
+                                            </div>
+                                            <span class="pull-left">Softcap in 103 days</span>
+                                            <span class="pull-right">Token Hardcap</span>
+                                        </div>
+                                        <div class="text-center">
+                                            <a href="#" class="button mt-30">Buy More Tokens</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="ico-docs">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="doc-element">
+                                        <a class="document-entry" href="#" target="_blank"><span class="title">WhitePaper</span></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="doc-element">
+                                        <a class="document-entry" href="#" target="_blank"><span class="title">OnePager</span></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="doc-element">
+                                        <a class="document-entry" href="#" target="_blank"><span class="title">Rating Review</span></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="doc-element">
+                                        <a class="document-entry" href="#" target="_blank"><span class="title">Marketing Plan</span></a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
-    </footer>
+        <!-- ##### FAQ & Timeline Area End ##### -->
 
-    @include('includes.chat')
-    <script src="/assets/front/js/jquery-3.4.1.min.js"></script>
-    <script src="/assets/front/js/bootstrap.min.js"></script>
-    <script src="/assets/front/js/owl.carousel.min.js"></script>
-    <script src="/assets/front/js/snap.svg-min.js"></script>
-    <script src="/assets/front/js/jquery.listtopie.min.js"></script>
-    <script src="/assets/front/js/animation.js"></script>
-    <script src="/assets/front/js/custom.js"></script>
-</body>
+        <!-- ##### token-distribution Area start ##### -->
+        <section class="token-distribution">
+            <div class="container">
+
+                <div class="section-heading text-center">
+
+                    <div class="dream-dots justify-content-center wow fadeInUp" data-wow-delay="0.2s">
+                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                    <h2 class="wow fadeInUp" data-wow-delay="0.3s">Our ICO Distribution</h2>
+                    <p class="wow fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <h2 class="text-center mb-30">Token Allocation</h2>
+                    <div class="token-allocation">
+                        <img draggable="false" src="/assets/front/img/core-img/allocation.png" class="center-block" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="token-info-wapper"></div>
+                    <h2 class="text-center mb-30">More Token Info</h2>
+                    <div class="token-info">
+                        <div class="info-wrapper">
+                            <div class="token-icon" style="background-image: url('/assets/front/img/svg/token-icon-1.svg');"></div>
+                            <div class="token-descr">Lorem ipsum dolor sit amet, conse ctetur elit</div>
+                        </div>
+                    </div>
+                    <div class="token-info">
+                        <div class="info-wrapper">
+                            <div class="token-icon" style="background-image: url('/assets/front/img/svg/token-icon-2.svg');"></div>
+                            <div class="token-descr">Sed quis accumsan nisi Ut ut felis</div>
+                        </div>
+                    </div>
+                    <div class="token-info">
+                        <div class="info-wrapper">
+                            <div class="token-icon" style="background-image: url('/assets/front/img/svg/token-icon-3.svg');"></div>
+                            <div class="token-descr">felis congue nisl hendrerit commodo</div>
+                        </div>
+                    </div>
+                    <div class="token-info" style="margin-bottom:0">
+                        <div class="info-wrapper">
+                            <div class="token-icon" style="background-image: url('/assets/front/img/svg/token-icon-4.svg');"></div>
+                            <div class="token-descr">arch nemo sequi rem saepe ad quasi ullam.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!-- ##### token-distribution Area End ##### -->
+
+
+        <!-- ##### Team Area Start ##### -->
+        <section class="our_team_area section-padding-0-0 clearfix" id="team">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-heading text-center">
+
+                            <div class="dream-dots justify-content-center wow fadeInUp" data-wow-delay="0.2s">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <h2 class="wow fadeInUp" data-wow-delay="0.3s">Awesome Team</h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo. </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Single Team Member -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-team-member wow fadeInUp" data-wow-delay="0.2s">
+                            <!-- Image -->
+                            <div class="team-member-thumb">
+                                <img draggable="false" src="/assets/front/img/team-img/1.png" class="center-block" alt="">
+                            </div>
+                            <!-- Team Info -->
+                            <div class="team-info">
+                                <h5>Sunny khan</h5>
+                                <p>Executive Officer</p>
+                            </div>
+                            <!-- Social Icon -->
+                            <div class="team-social-icon">
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-skype"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Team Member -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-team-member wow fadeInUp" data-wow-delay="0.3s">
+                            <!-- Image -->
+                            <div class="team-member-thumb">
+                                <img draggable="false" src="/assets/front/img/team-img/2.png" class="center-block" alt="">
+                            </div>
+                            <!-- Team Info -->
+                            <div class="team-info">
+                                <h5>Ajoy Das</h5>
+                                <p>Business Development</p>
+                            </div>
+                            <!-- Social Icon -->
+                            <div class="team-social-icon">
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-skype"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Team Member -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-team-member wow fadeInUp" data-wow-delay="0.4s">
+                            <!-- Image -->
+                            <div class="team-member-thumb">
+                                <img draggable="false" src="/assets/front/img/team-img/3.png" class="center-block" alt="">
+                            </div>
+                            <!-- Team Info -->
+                            <div class="team-info">
+                                <h5>Afroza Mou</h5>
+                                <p>UX/UI Designer</p>
+                            </div>
+                            <!-- Social Icon -->
+                            <div class="team-social-icon">
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-skype"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Team Member -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-team-member wow fadeInUp" data-wow-delay="0.5s">
+                            <!-- Image -->
+                            <div class="team-member-thumb">
+                                <img draggable="false" src="/assets/front/img/team-img/4.png" class="center-block" alt="">
+                            </div>
+                            <!-- Team Info -->
+                            <div class="team-info">
+                                <h5>Lim Sarah</h5>
+                                <p>Head of Marketing</p>
+                            </div>
+                            <!-- Icon -->
+                            <div class="team-social-icon">
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-skype"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Team Member -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-team-member wow fadeInUp" data-wow-delay="0.2s">
+                            <!-- Image -->
+                            <div class="team-member-thumb">
+                                <img draggable="false" src="/assets/front/img/team-img/1.png" class="center-block" alt="">
+                            </div>
+                            <!-- Team Info -->
+                            <div class="team-info">
+                                <h5>Sunny khan</h5>
+                                <p>Executive Officer</p>
+                            </div>
+                            <!-- Social Icon -->
+                            <div class="team-social-icon">
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-skype"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Team Member -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-team-member wow fadeInUp" data-wow-delay="0.3s">
+                            <!-- Image -->
+                            <div class="team-member-thumb">
+                                <img draggable="false" src="/assets/front/img/team-img/2.png" class="center-block" alt="">
+                            </div>
+                            <!-- Team Info -->
+                            <div class="team-info">
+                                <h5>Ajoy Das</h5>
+                                <p>Business Development</p>
+                            </div>
+                            <!-- Social Icon -->
+                            <div class="team-social-icon">
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-skype"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Team Member -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-team-member wow fadeInUp" data-wow-delay="0.4s">
+                            <!-- Image -->
+                            <div class="team-member-thumb">
+                                <img draggable="false" src="/assets/front/img/team-img/3.png" class="center-block" alt="">
+                            </div>
+                            <!-- Team Info -->
+                            <div class="team-info">
+                                <h5>Afroza Mou</h5>
+                                <p>UX/UI Designer</p>
+                            </div>
+                            <!-- Social Icon -->
+                            <div class="team-social-icon">
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-skype"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Team Member -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-team-member wow fadeInUp" data-wow-delay="0.5s">
+                            <!-- Image -->
+                            <div class="team-member-thumb">
+                                <img draggable="false" src="/assets/front/img/team-img/4.png" class="center-block" alt="">
+                            </div>
+                            <!-- Team Info -->
+                            <div class="team-info">
+                                <h5>Lim Sarah</h5>
+                                <p>Head of Marketing</p>
+                            </div>
+                            <!-- Icon -->
+                            <div class="team-social-icon">
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-skype"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- ##### Team Area End ##### -->
+
+        <!-- ##### Our partners Area start ##### -->
+        <section class="partners">
+
+            <div class="section-heading text-center">
+
+                <div class="dream-dots justify-content-center wow fadeInUp" data-wow-delay="0.2s">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <h2 class="wow fadeInUp" data-wow-delay="0.3s">Our Awesome Partners</h2>
+                <p class="wow fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="partner-box">
+                            <img draggable="false" src="/assets/front/img/partners/1.png" alt="" class="center-bock">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="partner-box">
+                            <img draggable="false" src="/assets/front/img/partners/2.png" alt="" class="center-bock">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="partner-box">
+                            <img draggable="false" src="/assets/front/img/partners/3.png" alt="" class="center-bock">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="partner-box">
+                            <img draggable="false" src="/assets/front/img/partners/4.png" alt="" class="center-bock">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="partner-box">
+                            <img draggable="false" src="/assets/front/img/partners/5.png" alt="" class="center-bock">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="partner-box">
+                            <img draggable="false" src="/assets/front/img/partners/6.png" alt="" class="center-bock">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="partner-box">
+                            <img draggable="false" src="/assets/front/img/partners/7.png" alt="" class="center-bock">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="partner-box">
+                            <img draggable="false" src="/assets/front/img/partners/8.png" alt="" class="center-bock">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="partner-box">
+                            <img draggable="false" src="/assets/front/img/partners/9.png" alt="" class="center-bock">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="partner-box">
+                            <img draggable="false" src="/assets/front/img/partners/10.png" alt="" class="center-bock">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="partner-box">
+                            <img draggable="false" src="/assets/front/img/partners/11.png" alt="" class="center-bock">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="partner-box">
+                            <img draggable="false" src="/assets/front/img/partners/12.png" alt="" class="center-bock">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ##### Our partners Area start ##### -->
+
+
+        <!-- ##### Footer Area Start ##### -->
+        <footer class="footer-area bg-img" style="background-image: url(/assets/front/img/core-img/pattern.png);">
+
+            <!-- ##### Contact Area Start ##### -->
+            <div class="contact_us_area" id="contact">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="section-heading text-center">
+
+                                <div class="dream-dots justify-content-center wow fadeInUp" data-wow-delay="0.2s">
+                                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                                </div>
+                                <h2 class="wow fadeInUp" data-wow-delay="0.3s">Contact With Us</h2>
+                                <p class="wow fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-10 col-lg-8">
+                            <div class="contact_form">
+                                <form action="#" method="post" id="main_contact_form" novalidate>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div id="success_fail_info"></div>
+                                        </div>
+
+                                        <div class="col-12 col-md-6">
+                                            <div class="group wow fadeInUp" data-wow-delay="0.2s">
+                                                <input type="text" name="name" id="name" required>
+                                                <span class="highlight"></span>
+                                                <span class="bar"></span>
+                                                <label>Name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="group wow fadeInUp" data-wow-delay="0.3s">
+                                                <input type="text" name="email" id="email" required>
+                                                <span class="highlight"></span>
+                                                <span class="bar"></span>
+                                                <label>Email</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="group wow fadeInUp" data-wow-delay="0.4s">
+                                                <input type="text" name="subject" id="subject" required>
+                                                <span class="highlight"></span>
+                                                <span class="bar"></span>
+                                                <label>Subject</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="group wow fadeInUp" data-wow-delay="0.5s">
+                                                <textarea name="message" id="message" required></textarea>
+                                                <span class="highlight"></span>
+                                                <span class="bar"></span>
+                                                <label>Message</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.6s">
+                                            <button type="submit" class="btn dream-btn">Send Message</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ##### Contact Area End ##### -->
+
+            <div class="footer-content-area " style="background-image: url(/assets/front/img/core-img/footer-bg1.png);">
+                <div class="container">
+                    <div class="row align-items-end">
+                        <div class="col-12 col-md-5">
+                            <div class="footer-copywrite-info">
+                                <!-- Copywrite -->
+                                <div class="copywrite_text wow fadeInUp" data-wow-delay="0.2s">
+                                    <div class="footer-logo">
+                                        <a href="#"><img draggable="false" src="img/core-img/logo.png" alt="logo"> Coinland.</a>
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit ducimus voluptatibus neque illo id repellat quisquam? Autem expedita earum quae laborum ipsum ad, a eaque officiis eligendi blanditiis odio necessitatibus.</p>
+                                </div>
+                                <!-- Social Icon -->
+                                <div class="footer-social-info wow fadeInUp" data-wow-delay="0.4s">
+                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                    <a href="#"> <i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-7">
+                            <!-- Content Info -->
+                            <div class="contact_info_area d-sm-flex justify-content-between">
+                                <div class="contact_info text-center wow fadeInUp" data-wow-delay="0.2s">
+                                    <h5>NAVIGATE</h5>
+                                    <a href="">
+                                        <p>Advertisers</p>
+                                    </a>
+                                    <a href="">
+                                        <p>Developers</p>
+                                    </a>
+                                    <a href="">
+                                        <p>Resources</p>
+                                    </a>
+                                    <a href="">
+                                        <p>Company</p>
+                                    </a>
+                                    <a href="">
+                                        <p>Connect</p>
+                                    </a>
+                                </div>
+                                <!-- Content Info -->
+                                <div class="contact_info text-center wow fadeInUp" data-wow-delay="0.3s">
+                                    <h5>PRIVACY & TOS</h5>
+                                    <a href="">
+                                        <p>Advertiser Agreement</p>
+                                    </a>
+                                    <a href="">
+                                        <p>Acceptable Use Policy</p>
+                                    </a>
+                                    <a href="">
+                                        <p>Privacy Policy</p>
+                                    </a>
+                                    <a href="">
+                                        <p>Technology Privacy</p>
+                                    </a>
+                                    <a href="">
+                                        <p>Developer Agreement</p>
+                                    </a>
+                                </div>
+                                <!-- Content Info -->
+                                <div class="contact_info text-center wow fadeInUp" data-wow-delay="0.4s">
+                                    <h5>CONTACT US</h5>
+                                    <p>Mailing Address:xx00 E. Union Ave</p>
+                                    <p>Suite 1100. Denver, CO 80237</p>
+                                    <p>+999 90932 627</p>
+                                    <p>support@yourdomain.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- ##### Footer Area End ##### -->
+
+        <!-- ########## All JS ########## -->
+        <!-- jQuery js -->
+        <script src="/assets/front/js/jquery.min.js"></script>
+        <!-- Popper js -->
+        <script src="/assets/front/js/popper.min.js"></script>
+        <!-- Bootstrap js -->
+        <script src="/assets/front/js/bootstrap.min.js"></script>
+        <!-- All Plugins js -->
+        <script src="/assets/front/js/plugins.js"></script>
+        <!-- Parallax js -->
+        <script src="/assets/front/js/dzsparallaxer.js"></script>
+
+        <script src="/assets/front/js/jquery.syotimer.min.js"></script>
+
+        <!-- script js -->
+        <script src="/assets/front/js/script.js"></script>
+
+    </body>
 
 </html>
