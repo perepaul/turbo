@@ -314,8 +314,8 @@
                     <div class="service_icon">
                         <img draggable="false" src="/assets/front/img/services/5.svg" alt="">
                     </div>
-                    <h6>Module of Loss Notification</h6>
-                    <p>Should in case you .</p>
+                    <h6>Finance should be social</h6>
+                    <p>For us, open discussion and self-expression are the greatest keys to unlocking understanding, with a strong social network at its core.</p>
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-lg-4">
@@ -325,8 +325,8 @@
                     <div class="service_icon">
                         <img draggable="false" src="/assets/front/img/services/6.svg" alt="">
                     </div>
-                    <h6>Crypto Trading Platform</h6>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla neque quam, maximus ut accumsan ut, posuere sit Lorem ipsum.</p>
+                    <h6>We don't create charts</h6>
+                    <p>We never lose sight of the fact that millions of traders invest their hard-won capital based on what they see on our platform. </p>
                 </div>
             </div>
         </div>
