@@ -124,9 +124,9 @@
                                 <!-- Content Info -->
                                 <div class="contact_info text-center wow fadeInUp" data-wow-delay="0.4s">
                                     <h5>CONTACT US</h5>
-                                    <p>{{$contact->address}}</p>
-                                    <p><a href="tel:{{$contact->phone}}">{{$contact->phone}}</a></p>
-                                    <p><a href="mailto:{{$contact->support_email}}">{{$contact->support_email}}</a></p>
+                                    <p>{{$contact?->address}}</p>
+                                    <p><a href="tel:{{$contact?->phone}}">{{$contact?->phone}}</a></p>
+                                    <p><a href="mailto:{{$contact?->support_email}}">{{$contact?->support_email}}</a></p>
                                 </div>
                             </div>
                         </div>
