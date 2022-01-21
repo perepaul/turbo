@@ -13,10 +13,11 @@ use App\Http\Controllers\Front\PagesController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::namespace('Front')->group(function(){
-    Route::get('',[PagesController::class,'index'])->name('index');
-    Route::get('about',[PagesController::class,'about'])->name('about');
-    Route::get('contact',[PagesController::class,'contact'])->name('contact');
-    Route::get('faq',[PagesController::class,'faq'])->name('faq');
-    Route::post('contact',[PagesController::class,'sendContact'])->name('send.conotact');
+
+Route::namespace('Front')->group(function () {
+    Route::get('', [PagesController::class, 'index'])->name('index');
+    // Route::get('about', [PagesController::class, 'about'])->name('about');
+    // Route::get('contact', [PagesController::class, 'contact'])->name('contact');
+    // Route::get('faq', [PagesController::class, 'faq'])->name('faq');
+    Route::post('contact', [PagesController::class, 'sendContact'])->name('send.contact');
 });

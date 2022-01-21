@@ -12,7 +12,9 @@ class PagesController extends Controller
 {
     public function index()
     {
-        return view('front.index');
+        $contact = Contact::find(1);
+        // dd($contact);
+        return view('front.index', compact('contact'));
     }
 
     public function about()
@@ -23,7 +25,7 @@ class PagesController extends Controller
     public function contact()
     {
         $contact = Contact::find(1);
-        return view('front.contact',compact('contact'));
+        return view('front.contact', compact('contact'));
     }
 
     public function sendContact(Request $request)
@@ -34,15 +36,16 @@ class PagesController extends Controller
             'email' => 'required|email',
             'message' => 'required|string'
         ]);
+        return response()->json();
 
-        if($request->has('validity') && !is_null($request->validity)  || !empty($request->validity)){
+        if ($request->has('validity') && !is_null($request->validity)  || !empty($request->validity)) {
             return;
         }
         $settings = Contact::find(1);
-        if($settings){
+        if ($settings) {
             Mail::to($settings->support_email)->send(new SendContactMail($valid));
         }
-        session()->flash('message','Email Sent Successfully');
+        session()->flash('message', 'Email Sent Successfully');
         return redirect()->back();
     }
 

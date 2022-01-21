@@ -27,8 +27,7 @@
                         <h5>Withdrawals</h5>
                         <h2 class="fs-40 font-w600">{{ $withdrawals->count() }}</h2>
                     </div>
-                    <div><span class="donut1"
-                            data-peity='{ "fill": ["rgb(56, 226, 93,1)", "rgba(242, 246, 252)"]}'>1</span>
+                    <div><span class="donut1" data-peity='{ "fill": ["rgb(56, 226, 93,1)", "rgba(242, 246, 252)"]}'>1</span>
                     </div>
                 </div>
             </div>
@@ -40,8 +39,7 @@
                         <h5>Deposits</h5>
                         <h2 class="fs-40 font-w600">{{ $deposits->count() }}</h2>
                     </div>
-                    <div><span class="donut1"
-                            data-peity='{ "fill": ["rgb(255, 135, 35,1)", "rgba(242, 246, 252)"]}'>1</span>
+                    <div><span class="donut1" data-peity='{ "fill": ["rgb(255, 135, 35,1)", "rgba(242, 246, 252)"]}'>1</span>
                     </div>
                 </div>
             </div>
@@ -53,8 +51,7 @@
                         <h5>Trades</h5>
                         <h2 class="fs-40 font-w600">{{ $trades->count() }}</h2>
                     </div>
-                    <div><span class="donut1"
-                            data-peity='{ "fill": ["rgb(51, 62, 75,1)", "rgba(242, 246, 252)"]}'>1</span>
+                    <div><span class="donut1" data-peity='{ "fill": ["rgb(51, 62, 75,1)", "rgba(242, 246, 252)"]}'>1</span>
                     </div>
                 </div>
             </div>
@@ -161,7 +158,7 @@
 
                                         <tr>
                                             <td>{{$trade->reference}}</td>
-                                            <td>{{format_money($trade->amount,$trade->user->currency->symbol)}}</td>
+                                            <td>{{format_money($trade->amount,$trade->user?->currency?->symbol)}}</td>
                                             <td>{{$trade->user->name}}</td>
                                             <td>{{$trade->created_at->toDateTimeString()}}</td>
                                         </tr>
@@ -224,33 +221,24 @@
                         <div class="card-body pb-3">
                             <h4>Withdrawal Stats</h4>
                             <p class="mb-2 d-flex  fs-16 text-black font-w500">Pending
-                                <span
-                                    class="ms-auto text-dark fs-14 font-w400">{{ $withdrawals->where('status', 'pending')->count() . '/' . $withdrawals->count() }}</span>
+                                <span class="ms-auto text-dark fs-14 font-w400">{{ $withdrawals->where('status', 'pending')->count() . '/' . $withdrawals->count() }}</span>
                             </p>
                             <div class="progress mb-4" style="height:18px">
-                                <div class="progress-bar bg-primary progress-animated"
-                                    style="width:{{ $withdrawals->count() > 0 ? ($withdrawals->where('status', 'pending')->count() * 100) / $withdrawals->count() : 0 }}%; height:18px;"
-                                    role="progressbar">
+                                <div class="progress-bar bg-primary progress-animated" style="width:{{ $withdrawals->count() > 0 ? ($withdrawals->where('status', 'pending')->count() * 100) / $withdrawals->count() : 0 }}%; height:18px;" role="progressbar">
                                 </div>
                             </div>
                             <p class="mb-2 d-flex  fs-16 text-black font-w500">Active
-                                <span
-                                    class="ms-auto text-dark fs-14 font-w400">{{ $withdrawals->where('status', 'approved')->count() . '/' . $withdrawals->count() }}</span>
+                                <span class="ms-auto text-dark fs-14 font-w400">{{ $withdrawals->where('status', 'approved')->count() . '/' . $withdrawals->count() }}</span>
                             </p>
                             <div class="progress mb-3" style="height:18px">
-                                <div class="progress-bar bg-primary progress-animated"
-                                    style="width:{{ $withdrawals->count() > 0 ? ($withdrawals->where('status', 'approved')->count() * 100) / $withdrawals->count() : 0 }}%; height:18px;"
-                                    role="progressbar">
+                                <div class="progress-bar bg-primary progress-animated" style="width:{{ $withdrawals->count() > 0 ? ($withdrawals->where('status', 'approved')->count() * 100) / $withdrawals->count() : 0 }}%; height:18px;" role="progressbar">
                                 </div>
                             </div>
                             <p class="mb-2 d-flex  fs-16 text-black font-w500">Declined
-                                <span
-                                    class="ms-auto text-dark fs-14 font-w400">{{ $withdrawals->where('status', 'declined')->count() . '/' . $withdrawals->count() }}</span>
+                                <span class="ms-auto text-dark fs-14 font-w400">{{ $withdrawals->where('status', 'declined')->count() . '/' . $withdrawals->count() }}</span>
                             </p>
                             <div class="progress mb-3" style="height:18px">
-                                <div class="progress-bar bg-primary progress-animated"
-                                    style="width:{{ $withdrawals->count() > 0 ? ($withdrawals->where('status', 'declined')->count() * 100) / $withdrawals->count() : 0 }}%; height:18px;"
-                                    role="progressbar">
+                                <div class="progress-bar bg-primary progress-animated" style="width:{{ $withdrawals->count() > 0 ? ($withdrawals->where('status', 'declined')->count() * 100) / $withdrawals->count() : 0 }}%; height:18px;" role="progressbar">
                                 </div>
                             </div>
                         </div>
@@ -263,33 +251,24 @@
                         <div class="card-body pb-3">
                             <h4>Deposit Stats</h4>
                             <p class="mb-2 d-flex  fs-16 text-black font-w500">Pending
-                                <span
-                                    class="ms-auto text-dark fs-14 font-w400">{{ $deposits->where('status', 'pending')->count() . '/' . $deposits->count() }}</span>
+                                <span class="ms-auto text-dark fs-14 font-w400">{{ $deposits->where('status', 'pending')->count() . '/' . $deposits->count() }}</span>
                             </p>
                             <div class="progress mb-4" style="height:18px">
-                                <div class="progress-bar bg-primary progress-animated"
-                                    style="width:{{ $deposits->count() > 0 ? ($deposits->where('status', 'pending')->count() * 100) / $deposits->count() : 0 }}%; height:18px;"
-                                    role="progressbar">
+                                <div class="progress-bar bg-primary progress-animated" style="width:{{ $deposits->count() > 0 ? ($deposits->where('status', 'pending')->count() * 100) / $deposits->count() : 0 }}%; height:18px;" role="progressbar">
                                 </div>
                             </div>
                             <p class="mb-2 d-flex  fs-16 text-black font-w500">Active
-                                <span
-                                    class="ms-auto text-dark fs-14 font-w400">{{ $deposits->where('status', 'approved')->count() . '/' . $deposits->count() }}</span>
+                                <span class="ms-auto text-dark fs-14 font-w400">{{ $deposits->where('status', 'approved')->count() . '/' . $deposits->count() }}</span>
                             </p>
                             <div class="progress mb-3" style="height:18px">
-                                <div class="progress-bar bg-primary progress-animated"
-                                    style="width:{{ $deposits->count() > 0 ? ($deposits->where('status', 'approved')->count() * 100) / $deposits->count() : 0 }}%; height:18px;"
-                                    role="progressbar">
+                                <div class="progress-bar bg-primary progress-animated" style="width:{{ $deposits->count() > 0 ? ($deposits->where('status', 'approved')->count() * 100) / $deposits->count() : 0 }}%; height:18px;" role="progressbar">
                                 </div>
                             </div>
                             <p class="mb-2 d-flex  fs-16 text-black font-w500">Declined
-                                <span
-                                    class="ms-auto text-dark fs-14 font-w400">{{ $deposits->where('status', 'declined')->count() . '/' . $deposits->count() }}</span>
+                                <span class="ms-auto text-dark fs-14 font-w400">{{ $deposits->where('status', 'declined')->count() . '/' . $deposits->count() }}</span>
                             </p>
                             <div class="progress mb-3" style="height:18px">
-                                <div class="progress-bar bg-primary progress-animated"
-                                    style="width:{{ $deposits->count() > 0 ? ($deposits->where('status', 'declined')->count() * 100) / $deposits->count() : 0 }}%; height:18px;"
-                                    role="progressbar">
+                                <div class="progress-bar bg-primary progress-animated" style="width:{{ $deposits->count() > 0 ? ($deposits->where('status', 'declined')->count() * 100) / $deposits->count() : 0 }}%; height:18px;" role="progressbar">
                                 </div>
                             </div>
                         </div>
@@ -302,43 +281,31 @@
                         <div class="card-body pb-3">
                             <h4>Users Stats</h4>
                             <p class="mb-2 d-flex  fs-16 text-black font-w500">Pending
-                                <span
-                                    class="ms-auto text-dark fs-14 font-w400">{{ $users->where('status', 'pending')->count() . '/' . $users->count() }}</span>
+                                <span class="ms-auto text-dark fs-14 font-w400">{{ $users->where('status', 'pending')->count() . '/' . $users->count() }}</span>
                             </p>
                             <div class="progress mb-4" style="height:18px">
-                                <div class="progress-bar bg-primary progress-animated"
-                                    style="width:{{ $users->count() > 0 ? ($users->where('status', 'pending')->count() * 100) / $users->count() : 0 }}%; height:18px;"
-                                    role="progressbar">
+                                <div class="progress-bar bg-primary progress-animated" style="width:{{ $users->count() > 0 ? ($users->where('status', 'pending')->count() * 100) / $users->count() : 0 }}%; height:18px;" role="progressbar">
                                 </div>
                             </div>
                             <p class="mb-2 d-flex  fs-16 text-black font-w500">Active
-                                <span
-                                    class="ms-auto text-dark fs-14 font-w400">{{ $users->where('status', 'active')->count() . '/' . $users->count() }}</span>
+                                <span class="ms-auto text-dark fs-14 font-w400">{{ $users->where('status', 'active')->count() . '/' . $users->count() }}</span>
                             </p>
                             <div class="progress mb-3" style="height:18px">
-                                <div class="progress-bar bg-primary progress-animated"
-                                    style="width:{{ $users->count() > 0 ? ($users->where('status', 'active')->count() * 100) / $users->count() : 0 }}%; height:18px;"
-                                    role="progressbar">
+                                <div class="progress-bar bg-primary progress-animated" style="width:{{ $users->count() > 0 ? ($users->where('status', 'active')->count() * 100) / $users->count() : 0 }}%; height:18px;" role="progressbar">
                                 </div>
                             </div>
                             <p class="mb-2 d-flex  fs-16 text-black font-w500">Inactive
-                                <span
-                                    class="ms-auto text-dark fs-14 font-w400">{{ $users->where('status', 'inactive')->count() . '/' . $users->count() }}</span>
+                                <span class="ms-auto text-dark fs-14 font-w400">{{ $users->where('status', 'inactive')->count() . '/' . $users->count() }}</span>
                             </p>
                             <div class="progress mb-3" style="height:18px">
-                                <div class="progress-bar bg-primary progress-animated"
-                                    style="width:{{ $users->count() > 0 ? ($users->where('status', 'inactive')->count() * 100) / $users->count() : 0 }}%; height:18px;"
-                                    role="progressbar">
+                                <div class="progress-bar bg-primary progress-animated" style="width:{{ $users->count() > 0 ? ($users->where('status', 'inactive')->count() * 100) / $users->count() : 0 }}%; height:18px;" role="progressbar">
                                 </div>
                             </div>
                             <p class="mb-2 d-flex  fs-16 text-black font-w500">Rejected
-                                <span
-                                    class="ms-auto text-dark fs-14 font-w400">{{ $users->where('status', 'rejected')->count() . '/' . $users->count() }}</span>
+                                <span class="ms-auto text-dark fs-14 font-w400">{{ $users->where('status', 'rejected')->count() . '/' . $users->count() }}</span>
                             </p>
                             <div class="progress mb-3" style="height:18px">
-                                <div class="progress-bar bg-primary progress-animated"
-                                    style="width:{{ $users->count() > 0 ? ($users->where('status', 'rejected')->count() * 100) / $users->count() : 0 }}%; height:18px;"
-                                    role="progressbar">
+                                <div class="progress-bar bg-primary progress-animated" style="width:{{ $users->count() > 0 ? ($users->where('status', 'rejected')->count() * 100) / $users->count() : 0 }}%; height:18px;" role="progressbar">
                                 </div>
                             </div>
                         </div>
@@ -351,23 +318,17 @@
                         <div class="card-body pb-3">
                             <h4>Trade Stats</h4>
                             <p class="mb-2 d-flex  fs-16 text-black font-w500">Active
-                                <span
-                                    class="ms-auto text-dark fs-14 font-w400">{{ $trades->where('status', 'active')->count() . '/' . $trades->count() }}</span>
+                                <span class="ms-auto text-dark fs-14 font-w400">{{ $trades->where('status', 'active')->count() . '/' . $trades->count() }}</span>
                             </p>
                             <div class="progress mb-4" style="height:18px">
-                                <div class="progress-bar bg-primary progress-animated"
-                                    style="width:{{ $trades->count() > 0 ? ($trades->where('status', 'active')->count() * 100) / $trades->count() : 0 }}%; height:18px;"
-                                    role="progressbar">
+                                <div class="progress-bar bg-primary progress-animated" style="width:{{ $trades->count() > 0 ? ($trades->where('status', 'active')->count() * 100) / $trades->count() : 0 }}%; height:18px;" role="progressbar">
                                 </div>
                             </div>
                             <p class="mb-2 d-flex  fs-16 text-black font-w500">Closed
-                                <span
-                                    class="ms-auto text-dark fs-14 font-w400">{{ $trades->where('status', 'inactive')->count() . '/' . $trades->count() }}</span>
+                                <span class="ms-auto text-dark fs-14 font-w400">{{ $trades->where('status', 'inactive')->count() . '/' . $trades->count() }}</span>
                             </p>
                             <div class="progress mb-3" style="height:18px">
-                                <div class="progress-bar bg-primary progress-animated"
-                                    style="width:{{ $trades->count() > 0 ? ($trades->where('status', 'inactive')->count() * 100) / $trades->count() : 0 }}%; height:18px;"
-                                    role="progressbar">
+                                <div class="progress-bar bg-primary progress-animated" style="width:{{ $trades->count() > 0 ? ($trades->where('status', 'inactive')->count() * 100) / $trades->count() : 0 }}%; height:18px;" role="progressbar">
                                 </div>
                             </div>
                         </div>

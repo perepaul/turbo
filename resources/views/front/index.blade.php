@@ -618,8 +618,8 @@
                         <span></span>
                         <span></span>
                     </div>
-                    <h2 class="wow fadeInUp" data-wow-delay="0.3s">Awesome Team</h2>
-                    <p class="wow fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo. </p>
+                    <h2 class="wow fadeInUp" data-wow-delay="0.3s">Our Outstanding Team</h2>
+                    <p class="wow fadeInUp" data-wow-delay="0.4s">Meet our world class team.</p>
                 </div>
             </div>
         </div>
@@ -630,20 +630,14 @@
                 <div class="single-team-member wow fadeInUp" data-wow-delay="0.2s">
                     <!-- Image -->
                     <div class="team-member-thumb">
-                        <img draggable="false" src="/assets/front/img/team-img/1.png" class="center-block" alt="">
+                        <img draggable="false" src="/assets/front/img/team-img/1.jpeg" class="center-block" alt="">
                     </div>
                     <!-- Team Info -->
                     <div class="team-info">
-                        <h5>Sunny khan</h5>
-                        <p>Executive Officer</p>
+                        <h5>Ryan Nguyen </h5>
+                        <p>Founder & Manager</p>
                     </div>
                     <!-- Social Icon -->
-                    <div class="team-social-icon">
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-skype"></i></a>
-                    </div>
                 </div>
             </div>
 
@@ -652,20 +646,14 @@
                 <div class="single-team-member wow fadeInUp" data-wow-delay="0.3s">
                     <!-- Image -->
                     <div class="team-member-thumb">
-                        <img draggable="false" src="/assets/front/img/team-img/2.png" class="center-block" alt="">
+                        <img draggable="false" src="/assets/front/img/team-img/2.jpeg" class="center-block" alt="">
                     </div>
                     <!-- Team Info -->
                     <div class="team-info">
-                        <h5>Ajoy Das</h5>
-                        <p>Business Development</p>
+                        <h5>Laura Atkinson</h5>
+                        <p>Executive Officer</p>
                     </div>
                     <!-- Social Icon -->
-                    <div class="team-social-icon">
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-skype"></i></a>
-                    </div>
                 </div>
             </div>
 
@@ -674,19 +662,12 @@
                 <div class="single-team-member wow fadeInUp" data-wow-delay="0.4s">
                     <!-- Image -->
                     <div class="team-member-thumb">
-                        <img draggable="false" src="/assets/front/img/team-img/3.png" class="center-block" alt="">
+                        <img draggable="false" src="/assets/front/img/team-img/3.jpeg" class="center-block" alt="">
                     </div>
                     <!-- Team Info -->
                     <div class="team-info">
-                        <h5>Afroza Mou</h5>
-                        <p>UX/UI Designer</p>
-                    </div>
-                    <!-- Social Icon -->
-                    <div class="team-social-icon">
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-skype"></i></a>
+                        <h5>Lauretta Jane</h5>
+                        <p>Head of Marketing</p>
                     </div>
                 </div>
             </div>
@@ -696,193 +677,88 @@
                 <div class="single-team-member wow fadeInUp" data-wow-delay="0.5s">
                     <!-- Image -->
                     <div class="team-member-thumb">
-                        <img draggable="false" src="/assets/front/img/team-img/4.png" class="center-block" alt="">
+                        <img draggable="false" src="/assets/front/img/team-img/4.jpeg" class="center-block" alt="">
                     </div>
                     <!-- Team Info -->
                     <div class="team-info">
-                        <h5>Lim Sarah</h5>
-                        <p>Head of Marketing</p>
-                    </div>
-                    <!-- Icon -->
-                    <div class="team-social-icon">
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-skype"></i></a>
+                        <h5>Mark Wilson</h5>
+                        <p>Business Developer</p>
                     </div>
                 </div>
             </div>
-
-            <!-- Single Team Member -->
-            <div class="col-12 col-sm-6 col-lg-3">
-                <div class="single-team-member wow fadeInUp" data-wow-delay="0.2s">
-                    <!-- Image -->
-                    <div class="team-member-thumb">
-                        <img draggable="false" src="/assets/front/img/team-img/1.png" class="center-block" alt="">
-                    </div>
-                    <!-- Team Info -->
-                    <div class="team-info">
-                        <h5>Sunny khan</h5>
-                        <p>Executive Officer</p>
-                    </div>
-                    <!-- Social Icon -->
-                    <div class="team-social-icon">
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-skype"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Single Team Member -->
-            <div class="col-12 col-sm-6 col-lg-3">
-                <div class="single-team-member wow fadeInUp" data-wow-delay="0.3s">
-                    <!-- Image -->
-                    <div class="team-member-thumb">
-                        <img draggable="false" src="/assets/front/img/team-img/2.png" class="center-block" alt="">
-                    </div>
-                    <!-- Team Info -->
-                    <div class="team-info">
-                        <h5>Ajoy Das</h5>
-                        <p>Business Development</p>
-                    </div>
-                    <!-- Social Icon -->
-                    <div class="team-social-icon">
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-skype"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Single Team Member -->
-            <div class="col-12 col-sm-6 col-lg-3">
-                <div class="single-team-member wow fadeInUp" data-wow-delay="0.4s">
-                    <!-- Image -->
-                    <div class="team-member-thumb">
-                        <img draggable="false" src="/assets/front/img/team-img/3.png" class="center-block" alt="">
-                    </div>
-                    <!-- Team Info -->
-                    <div class="team-info">
-                        <h5>Afroza Mou</h5>
-                        <p>UX/UI Designer</p>
-                    </div>
-                    <!-- Social Icon -->
-                    <div class="team-social-icon">
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-skype"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Single Team Member -->
-            <div class="col-12 col-sm-6 col-lg-3">
-                <div class="single-team-member wow fadeInUp" data-wow-delay="0.5s">
-                    <!-- Image -->
-                    <div class="team-member-thumb">
-                        <img draggable="false" src="/assets/front/img/team-img/4.png" class="center-block" alt="">
-                    </div>
-                    <!-- Team Info -->
-                    <div class="team-info">
-                        <h5>Lim Sarah</h5>
-                        <p>Head of Marketing</p>
-                    </div>
-                    <!-- Icon -->
-                    <div class="team-social-icon">
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-skype"></i></a>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 </section>
 <!-- ##### Team Area End ##### -->
 
-<!-- ##### Our partners Area start ##### -->
-<section class="partners">
-
-    <div class="section-heading text-center">
-
-        <div class="dream-dots justify-content-center wow fadeInUp" data-wow-delay="0.2s">
-            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-        </div>
-        <h2 class="wow fadeInUp" data-wow-delay="0.3s">Our Awesome Partners</h2>
-        <p class="wow fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
-    </div>
-
+<!-- ##### Contact Area Start ##### -->
+<div class="contact_us_area" id="contact">
     <div class="container">
         <div class="row">
-            <div class="col-lg-2 col-sm-6">
-                <div class="partner-box">
-                    <img draggable="false" src="/assets/front/img/partners/1.png" alt="" class="center-bock">
-                </div>
-            </div>
-            <div class="col-lg-2 col-sm-6">
-                <div class="partner-box">
-                    <img draggable="false" src="/assets/front/img/partners/2.png" alt="" class="center-bock">
-                </div>
-            </div>
-            <div class="col-lg-2 col-sm-6">
-                <div class="partner-box">
-                    <img draggable="false" src="/assets/front/img/partners/3.png" alt="" class="center-bock">
-                </div>
-            </div>
-            <div class="col-lg-2 col-sm-6">
-                <div class="partner-box">
-                    <img draggable="false" src="/assets/front/img/partners/4.png" alt="" class="center-bock">
-                </div>
-            </div>
-            <div class="col-lg-2 col-sm-6">
-                <div class="partner-box">
-                    <img draggable="false" src="/assets/front/img/partners/5.png" alt="" class="center-bock">
-                </div>
-            </div>
-            <div class="col-lg-2 col-sm-6">
-                <div class="partner-box">
-                    <img draggable="false" src="/assets/front/img/partners/6.png" alt="" class="center-bock">
-                </div>
-            </div>
+            <div class="col-12">
+                <div class="section-heading text-center">
 
-            <div class="col-lg-2 col-sm-6">
-                <div class="partner-box">
-                    <img draggable="false" src="/assets/front/img/partners/7.png" alt="" class="center-bock">
+                    <div class="dream-dots justify-content-center wow fadeInUp" data-wow-delay="0.2s">
+                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                    <h2 class="wow fadeInUp" data-wow-delay="0.3s">Contact Us</h2>
+                    <p class="wow fadeInUp" data-wow-delay="0.4s">Send us a message by filling the form below.</p>
                 </div>
             </div>
-            <div class="col-lg-2 col-sm-6">
-                <div class="partner-box">
-                    <img draggable="false" src="/assets/front/img/partners/8.png" alt="" class="center-bock">
-                </div>
-            </div>
-            <div class="col-lg-2 col-sm-6">
-                <div class="partner-box">
-                    <img draggable="false" src="/assets/front/img/partners/9.png" alt="" class="center-bock">
-                </div>
-            </div>
-            <div class="col-lg-2 col-sm-6">
-                <div class="partner-box">
-                    <img draggable="false" src="/assets/front/img/partners/10.png" alt="" class="center-bock">
-                </div>
-            </div>
-            <div class="col-lg-2 col-sm-6">
-                <div class="partner-box">
-                    <img draggable="false" src="/assets/front/img/partners/11.png" alt="" class="center-bock">
-                </div>
-            </div>
-            <div class="col-lg-2 col-sm-6">
-                <div class="partner-box">
-                    <img draggable="false" src="/assets/front/img/partners/12.png" alt="" class="center-bock">
+        </div>
+
+        <!-- Contact Form -->
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                <div class="contact_form">
+                    <form action="{{route('front.send.contact')}}" method="post" id="main_contact_form" novalidate>
+                        <div class="row">
+                            <div class="col-12">
+                                <div id="success_fail_info"></div>
+                            </div>
+                            @csrf
+
+                            <div class="col-12 col-md-6">
+                                <div class="group wow fadeInUp" data-wow-delay="0.2s">
+                                    <input type="text" name="name" id="name" required>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Name</label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="group wow fadeInUp" data-wow-delay="0.3s">
+                                    <input type="text" name="email" id="email" required>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Email</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="group wow fadeInUp" data-wow-delay="0.4s">
+                                    <input type="text" name="subject" id="subject" required>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Subject</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="group wow fadeInUp" data-wow-delay="0.5s">
+                                    <textarea name="message" id="message" required></textarea>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Message</label>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.6s">
+                                <button type="submit" class="btn dream-btn">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-</section>
-<!-- ##### Our partners Area start ##### -->
+</div>
+<!-- ##### Contact Area End ##### -->
 @endsection

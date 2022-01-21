@@ -505,7 +505,7 @@ ol {
 .section-heading {
     position: relative;
     z-index: 1;
-    margin-bottom: 80px;
+    margin-bottom: 40px;
 }
 
 .section-heading h2 {
@@ -2637,6 +2637,9 @@ p.artficial:before {
     margin: 0 auto;
     margin-bottom: 20px;
 }
+.team-member-thumb img{
+    height: 180px
+}
 
 .team-info h5 {
     color: #fff;
@@ -3121,6 +3124,31 @@ textarea:required {
     color: #fff
 }
 
+#success_fail_info{
+    margin-bottom: 30px;
+    padding: 10px 18px;
+    font-size: 14px;
+    border: 1px solid;
+    border-radius: 20px;
+    display: none;
+}
+
+#success_fail_info.error {
+    border-color: crimson;
+    color: crimson;
+    display:block;
+}
+
+#success_fail_info.success{
+    border-color: rgb(38, 143, 38);
+    color:rgb(38, 143, 38);
+    display:block;
+}
+
+#success_fail_info.error ul li{
+    list-style-type: square;
+    margin-left: 18px;
+}
 
 /* ##### Breadcumb Area ##### */
 
