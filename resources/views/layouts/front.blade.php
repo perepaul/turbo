@@ -134,7 +134,7 @@
                 </div>
             </div>
         </footer>
-        @if(!is_null($contact->phone))
+        @if(isset($contact) && !is_null($contact->phone))
         <a href="https://api.whatsapp.com/send?phone={{$contact?->phone}}" class="whatsapp-button-wrapper" target="_blank">
             <i class="fa fa-whatsapp"></i>
         </a>
