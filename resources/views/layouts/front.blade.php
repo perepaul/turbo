@@ -156,6 +156,10 @@
         <!-- script js -->
         <script src="/assets/front/js/script.js"></script>
 
+        @production
+        {!! config('app.chat') !!}
+        @endproduction
+
     </body>
 
 </html>
