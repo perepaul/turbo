@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -15,7 +16,7 @@ class UserController extends Controller
      */
     public function index(Request $request, $status)
     {
-        if (!in_array($status, ['active', 'inactive', 'pending','rejected'])) $status = 'active';
+        if (!in_array($status, ['active', 'inactive', 'pending', 'rejected'])) $status = 'active';
         $q = User::query()->where('status', $status);
         $users = $q->orderBy('created_at', 'desc')->paginate();
         return view('admin.users.index', compact('users'));
@@ -26,20 +27,22 @@ class UserController extends Controller
     {
         $user = User::find($id);
         if (!$user) abort(404);
-        auth('user')->loginUsingId($id,true);
-        return redirect()->route('user.index');
+        if (Auth::guard('user')->loginUsingId($id)) {
+            return redirect()->route('user.index');
+        }
+        return redirect()->route('login');
     }
 
-    public function status(Request $request,$id)
+    public function status(Request $request, $id)
     {
-        if(!in_array($request->status,['active','pending','inactive','rejected'])){
-            session()->flash('error','Invalid status type');
+        if (!in_array($request->status, ['active', 'pending', 'inactive', 'rejected'])) {
+            session()->flash('error', 'Invalid status type');
             return back();
         }
         $user = User::find($id);
         $user->status = $request->status;
         $user->save();
-        session('success','Status updated successfully');
+        session('success', 'Status updated successfully');
         return back();
     }
     /**
@@ -83,7 +86,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('admin.users.edit',compact('user'));
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -98,7 +101,7 @@ class UserController extends Controller
         $valid = $request->validate([
             'firstname' => 'required',
             'lastname' => 'required',
-            'email' => 'required|email|unique:users,email,'.$id,
+            'email' => 'required|email|unique:users,email,' . $id,
             'phone' => 'required|regex:/^[+][0-9]{9,14}/',
             'trading_balance' => 'nullable|numeric',
             'demo_balance' => 'nullable|numeric',
@@ -110,9 +113,8 @@ class UserController extends Controller
         ]);
         $user = User::find($id);
         $user->update($valid);
-        session()->flash('success','User Updated');
-        return redirect()->route('admin.users.index','acitve');
-
+        session()->flash('success', 'User Updated');
+        return redirect()->route('admin.users.index', 'acitve');
     }
 
     /**
@@ -123,6 +125,5 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-
     }
 }
