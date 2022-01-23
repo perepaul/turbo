@@ -46,18 +46,18 @@
 </section>
 <!-- ##### Welcome Area End ##### -->
 
-<div class="vertical-social">
+{{-- <div class="vertical-social">
     <ul>
         <li><a href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i></a></li>
-        {{-- <li><a href="#"><i class="fa fa-medium" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                <li><a href="#"> <i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-github" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li> --}}
+        <li><a href="#"><i class="fa fa-medium" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+        <li><a href="#"> <i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
 
     </ul>
-</div>
+</div> --}}
 
 <!-- ##### trust Area Start ##### -->
 <div class="trust-section section-padding-100">
@@ -67,7 +67,7 @@
             <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
         </div>
         <h2 class="wow fadeInUp" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">We are trusted</h2>
-        <p class="wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
+        <p class="wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">We have run on military grade 256bit encryption along side with Secure Socket Layer (SSL), so your data is in safe hands.</p>
     </div>
     <div class="container">
         <div class="row">
@@ -219,33 +219,6 @@
 </section>
 <!-- ##### About Us Area End ##### -->
 
-{{--
-<section class="demo-video section-before section-padding-100">
-    <div class="container">
-        <div class="section-heading text-center">
-
-            <div class="dream-dots justify-content-center wow fadeInUp" data-wow-delay="0.2s">
-                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-            </div>
-            <h2 class="wow fadeInUp" data-wow-delay="0.3s">Watch our demo video</h2>
-            <p class="wow fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
-        </div>
-        <!-- Welcome Video Area -->
-        <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-12">
-            <div class="welcome-video-area wow fadeInUp" data-wow-delay="0.5s">
-                <!-- Welcome Thumbnail -->
-                <div class="welcome-thumb">
-                    <img draggable="false" src="/assets/front/img/bg-img/bg-4.jpg" alt="">
-                </div>
-                <!-- Video Icon -->
-                <div class="video-icon">
-                    <a href="https://www.youtube.com/watch?v=gbXEPHsTkgU" class="btn dream-btn video-btn" id="videobtn"><i class="fa fa-play"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> --}}
-
 <div class="clearfix"></div>
 
 <!-- ##### Our Services Area Start ##### -->
@@ -378,67 +351,6 @@
 <!-- ##### Our roadmap Area End ##### -->
 
 
-<!-- ##### Our features Area start ##### -->
-{{-- <section class="features section-padding-100">
-
-    <div class="section-heading text-center">
-
-        <div class="dream-dots justify-content-center wow fadeInUp" data-wow-delay="0.2s">
-            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-        </div>
-        <h2 class="wow fadeInUp" data-wow-delay="0.3s">Our Wallet Application</h2>
-        <p class="wow fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
-    </div>
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="services-column col-lg-5 col-lg-offset-1 col-md-10 offset-md-1 col-xs-10 offset-xs-1">
-                <!--Services Block Four-->
-                <div class="services-block-four">
-                    <div class="inner-box">
-                        <div class="icon-box">
-                            <span class="icon ti-mobile"></span>
-                        </div>
-                        <h3><a href="#">Powerfull Mobile and Online App</a></h3>
-                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium modi assumenda beatae provident non hic eum dolores natus, vitae, quae, facere perferendis quas tempore. Consequuntur commodi facilis sed similique.</div>
-
-                    </div>
-                </div>
-
-                <!--Services Block Four-->
-                <div class="services-block-four">
-                    <div class="inner-box">
-                        <div class="icon-box">
-                            <span class="icon ti-widget"></span>
-                        </div>
-                        <h3><a href="#">Brings more Transparency and Speed</a></h3>
-                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati aut repudiandae harum, fugit, necessitatibus veritatis molestias a eligendi distinctio. Nostrum expedita deserunt maiores adipisci.</div>
-                    </div>
-                </div>
-
-                <!--Services Block Four-->
-                <div class="services-block-four" style="margin-bottom:0">
-                    <div class="inner-box">
-                        <div class="icon-box">
-                            <span class="icon ti-settings"></span>
-                        </div>
-                        <h3><a href="#">Special for Multiple Use Capabilities</a></h3>
-                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia maiores, ducimus animi a. Nulla ab dolor doloribus, aperiam, quam dolorum dicta vitae tempora, vero at quod error alias incidunt quidem.</div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="service-img-wrapper col-lg-6 col-md-12 col-sm-12">
-                <div class="image-box">
-                    <img draggable="false" src="/assets/front/img/phone.png" class="center-block img-responsive phone-img" alt="">
-                    <img draggable="false" src="/assets/front/img/core-img/rings-bg.png" class="center-block img-responsive rings " alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-</section> --}}
-<!-- ##### Our features Area End ##### -->
-
 <!-- ##### Subscribe Area start ##### -->
 <section class="container pt-5" style="padding-bottom: 0px" id="start">
     <div class="subscribe">
@@ -547,59 +459,8 @@
         </div>
     </div>
 </div>
-<!-- ##### FAQ & Timeline Area End ##### -->
 
-<!-- ##### token-distribution Area start ##### -->
-{{-- <section class="token-distribution">
-    <div class="container">
 
-        <div class="section-heading text-center">
-
-            <div class="dream-dots justify-content-center wow fadeInUp" data-wow-delay="0.2s">
-                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-            </div>
-            <h2 class="wow fadeInUp" data-wow-delay="0.3s">Our ICO Distribution</h2>
-            <p class="wow fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
-        </div>
-
-        <div class="col-lg-6 col-md-6 col-sm-12">
-            <h2 class="text-center mb-30">Token Allocation</h2>
-            <div class="token-allocation">
-                <img draggable="false" src="/assets/front/img/core-img/allocation.png" class="center-block" alt="">
-            </div>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-12">
-            <div class="token-info-wapper"></div>
-            <h2 class="text-center mb-30">More Token Info</h2>
-            <div class="token-info">
-                <div class="info-wrapper">
-                    <div class="token-icon" style="background-image: url('/assets/front/img/svg/token-icon-1.svg');"></div>
-                    <div class="token-descr">Lorem ipsum dolor sit amet, conse ctetur elit</div>
-                </div>
-            </div>
-            <div class="token-info">
-                <div class="info-wrapper">
-                    <div class="token-icon" style="background-image: url('/assets/front/img/svg/token-icon-2.svg');"></div>
-                    <div class="token-descr">Sed quis accumsan nisi Ut ut felis</div>
-                </div>
-            </div>
-            <div class="token-info">
-                <div class="info-wrapper">
-                    <div class="token-icon" style="background-image: url('/assets/front/img/svg/token-icon-3.svg');"></div>
-                    <div class="token-descr">felis congue nisl hendrerit commodo</div>
-                </div>
-            </div>
-            <div class="token-info" style="margin-bottom:0">
-                <div class="info-wrapper">
-                    <div class="token-icon" style="background-image: url('/assets/front/img/svg/token-icon-4.svg');"></div>
-                    <div class="token-descr">arch nemo sequi rem saepe ad quasi ullam.</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</section> --}}
-<!-- ##### token-distribution Area End ##### -->
 
 
 <!-- ##### Team Area Start ##### -->
