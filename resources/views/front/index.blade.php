@@ -553,7 +553,7 @@
                     </div>
                     <!-- Team Info -->
                     <div class="team-info">
-                        <h5>Mark Wilson</h5>
+                        <h5>Vera Laura</h5>
                         <p>Business Developer</p>
                     </div>
                 </div>
