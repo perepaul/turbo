@@ -27,10 +27,10 @@ class UserController extends Controller
     {
         $user = User::find($id);
         if (!$user) abort(404);
-        if (Auth::guard('user')->loginUsingId($id)) {
-            return redirect()->route('user.index');
-        }
-        return redirect()->route('login');
+        $loggedin = Auth::guard('user')->loginUsingId($id);
+
+        if ($loggedin) return redirect()->route('user.index');
+        return redirect()->route('admin.index');
     }
 
     public function status(Request $request, $id)

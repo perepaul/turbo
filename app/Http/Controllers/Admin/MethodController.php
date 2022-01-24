@@ -39,15 +39,19 @@ class MethodController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'address' => 'required|string',
-            'image' => 'mimes:jpg,jpeg,png'
+            'address' => 'nullable|string',
+            'image' => 'nullable|mimes:jpg,jpeg,png',
+            'status' => 'required|in:active,inactive'
         ]);
-        $filename = rand() . now()->toDateTimeString() . '.' . $request->file('image')->extension();
-        $request->file('image')->move(public_path(config('dir.methods')), $filename);
         $method = new Method();
+        if ($request->hasFile('image')) {
+            $filename = rand() . now()->toDateTimeString() . '.' . $request->file('image')->extension();
+            $request->file('image')->move(public_path(config('dir.methods')), $filename);
+            $method->image = $filename;
+        }
         $method->name = $request->name;
         $method->address = $request->address;
-        $method->image = $filename;
+        $method->status = $request->status;
         $method->save();
         session()->flash('success', 'Created payment method successfully');
         return redirect()->route('admin.settings.methods.index');
@@ -61,7 +65,10 @@ class MethodController extends Controller
      */
     public function show(Method $method)
     {
-        //
+        $method->status = $method->status == 'active' ? 'inactive' : 'active';
+        $method->save();
+        session()->flash('success', 'Payment method updated');
+        return redirect()->back();
     }
 
     /**
@@ -86,13 +93,15 @@ class MethodController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'address' => 'required|string',
-            'image' => 'nullable|mimes:png,jpg,jpeg'
+            'address' => 'nullable|string',
+            'image' => 'nullable|mimes:png,jpg,jpeg',
+            'status' => 'required|in:active,inactive'
         ]);
         if ($request->hasFile('image')) {
 
             $filename = rand() . now()->toDateTimeString() . '.' . $request->file('image')->extension();
             $request->file('image')->move(public_path(config('dir.methods')), $filename);
+            if (file_exists(public_path(config('dir.methods') . $method->image))) unlink(public_path(config('dir.methods') . $method->image));
             $method->image = $filename;
         }
         $method->name = $request->name;
@@ -110,7 +119,7 @@ class MethodController extends Controller
      */
     public function destroy(Method $method)
     {
-        is_file(public_path(config('dir.methods').$method->image)) ? unlink(public_path(config('dir.methods').$method->image)): null ;
+        is_file(public_path(config('dir.methods') . $method->image)) ? unlink(public_path(config('dir.methods') . $method->image)) : null;
         $method->delete();
         session()->flash('success', 'deleted payment method successfully');
         return redirect()->route('admin.settings.methods.index');

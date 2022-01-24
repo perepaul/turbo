@@ -17,7 +17,7 @@ class EnsureUserIsSubscribed
     public function handle(Request $request, Closure $next)
     {
         $user  = $request->user('user');
-        if (url()->current() == route('user.subscriptions') || $request->route()->getName() == 'user.subscriptions.subscribe' ) {
+        if (url()->current() == route('user.subscriptions') || $request->route()->getName() == 'user.subscriptions.subscribe') {
             return $next($request);
         }
         if (is_null($user->plan_id)) {

@@ -102,5 +102,5 @@ Route::as('settings.')->prefix('settings')->group(function () {
         Route::post('update', [PreferenceController::class, 'preference'])->name('update');
     });
 
-    Route::resource('methods', MethodController::class)->except('show');
+    Route::resource('methods', MethodController::class);
 });
