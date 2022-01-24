@@ -335,7 +335,7 @@
                     <div class="timeline section-box-margin">
                         <div class="block block-left">
                             <h3>Practise</h3>
-                            <p>Sign up, subscribe to a trading account, get free credit according to the pland you subscribed to. Start practicing with those funds.</p>
+                            <p>Sign up, subscribe to a trading account, get free credit according to the plan you subscribed to. Start practicing with those funds.</p>
                         </div>
 
                         <div class="block block-right mt-30">

@@ -33,16 +33,17 @@ class ContactController extends Controller
             'support_email' => 'required|email',
             'phone' => 'required',
             'address' => 'required|string',
+            'chat_script' => 'required|string',
+            'whatsapp' => 'required|in:active,inactive'
         ]);
 
         $contact = Contact::find(1);
-        if(is_null($contact))
-        {
+        if (is_null($contact)) {
             Contact::create($valid);
-        }else{
+        } else {
             $contact->update($valid);
         }
-        session()->flash('Updated contact details');
+        session()->flash('success', 'Updated contact details');
         return redirect()->route('admin.settings.contact.index');
     }
 
