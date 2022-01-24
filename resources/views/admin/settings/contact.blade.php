@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="mb-sm-4 d-flex flex-wrap align-items-center text-head ">
-        <h2 class="mb-3 me-auto">@yield('title')</h2>
+        <h4 class="mb-3 me-auto">@yield('title')</h4>
     </div>
     <div class="row">
         <div class="col-xl-7 mx-auto">
