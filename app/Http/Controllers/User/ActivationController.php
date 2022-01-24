@@ -24,11 +24,14 @@ class ActivationController extends Controller
     public function storeStepOne(Request $request)
     {
         $valid = $request->validate([
+            'phone' => 'required|regex:/^[+][0-9]{9,14}/',
             'country' => 'required|string',
             'state' => 'required|string',
             'city' => 'required|string',
             'address' => 'required|string',
             'zip_code' => 'required|string',
+        ], [
+            'phone.regex' => 'The phone number must be in international format'
         ]);
         $user = User::find(auth('user')->user()->id);
         $user->update($valid);
@@ -75,10 +78,9 @@ class ActivationController extends Controller
 
     public function complete()
     {
-        if(auth('user')->user()->status == 'active')
-        {
+        if (auth('user')->user()->status == 'active') {
             return redirect()->route('user.index');
-        }elseif (auth('user')->user()->status == 'rejected'){
+        } elseif (auth('user')->user()->status == 'rejected') {
             return redirect()->route('user.activation.rejected');
         }
         return view('user.activation.complete');
