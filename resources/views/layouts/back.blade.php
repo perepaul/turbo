@@ -93,7 +93,7 @@
                                 </div>
                             </div>
                             <ul class="navbar-nav header-right">
-                                <li class="nav-item dropdown notification_dropdown">
+                                {{-- <li class="nav-item dropdown notification_dropdown">
                                     <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
                                         <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M10.4524 25.6682C11.0605 27.0357 12.409 28 14.0005 28C15.592 28 16.9405 27.0357 17.5487 25.6682C16.4265 25.7231 15.2594 25.76 14.0005 25.76C12.7417 25.76 11.5746 25.723 10.4524 25.6682Z" fill="#737B8B" />
@@ -106,7 +106,7 @@
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <div id="DZ_W_Notification1" class="widget-media dz-scroll p-3" style="height:380px;">
                                             <ul class="timeline">
-                                                {{-- <li>
+                                                 <li>
                                                 <div class="timeline-panel">
                                                     <div class="media me-2">
                                                         <img alt="image" width="50" src="/assets/back/images/avatar/1.jpg">
@@ -171,13 +171,13 @@
                                                         <small class="d-block">29 July 2020 - 02:26 PM</small>
                                                     </div>
                                                 </div>
-                                            </li> --}}
+                                            </li>
                                             </ul>
                                         </div>
-                                        {{-- <a class="all-notification" href="javascript:void(0);">See all notifications <i
-                                            class="ti-arrow-end"></i></a> --}}
+                                        <a class="all-notification" href="javascript:void(0);">See all notifications <i
+                                            class="ti-arrow-end"></i></a>
                                     </div>
-                                </li>
+                                </li> --}}
                                 <li class="nav-item dropdown header-profile">
                                     <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
                                         <div class="header-info me-3">
