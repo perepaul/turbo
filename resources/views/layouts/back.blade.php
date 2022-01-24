@@ -31,6 +31,10 @@
             .form-group {
                 margin-bottom: 10px;
             }
+
+            .form-control {
+                border: 1px solid rgb(243, 237, 237);
+            }
         </style>
         @stack('css')
 
@@ -310,7 +314,7 @@
         <script>
             function toast(message, type = 'success') {
             let data = {
-                timeOut: 500000000,
+                timeOut: 5000,
                 closeButton: !0,
                 debug: !1,
                 newestOnTop: !0,
