@@ -36,24 +36,30 @@ class WithdrawController extends Controller
             'address' => 'required|string',
         ]);
 
-        $user = User::find(auth()->user()->id);
-        $amount = (5 / 100) * $request->amount + $request->amount;
-        if($user->balance < $amount) {
-            session()->flash('error','Insufficient funds');
-            return redirect()->back()->withInput();
+        try {
+            $user = User::find(auth()->user()->id);
+            $amount = (5 / 100) * $request->amount + $request->amount;
+            if ($user->balance < $amount) {
+                session()->flash('error', 'Insufficient funds');
+                return redirect()->back()->withInput();
+            }
+            $user->balance -= $amount;
+            $user->save();
+            $withdrawal = $user->withdrawals()->create([
+                'method_id' => $request->input('method'),
+                'amount' => $request->amount,
+                'reference' => generateReference(Deposit::class),
+                'address' => $request->address,
+            ]);
+            $contact = Contact::find(1);
+            if (!is_null($contact) && !empty($contact->notification_email)) {
+                Mail::to($contact->notification_email)->send(new NewWithdrawalMailable($withdrawal));
+            }
+            Mail::to($user)->send(new WithdrawalInitiatedMailable($withdrawal));
+            session()->flash('success', 'Withdrawal initiated successfully');
+        } catch (\Throwable $th) {
+            session()->flash('error', 'Failed to initiate withdrawal');
         }
-        $withdrawal = $user->withdrawals()->create([
-            'method_id' => $request->input('method'),
-            'amount' => $request->amount,
-            'reference' => generateReference(Deposit::class),
-            'address' => $request->address,
-        ]);
-        $contact = Contact::find(1);
-        if(!is_null($contact->notification_email)){
-            Mail::to($contact->notification_email)->send(new NewWithdrawalMailable($withdrawal));
-        }
-        Mail::to($user)->send(new WithdrawalInitiatedMailable($withdrawal));
-        session()->flash('success', 'Withdrawal initiated successfully');
         return redirect()->back();
     }
 }

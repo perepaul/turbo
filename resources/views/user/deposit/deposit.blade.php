@@ -24,7 +24,7 @@
                         <x-error :key="'method'" />
                     </div>
                     @foreach ($methods as $method)
-                    <div class="form-group method method{{ $method->id }}" style="display:none">
+                    <div class="form-group method{{ $method->id }}" style="display:none">
                         <div class="text-center">
                             <img src="{{ asset(config('dir.methods') . $method->image) }}" width="100" class="mt-2 mb-2" alt="">
                         </div>
@@ -78,7 +78,6 @@
 @push('js')
 <script>
     $(document).on('change', '[name=method]', e => {
-            console.log();
             var c = '.method' + $(e.currentTarget).val()
             $('.form-group.method').hide()
             if($(e.currentTarget).find(`option[value=${$(e.currentTarget).val()}]`).data('status') == 'inactive'){

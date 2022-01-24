@@ -19,7 +19,6 @@ class CreateDepositsTable extends Migration
             $table->string('reference');
             $table->decimal('amount', 10, 2);
             $table->unsignedBigInteger('method_id');
-            $table->string('address');
             $table->string('proof');
             $table->enum('status', ['pending', 'approved', 'declined'])->default('pending');
             $table->timestamps();

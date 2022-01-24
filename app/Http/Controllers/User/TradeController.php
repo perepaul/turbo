@@ -27,7 +27,7 @@ class TradeController extends Controller
         $user = User::find(auth('user')->user()->id);
         $amount = ((5 / 100) * $request->amount) + $request->amount;
         if ($user->{$request->payment_method} < $amount) {
-            session()->flash(['error', 'Insufficient Funds']);
+            session()->flash('error', 'Insufficient Funds');
             return redirect()->back()->withInput();
         }
         $user->{$request->payment_method} -= $amount;
@@ -64,7 +64,7 @@ class TradeController extends Controller
         $user->save();
         $trade->status = 'inactive';
         $trade->save();
-        session()->flash('success','Trade Closed');
+        session()->flash('success', 'Trade Closed');
         return redirect()->back();
     }
 }
