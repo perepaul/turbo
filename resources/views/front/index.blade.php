@@ -310,7 +310,7 @@
                         <img draggable="false" src="/assets/front/img/services/6.svg" alt="">
                     </div>
                     <h6>We don't create charts</h6>
-                    <p>We never lose sight of the fact that millions of traders invest their hard-won capital based on what they see on our platform. </p>
+                    <p>We never lose sight of the fact that millions of traders invest their hard-earned capital based on what they see on our platform. </p>
                 </div>
             </div>
         </div>
@@ -334,7 +334,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="timeline section-box-margin">
                         <div class="block block-left">
-                            <h3>Practise</h3>
+                            <h3>Practice</h3>
                             <p>Sign up, subscribe to a trading account, get free credit according to the plan you subscribed to. Start practicing with those funds.</p>
                         </div>
 

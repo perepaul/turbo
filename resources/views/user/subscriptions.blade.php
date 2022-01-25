@@ -49,8 +49,13 @@
                         </ul>
                     </div>
                     <div class="text-center">
-                        <a href="{{route('user.subscriptions.subscribe',$plan->id)}}" class="btn btn-primary text-white mt-3">
-                            Subscribe</a>
+                        <a href="{{route('user.subscriptions.subscribe',$plan->id)}}" @class(['btn text-white mt-3','btn-secondary'=> $plan->id == auth()->user()->plan_id,'btn-primary' => $plan->id != auth()->user()->plan_id])>
+                            @if ($plan->id == auth()->user()->plan_id)
+                            Subscribed
+                            @else
+                            Subscribe
+                            @endif
+                        </a>
                     </div>
                 </div>
             </div>
