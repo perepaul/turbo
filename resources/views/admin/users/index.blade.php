@@ -30,7 +30,7 @@
                         </div>
                         <div class="col-xl-2  col-lg-3 col-sm-4  col-6 mb-3">
                             <small class="mb-3 d-block fs-12 font-w600 ">Address</small>
-                            <h4 class="text-black font-w600">{{ $user->address }}</h4>
+                            <h4 class="text-black fs-12">{{ $user->address }}</h4>
                         </div>
                         <div class="col-xl-2 col-lg-3 col-sm-4 col-6 mb-3 text-lg-center">
                             <small class="mb-3 d-block fs-12 font-w600">Phone Number</small>
