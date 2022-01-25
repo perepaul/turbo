@@ -1,5 +1,5 @@
 @extends('layouts.back')
-@section('title','Trade history')
+@section('title','Deposit history')
 @section('content')
 <div class="container-fluid">
     <div class="mb-sm-4 d-flex flex-wrap align-items-center text-head ">
