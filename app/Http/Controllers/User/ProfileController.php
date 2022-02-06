@@ -12,8 +12,9 @@ class ProfileController extends Controller
 {
     public function profile()
     {
+        $currencies = Currency::all();
         $user = User::find(auth('user')->user()->id);
-        return view('user.profile', compact('user'));
+        return view('user.profile', compact('user', 'currencies'));
     }
 
     public function updateProfile(Request $request)

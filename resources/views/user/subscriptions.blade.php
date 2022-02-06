@@ -27,7 +27,7 @@
                     <h4 class="card-title text-center">{{ $plan->name }}</h4>
                     <h6 class="text-center">
                         <span class="p-2">
-                            ({{format_money($plan->amount)}} / year)
+                            ({{format_money($plan->amount)}} Min. Deposit)
                         </span>
                     </h6>
                     <div class="basic-list-group p-0">

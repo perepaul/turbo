@@ -2,14 +2,11 @@
 @section('title', 'Step 1')
 
 @section('content')
+@if(config('app.need_address'))
 <h6 class="text-center mb-1">@yield('title') of 2</h6>
+@endif
 <form action="{{ route('user.activation.store.step.one') }}" method="POST">
     @csrf
-    <div class="mb-3">
-        <label class="mb-1"><strong>Phone</strong></label>
-        <input type="text" class="form-control" value="{{ old('phone') ?? auth('user')->user()->phone}}" name="phone" placeholder="Phone number eg. +123456789">
-        <x-error key="phone" />
-    </div>
     <div class="mb-3">
         <label class="mb-1"><strong>Country</strong></label>
         <input type="text" class="form-control" value="{{ old('country') ?? auth('user')->user()->country}}" name="country" placeholder="Country">

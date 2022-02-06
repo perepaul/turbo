@@ -9,22 +9,21 @@
     <x-trade.marquee />
     <div class="card">
         <div class="card-body">
-            <h4>Market Chart</h4>
             <x-trade.market-chart />
         </div>
     </div>
-    <div class="card">
+    {{-- <div class="card">
         <div class="card-body">
             <h4>Market Data</h4>
             <x-trade.market-data />
         </div>
-    </div>
-    <div class="card">
+    </div> --}}
+    {{-- <div class="card">
         <div class="card-body">
             <h4>Cryptocurrency Market</h4>
             <x-trade.market-cap />
         </div>
-    </div>
+    </div> --}}
 
 </div>
 @endsection

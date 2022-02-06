@@ -12,7 +12,7 @@ class Error extends Component
      *
      * @return void
      */
-    public function __construct($key)
+    public function __construct($key, $custom_message = null)
     {
         $this->key = $key;
     }

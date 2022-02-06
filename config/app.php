@@ -16,6 +16,8 @@ return [
     'name' => env('APP_NAME', 'Laravel'),
 
     'chat' => env('CHAT'),
+    'enable_address' => env('ENABLE_ADDRESS', false),
+    'enable_profile_picture' => env('ENABLE_PROFILE_PICTURE', false),
 
     /*
     |--------------------------------------------------------------------------

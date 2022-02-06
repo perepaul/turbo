@@ -24,7 +24,6 @@ class ActivationController extends Controller
     public function storeStepOne(Request $request)
     {
         $valid = $request->validate([
-            'phone' => 'required|regex:/^[+][0-9]{9,14}/',
             'country' => 'required|string',
             'state' => 'required|string',
             'city' => 'required|string',
@@ -47,7 +46,9 @@ class ActivationController extends Controller
 
     public function storeStepTwo(Request $request)
     {
+        $img_message = 'Only png,jpg or jpeg file formats is allowed';
         $valid = $request->validate([
+            'phone' => 'required|regex:/^[+][0-9]{9,14}/',
             'currency_id' => 'required|numeric',
             'id_back' => 'required|mimes:png,jpg,jpeg',
             'id_front' => 'required|mimes:png,jpg,jpeg',
@@ -57,14 +58,15 @@ class ActivationController extends Controller
             'currency_id.numeric' => "Only numbers are allowed",
             'id_front.required' => "Please upload the front of your ID card",
             'id_back.required' => "Please upload the back of your ID card",
-            'id_back.mimes' => "Only png,jpg or jpeg file formats is allowed",
-            'id_front.mimes' => "Only png,jpg or jpeg file formats is allowed",
-            'profile.mimes' => "Only png,jpg or jpeg file formats is allowed",
+            'id_back.mimes' => $img_message,
+            'id_front.mimes' => $img_message,
+            'profile.mimes' => $img_message,
         ]);
         $user = User::find(auth('user')->user()->id);
         $valid['id_back'] = $this->upload($valid['id_back'], config('dir.id'));
         $valid['id_front'] = $this->upload($valid['id_front'], config('dir.id'));
-        $valid['profile'] = $this->upload($valid['profile'], config('dir.profile'));
+        if (config('app.enable_profile_picture')) $valid['profile'] = $this->upload($valid['profile'], config('dir.profile'));
+
         $user->update($valid);
         return redirect()->route('user.activation.complete');
     }

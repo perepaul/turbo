@@ -28,15 +28,18 @@
                                 <span class="d-block mb-lg-0 mb-0 fs-12">{{ $user->created_at->format('d M, Y. G:ia') }}</span>
                             </div>
                         </div>
+                        @if(config('app.enable_address'))
                         <div class="col-xl-2  col-lg-3 col-sm-4  col-6 mb-3">
                             <small class="mb-3 d-block fs-12 font-w600 ">Address</small>
                             <h4 class="text-black fs-12">{{ $user->address }}</h4>
                         </div>
-                        <div class="col-xl-2 col-lg-3 col-sm-4 col-6 mb-3 text-lg-center">
+                        @endif
+
+                        <div class="col-xl-{{config('app.enable_address')?'2':'4'}} col-lg-3 col-sm-4 col-6 mb-3 text-lg-center">
                             <small class="mb-3 d-block fs-12 font-w600">Phone Number</small>
                             <h4 class="text-black fs-12">{{ $user->phone }}</h4>
                         </div>
-                        <div class="col-xl-3  col-lg-6 col-sm-4 mb-sm-3 mb-3">
+                        <div class="col-xl-3  col-lg-6 {{config('app.enable_address')?'col-sm-4':'col-6'}} mb-sm-3 mb-3">
                             <small class="mb-3 d-block fs-14 font-w500">Email Address</small>
                             <h4 class="text-black fs-12">{{ $user->email }}</h4>
                         </div>
