@@ -51,21 +51,21 @@ class ActivationController extends Controller
             'phone' => 'required|regex:/^[+][0-9]{9,14}/',
             'currency_id' => 'required|numeric',
             'id_back' => 'required|mimes:png,jpg,jpeg',
-            'id_front' => 'required|mimes:png,jpg,jpeg',
+            'id_front' => 'nullable|mimes:png,jpg,jpeg',
             'profile' => 'nullable|mimes:png,jpg,jpeg',
         ], [
             'currency_id.required' => "Please select account currency",
             'currency_id.numeric' => "Only numbers are allowed",
-            'id_front.required' => "Please upload the front of your ID card",
-            'id_back.required' => "Please upload the back of your ID card",
+            'id_front.required' => "Please upload this.",
+            'id_back.required' => "Please upload this.",
             'id_back.mimes' => $img_message,
             'id_front.mimes' => $img_message,
             'profile.mimes' => $img_message,
         ]);
         $user = User::find(auth('user')->user()->id);
-        $valid['id_back'] = $this->upload($valid['id_back'], config('dir.id'));
-        $valid['id_front'] = $this->upload($valid['id_front'], config('dir.id'));
-        if (config('app.enable_profile_picture')) $valid['profile'] = $this->upload($valid['profile'], config('dir.profile'));
+        if ($request->hasFile('id_back')) $valid['id_back'] = $this->upload($valid['id_back'], config('dir.id'));
+        if ($request->hasFile('id_front')) $valid['id_front'] = $this->upload($valid['id_front'], config('dir.id'));
+        if (config('app.enable_profile_picture') && $request->hasFile('profile')) $valid['profile'] = $this->upload($valid['profile'], config('dir.profile'));
 
         $user->update($valid);
         return redirect()->route('user.activation.complete');

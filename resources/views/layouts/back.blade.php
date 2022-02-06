@@ -63,7 +63,7 @@
         ***********************************-->
             <div class="nav-header">
                 <a href="/" class="brand-logo">
-                    <img src="{{logo()}}" alt="" style="width:80px; height:auto">
+                    <img src="{{logo()}}" alt="" style="width:180px; height:auto">
                 </a>
                 <div class="nav-control">
                     <div class="hamburger">

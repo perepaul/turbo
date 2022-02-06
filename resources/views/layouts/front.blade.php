@@ -37,7 +37,8 @@
                     <nav class="classy-navbar justify-content-between" id="dreamNav">
 
                         <!-- Logo -->
-                        <a class="nav-brand" href="#"><img draggable="false" src="/assets/front/img/core-img/logo.png" alt="logo"> {{ucfirst(config('app.name'))}}.</a>
+                        {{-- <a class="nav-brand" href="#"><img draggable="false" src="/assets/front/img/core-img/logo.png" alt="logo"> {{ucfirst(config('app.name'))}}.</a> --}}
+                        <a class="nav-brand" href="#"><img draggable="false" src="{{logo()}}" alt="logo" style="width: 180px; height: auto;"></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">

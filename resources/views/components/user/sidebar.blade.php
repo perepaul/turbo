@@ -34,9 +34,9 @@
         </ul>
     </li>
     {{-- <li><a href="{{ route('user.index') }}" class="" aria-expanded="false">
-            <i class="flaticon-043-menu"></i>
-            <span class="nav-text">Referrals</span>
-        </a>
+    <i class="flaticon-043-menu"></i>
+    <span class="nav-text">Referrals</span>
+    </a>
     </li> --}}
     {{-- <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
             <i class="flaticon-022-copy"></i>
@@ -54,8 +54,9 @@
         <ul aria-expanded="false">
             <li><a href="{{route('user.profile')}}">Profile</a></li>
             <li><a href="{{route('user.security')}}">Change Password</a></li>
-            <li><a href="{{route('user.preference')}}">Preferences</a></li>
-            <li><a href="{{route('user.subscriptions')}}">Subscriptions</a></li>
-        </ul>
-    </li>
+            {{-- <li><a href="{{route('user.preference')}}">Preferences</a>
+    </li> --}}
+    <li><a href="{{route('user.subscriptions')}}">Subscriptions</a></li>
+</ul>
+</li>
 </ul>

@@ -27,6 +27,7 @@ class ProfileController extends Controller
             'city' => 'required',
             'address' => 'required',
             'zip_code' => 'required',
+            'prefered_account_currency' => 'required|integer',
         ]);
         $user = User::find(auth('user')->user()->id);
 
