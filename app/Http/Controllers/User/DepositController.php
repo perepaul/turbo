@@ -32,7 +32,7 @@ class DepositController extends Controller
         $request->validate([
             'method' => 'required',
             'amount' => 'required|numeric',
-            'proof' => 'mimes:png,jpg,jpeg',
+            'proof' => 'required|mimes:png,jpg,jpeg',
         ]);
 
         $user = User::find(auth()->user()->id);
