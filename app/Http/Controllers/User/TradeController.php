@@ -25,7 +25,7 @@ class TradeController extends Controller
             'amount' => 'required|numeric',
         ]);
         $user = User::find(auth('user')->user()->id);
-        $amount = ((5 / 100) * $request->amount) + $request->amount;
+        $amount = $request->amount;
         if ($user->{$request->payment_method} < $amount) {
             session()->flash('error', 'Insufficient Funds');
             return redirect()->back()->withInput();

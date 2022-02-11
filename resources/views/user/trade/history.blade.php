@@ -30,9 +30,7 @@
                         </div>
                         <div class="ms-4 customer">
                             <h5 class="mb-0  font-w600">
-                                {{ format_money(
-    $trades->where('status', 'active')->where('is_demo', 'no')->sum('amount'),
-) }}
+                                {{ format_money($trades->where('status', 'active')->where('is_demo', 'no')->sum('amount') + $trades->where('status', 'active')->where('is_demo', 'no')->sum('profit')) }}
                             </h5>
                             <p class="mb-0  font-w300">Estimated returns</p>
                         </div>

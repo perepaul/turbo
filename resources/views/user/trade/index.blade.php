@@ -7,7 +7,7 @@
         <h2 class="mb-3 me-auto">@yield('title')</h2>
     </div>
 
-    <div class="col-lg-6 col-sm-12 mx-auto">
+    <div class="col-lg-5 mx-auto">
         <div class="card">
             <div class="card-body">
                 <form action="{{route('user.trade.create')}}" method="POST">
@@ -33,16 +33,6 @@
                         <label for=""><strong>Amount</strong></label>
                         <input type="text" class="form-control" name="amount" value="{{old('amount')}}">
                         <x-error :key="'amount'" />
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-6">
-                            <label for=""><strong>Fee</strong></label>
-                            <input type="text" class="form-control" name="fee" value="5.00" disabled readonly>
-                        </div>
-                        <div class="form-group col-6">
-                            <label for=""><strong>Total</strong></label>
-                            <input type="text" class="form-control" name="total" readonly disabled>
-                        </div>
                     </div>
                     <div class="d-flex justify-content-between mt-3">
                         <input type="submit" name="type" class="btn btn-outline-danger btn-lg" value="Sell">

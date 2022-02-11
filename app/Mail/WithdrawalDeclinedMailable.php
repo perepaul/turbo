@@ -11,16 +11,16 @@ class WithdrawalDeclinedMailable extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $wiwthdrawal;
+    public $withdrawal;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($wiwthdrawal)
+    public function __construct($withdrawal)
     {
-        $this->withdrawal = $wiwthdrawal;
+        $this->withdrawal = $withdrawal;
 
         $this->subject("Withdrawal Declined");
     }

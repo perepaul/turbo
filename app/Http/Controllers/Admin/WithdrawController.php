@@ -41,7 +41,7 @@ class WithdrawController extends Controller
         $withdrawal = Withdrawal::find($id);
         $withdrawal->status = 'declined';
         $withdrawal->save();
-        $withdrawal->user()->update(['balance' => $withdrawal->user->balance - $withdrawal->amount]);
+        $withdrawal->user()->update(['balance' => $withdrawal->user->balance + $withdrawal->amount]);
         Mail::to($withdrawal->user)->send(new WithdrawalDeclinedMailable($withdrawal));
         session()->flash('success', 'Withdrawal accepted');
         return back();

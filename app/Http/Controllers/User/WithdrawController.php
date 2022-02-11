@@ -38,7 +38,7 @@ class WithdrawController extends Controller
 
         try {
             $user = User::find(auth()->user()->id);
-            $amount = (5 / 100) * $request->amount + $request->amount;
+            $amount = $request->amount;
             if ($user->balance < $amount) {
                 session()->flash('error', 'Insufficient funds');
                 return redirect()->back()->withInput();
