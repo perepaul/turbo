@@ -22,17 +22,16 @@ class AutoCloseTrades extends Command
      */
     protected $description = 'Command to automatically close trades that have elapsed their time limit';
 
-    protected $trades;
+
 
     /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct(Trade $trades)
+    public function __construct()
     {
         parent::__construct();
-        $this->trades = $trades->active()->expired()->get();
     }
 
     /**
@@ -42,7 +41,7 @@ class AutoCloseTrades extends Command
      */
     public function handle()
     {
-        foreach ($this->trades as $trade) {
+        foreach (Trade::active()->expired()->get() as $trade) {
             $trade->close();
         }
         $this->info('ended old trades');
