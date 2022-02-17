@@ -30,7 +30,8 @@ class ProfileController extends Controller
             'prefered_account_currency' => 'required|integer',
         ]);
         $user = User::find(auth('user')->user()->id);
-
+        $valid['currency_id'] = $request->input('prefered_account_currency');
+        unset($valid['prefered_account_currency']);
         $user->update($valid);
         session()->flash('success', 'Profile updated successfully');
         return redirect()->back();
