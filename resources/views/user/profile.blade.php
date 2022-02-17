@@ -37,7 +37,7 @@
                                 @foreach ($currencies as $currency)
                                 <option value="{{$currency->id}}" @if(auth('user')->user()->currency_id == $currency->id) selected @endif>{{$currency->name}}</option>
                                 @endforeach
-                                <x-error :key="'prefered_account_currency'" />
+                                <x-error key="prefered_account_currency" />
                             </select>
                         </div>
 

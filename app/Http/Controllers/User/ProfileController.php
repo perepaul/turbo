@@ -22,11 +22,11 @@ class ProfileController extends Controller
         $valid = $request->validate([
             'firstname' => 'required',
             'lastname' => 'required',
-            'country' => 'required',
-            'state' => 'required',
-            'city' => 'required',
-            'address' => 'required',
-            'zip_code' => 'required',
+            'country' => 'nullable|string',
+            'state' => 'nullable|string',
+            'city' => 'nullable|string',
+            'address' => 'nullable|string',
+            'zip_code' => 'nullable|string',
             'prefered_account_currency' => 'required|integer',
         ]);
         $user = User::find(auth('user')->user()->id);
