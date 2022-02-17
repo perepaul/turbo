@@ -10,7 +10,7 @@
         <meta name="author" content="{{config('app.name')}} Developer team" />
         <meta name="robots" content="" />
         <meta name="description" content="Get access to the world most sought out stocks and cryptos, generate trading strategies with the help of our sophisticated but simple market data analysis section" />
-        <meta property="og:title" content="{{@yield('title')}}" />
+        <meta property="og:title" content="Home - {{config('app.name')}}" />
         <meta property="og:description" content="Get access to the world most sought out stocks and cryptos, generate trading strategies with the help of our sophisticated but simple market data analysis section" />
         <meta name="format-detection" content="telephone=no">
 
