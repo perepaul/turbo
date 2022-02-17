@@ -24,7 +24,7 @@
                         <x-error :key="'method'" />
                     </div>
                     @foreach ($methods as $method)
-                    <div class="form-group method{{ $method->id }}" style="display:none">
+                    <div class="form-group method method{{ $method->id }}" style="display:none">
                         <div class="text-center">
                             <img src="{{ asset(config('dir.methods') . $method->image) }}" width="100" class="mt-2 mb-2" alt="">
                         </div>
@@ -46,7 +46,7 @@
                         <label class="mb-1 d-block"><strong>Proof of Payment</strong></label>
                         <input type="file" name="proof" id="proof" style="display:none" accept="image/png;image/jpg;image/jpeg">
                         <label for="proof" class="mt-3">
-                            <span class="btn btn-outline-warning btn-sm">Upload <i class="fa fa-upload"></i></span>
+                            <span class="btn btn-outline-warning">Upload <i class="fa fa-upload"></i></span>
                             <div class="preview">
 
                             </div>
