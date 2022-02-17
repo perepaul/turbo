@@ -91,7 +91,7 @@
                                 <!-- Copywrite -->
                                 <div class="copywrite_text wow fadeInUp" data-wow-delay="0.2s">
                                     <div class="footer-logo">
-                                        <a href="#"><img draggable="false" src="/assets/front/img/core-img/logo.png" alt="logo"> {{config('app.name')}}</a>
+                                        <a href="{{route('front.index')}}"><img draggable="false" src="{{logo()}}" alt="logo" style="width:180px"></a>
                                     </div>
                                     <p>Get access to the world most sought out stocks and cryptos, generate trading strategies with the help of our sophisticated but simple market data analysis section</p>
                                 </div>
