@@ -2,16 +2,23 @@
 <html lang="zxx">
 
     <head>
-        <meta charset="UTF-8">
-        <meta name="description" content="">
+        <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <meta name="keywords" content="{{config('app.name')}},{{route('front.index')}},bitcoin broker, reliable bitcoin trading platform, best online trading platfrom" />
+        <meta name="author" content="{{config('app.name')}} Developer team" />
+        <meta name="robots" content="" />
+        <meta name="description" content="Get access to the world most sought out stocks and cryptos, generate trading strategies with the help of our sophisticated but simple market data analysis section" />
+        <meta property="og:title" content="{{@yield('title')}}" />
+        <meta property="og:description" content="Get access to the world most sought out stocks and cryptos, generate trading strategies with the help of our sophisticated but simple market data analysis section" />
+        <meta name="format-detection" content="telephone=no">
 
         <!-- Title -->
         <title>Home - {{config('app.name')}}</title>
 
         <!-- Favicon -->
-        <link rel="icon" href="/assets/front/img/core-img/favicon.ico">
+        <link rel="icon" href="{{favicon()}}">
 
         <!-- Core Stylesheet -->
         <link rel="stylesheet" href="/assets/front/css/style.css">

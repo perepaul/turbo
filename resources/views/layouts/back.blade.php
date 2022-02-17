@@ -5,14 +5,13 @@
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="keywords" content="" />
-        <meta name="author" content="" />
+        <meta name="keywords" content="{{config('app.name')}},{{route('front.index')}},bitcoin broker, reliable bitcoin trading platform, best online trading platfrom" />
+        <meta name="author" content="{{config('app.name')}} Developer team" />
         <meta name="robots" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Griya : Real Estate Admin" />
-        <meta property="og:title" content="Griya : Real Estate Admin" />
-        <meta property="og:description" content="Griya : Real Estate Admin" />
-        <meta property="og:image" content="page-error-404.html" />
+        <meta name="description" content="Get access to the world most sought out stocks and cryptos, generate trading strategies with the help of our sophisticated but simple market data analysis section" />
+        <meta property="og:title" content="{{@yield('title')}}" />
+        <meta property="og:description" content="Get access to the world most sought out stocks and cryptos, generate trading strategies with the help of our sophisticated but simple market data analysis section" />
         <meta name="format-detection" content="telephone=no">
 
         <!-- PAGE TITLE HERE -->
