@@ -41,13 +41,8 @@ class TradesController extends Controller
 
     public function end($id)
     {
-        $trade = Trade::find($id);
-        $user = $trade->user;
-        $user->{'yes' == $trade->is_demo ? 'demo_balance' : 'balance'} += $trade->profit;
-        $user->save();
-        $trade->status = 'inactive';
-        $trade->save();
-        session()->flash('success','Trade ended');
+        Trade::find($id)->close();
+        session()->flash('success', 'Trade ended');
         return redirect()->route('admin.trades.index', 'active');
     }
 }

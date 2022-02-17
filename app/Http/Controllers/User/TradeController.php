@@ -7,6 +7,7 @@ use App\Models\Trade;
 use Illuminate\Http\Request;
 use App\Models\TradeCurrency;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class TradeController extends Controller
 {
@@ -14,7 +15,9 @@ class TradeController extends Controller
     public function index()
     {
         $currencies = TradeCurrency::all();
-        return view('user.trade.index', compact('currencies'));
+        $user = User::find(auth('user')->user()->id);
+        $trades = $user->trades()->orderBy('created_at', 'desc')->paginate();
+        return view('user.trade.index', compact('currencies', 'trades'));
     }
 
     public function trade(Request $request)
@@ -23,6 +26,7 @@ class TradeController extends Controller
             'payment_method' => 'required',
             'currency' => 'required',
             'amount' => 'required|numeric',
+            'time' => 'required|string'
         ]);
         $user = User::find(auth('user')->user()->id);
         $amount = $request->amount;
@@ -37,7 +41,8 @@ class TradeController extends Controller
             'is_demo' => $request->payment_method == 'demo_balance' ? 'yes' : 'no',
             'reference' => generateReference(),
             'profit' => 0,
-            'type' => strtolower($request->type)
+            'type' => strtolower($request->type),
+            'time' => $request->time
         ]);
         $user->save();
         session()->flash('success', 'Trade created successfully');
@@ -58,12 +63,7 @@ class TradeController extends Controller
 
     public function end($id)
     {
-        $trade = Trade::find($id);
-        $user = $trade->user;
-        $user->{'yes' == $trade->is_demo ? 'demo_balance' : 'balance'} += $trade->profit;
-        $user->save();
-        $trade->status = 'inactive';
-        $trade->save();
+        Trade::find($id)->close();
         session()->flash('success', 'Trade Closed');
         return redirect()->back();
     }

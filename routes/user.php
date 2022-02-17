@@ -30,14 +30,14 @@ Route::as('activation.')->prefix('activation')->group(function () {
     Route::get('complete', [ActivationController::class, 'complete'])->name('complete');
     Route::get('rejected', [ActivationController::class, 'rejected'])->name('rejected');
 });
-Route::middleware(['active','subscribed'])->group(function () {
+Route::middleware(['active', 'subscribed'])->group(function () {
     Route::get('/', [Dashboard::class, 'index'])->name('index');
 
     Route::prefix('trade')->name('trade.')->group(function () {
         Route::get('', [TradeController::class, 'index'])->name('index');
         Route::get('market-data', [TradeController::class, 'market'])->name('market');
         Route::post('create', [TradeController::class, 'trade'])->name('create');
-        Route::get('history', [TradeController::class, 'history'])->name('history');
+        // Route::get('history', [TradeController::class, 'history'])->name('history');
         Route::get('end/{id}', [TradeController::class, 'end'])->name('end');
     });
 
