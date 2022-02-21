@@ -21,7 +21,7 @@ class WithdrawController extends Controller
         if (!in_array($status, ['pending', 'approved', 'declined'])) $status = 'approved';
         // dd(Withdrawal::where('status','pending')->get());
         $q = Withdrawal::query()->where('status', $status);
-        $withdrawals = $q->orderBy('created_at', 'desc')->paginate(1);
+        $withdrawals = $q->orderBy('created_at', 'desc')->paginate();
         return view('admin.withdrawals.index', compact('withdrawals'));
     }
 
@@ -30,7 +30,7 @@ class WithdrawController extends Controller
         $withdrawal = Withdrawal::find($id);
         $withdrawal->status = 'approved';
         $withdrawal->save();
-        $withdrawal->user()->update(['balance' => $withdrawal->user->balance - $withdrawal->amount]);
+        // $withdrawal->user()->update(['balance' => $withdrawal->user->balance - $withdrawal->amount]);
         Mail::to($withdrawal->user)->send(new WithdrawalAcceptedMailable($withdrawal));
         session()->flash('success', 'Withdrawal accepted');
         return back();
