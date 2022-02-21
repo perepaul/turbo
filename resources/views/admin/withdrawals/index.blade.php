@@ -49,6 +49,9 @@
                         @endforelse
                     </tbody>
                 </table>
+                <div class="d-flex justify-content-center">
+                    {{$withdrawals->links()}}
+                </div>
             </div>
         </div>
     </div>
