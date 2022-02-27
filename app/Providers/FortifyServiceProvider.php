@@ -28,7 +28,7 @@ class FortifyServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(AuthenticatedSessionController::class, ControllersAuthenticatedSessionController::class);
-        $this->app->bind(LoginResponse::class,ResponsesLoginResponse::class);
+        $this->app->bind(LoginResponse::class, ResponsesLoginResponse::class);
         $this->app->bind(RegisterResponse::class, ResponsesRegisterResponse::class);
 
         // $this->app->instance(LogoutResponse::class, new class implements LogoutResponse

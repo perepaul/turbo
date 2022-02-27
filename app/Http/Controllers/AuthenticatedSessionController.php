@@ -100,9 +100,8 @@ class AuthenticatedSessionController extends Controller
         $this->guard->logout();
         if (auth('user')->check() && auth('admin')->check()) {
             $request->session()->invalidate();
-
-            $request->session()->regenerateToken();
         }
+        $request->session()->regenerateToken();
 
         return app(LogoutResponse::class);
     }
