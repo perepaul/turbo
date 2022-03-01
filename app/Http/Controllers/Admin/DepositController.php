@@ -28,8 +28,9 @@ class DepositController extends Controller
     {
         $deposit = Deposit::find($id);
         $deposit->status = 'approved';
-        $amount = $deposit->amount + $deposit->user->amount;
-        $deposit->user()->update(['balance' => $amount]);
+        $user = $deposit->user;
+        $user->balance += $deposit->amount;
+        $user->save();
         $deposit->save();
         Mail::to($deposit->user)->send(new DepositApprovedMailable($deposit));
         session()->flash('success', 'Approved Successfully');
