@@ -11,14 +11,14 @@ use App\Mail\DepositDeclinedMailable;
 
 class DepositController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request, $status)
     {
-        if (!in_array($status, ['pending', 'approved','declined'])) $status = 'approved';
+        if (!in_array($status, ['pending', 'approved', 'declined'])) $status = 'approved';
         $q = Deposit::query()->where('status', $status);
         $deposits = $q->orderBy('created_at', 'desc')->paginate();
         return view('admin.deposits.index', compact('deposits'));
@@ -28,10 +28,11 @@ class DepositController extends Controller
     {
         $deposit = Deposit::find($id);
         $deposit->status = 'approved';
-        $deposit->user()->update(['balance' => $deposit->amount]);
+        $amount = $deposit->amount + $deposit->user->amount;
+        $deposit->user()->update(['balance' => $amount]);
         $deposit->save();
         Mail::to($deposit->user)->send(new DepositApprovedMailable($deposit));
-        session()->flash('success','Approved Successfully');
+        session()->flash('success', 'Approved Successfully');
         return back();
     }
 
@@ -41,7 +42,7 @@ class DepositController extends Controller
         $deposit->status = 'declined';
         $deposit->save();
         Mail::to($deposit->user)->send(new DepositDeclinedMailable($deposit));
-        session()->flash('success','Approved Successfully');
+        session()->flash('success', 'Approved Successfully');
         return back();
     }
 }

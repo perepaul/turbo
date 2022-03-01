@@ -12,7 +12,7 @@ class SubscriptionController extends Controller
     public function subscriptions()
     {
         $subscriptions = Plan::all();
-        return view('user.subscriptions',compact('subscriptions'));
+        return view('user.subscriptions', compact('subscriptions'));
     }
 
     public function subscribe($id)
@@ -20,8 +20,9 @@ class SubscriptionController extends Controller
         $user = User::find(auth('user')->user()->id);
         $plan = Plan::findOrFail($id);
         $user->plan_id = $id;
+        $user->demo_balance = $user->demo_balance;
         $user->save();
-        session()->flash('subscribed to '.$plan->name);
+        session()->flash('subscribed to ' . $plan->name);
         return redirect()->route('user.index');
     }
 }
