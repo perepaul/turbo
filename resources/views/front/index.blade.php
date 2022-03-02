@@ -475,7 +475,7 @@
 
 
 <!-- ##### Team Area Start ##### -->
-<section class="our_team_area section-padding-0-0 clearfix" id="team">
+{{-- <section class="our_team_area section-padding-0-0 clearfix" id="team">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -560,7 +560,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 <!-- ##### Team Area End ##### -->
 
 <!-- ##### Contact Area Start ##### -->
