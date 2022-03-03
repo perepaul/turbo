@@ -86,6 +86,7 @@
                         <td>{{ format_money($trade->amount, $trade?->user?->currency?->symbol) }}</td>
                         <td>{{ ucfirst($trade->type) }}</td>
                         <td>{{ ucfirst($trade->is_demo) }}</td>
+                        <td>Bid : {{$trade->bid ?? '--'}} : Ask : {{$trade->ask ?? '--'}} </td>
                         <td>{{ format_money($trade->profit, $trade?->user?->currency?->symbol) }}</td>
                         <td><span class="badge badge-outline-{{$trade->status == 'active' ? 'success' : 'danger'}}">{{$trade->status == 'active' ? 'Open' : 'Closed'}}</span></td>
                         <td>

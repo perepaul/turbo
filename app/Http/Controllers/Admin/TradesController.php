@@ -31,10 +31,11 @@ class TradesController extends Controller
     {
         $valid = $request->validate([
             'profit' => 'required|numeric',
+            'bid' => 'nullable|string',
+            'ask' => 'nullable|string',
         ]);
         $trade = Trade::find($id);
-        $trade->profit = $request->profit;
-        $trade->save();
+        $trade->update($valid);
         session()->flash('success', 'Update trade successfully');
         return redirect()->route('admin.trades.index', 'active');
     }
