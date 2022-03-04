@@ -49,7 +49,7 @@ class Trade extends Model
     public function close()
     {
         $user = $this->user;
-        $user->{'yes' == $this->is_demo ? 'demo_balance' : 'balance'} += $this->profit;
+        $user->{'yes' == $this->is_demo ? 'demo_balance' : 'balance'} += $this->profit + $this->amount;
         $user->save();
         $this->status = 'inactive';
         $this->save();
