@@ -9,6 +9,7 @@ use App\Models\Deposit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Mail\NewWithdrawalMailable;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Config;
@@ -63,6 +64,7 @@ class WithdrawController extends Controller
         } catch (\Throwable $th) {
             DB::rollBack();
             session()->flash('error', 'Failed to initiate withdrawal');
+            Log::error("$th->getMessage() file: $th->getFile() on line: $th->getLine()");
         }
         return redirect()->back();
     }
