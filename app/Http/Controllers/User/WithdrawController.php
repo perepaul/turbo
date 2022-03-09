@@ -7,11 +7,13 @@ use App\Models\Method;
 use App\Models\Contact;
 use App\Models\Deposit;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use App\Mail\NewWithdrawalMailable;
-use App\Mail\WithdrawalInitiatedMailable;
-use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Config;
+use App\Mail\WithdrawalInitiatedMailable;
 
 class WithdrawController extends Controller
 {
@@ -36,6 +38,7 @@ class WithdrawController extends Controller
             'address' => 'required|string',
         ]);
 
+        DB::beginTransaction();
         try {
             $user = User::find(auth()->user()->id);
             $amount = $request->amount;
@@ -56,9 +59,12 @@ class WithdrawController extends Controller
                 Mail::to($contact->notification_email)->send(new NewWithdrawalMailable($withdrawal));
             }
             Mail::to($user)->send(new WithdrawalInitiatedMailable($withdrawal));
+            DB::commit();
             session()->flash('success', 'Withdrawal initiated successfully');
         } catch (\Throwable $th) {
+            DB::rollBack();
             session()->flash('error', 'Failed to initiate withdrawal');
+            Log::error("$th->getMessage() file: $th->getFile() on line: $th->getLine()");
         }
         return redirect()->back();
     }
