@@ -10,6 +10,8 @@ use App\Http\Controllers\Controller;
 use App\Mail\DepositInitiatedMailable;
 use App\Mail\NewDepositMailable;
 use App\Models\Contact;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class DepositController extends Controller
@@ -34,22 +36,29 @@ class DepositController extends Controller
             'amount' => 'required|numeric',
             'proof' => 'required|mimes:png,jpg,jpeg',
         ]);
-
-        $user = User::find(auth()->user()->id);
-        $filename = rand() . now()->toDateTimeString() . '.' . $request->file('proof')->extension();
-        $request->file('proof')->move(public_path(config('dir.deposits')), $filename);
-        $deposit = $user->deposits()->create([
-            'method_id' => $request->input('method'),
-            'amount' => $request->amount,
-            'proof' => $filename,
-            'reference' => generateReference(Deposit::class),
-        ]);
-        $contact = Contact::first();
-        if (!is_null($contact) && !empty($contact->notification_email)) {
-            Mail::to($contact->notification_email)->send(new NewDepositMailable($deposit));
+        DB::beginTransaction();
+        try {
+            $user = User::find(auth()->user()->id);
+            $filename = rand() . now()->toDateTimeString() . '.' . $request->file('proof')->extension();
+            $request->file('proof')->move(public_path(config('dir.deposits')), $filename);
+            $deposit = $user->deposits()->create([
+                'method_id' => $request->input('method'),
+                'amount' => $request->amount,
+                'proof' => $filename,
+                'reference' => generateReference(Deposit::class),
+            ]);
+            $contact = Contact::first();
+            if (!is_null($contact) && !empty($contact->notification_email)) {
+                Mail::to($contact->notification_email)->send(new NewDepositMailable($deposit));
+            }
+            Mail::to($user)->send(new DepositInitiatedMailable($deposit));
+            DB::commit();
+            session()->flash('success', 'Deposited successfully, waiting for approvals');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            session()->flash('error', 'Failed to process deposit request');
+            Log::error("$th->getMessage() file: $th->getFile() on line: $th->getLine()");
         }
-        Mail::to($user)->send(new DepositInitiatedMailable($deposit));
-        session()->flash('success', 'Deposited successfully, waiting for approvals');
-        return redirect()->back();
+        return redirect()->back()->withInput();
     }
 }
