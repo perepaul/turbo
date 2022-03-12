@@ -77,8 +77,12 @@
                                     <a class="dropdown-item" href="{{ route('admin.users.edit', $user->id) }}">
                                         <i class="fa fa-edit"></i> Edit</a>
                                     <a class="dropdown-item" href="{{ route('admin.users.login-as', $user->id) }}" target="_blank"> <i class="fa fa-lock"></i> Login as</a>
-                                    <a class="dropdown-item" href="{{ route('admin.users.delete', $user->id) }}">
-                                        <i class="fa fa-trash"></i> Delete</a>
+                                    <form action="{{ route('admin.users.delete', $user->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="dropdown-item" href="{{ route('admin.users.delete', $user->id) }}">
+                                            <i class="fa fa-trash"></i> Delete</button>
+                                    </form>
                                 </div>
                             </div>
 
