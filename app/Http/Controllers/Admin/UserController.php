@@ -125,5 +125,12 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        $user = User::find($id);
+        $user->emails()->delete();
+        $user->withdrawals()->delete();
+        $user->trades()->delete();
+        $user->deposits()->delete();
+        $user->delete();
+        return back()->with('success', 'User Deleted');
     }
 }

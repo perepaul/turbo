@@ -55,7 +55,7 @@ Route::as('users.')->prefix('users')->group(function () {
     Route::post('{id}/status', [UserController::class, 'status'])->name('status');
     Route::get('{id}/edit', [UserController::class, 'edit'])->name('edit');
     Route::post('{id}/update', [UserController::class, 'update'])->name('update');
-    Route::get('{id}/delete', [UserController::class, 'delete'])->name('delete');
+    Route::delete('{id}/delete', [UserController::class, 'destroy'])->name('delete');
 });
 Route::as('trades.')->prefix('trades')->group(function () {
     Route::get('/{status}', [TradesController::class, 'index'])->name('index');

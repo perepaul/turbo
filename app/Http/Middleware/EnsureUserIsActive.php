@@ -27,6 +27,8 @@ class EnsureUserIsActive
             } else {
                 return redirect()->route('user.activation.complete');
             }
+        } else {
+            return config('app.enable_address') ? redirect()->route('user.activation.step.one') : redirect()->route('user.activation.step.two');
         }
     }
 }

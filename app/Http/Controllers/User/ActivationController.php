@@ -80,10 +80,17 @@ class ActivationController extends Controller
 
     public function complete()
     {
-        if (auth('user')->user()->status == 'active') {
+        $user = User::find(auth('user')->user()->id);
+        if ($user->status == 'active') {
             return redirect()->route('user.index');
-        } elseif (auth('user')->user()->status == 'rejected') {
-            return redirect()->route('user.activation.rejected');
+        } elseif ($user->status == 'rejected') {
+            $user->update([
+                'id_back' => null,
+                'id_front' => null,
+                'profile' => null,
+                'currency_id' => null,
+            ]);
+            return redirect()->route('user.index');
         }
         return view('user.activation.complete');
     }
