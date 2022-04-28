@@ -20,6 +20,7 @@
         <!-- FAVICONS ICON -->
         <link rel="shortcut icon" type="image/png" href="{{favicon()}}" />
         <link href="/assets/back/css/style.css" rel="stylesheet">
+        @method('css')
 
     </head>
 
@@ -54,8 +55,8 @@
         <script src="/assets/back/js/custom.min.js"></script>
         <script src="/assets/back/js/deznav-init.js"></script>
         <script src="/assets/back/js/styleSwitcher.js"></script>
-
         @include('includes.chat')
+        @method('js')
     </body>
 
     <!-- Mirrored from griya.dexignzone.com/xhtml/page-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 10 Jul 2021 11:48:05 GMT -->

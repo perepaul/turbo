@@ -279,6 +279,7 @@
         Main wrapper end
     ***********************************-->
 
+        @stack('modals')
         <!--**********************************
         Scripts
     ***********************************-->
@@ -306,6 +307,8 @@
         <script src="/assets/back/js/custom.min.js"></script>
         <script src="/assets/back/js/deznav-init.js"></script>
         <script src="/assets/back/js/styleSwitcher.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         @include('includes.chat')
 
         <script>
@@ -358,6 +361,7 @@
 
 
         @stack('js')
+
 
     </body>
 
