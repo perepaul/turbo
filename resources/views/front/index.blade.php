@@ -409,20 +409,11 @@
                 <div class="dream-faq-area">
                     <dl>
                         <!-- Single FAQ Area -->
-                        <dt class="wave wow fadeInUp" data-wow-delay="0.2s">How much money can I make on the practice account?</dt>
-                        <dd class="wow fadeInUp" data-wow-delay="0.3s">
-                            <p>You can't take any profit from transactions you complete on the practice account. You get virtual funds and make virtual transactions. It is intended for training purposes only. To trade using real money, you need to deposit funds to a real account.</p>
-                        </dd>
-                        <!-- Single FAQ Area -->
                         <dt class="wave wow fadeInUp" data-wow-delay="0.3s">How much money can I make?</dt>
                         <dd>
-                            <p>Your success depends on your skills and patience, your chosen trading strategy, and the amount you are able to invest. Beginner traders can try out their skills and practice on the practice account.</p>
+                            <p>Your success depends on your skills and patience, your chosen trading strategy, and the amount you are able to invest. Practicing traders can try out their trading skills and practice with the practice account.</p>
                         </dd>
-                        <!-- Single FAQ Area -->
-                        <dt class="wave wow fadeInUp" data-wow-delay="0.4s">How do i switch between the practice account and my real account.</dt>
-                        <dd>
-                            <p>On the trading page use the demo account to make the trade.</p>
-                        </dd>
+
                         <!-- Single FAQ Area -->
                         <dt class="wave wow fadeInUp" data-wow-delay="0.5s">How long does it take for the money I deposited to be credited to my account?</dt>
                         <dd>
@@ -441,16 +432,16 @@
                         <dd>
                             <p>It takes 3 hours on weekdays and upto 48 hours on weekends.</p>
                         </dd>
-                        <dt class="wave wow fadeInUp" data-wow-delay="0.5s">Why did you charge 5% of my withdrawal?</dt>
+                        <dt class="wave wow fadeInUp" data-wow-delay="0.5s">Why did you charge 2% of my withdrawal?</dt>
                         <dd>
-                            <p>The 5% charge is our commission that we take to run the platform and provide you the opportunity to access to trade.</p>
+                            <p>The 2% charge is our commission that we take to run the platform and provide you the opportunity to access to trade.</p>
                         </dd>
                         <dt class="wave wow fadeInUp" data-wow-delay="0.5s">How do I make a withdrawal?</dt>
                         <dd>
                             <p>
                                 Log into your account, go to the withdrawal section, input amount and the withdrawal method you prefer.
 
-                                <strong>Note</strong> Funds on your demo account cannot be withdrawn.
+                                <strong>Note</strong> bonuses can't be withdrawn without an available balance.
                             </p>
                         </dd>
                         <dt class="wave wow fadeInUp" data-wow-delay="0.5s">What are the min and max withdrawal amounts?</dt>
