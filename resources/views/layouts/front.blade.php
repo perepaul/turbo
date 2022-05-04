@@ -67,7 +67,7 @@
                                     <li><a href="#about">About</a></li>
                                     <li><a href="#services">Services</a></li>
                                     <li><a href="#roadmap">Roadmap</a></li>
-                                    <li><a href="#team">Team</a></li>
+                                    {{-- <li><a href="#team">Team</a></li> --}}
                                     <li><a href="#contact">Contact</a></li>
                                 </ul>
 
@@ -117,9 +117,9 @@
                                     <a href="#services">
                                         <p>Services</p>
                                     </a>
-                                    <a href="#team">
+                                    {{-- <a href="#team">
                                         <p>Team</p>
-                                    </a>
+                                    </a> --}}
                                     <a href="#contact">
                                         <p>Contact</p>
                                     </a>

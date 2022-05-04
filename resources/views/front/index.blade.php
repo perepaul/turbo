@@ -29,7 +29,7 @@
                         <h1 class="wow fadeInUp" data-wow-delay="0.2s">Get Into The Enhanced Digital World Of Trading</h1>
                         <p class="wow fadeInUp" data-wow-delay="0.3s">Invest in the world's most popular and sought-after assets. Everything you are looking for in an ultimate investment platform — on the device of your choice.</p>
                         <div class="dream-btn-group wow fadeInUp" data-wow-delay="0.4s">
-                            <a href="{{route('register')}}" class="btn dream-btn mr-3">Start Now <i class="fa fa-arrow-right"></i></a>
+                            <a href="{{route('register')}}" class="btn dream-btn mr-3">Register <i class="fa fa-arrow-right"></i></a>
                             <a href="{{route('login')}}" class="btn dream-btn">Login <i class="fa fa-lock"></i></a>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
 </div> --}}
 
 <!-- ##### trust Area Start ##### -->
-<div class="trust-section section-padding-100">
+{{-- <div class="trust-section section-padding-100">
     <div class="section-heading text-center">
 
         <div class="dream-dots justify-content-center wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
@@ -166,11 +166,11 @@
 
         </div>
     </div>
-</div>
+</div> --}}
 <!-- ##### trust Area End ##### -->
 
 <!-- ##### About Us Area Start ##### -->
-<section class="about-us-area section-padding-0-100 clearfix" id="about">
+<section class="about-us-area section-padding-0-100 clearfix mt-5" id="about">
     <div class="container">
         <div class="row align-items-center">
 
@@ -325,7 +325,7 @@
         <div class="dream-dots justify-content-center wow fadeInUp" data-wow-delay="0.2s">
             <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
         </div>
-        <h2 class="wow fadeInUp" data-wow-delay="0.3s">4 simple steps</h2>
+        <h2 class="wow fadeInUp" data-wow-delay="0.3s">3 simple steps</h2>
         <p class="wow fadeInUp" data-wow-delay="0.4s">All it takes to trade and make profit.</p>
     </div>
     <div class="container">
@@ -333,10 +333,10 @@
             <div class="timeline-split">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="timeline section-box-margin">
-                        <div class="block block-left">
+                        {{-- <div class="block block-left">
                             <h3>Practice</h3>
                             <p>Sign up, subscribe to a trading account, get free credit according to the plan you subscribed to. Start practicing with those funds.</p>
-                        </div>
+                        </div> --}}
 
                         <div class="block block-right mt-30">
                             <h3>Deposit</h3>
@@ -475,7 +475,7 @@
 
 
 <!-- ##### Team Area Start ##### -->
-<section class="our_team_area section-padding-0-0 clearfix" id="team">
+{{-- <section class="our_team_area section-padding-0-0 clearfix" id="team">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -560,7 +560,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 <!-- ##### Team Area End ##### -->
 
 <!-- ##### Contact Area Start ##### -->
