@@ -35,15 +35,15 @@
                     </div>
                 </div>
                 <!-- Welcome Video Area -->
-                <div class="col-12 col-lg-6 col-md-12">
+                {{-- <div class="col-12 col-lg-6 col-md-12">
                     <div class="main-ilustration wow fadeInUp" data-wow-delay="0.5s">
-
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
 </section>
+<x-trade.marquee />
 <!-- ##### Welcome Area End ##### -->
 
 {{-- <div class="vertical-social">
