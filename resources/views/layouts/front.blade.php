@@ -140,7 +140,12 @@
                         </div>
                     </div>
                 </div>
+                <hr>
+                <p class="text-center text-white text-sm">
+                    © {{date('Y')}} {{config('app.name')}}. All rights reserved.
+                </p>
             </div>
+
         </footer>
         <!-- ##### Footer Area End ##### -->
 

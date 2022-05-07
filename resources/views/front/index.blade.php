@@ -23,7 +23,7 @@
                                 <span class="integration-icon">
                                     <img draggable="false" src="/assets/front/img/svg/img-dollar.svg" width="24" height="24" alt="">
                                 </span>
-                                <span class="integration-text">Discover a new ways to enjoy your World!</span>
+                                <span class="integration-text text-sm">Investment banking worth talking about!</span>
                             </div>
                         </div>
                         <h1 class="wow fadeInUp" data-wow-delay="0.2s">Get Into The Enhanced Digital World Of Trading</h1>
