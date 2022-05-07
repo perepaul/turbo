@@ -57,7 +57,7 @@ class DepositController extends Controller
         } catch (\Throwable $th) {
             DB::rollBack();
             session()->flash('error', 'Failed to process deposit request');
-            Log::error("$th->getMessage() file: $th->getFile() on line: $th->getLine()");
+            Log::error($th);
         }
         return redirect()->back()->withInput();
     }
