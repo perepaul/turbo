@@ -24,7 +24,7 @@
             <div class="card">
                 <div class="card-body d-flex align-items-center justify-content-between">
                     <div class="card-data me-2">
-                        <h5>Demo Balance</h5>
+                        <h5>Investment Profit</h5>
                         <h6 class="fs-40 font-w600">{{ format_money($user->demo_balance) }}</h6>
                     </div>
                     <div><span class="donut1" data-peity='{ "fill": ["rgb(255, 135, 35,1)", "rgba(242, 246, 252)"]}'>1</span>
@@ -37,8 +37,8 @@
             <div class="card">
                 <div class="card-body d-flex align-items-center justify-content-between">
                     <div class="card-data me-2">
-                        <h5>Active Withdrawals</h5>
-                        <h6 class="fs-40 font-w600">{{ $user->withdrawals->where('status','active')->count() }}</h6>
+                        <h5>Investment Bonus</h5>
+                        <h6 class="fs-40 font-w600">{{ $user->trades->where('status','active')->sum('profit') }}</h6>
                     </div>
                     <div><span class="donut1" data-peity='{ "fill": ["rgb(56, 226, 93,1)", "rgba(242, 246, 252)"]}'>1</span>
                     </div>

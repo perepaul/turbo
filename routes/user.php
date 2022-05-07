@@ -64,7 +64,3 @@ Route::middleware(['active', 'subscribed'])->group(function () {
     Route::get('subscriptions', [SubscriptionController::class, 'subscriptions'])->name('subscriptions');
     Route::get('subscribe/{id}', [SubscriptionController::class, 'subscribe'])->name('subscriptions.subscribe');
 });
-
-
-
-// });

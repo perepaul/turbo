@@ -19,10 +19,17 @@ class SubscriptionController extends Controller
     {
         $user = User::find(auth('user')->user()->id);
         $plan = Plan::findOrFail($id);
+        if ($plan->amount > $user->balance) {
+            return redirect()
+                ->route('user.deposit.index')
+                ->with('error', "Insufficient funds, you need to have a balance of {$user->currency->symbol}{$plan->amount} to continue.");
+        }
+
+        $user->balance -= $plan->amount;
         $user->plan_id = $id;
         $user->demo_balance = $user->demo_balance;
         $user->save();
-        session()->flash('subscribed to ' . $plan->name);
+        session()->flash('success', 'subscribed to ' . $plan->name);
         return redirect()->route('user.index');
     }
 }
