@@ -14,7 +14,7 @@
         <div class="dream-blip blip4"></div>
 
         <div class="container h-100">
-            <div class="row h-100 align-items-center">
+            <div class="row align-items-center">
                 <!-- Welcome Content -->
                 <div class="col-12 col-lg-6 col-md-12">
                     <div class="welcome-content">
