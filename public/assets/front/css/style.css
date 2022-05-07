@@ -1144,6 +1144,10 @@ p.artficial:before {
         background: url('video/video-frame.PNG') center center / cover no-repeat;
     }
 
+    .welcome_area {
+        height: 600px !important;
+    }
+
     .welcome_area.video .desc {
         max-width: 80%;
         margin: 0 auto
