@@ -104,6 +104,7 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email,' . $id,
             'phone' => 'required|regex:/^[+][0-9]{9,14}/',
             'trading_balance' => 'nullable|numeric',
+            'trade_mode' => 'required|in:automatic,manual',
             'demo_balance' => 'nullable|numeric',
             'balance' => 'nullable|numeric',
             'country' => 'nullable|string',
