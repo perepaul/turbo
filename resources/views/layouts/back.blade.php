@@ -29,6 +29,10 @@
                 margin-bottom: 10px;
             }
 
+            .form-select {
+                height: 3.5rem;
+            }
+
             .form-control {
                 border: 1px solid rgb(243, 237, 237);
             }

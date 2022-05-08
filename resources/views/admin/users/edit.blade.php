@@ -36,7 +36,7 @@
 
                     <div class="form-group">
                         <label for="">Trade mode</label>
-                        <select name="trade_mode" id="trade_mode" class="form-select form-control">
+                        <select name="trade_mode" id="trade_mode" class="form-select">
                             <option value="">Select mode</option>
                             @foreach (['automatic','manual','dual'] as $mode )
                             <option {{$user->trade_mode == $mode ? 'selected="selected"': ''}} value="{{$mode}}">{{ucfirst($mode)}}</option>
@@ -53,8 +53,11 @@
 
                     <div class="form-group">
                         <label for="">Country</label>
-                        <input type="text" class="form-control" name="country" value="{{ old('country') ?? $user->country }}">
-                        <x-error :key="'country'" />
+                        <select name="country" id="country" class="form-select">
+                            <option value="">Select Country</option>
+                            <x-countries country="{{$user->country}}" />
+                        </select>
+                        <x-error key="country" />
                     </div>
 
                     <div class="form-group">
