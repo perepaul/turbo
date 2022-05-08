@@ -29,6 +29,10 @@ class TradeController extends Controller
             'time' => 'required|string'
         ]);
         $user = User::find(auth('user')->user()->id);
+        if ($user->trade_mode == 'automatic') {
+            return back()->with('error', 'You can\’t place trades as you have an automated trading EA linked to your account');
+        }
+
         $amount = $request->amount;
         if ($user->{$request->payment_method} < $amount) {
             session()->flash('error', 'Insufficient Funds');

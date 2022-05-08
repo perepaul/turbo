@@ -8,6 +8,11 @@
     </div>
 
     <div class="col-lg-5 mx-auto">
+        @if(auth()->user()->trade_mode == 'automatic')
+        <div class="alert alert-outline-danger fs-12">
+            <p>You can't place trades as you have an automated trading EA linked to your account</p>
+        </div>
+        @endif
         <div class="card">
             <div class="card-body">
                 <form action="{{route('user.trade.create')}}" method="POST">
