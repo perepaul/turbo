@@ -46,17 +46,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="">Demo Balance</label>
-                        <input type="text" class="form-control" name="demo_balance" value="{{ old('demo_balance') ?? $user->demo_balance }}">
-                        <x-error :key="'demo_balance'" />
-                    </div>
-
-                    <div class="form-group">
-                        <label for="">Trading Balance</label>
-                        <input type="text" class="form-control" name="trading_balance" value="{{ old('trading_balance') ?? $user->trading_balance }}">
-                        <x-error :key="'trading_balance'" />
-                    </div>
-                    <div class="form-group">
                         <label for="">Main Balance</label>
                         <input type="text" class="form-control" name="balance" value="{{ old('balance') ?? $user->balance }}">
                         <x-error :key="'balance'" />
