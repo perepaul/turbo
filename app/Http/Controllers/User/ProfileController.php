@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\User;
+use App\Models\Currency;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Currency;
 use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
@@ -14,24 +15,32 @@ class ProfileController extends Controller
     {
         $currencies = Currency::all();
         $user = User::find(auth('user')->user()->id);
+        $user->load('withdrawals', 'deposits', 'trades');
         return view('user.profile', compact('user', 'currencies'));
     }
 
     public function updateProfile(Request $request)
     {
         $valid = $request->validate([
-            'firstname' => 'required',
-            'lastname' => 'required',
             'country' => 'nullable|string',
             'state' => 'nullable|string',
             'city' => 'nullable|string',
             'address' => 'nullable|string',
-            'zip_code' => 'nullable|string',
+            'zip_code' => 'nullable',
+            'profile_picture' => 'nullable|mimes:jpeg,png,jpg',
             'prefered_account_currency' => 'required|integer',
         ]);
         $user = User::find(auth('user')->user()->id);
         $valid['currency_id'] = $request->input('prefered_account_currency');
-        unset($valid['prefered_account_currency']);
+        unset($valid['prefered_account_currency'], $valid['profile_picture']);
+        if ($request->hasFile('profile_picture')) {
+            $file = $request->file('profile_picture');
+            $filename = Str::random(5) . now()->timestamp . '.' . $file->extension();
+            $path = public_path(config('dir.profile'));
+            $file->move($path, $filename);
+            if (!is_null($user->profile) && file_exists($file = $path . $user->profile)) unlink($file);
+            $valid['profile'] = $filename;
+        }
         $user->update($valid);
         session()->flash('success', 'Profile updated successfully');
         return redirect()->back();

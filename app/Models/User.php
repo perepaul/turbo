@@ -78,4 +78,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Deposit::class);
     }
+
+    public function plan()
+    {
+        return $this->belongsTo(Plan::class);
+    }
 }

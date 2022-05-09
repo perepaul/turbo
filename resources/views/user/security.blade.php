@@ -101,6 +101,7 @@
 </div>
 @endif
 @endpush
+
 @push('js')
 <script>
     function copytext( text, successMsg = 'Copied to clipboard', failMessage = 'Oops, failed to copy to clipboard' ) {
