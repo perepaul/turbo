@@ -80,7 +80,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($user->deposits->where('status','pending')->sortBy('created_at')->take(5)->get() as $deposit )
+                                        @forelse ($user->deposits->sortBy('created_at')->take(5) as $deposit )
 
                                         <tr>
                                             <td>{{$deposit->reference}}</td>
@@ -118,7 +118,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($user->withdrawals->where('status','pending')->sortBy('created_at')->take(5) as $withdrawal )
+                                        @forelse ($user->withdrawals->sortBy('created_at')->take(5) as $withdrawal )
 
                                         <tr>
                                             <td>{{$withdrawal->reference}}</td>
