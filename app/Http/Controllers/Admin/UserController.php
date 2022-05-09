@@ -118,6 +118,23 @@ class UserController extends Controller
         return redirect()->route('admin.users.index', 'acitve');
     }
 
+    function tradeCert(int $id)
+    {
+        $user = User::findOrFail($id);
+        $user->trade_cert = 'require';
+        $user->save();
+        session()->flash('success', 'requested for user trading certificate');
+        return back();
+    }
+
+    function verifyTradeCert($id)
+    {
+        $user = User::findOrFail($id);
+        $user->trade_cert = 'verified';
+        $user->save();
+        return back()->with('message', 'Trade certificate submitted');
+    }
+
     /**
      * Remove the specified resource from storage.
      *

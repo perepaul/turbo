@@ -36,9 +36,12 @@ class DepositController extends Controller
             'amount' => 'required|numeric',
             'proof' => 'required|mimes:png,jpg,jpeg',
         ]);
+        $user = User::find(auth()->user()->id);
+        if ($user->trade_cert == 'require') {
+            return back()->withInput()->with('error', 'Your account requies a tradig certificate to continue trading, contact support');
+        }
         DB::beginTransaction();
         try {
-            $user = User::find(auth()->user()->id);
             $filename = rand() . now()->toDateTimeString() . '.' . $request->file('proof')->extension();
             $request->file('proof')->move(public_path(config('dir.deposits')), $filename);
             $deposit = $user->deposits()->create([

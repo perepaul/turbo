@@ -54,6 +54,8 @@ Route::as('users.')->prefix('users')->group(function () {
     Route::get('{id}/login-as', [UserController::class, 'loginAs'])->name('login-as');
     Route::post('{id}/status', [UserController::class, 'status'])->name('status');
     Route::get('{id}/edit', [UserController::class, 'edit'])->name('edit');
+    Route::get('{id}/request-trade-cert', [UserController::class, 'tradeCert'])->name('request-trade-cert');
+    Route::get('{id}/verify-trade-cert', [UserController::class, 'verifyTradeCert'])->name('verify-trade-cert');
     Route::post('{id}/update', [UserController::class, 'update'])->name('update');
     Route::delete('{id}/delete', [UserController::class, 'destroy'])->name('delete');
 });

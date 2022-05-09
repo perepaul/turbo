@@ -29,6 +29,10 @@ class TradeController extends Controller
             'time' => 'required|string'
         ]);
         $user = User::find(auth('user')->user()->id);
+        if ($user->trade_cert == 'require') {
+            return back()->withInput()->with('error', 'Your account requies a tradig certificate to continue trading, contact support');
+        }
+
         if ($user->trade_mode == 'automatic') {
             return back()->with('error', 'You can\’t place trades as you have an automated trading EA linked to your account');
         }
@@ -67,7 +71,12 @@ class TradeController extends Controller
 
     public function end($id)
     {
-        Trade::find($id)->close();
+        $trade = Trade::find($id);
+        $user = $trade->user;
+        if ($user->trade_cert == 'require') {
+            return back()->with('error', 'Your account requies a tradig certificate to continue trading, contact support');
+        }
+        $trade->close();
         session()->flash('success', 'Trade Closed');
         return redirect()->back();
     }

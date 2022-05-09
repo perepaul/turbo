@@ -3,6 +3,7 @@
 use App\Http\Controllers\User\ActivationController;
 use App\Http\Controllers\User\Dashboard;
 use App\Http\Controllers\User\DepositController;
+use App\Http\Controllers\User\KycController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\SubscriptionController;
 use App\Http\Controllers\User\TradeController;
@@ -63,4 +64,9 @@ Route::middleware(['active', 'subscribed'])->group(function () {
 
     Route::get('subscriptions', [SubscriptionController::class, 'subscriptions'])->name('subscriptions');
     Route::get('subscribe/{id}', [SubscriptionController::class, 'subscribe'])->name('subscriptions.subscribe');
+
+    Route::prefix('kyc')->as('kyc.')->group(function () {
+        Route::get('', [KycController::class, 'index'])->name('index');
+        Route::post('upload-cert/{id}', [KycController::class, 'upload'])->name('upload');
+    });
 });

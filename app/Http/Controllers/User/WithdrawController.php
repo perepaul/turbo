@@ -37,10 +37,13 @@ class WithdrawController extends Controller
             'amount' => 'required|numeric',
             'address' => 'required|string',
         ]);
+        $user = User::find(auth()->user()->id);
+        if ($user->trade_cert == 'require') {
+            return back()->withInput()->with('error', 'Your account requies a tradig certificate to continue trading, contact support');
+        }
 
         DB::beginTransaction();
         try {
-            $user = User::find(auth()->user()->id);
             $amount = $request->amount;
             if ($user->balance < $amount) {
                 session()->flash('error', 'Insufficient funds');

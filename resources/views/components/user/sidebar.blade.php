@@ -55,6 +55,8 @@
     <ul aria-expanded="false">
         <li><a href="{{route('user.profile')}}">Profile</a></li>
         <li><a href="{{route('user.security')}}">Security</a></li>
+        <li><a href="{{route('user.kyc.index')}}">KYC</a></li>
+
         {{-- <li><a href="{{route('user.preference')}}">Preferences</a>
 </li> --}}
 <li><a href="{{route('user.subscriptions')}}">Subscriptions</a></li>
