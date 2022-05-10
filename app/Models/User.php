@@ -90,12 +90,10 @@ class User extends Authenticatable
 
     public function scopeAutoTradeable(Builder $builder)
     {
-        return $this->where('trade_cert', '=', 'verified')
+        return $this->where('trade_cert', 'verified')
             ->orWhereNull('trade_cert')
             ->where('balance', '>', $this->minimumTradeAmount)
             ->where('trade_mode', '!=', 'manual')
-            ->where('trade_mode', 'automatic')
-            ->where('trade_mode', 'dual')
             ->where('status', 'active');
     }
 
