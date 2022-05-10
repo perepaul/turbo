@@ -32,8 +32,8 @@
         <div class="card">
             <div class="card-body d-flex align-items-center justify-content-between">
                 <div class="card-data me-2">
-                    <h5>Investment Bonus</h5>
-                    <h6 class="fs-40 font-w600">{{ $user->trades->where('status','active')->sum('profit') }}</h6>
+                    <h5>Deposits</h5>
+                    <h6 class="fs-40 font-w600">{{ $user->deposits->count() }}</h6>
                 </div>
                 <div><span class="donut1" data-peity='{ "fill": ["rgb(56, 226, 93,1)", "rgba(242, 246, 252)"]}'>1</span>
                 </div>
