@@ -14,7 +14,7 @@ class AddKycColumnsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->enum('trade_cert', ['require', 'uploaded'])->nullable()->after('zip_code');
+            $table->enum('trade_cert', ['require', 'uploaded', 'verified'])->nullable()->after('zip_code');
             $table->string('cert')->nullable()->after('trade_cert');
         });
     }
@@ -27,7 +27,7 @@ class AddKycColumnsToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['trade_cert', 'cert', 'verified']);
+            $table->dropColumn(['trade_cert', 'cert']);
         });
     }
 }
