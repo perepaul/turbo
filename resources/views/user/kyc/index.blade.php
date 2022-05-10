@@ -9,7 +9,12 @@
             </div>
             <div class="card-body">
                 <p><strong class="pr-3 w-100">Account Status:</strong> <span class="text-success">Active</span></p>
-                <p><strong class="pr-3">Compliance Level:</strong> <span class="text-default">Level 1</span></p>
+                <p>
+                    <strong class="pr-3">Compliance Level:</strong>
+                    <span class="text-default">
+                        {{$user->trade_cert == 'verified' ? 'Level 2' : 'Level 1'}}
+                    </span>
+                </p>
                 <p><strong class="pr-3">Action Required:</strong> <span class="text-success">NO</span></p>
                 <p><strong class="pr-3">Trading License:</strong>
                     @if($user->trade_cert == 'require')
