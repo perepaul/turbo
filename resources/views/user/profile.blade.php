@@ -12,7 +12,7 @@
                 </div>
                 <div class="profile-info">
                     <div class="profile-photo">
-                        <img src="{{profile_picture()}}" class="" alt="" style="width:150px; height: 150px;">
+                        <img src="{{profile_picture()}}" class="" alt="" style="width:80px; height: 80px;">
                     </div>
                     <div class="profile-details">
                         <div class="profile-name px-3 pt-2">
