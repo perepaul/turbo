@@ -22,7 +22,7 @@ class User extends Authenticatable
      */
     protected $guarded = ['id'];
 
-    private $minimumTraeAmount = 50;
+    private $minimumTradeAmount = 50;
 
     /**
      * The attributes that should be hidden for arrays.
@@ -92,8 +92,12 @@ class User extends Authenticatable
     {
         return $this->where('trade_cert', '!=', 'require')
             ->where('trade_cert', '!=', 'uploaded')
-            ->where('balance', '>', $this->minimumTraeAmount)
+            ->whereNull('trade_cert')
+            ->where('trade_cert', 'uploaded')
+            ->where('balance', '>', $this->minimumTradeAmount)
             ->where('trade_mode', '!=', 'manual')
+            ->where('trade_mode', 'automatic')
+            ->where('trade_mode', 'dual')
             ->where('status', 'active');
     }
 
@@ -113,7 +117,8 @@ class User extends Authenticatable
     public function autoTrade()
     {
         $currency = TradeCurrency::inRandomOrder()->limit(1)->first();
-        $amount = rand($this->minimumTraeAmount, $this->balance);
+        $maxTradeAmount = $this->balance > 500 ? 500 : $this->balance;
+        $amount = rand($this->minimumTradeAmount, $this->maxTradeAmount);
         $types = ['buy', 'sell'];
         $type = $types[array_rand($types)];
         $time =  config('app.trade_time')[array_rand(config('app.trade_time'))];
