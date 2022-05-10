@@ -12,7 +12,7 @@
                 </div>
                 <div class="profile-info">
                     <div class="profile-photo">
-                        <img src="{{profile_picture()}}" class="img-fluid rounded-circle" alt="">
+                        <img src="{{profile_picture()}}" class="img-fluid rounded-circle" alt="" style="width:150px; height: auto">
                     </div>
                     <div class="profile-details">
                         <div class="profile-name px-3 pt-2">
