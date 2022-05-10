@@ -157,6 +157,13 @@
                     <div class="mb-sm-4 d-flex flex-wrap align-items-center text-head">
                         <h3 class="mb-3 me-auto">@yield('title')</h3>
                     </div>
+
+                    @if (request()->isUser() && auth()->user()->trade_cert != 'verified')
+                    <div class="alert alert-outline-warning fade show" role="alert">
+                        <strong><i class="fa fa-exclamation-circle"></i></strong> Your account is currently <strong>inactive</strong> as we have requested for your trading licence, your account will be activated when it is verified. <a href="{{route('user.kyc.index')}}">click to continue</a>
+                    </div>
+                    @endif
+
                     {{-- Content --}}
                     @yield('content')
                     {{-- End Content --}}
