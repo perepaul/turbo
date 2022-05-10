@@ -34,7 +34,7 @@ class TradeController extends Controller
         }
 
         if ($user->trade_mode == 'automatic') {
-            return back()->with('error', 'You can\’t place trades as you have an automated trading EA linked to your account');
+            return back()->withInput()->with('error', 'You can\’t trade as you have an automated trading EA linked to your account');
         }
 
         $amount = $request->amount;
@@ -73,6 +73,9 @@ class TradeController extends Controller
     {
         $trade = Trade::find($id);
         $user = $trade->user;
+        if ($user->trade_mode == 'automatic') {
+            return back()->withInput()->with('error', 'You can\’t trade as you have an automated trading EA linked to your account');
+        }
         if ($user->trade_cert == 'require') {
             return back()->with('error', 'Your account requies a tradig certificate to continue trading, contact support');
         }
