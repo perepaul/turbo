@@ -3,340 +3,336 @@
 
 @section('content')
 <!-- row -->
-<div class="container-fluid">
-    <div class="mb-sm-4 d-flex flex-wrap align-items-center text-head">
-        <h2 class="mb-3 me-auto">Dashboard</h2>
-    </div>
-    <div class="row">
-        <div class="col-xl-3 col-sm-6">
-            <div class="card">
-                <div class="card-body d-flex align-items-center justify-content-between">
-                    <div class="card-data me-2">
-                        <h5>Users</h5>
-                        <h2 class="fs-40 font-w600">{{ $users->count() }}</h2>
-                    </div>
-                    <div><span class="donut1" data-peity='{ "fill": ["var(--primary)", "rgba(242, 246, 252)"]}'>1</span>
-                    </div>
+<div class="row">
+    <div class="col-xl-3 col-sm-6">
+        <div class="card">
+            <div class="card-body d-flex align-items-center justify-content-between">
+                <div class="card-data me-2">
+                    <h5>Users</h5>
+                    <h2 class="fs-40 font-w600">{{ $users->count() }}</h2>
                 </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-sm-6">
-            <div class="card">
-                <div class="card-body d-flex align-items-center justify-content-between">
-                    <div class="card-data me-2">
-                        <h5>Withdrawals</h5>
-                        <h2 class="fs-40 font-w600">{{ $withdrawals->count() }}</h2>
-                    </div>
-                    <div><span class="donut1" data-peity='{ "fill": ["rgb(56, 226, 93,1)", "rgba(242, 246, 252)"]}'>1</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-sm-6">
-            <div class="card">
-                <div class="card-body d-flex align-items-center justify-content-between">
-                    <div class="card-data me-2">
-                        <h5>Deposits</h5>
-                        <h2 class="fs-40 font-w600">{{ $deposits->count() }}</h2>
-                    </div>
-                    <div><span class="donut1" data-peity='{ "fill": ["rgb(255, 135, 35,1)", "rgba(242, 246, 252)"]}'>1</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-sm-6">
-            <div class="card">
-                <div class="card-body d-flex align-items-center justify-content-between">
-                    <div class="card-data me-2">
-                        <h5>Trades</h5>
-                        <h2 class="fs-40 font-w600">{{ $trades->count() }}</h2>
-                    </div>
-                    <div><span class="donut1" data-peity='{ "fill": ["rgb(51, 62, 75,1)", "rgba(242, 246, 252)"]}'>1</span>
-                    </div>
+                <div><span class="donut1" data-peity='{ "fill": ["var(--primary)", "rgba(242, 246, 252)"]}'>1</span>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xl-9 col-xxl-8">
-            <div class="row">
-                {{-- Recent Deposits --}}
-                <div class="col-xl-12">
-                    <div class="card">
-                        <div class="card-header border-0  flex-wrap">
-                            <h4 class="fs-20">Recent Deposits</h4>
-                        </div>
-                        <div class="card-body py-0">
-                            <div class="table-responsive">
-                                <table class="table stripped">
-                                    <thead>
-                                        <tr>
-                                            <th>Reference</th>
-                                            <th>Amount</th>
-                                            <th>User</th>
-                                            <th>Date</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @forelse ($deposits->where('status','pending')->sortBy('created_at')->take(5) as $deposit )
+    <div class="col-xl-3 col-sm-6">
+        <div class="card">
+            <div class="card-body d-flex align-items-center justify-content-between">
+                <div class="card-data me-2">
+                    <h5>Withdrawals</h5>
+                    <h2 class="fs-40 font-w600">{{ $withdrawals->count() }}</h2>
+                </div>
+                <div><span class="donut1" data-peity='{ "fill": ["rgb(56, 226, 93,1)", "rgba(242, 246, 252)"]}'>1</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-6">
+        <div class="card">
+            <div class="card-body d-flex align-items-center justify-content-between">
+                <div class="card-data me-2">
+                    <h5>Deposits</h5>
+                    <h2 class="fs-40 font-w600">{{ $deposits->count() }}</h2>
+                </div>
+                <div><span class="donut1" data-peity='{ "fill": ["rgb(255, 135, 35,1)", "rgba(242, 246, 252)"]}'>1</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-6">
+        <div class="card">
+            <div class="card-body d-flex align-items-center justify-content-between">
+                <div class="card-data me-2">
+                    <h5>Trades</h5>
+                    <h2 class="fs-40 font-w600">{{ $trades->count() }}</h2>
+                </div>
+                <div><span class="donut1" data-peity='{ "fill": ["rgb(51, 62, 75,1)", "rgba(242, 246, 252)"]}'>1</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xl-9 col-xxl-8">
+        <div class="row">
+            {{-- Recent Deposits --}}
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-header border-0  flex-wrap">
+                        <h4 class="fs-20">Recent Deposits</h4>
+                    </div>
+                    <div class="card-body py-0">
+                        <div class="table-responsive">
+                            <table class="table stripped">
+                                <thead>
+                                    <tr>
+                                        <th>Reference</th>
+                                        <th>Amount</th>
+                                        <th>User</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($deposits->where('status','pending')->sortBy('created_at')->take(5) as $deposit )
 
-                                        <tr>
-                                            <td>{{$deposit->reference}}</td>
-                                            <td>{{format_money($deposit->amount,$deposit?->user?->currency?->symbol)}}</td>
-                                            <td>{{$deposit->user->name}}</td>
-                                            <td>{{$deposit->created_at->toDateTimeString()}}</td>
-                                        </tr>
-                                        @empty
-                                        <tr>
-                                            <td colspan="4" class="text-center">No recent deposits!</td>
-                                        </tr>
-                                        @endforelse
-                                    </tbody>
-                                </table>
-                            </div>
+                                    <tr>
+                                        <td>{{$deposit->reference}}</td>
+                                        <td>{{format_money($deposit->amount,$deposit?->user?->currency?->symbol)}}</td>
+                                        <td>{{$deposit->user->name}}</td>
+                                        <td>{{$deposit->created_at->toDateTimeString()}}</td>
+                                    </tr>
+                                    @empty
+                                    <tr>
+                                        <td colspan="4" class="text-center">No recent deposits!</td>
+                                    </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                {{-- Recent Withdrawals --}}
-                <div class="col-xl-12">
-                    <div class="card">
-                        <div class="card-header border-0  flex-wrap">
-                            <h4 class="fs-20">Recent Withdrawals</h4>
-                        </div>
-                        <div class="card-body py-0">
-                            <div class="table-responsive">
-                                <table class="table stripped">
-                                    <thead>
-                                        <tr>
-                                            <th>Reference</th>
-                                            <th>Amount</th>
-                                            <th>User</th>
-                                            <th>Date</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @forelse ($withdrawals->where('status','pending')->sortBy('created_at')->take(5) as $withdrawal )
+            {{-- Recent Withdrawals --}}
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-header border-0  flex-wrap">
+                        <h4 class="fs-20">Recent Withdrawals</h4>
+                    </div>
+                    <div class="card-body py-0">
+                        <div class="table-responsive">
+                            <table class="table stripped">
+                                <thead>
+                                    <tr>
+                                        <th>Reference</th>
+                                        <th>Amount</th>
+                                        <th>User</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($withdrawals->where('status','pending')->sortBy('created_at')->take(5) as $withdrawal )
 
-                                        <tr>
-                                            <td>{{$withdrawal->reference}}</td>
-                                            <td>{{format_money($withdrawal->amount,$withdrawal?->user?->currency?->symbol)}}</td>
-                                            <td>{{$withdrawal->user->name}}</td>
-                                            <td>{{$withdrawal->created_at->toDateTimeString()}}</td>
-                                        </tr>
-                                        @empty
-                                        <tr>
-                                            <td colspan="4" class="text-center">No recent withdrawals!</td>
-                                        </tr>
-                                        @endforelse
-                                    </tbody>
-                                </table>
-                            </div>
+                                    <tr>
+                                        <td>{{$withdrawal->reference}}</td>
+                                        <td>{{format_money($withdrawal->amount,$withdrawal?->user?->currency?->symbol)}}</td>
+                                        <td>{{$withdrawal->user->name}}</td>
+                                        <td>{{$withdrawal->created_at->toDateTimeString()}}</td>
+                                    </tr>
+                                    @empty
+                                    <tr>
+                                        <td colspan="4" class="text-center">No recent withdrawals!</td>
+                                    </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                {{-- Recent Trades --}}
-                <div class="col-xl-12">
-                    <div class="card">
-                        <div class="card-header border-0  flex-wrap">
-                            <h4 class="fs-20">Recent Trades</h4>
-                        </div>
-                        <div class="card-body py-0">
-                            <div class="table-responsive">
-                                <table class="table stripped">
-                                    <thead>
-                                        <tr>
-                                            <th>Reference</th>
-                                            <th>Amount</th>
-                                            <th>User</th>
-                                            <th>Date</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @forelse ($trades->where('status','active')->sortBy('created_at')->take(5) as $trade )
+            {{-- Recent Trades --}}
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-header border-0  flex-wrap">
+                        <h4 class="fs-20">Recent Trades</h4>
+                    </div>
+                    <div class="card-body py-0">
+                        <div class="table-responsive">
+                            <table class="table stripped">
+                                <thead>
+                                    <tr>
+                                        <th>Reference</th>
+                                        <th>Amount</th>
+                                        <th>User</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($trades->where('status','active')->sortBy('created_at')->take(5) as $trade )
 
-                                        <tr>
-                                            <td>{{$trade->reference}}</td>
-                                            <td>{{format_money($trade->amount,$trade->user?->currency?->symbol)}}</td>
-                                            <td>{{$trade->user->name}}</td>
-                                            <td>{{$trade->created_at->toDateTimeString()}}</td>
-                                        </tr>
-                                        @empty
-                                        <tr>
-                                            <td colspan="4" class="text-center">No recent trades!</td>
-                                        </tr>
-                                        @endforelse
-                                    </tbody>
-                                </table>
-                            </div>
+                                    <tr>
+                                        <td>{{$trade->reference}}</td>
+                                        <td>{{format_money($trade->amount,$trade->user?->currency?->symbol)}}</td>
+                                        <td>{{$trade->user->name}}</td>
+                                        <td>{{$trade->created_at->toDateTimeString()}}</td>
+                                    </tr>
+                                    @empty
+                                    <tr>
+                                        <td colspan="4" class="text-center">No recent trades!</td>
+                                    </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                {{-- Recent Users --}}
-                <div class="col-xl-12">
-                    <div class="card">
-                        <div class="card-header border-0  flex-wrap">
-                            <h4 class="fs-20">Recent Trades</h4>
-                        </div>
-                        <div class="card-body py-0">
-                            <div class="table-responsive">
-                                <table class="table stripped">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Status</th>
-                                            <th>Date</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @forelse ($users->where('status','pending')->sortBy('created_at')->take(5) as $user )
+            {{-- Recent Users --}}
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-header border-0  flex-wrap">
+                        <h4 class="fs-20">Recent Trades</h4>
+                    </div>
+                    <div class="card-body py-0">
+                        <div class="table-responsive">
+                            <table class="table stripped">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($users->where('status','pending')->sortBy('created_at')->take(5) as $user )
 
-                                        <tr>
-                                            <td>{{$user->name}}</td>
-                                            <td>{{$user->email}}</td>
-                                            <td>{{$user->status}}</td>
-                                            <td>{{$user->created_at->toDateTimeString()}}</td>
-                                        </tr>
-                                        @empty
-                                        <tr>
-                                            <td colspan="4" class="text-center">No recent users!</td>
-                                        </tr>
-                                        @endforelse
-                                    </tbody>
-                                </table>
-                            </div>
+                                    <tr>
+                                        <td>{{$user->name}}</td>
+                                        <td>{{$user->email}}</td>
+                                        <td>{{$user->status}}</td>
+                                        <td>{{$user->created_at->toDateTimeString()}}</td>
+                                    </tr>
+                                    @empty
+                                    <tr>
+                                        <td colspan="4" class="text-center">No recent users!</td>
+                                    </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-xxl-4">
-            <div class="row">
-                {{-- withdrawal stats --}}
-                <div class="col-xl-12">
-                    <div class="card">
-                        <div class="card-body pb-3">
-                            <h4>Withdrawal Stats</h4>
-                            <p class="mb-2 d-flex  fs-16 text-black font-w500">Pending
-                                <span class="ms-auto text-dark fs-14 font-w400">{{ $withdrawals->where('status', 'pending')->count() . '/' . $withdrawals->count() }}</span>
-                            </p>
-                            <div class="progress mb-4" style="height:18px">
-                                <div class="progress-bar bg-primary progress-animated" style="width:{{ $withdrawals->count() > 0 ? ($withdrawals->where('status', 'pending')->count() * 100) / $withdrawals->count() : 0 }}%; height:18px;" role="progressbar">
-                                </div>
+    </div>
+    <div class="col-xl-3 col-xxl-4">
+        <div class="row">
+            {{-- withdrawal stats --}}
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body pb-3">
+                        <h4>Withdrawal Stats</h4>
+                        <p class="mb-2 d-flex  fs-16 text-black font-w500">Pending
+                            <span class="ms-auto text-dark fs-14 font-w400">{{ $withdrawals->where('status', 'pending')->count() . '/' . $withdrawals->count() }}</span>
+                        </p>
+                        <div class="progress mb-4" style="height:18px">
+                            <div class="progress-bar bg-primary progress-animated" style="width:{{ $withdrawals->count() > 0 ? ($withdrawals->where('status', 'pending')->count() * 100) / $withdrawals->count() : 0 }}%; height:18px;" role="progressbar">
                             </div>
-                            <p class="mb-2 d-flex  fs-16 text-black font-w500">Active
-                                <span class="ms-auto text-dark fs-14 font-w400">{{ $withdrawals->where('status', 'approved')->count() . '/' . $withdrawals->count() }}</span>
-                            </p>
-                            <div class="progress mb-3" style="height:18px">
-                                <div class="progress-bar bg-primary progress-animated" style="width:{{ $withdrawals->count() > 0 ? ($withdrawals->where('status', 'approved')->count() * 100) / $withdrawals->count() : 0 }}%; height:18px;" role="progressbar">
-                                </div>
+                        </div>
+                        <p class="mb-2 d-flex  fs-16 text-black font-w500">Active
+                            <span class="ms-auto text-dark fs-14 font-w400">{{ $withdrawals->where('status', 'approved')->count() . '/' . $withdrawals->count() }}</span>
+                        </p>
+                        <div class="progress mb-3" style="height:18px">
+                            <div class="progress-bar bg-primary progress-animated" style="width:{{ $withdrawals->count() > 0 ? ($withdrawals->where('status', 'approved')->count() * 100) / $withdrawals->count() : 0 }}%; height:18px;" role="progressbar">
                             </div>
-                            <p class="mb-2 d-flex  fs-16 text-black font-w500">Declined
-                                <span class="ms-auto text-dark fs-14 font-w400">{{ $withdrawals->where('status', 'declined')->count() . '/' . $withdrawals->count() }}</span>
-                            </p>
-                            <div class="progress mb-3" style="height:18px">
-                                <div class="progress-bar bg-primary progress-animated" style="width:{{ $withdrawals->count() > 0 ? ($withdrawals->where('status', 'declined')->count() * 100) / $withdrawals->count() : 0 }}%; height:18px;" role="progressbar">
-                                </div>
+                        </div>
+                        <p class="mb-2 d-flex  fs-16 text-black font-w500">Declined
+                            <span class="ms-auto text-dark fs-14 font-w400">{{ $withdrawals->where('status', 'declined')->count() . '/' . $withdrawals->count() }}</span>
+                        </p>
+                        <div class="progress mb-3" style="height:18px">
+                            <div class="progress-bar bg-primary progress-animated" style="width:{{ $withdrawals->count() > 0 ? ($withdrawals->where('status', 'declined')->count() * 100) / $withdrawals->count() : 0 }}%; height:18px;" role="progressbar">
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                {{-- Deposit Stats --}}
-                <div class="col-xl-12">
-                    <div class="card">
-                        <div class="card-body pb-3">
-                            <h4>Deposit Stats</h4>
-                            <p class="mb-2 d-flex  fs-16 text-black font-w500">Pending
-                                <span class="ms-auto text-dark fs-14 font-w400">{{ $deposits->where('status', 'pending')->count() . '/' . $deposits->count() }}</span>
-                            </p>
-                            <div class="progress mb-4" style="height:18px">
-                                <div class="progress-bar bg-primary progress-animated" style="width:{{ $deposits->count() > 0 ? ($deposits->where('status', 'pending')->count() * 100) / $deposits->count() : 0 }}%; height:18px;" role="progressbar">
-                                </div>
+            {{-- Deposit Stats --}}
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body pb-3">
+                        <h4>Deposit Stats</h4>
+                        <p class="mb-2 d-flex  fs-16 text-black font-w500">Pending
+                            <span class="ms-auto text-dark fs-14 font-w400">{{ $deposits->where('status', 'pending')->count() . '/' . $deposits->count() }}</span>
+                        </p>
+                        <div class="progress mb-4" style="height:18px">
+                            <div class="progress-bar bg-primary progress-animated" style="width:{{ $deposits->count() > 0 ? ($deposits->where('status', 'pending')->count() * 100) / $deposits->count() : 0 }}%; height:18px;" role="progressbar">
                             </div>
-                            <p class="mb-2 d-flex  fs-16 text-black font-w500">Active
-                                <span class="ms-auto text-dark fs-14 font-w400">{{ $deposits->where('status', 'approved')->count() . '/' . $deposits->count() }}</span>
-                            </p>
-                            <div class="progress mb-3" style="height:18px">
-                                <div class="progress-bar bg-primary progress-animated" style="width:{{ $deposits->count() > 0 ? ($deposits->where('status', 'approved')->count() * 100) / $deposits->count() : 0 }}%; height:18px;" role="progressbar">
-                                </div>
+                        </div>
+                        <p class="mb-2 d-flex  fs-16 text-black font-w500">Active
+                            <span class="ms-auto text-dark fs-14 font-w400">{{ $deposits->where('status', 'approved')->count() . '/' . $deposits->count() }}</span>
+                        </p>
+                        <div class="progress mb-3" style="height:18px">
+                            <div class="progress-bar bg-primary progress-animated" style="width:{{ $deposits->count() > 0 ? ($deposits->where('status', 'approved')->count() * 100) / $deposits->count() : 0 }}%; height:18px;" role="progressbar">
                             </div>
-                            <p class="mb-2 d-flex  fs-16 text-black font-w500">Declined
-                                <span class="ms-auto text-dark fs-14 font-w400">{{ $deposits->where('status', 'declined')->count() . '/' . $deposits->count() }}</span>
-                            </p>
-                            <div class="progress mb-3" style="height:18px">
-                                <div class="progress-bar bg-primary progress-animated" style="width:{{ $deposits->count() > 0 ? ($deposits->where('status', 'declined')->count() * 100) / $deposits->count() : 0 }}%; height:18px;" role="progressbar">
-                                </div>
+                        </div>
+                        <p class="mb-2 d-flex  fs-16 text-black font-w500">Declined
+                            <span class="ms-auto text-dark fs-14 font-w400">{{ $deposits->where('status', 'declined')->count() . '/' . $deposits->count() }}</span>
+                        </p>
+                        <div class="progress mb-3" style="height:18px">
+                            <div class="progress-bar bg-primary progress-animated" style="width:{{ $deposits->count() > 0 ? ($deposits->where('status', 'declined')->count() * 100) / $deposits->count() : 0 }}%; height:18px;" role="progressbar">
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                {{-- User Stat --}}
-                <div class="col-xl-12">
-                    <div class="card">
-                        <div class="card-body pb-3">
-                            <h4>Users Stats</h4>
-                            <p class="mb-2 d-flex  fs-16 text-black font-w500">Pending
-                                <span class="ms-auto text-dark fs-14 font-w400">{{ $users->where('status', 'pending')->count() . '/' . $users->count() }}</span>
-                            </p>
-                            <div class="progress mb-4" style="height:18px">
-                                <div class="progress-bar bg-primary progress-animated" style="width:{{ $users->count() > 0 ? ($users->where('status', 'pending')->count() * 100) / $users->count() : 0 }}%; height:18px;" role="progressbar">
-                                </div>
+            {{-- User Stat --}}
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body pb-3">
+                        <h4>Users Stats</h4>
+                        <p class="mb-2 d-flex  fs-16 text-black font-w500">Pending
+                            <span class="ms-auto text-dark fs-14 font-w400">{{ $users->where('status', 'pending')->count() . '/' . $users->count() }}</span>
+                        </p>
+                        <div class="progress mb-4" style="height:18px">
+                            <div class="progress-bar bg-primary progress-animated" style="width:{{ $users->count() > 0 ? ($users->where('status', 'pending')->count() * 100) / $users->count() : 0 }}%; height:18px;" role="progressbar">
                             </div>
-                            <p class="mb-2 d-flex  fs-16 text-black font-w500">Active
-                                <span class="ms-auto text-dark fs-14 font-w400">{{ $users->where('status', 'active')->count() . '/' . $users->count() }}</span>
-                            </p>
-                            <div class="progress mb-3" style="height:18px">
-                                <div class="progress-bar bg-primary progress-animated" style="width:{{ $users->count() > 0 ? ($users->where('status', 'active')->count() * 100) / $users->count() : 0 }}%; height:18px;" role="progressbar">
-                                </div>
+                        </div>
+                        <p class="mb-2 d-flex  fs-16 text-black font-w500">Active
+                            <span class="ms-auto text-dark fs-14 font-w400">{{ $users->where('status', 'active')->count() . '/' . $users->count() }}</span>
+                        </p>
+                        <div class="progress mb-3" style="height:18px">
+                            <div class="progress-bar bg-primary progress-animated" style="width:{{ $users->count() > 0 ? ($users->where('status', 'active')->count() * 100) / $users->count() : 0 }}%; height:18px;" role="progressbar">
                             </div>
-                            <p class="mb-2 d-flex  fs-16 text-black font-w500">Inactive
-                                <span class="ms-auto text-dark fs-14 font-w400">{{ $users->where('status', 'inactive')->count() . '/' . $users->count() }}</span>
-                            </p>
-                            <div class="progress mb-3" style="height:18px">
-                                <div class="progress-bar bg-primary progress-animated" style="width:{{ $users->count() > 0 ? ($users->where('status', 'inactive')->count() * 100) / $users->count() : 0 }}%; height:18px;" role="progressbar">
-                                </div>
+                        </div>
+                        <p class="mb-2 d-flex  fs-16 text-black font-w500">Inactive
+                            <span class="ms-auto text-dark fs-14 font-w400">{{ $users->where('status', 'inactive')->count() . '/' . $users->count() }}</span>
+                        </p>
+                        <div class="progress mb-3" style="height:18px">
+                            <div class="progress-bar bg-primary progress-animated" style="width:{{ $users->count() > 0 ? ($users->where('status', 'inactive')->count() * 100) / $users->count() : 0 }}%; height:18px;" role="progressbar">
                             </div>
-                            <p class="mb-2 d-flex  fs-16 text-black font-w500">Rejected
-                                <span class="ms-auto text-dark fs-14 font-w400">{{ $users->where('status', 'rejected')->count() . '/' . $users->count() }}</span>
-                            </p>
-                            <div class="progress mb-3" style="height:18px">
-                                <div class="progress-bar bg-primary progress-animated" style="width:{{ $users->count() > 0 ? ($users->where('status', 'rejected')->count() * 100) / $users->count() : 0 }}%; height:18px;" role="progressbar">
-                                </div>
+                        </div>
+                        <p class="mb-2 d-flex  fs-16 text-black font-w500">Rejected
+                            <span class="ms-auto text-dark fs-14 font-w400">{{ $users->where('status', 'rejected')->count() . '/' . $users->count() }}</span>
+                        </p>
+                        <div class="progress mb-3" style="height:18px">
+                            <div class="progress-bar bg-primary progress-animated" style="width:{{ $users->count() > 0 ? ($users->where('status', 'rejected')->count() * 100) / $users->count() : 0 }}%; height:18px;" role="progressbar">
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                {{-- Trade Stats --}}
-                <div class="col-xl-12">
-                    <div class="card">
-                        <div class="card-body pb-3">
-                            <h4>Trade Stats</h4>
-                            <p class="mb-2 d-flex  fs-16 text-black font-w500">Active
-                                <span class="ms-auto text-dark fs-14 font-w400">{{ $trades->where('status', 'active')->count() . '/' . $trades->count() }}</span>
-                            </p>
-                            <div class="progress mb-4" style="height:18px">
-                                <div class="progress-bar bg-primary progress-animated" style="width:{{ $trades->count() > 0 ? ($trades->where('status', 'active')->count() * 100) / $trades->count() : 0 }}%; height:18px;" role="progressbar">
-                                </div>
+            {{-- Trade Stats --}}
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body pb-3">
+                        <h4>Trade Stats</h4>
+                        <p class="mb-2 d-flex  fs-16 text-black font-w500">Active
+                            <span class="ms-auto text-dark fs-14 font-w400">{{ $trades->where('status', 'active')->count() . '/' . $trades->count() }}</span>
+                        </p>
+                        <div class="progress mb-4" style="height:18px">
+                            <div class="progress-bar bg-primary progress-animated" style="width:{{ $trades->count() > 0 ? ($trades->where('status', 'active')->count() * 100) / $trades->count() : 0 }}%; height:18px;" role="progressbar">
                             </div>
-                            <p class="mb-2 d-flex  fs-16 text-black font-w500">Closed
-                                <span class="ms-auto text-dark fs-14 font-w400">{{ $trades->where('status', 'inactive')->count() . '/' . $trades->count() }}</span>
-                            </p>
-                            <div class="progress mb-3" style="height:18px">
-                                <div class="progress-bar bg-primary progress-animated" style="width:{{ $trades->count() > 0 ? ($trades->where('status', 'inactive')->count() * 100) / $trades->count() : 0 }}%; height:18px;" role="progressbar">
-                                </div>
+                        </div>
+                        <p class="mb-2 d-flex  fs-16 text-black font-w500">Closed
+                            <span class="ms-auto text-dark fs-14 font-w400">{{ $trades->where('status', 'inactive')->count() . '/' . $trades->count() }}</span>
+                        </p>
+                        <div class="progress mb-3" style="height:18px">
+                            <div class="progress-bar bg-primary progress-animated" style="width:{{ $trades->count() > 0 ? ($trades->where('status', 'inactive')->count() * 100) / $trades->count() : 0 }}%; height:18px;" role="progressbar">
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
 
-                {{-- <div class="col-xl-12 col-md-6">
+            {{-- <div class="col-xl-12 col-md-6">
                     <div class="card">
                         <div class="card-header border-0 pb-0">
                             <h4 class="fs-20">Customer Review</h4>
@@ -527,10 +523,8 @@
                         </div>
                     </div>
                 </div> --}}
-            </div>
         </div>
     </div>
-
 </div>
 @endsection
 

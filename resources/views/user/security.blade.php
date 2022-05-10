@@ -1,73 +1,70 @@
 @extends('layouts.back')
 @section('title', 'Security')
 @section('content')
-<div class="container-fluid">
-    <div class="mb-sm-4 d-flex flex-wrap align-items-center text-head ">
-        <h3 class="mb-3 me-auto">@yield('title')</h3>
+
+<div class="row">
+    <div class="col-md-5 mx-auto">
+        <x-message />
+        <div class="card">
+            <div class="card-header">
+                <h6 class="card-title">Change Password</h6>
+            </div>
+            <div class="card-body">
+                <form action="{{route('user.security.update')}}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="">Current password</label>
+                        <input type="password" class="form-control" name="current_password">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Password</label>
+                        <input type="password" class="form-control" name="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Confirm password</label>
+                        <input type="password" class="form-control" name="password_confirmation">
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    <div class="row">
-        <div class="col-md-5 mx-auto">
-            <x-message />
-            <div class="card">
-                <div class="card-header">
-                    <h6 class="card-title">Change Password</h6>
-                </div>
-                <div class="card-body">
-                    <form action="{{route('user.security.update')}}" method="POST">
+    @if(Laravel\Fortify\Features::canManageTwoFactorAuthentication())
+    <div class="col-md-5 mx-auto">
+        <x-message />
+        <div class="card">
+            <div class="card-header">
+                <h6 class="card-title">Two Factor Authentication</h6>
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-center text-center">
+                    <form action="{{url('/user/two-factor-authentication')}}" method="POST">
                         @csrf
-                        <div class="form-group">
-                            <label for="">Current password</label>
-                            <input type="password" class="form-control" name="current_password">
+                        @if (auth()->user()->two_factor_secret)
+                        @method('DELETE')
+                        <div class="pb-3">
+                            {!! auth()->user()->twoFactorQrCodeSvg() !!}
                         </div>
-                        <div class="form-group">
-                            <label for="">Password</label>
-                            <input type="password" class="form-control" name="password">
+                        <div>
+                            <button type="button" class="btn-outline-success btn btn-sm" id="recovery-modal-launcher" data-toggle="modal" data-target="#recovery-modal">Recovery Codes</button>
+                            <button class="btn-outline-danger btn btn-sm">Disable 2FA</button>
                         </div>
-                        <div class="form-group">
-                            <label for="">Confirm password</label>
-                            <input type="password" class="form-control" name="password_confirmation">
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Update</button>
-                        </div>
+                        @else
+                        <button class="btn btn-outline-primary btn-sm align-self-center">
+                            Enable 2FA
+                        </button>
+                        @endif
                     </form>
                 </div>
             </div>
-        </div>
-        @if(Laravel\Fortify\Features::canManageTwoFactorAuthentication())
-        <div class="col-md-5 mx-auto">
-            <x-message />
-            <div class="card">
-                <div class="card-header">
-                    <h6 class="card-title">Two Factor Authentication</h6>
-                </div>
-                <div class="card-body">
-                    <div class="d-flex justify-content-center text-center">
-                        <form action="{{url('/user/two-factor-authentication')}}" method="POST">
-                            @csrf
-                            @if (auth()->user()->two_factor_secret)
-                            @method('DELETE')
-                            <div class="pb-3">
-                                {!! auth()->user()->twoFactorQrCodeSvg() !!}
-                            </div>
-                            <div>
-                                <button type="button" class="btn-outline-success btn btn-sm" id="recovery-modal-launcher" data-toggle="modal" data-target="#recovery-modal">Recovery Codes</button>
-                                <button class="btn-outline-danger btn btn-sm">Disable 2FA</button>
-                            </div>
-                            @else
-                            <button class="btn btn-outline-primary btn-sm align-self-center">
-                                Enable 2FA
-                            </button>
-                            @endif
-                        </form>
-                    </div>
-                </div>
 
-            </div>
         </div>
-        @endif
     </div>
+    @endif
 </div>
+
 @endsection
 
 @push('css')
