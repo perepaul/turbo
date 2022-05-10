@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Log;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 
 class User extends Authenticatable
@@ -19,6 +21,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $guarded = ['id'];
+
+    private $minimumTraeAmount = 50;
 
     /**
      * The attributes that should be hidden for arrays.
@@ -82,5 +86,44 @@ class User extends Authenticatable
     public function plan()
     {
         return $this->belongsTo(Plan::class);
+    }
+
+    public function scopeAutoTradeable(Builder $builder)
+    {
+        return $this->where('trade_cert', '!=', 'require')
+            ->where('trade_cert', '!=', 'uploaded')
+            ->where('balance', '>', $this->minimumTraeAmount)
+            ->where('trade_mode', '!=', 'manual')
+            ->where('status', 'active');
+    }
+
+    public function trade($currency_id, $amount, $type, $time)
+    {
+        return $this->trades()->create([
+            'reference' => generateReference(),
+            'trade_currency_id' => $currency_id,
+            'amount' => $amount,
+            'is_demo' => 'no',
+            'profit' => 0,
+            'type' => $type,
+            'time' => $time,
+        ]);
+    }
+
+    public function autoTrade()
+    {
+        $currency = TradeCurrency::inRandomOrder()->limit(1)->first();
+        $amount = rand($this->minimumTraeAmount, $this->balance);
+        $types = ['buy', 'sell'];
+        $type = $types[array_rand($types)];
+        $time =  config('app.trade_time')[array_rand(config('app.trade_time'))];
+        try {
+            if (!is_null($this->trade($currency->id, (int) $amount, $type, $time))) {
+                $this->balance -= $amount;
+                $this->save();
+            }
+        } catch (\Throwable $th) {
+            Log::error($th);
+        }
     }
 }

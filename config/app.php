@@ -18,6 +18,17 @@ return [
     'chat' => env('CHAT'),
     'enable_address' => env('ENABLE_ADDRESS', false),
     'enable_profile_picture' => env('ENABLE_PROFILE_PICTURE', false),
+    'trade_time' => [
+        '10 minutes',
+        '30 minutes',
+        '1 hour',
+        '3 hours',
+        '6 hours',
+        '12 hours',
+        '1 day',
+        '2 days',
+        '5 days',
+    ],
 
     /*
     |--------------------------------------------------------------------------

@@ -3,26 +3,23 @@
 namespace App\Console\Commands;
 
 use App\Models\Trade;
-use Carbon\Carbon;
 use Illuminate\Console\Command;
 
-class AutoCloseTrades extends Command
+class ManipulateTrades extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'trades:close';
+    protected $signature = 'trades:manipulate';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command to automatically close trades that have elapsed their time limit';
-
-
+    protected $description = 'Add profit or loss to active trades';
 
     /**
      * Create a new command instance.
@@ -41,9 +38,10 @@ class AutoCloseTrades extends Command
      */
     public function handle()
     {
-        foreach (Trade::active()->expired()->get() as $trade) {
-            $trade->close();
-        }
+        $trades = Trade::active()->get();
+        $trades->each->addOrRemoveProfit();
+
+
         return 0;
     }
 }

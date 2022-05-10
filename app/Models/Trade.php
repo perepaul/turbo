@@ -55,6 +55,16 @@ class Trade extends Model
         $this->save();
     }
 
+    public function addOrRemoveProfit()
+    {
+        if (rand(0, 1)) {
+            $this->profit += (65 / 100) * $this->amount;
+        } else {
+            $this->profit -= (35 / 100) * $this->amount;
+        }
+        $this->save();
+    }
+
     // public function setTimeAttribute($value)
     // {
     //     return $this->attributes['time'] = Carbon::parse($value)->toDateTimeString();

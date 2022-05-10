@@ -40,14 +40,10 @@
                 <div class="form-group">
                     <label for="time"><strong>Time</strong></label>
                     <select name="time" id="time" class="form-select" style="height: 3.5rem">
-                        <option value="3 minutes">3 mins.</option>
-                        <option value="5 minutes">5 mins.</option>
-                        <option value="10 minutes">10 mins.</option>
-                        <option value="30 minutes">30 mins.</option>
-                        <option value="1 hour">1 hour.</option>
-                        <option value="1 day">1 day.</option>
+                        @foreach (config('app.trade_time') as $time)
+                        <option value="{{$time}}">{{$time}}</option>
+                        @endforeach
                     </select>
-                    {{-- <input type="text" class="form-control" name="time" value="{{old('time')}}"> --}}
                     <x-error key="time" />
                 </div>
 
