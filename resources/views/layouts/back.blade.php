@@ -100,7 +100,7 @@
                                             <span class="fs-18 font-w500 text-end">{{auth()->user()->firstname}}</span>
                                             <small class="text-end fs-14 font-w400">{{auth()->user()->email}}</small>
                                         </div>
-                                        <img src="{{profile_picture()}}" width="20" alt="" />
+                                        <img src="{{profile_picture()}}" style="width: 30px; height:30px" alt="" />
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <a href="{{request()->isAdmin() ? route('admin.settings.profile.index') : route('user.profile')}}" class="dropdown-item ai-icon">

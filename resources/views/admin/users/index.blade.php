@@ -21,7 +21,7 @@ $status = ucfirst(request('status')).' Users';
             <div class="card-body">
                 <div class="row">
                     <div class="col-xl-3  col-lg-6 col-sm-12 align-items-center customers">
-                        <img class="me-sm-4 me-1 img-fluid " style="width: 30px; height:auto;" src="{{ profile_picture($user->profile) }}" alt="DexignZone">
+                        <img class="me-sm-4 me-1 img-fluid " style="width: 30px; height:30px;" src="{{ profile_picture($user->profile) }}" alt="DexignZone">
                         <div class="media-body">
                             <h3 class="fs-12 text-black font-w600">{{ $user->name }}</h3>
                             <span class="d-block mb-lg-0 mb-0 fs-12">{{ $user->created_at->format('d M, Y. G:ia') }}</span>
