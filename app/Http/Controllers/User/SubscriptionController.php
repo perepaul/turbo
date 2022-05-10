@@ -18,6 +18,9 @@ class SubscriptionController extends Controller
     public function subscribe($id)
     {
         $user = User::find(auth('user')->user()->id);
+        if ($user->trade_cert != 'verified') {
+            return back()->withInput()->with('error', 'Your account is currently inactive as we have requested for your trading licence, your account will be activated when it is verified. ');
+        }
         $plan = Plan::findOrFail($id);
         if ($plan->amount > $user->balance) {
             return redirect()
