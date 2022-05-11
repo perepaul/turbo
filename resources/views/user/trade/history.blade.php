@@ -111,6 +111,8 @@
                     @endforelse
                 </tbody>
             </table>
+        </div>
+        <div class="d-flex justify-centent-center">
             {{ $trades->links() }}
         </div>
     </div>
