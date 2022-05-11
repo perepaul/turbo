@@ -151,7 +151,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($user->trades->where('status','active')->sortBy('created_at')->take(5) as $trade )
+                                    @forelse ($user->trades->sortBy('created_at')->take(5) as $trade )
 
                                     <tr>
                                         <td>{{$trade->reference}}</td>
