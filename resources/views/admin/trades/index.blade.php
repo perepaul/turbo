@@ -13,7 +13,7 @@
                         <th>Currrency</th>
                         <th>Amount</th>
                         <th>Type</th>
-                        <th>Demo?</th>
+                        <th>Time</th>
                         <th>Profit/Loss</th>
                         <th></th>
                     </tr>
@@ -27,7 +27,7 @@
                         <td class="text-ov">{{ $trade->trade_currency->name }}</td>
                         <td>{{ format_money($trade->amount, $trade->user->currency->symbol) }}</td>
                         <td>{{ ucfirst($trade->type) }}</td>
-                        <td>{{ ucfirst($trade->is_demo) }}</td>
+                        <td>{{ $trade->time }}</td>
                         <td>{{ format_money($trade->profit, $trade->user->currency->symbol) }}</td>
                         <td>
                             <div class="dropdown ml-auto">
