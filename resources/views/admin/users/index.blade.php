@@ -78,10 +78,12 @@ $status = ucfirst(request('status')).' Users';
                                     <i class="fa fa-eye"></i> Request Trade Cert</a>
                                 @else
                                 @if($user->trade_cert == 'uploaded' && !is_null($user->cert))
-                                <a class="dropdown-item" href="{{asset('uploads/certs/'.$user->cert)}}" target="_blank">
-                                    <i class="fa fa-eye"></i> View Trade Cert</a>
                                 <a class="dropdown-item" href="{{route('admin.users.verify-trade-cert',$user->id)}}">
                                     <i class="fa fa-eye"></i> Verify Trade Cert</a>
+                                @endif
+                                @if(in_array($user->trade_cert,['uploaded','verified']))
+                                <a class="dropdown-item" href="{{asset('uploads/certs/'.$user->cert)}}" target="_blank">
+                                    <i class="fa fa-eye"></i> View Trade Cert</a>
                                 @endif
                                 @endif
                                 <a class="dropdown-item" href="{{ route('admin.users.edit', $user->id) }}">

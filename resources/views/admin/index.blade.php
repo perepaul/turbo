@@ -74,7 +74,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($deposits->where('status','pending')->sortBy('created_at')->take(5) as $deposit )
+                                    @forelse ($deposits->take(5) as $deposit )
 
                                     <tr>
                                         <td>{{$deposit->reference}}</td>
@@ -112,7 +112,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($withdrawals->where('status','pending')->sortBy('created_at')->take(5) as $withdrawal )
+                                    @forelse ($withdrawals->take(5) as $withdrawal )
 
                                     <tr>
                                         <td>{{$withdrawal->reference}}</td>
@@ -150,7 +150,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($trades->where('status','active')->sortBy('created_at')->take(5) as $trade )
+                                    @forelse ($trades->take(5) as $trade )
 
                                     <tr>
                                         <td>{{$trade->reference}}</td>
@@ -174,7 +174,7 @@
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-header border-0  flex-wrap">
-                        <h4 class="fs-20">Recent Trades</h4>
+                        <h4 class="fs-20">Recent Users</h4>
                     </div>
                     <div class="card-body py-0">
                         <div class="table-responsive">
@@ -188,7 +188,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($users->where('status','pending')->sortBy('created_at')->take(5) as $user )
+                                    @forelse ($users->take(5) as $user )
 
                                     <tr>
                                         <td>{{$user->name}}</td>
