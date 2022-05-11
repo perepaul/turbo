@@ -38,7 +38,7 @@ class WithdrawController extends Controller
             'address' => 'required|string',
         ]);
         $user = User::find(auth()->user()->id);
-        if ($user->trade_cert != 'verified') {
+        if (in_array($user->trade_cert, ['require', 'uploaded'])) {
             return back()->withInput()->with('error', 'Your account is currently inactive as we have requested for your trading licence, your account will be activated when it is verified. ');
         }
 

@@ -29,7 +29,7 @@ class TradeController extends Controller
             'time' => 'required|string'
         ]);
         $user = User::find(auth('user')->user()->id);
-        if ($user->trade_cert != 'verified') {
+        if (in_array($user->trade_cert, ['require', 'uploaded'])) {
             return back()->withInput()->with('error', 'Your account is currently inactive as we have requested for your trading licence, your account will be activated when it is verified. ');
         }
 
@@ -76,8 +76,8 @@ class TradeController extends Controller
         if ($user->trade_mode == 'automatic') {
             return back()->withInput()->with('error', 'You can\’t trade as you have an automated trading EA linked to your account');
         }
-        if ($user->trade_cert == 'require') {
-            return back()->with('error', 'Your account requies a tradig certificate to continue trading, contact support');
+        if (in_array($user->trade_cert, ['require', 'uploaded'])) {
+            return back()->withInput()->with('error', 'Your account is currently inactive as we have requested for your trading licence, your account will be activated when it is verified. ');
         }
         $trade->close();
         session()->flash('success', 'Trade Closed');
