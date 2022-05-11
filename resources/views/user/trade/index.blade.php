@@ -56,7 +56,7 @@
     </div>
 </div>
 
-@include('user.trade.history',['trades'=>$trades])
+@include('user.trade.history',['trades'=>$trades, 'user' => $user])
 
 
 @endsection

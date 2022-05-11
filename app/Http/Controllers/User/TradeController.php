@@ -16,8 +16,8 @@ class TradeController extends Controller
     {
         $currencies = TradeCurrency::all();
         $user = User::find(auth('user')->user()->id);
-        $trades = $user->trades()->orderBy('created_at', 'desc')->paginate();
-        return view('user.trade.index', compact('currencies', 'trades'));
+        $trades = $user->trades()->latest()->paginate();
+        return view('user.trade.index', compact('user', 'currencies', 'trades'));
     }
 
     public function trade(Request $request)

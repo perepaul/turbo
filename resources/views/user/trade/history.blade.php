@@ -14,7 +14,7 @@
                         <i class="fas fa-user text-white bg-primary"></i>
                     </div>
                     <div class="ms-4 customer">
-                        <h2 class="mb-0  font-w600">{{ $trades->count() }}</h2>
+                        <h2 class="mb-0  font-w600">{{ $user->trades->count() }}</h2>
                         <p class="mb-0 font-w500">Total Trades</p>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                     </div>
                     <div class="ms-4 customer">
                         <h5 class="mb-0  font-w600">
-                            {{ format_money($trades->where('status', 'active')->where('is_demo', 'no')->sum('amount') + $trades->where('status', 'active')->where('is_demo', 'no')->sum('profit')) }}
+                            {{ format_money($user->trades->where('status', 'active')->where('is_demo', 'no')->sum('amount') + $user->trades->where('status', 'active')->where('is_demo', 'no')->sum('profit')) }}
                         </h5>
                         <p class="mb-0  font-w300">Estimated returns</p>
                     </div>

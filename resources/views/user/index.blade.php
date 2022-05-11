@@ -216,7 +216,7 @@
                             <div class="progress-bar bg-primary progress-animated" style="width:{{ $user->deposits->count() > 0 ? ($user->deposits->where('status', 'pending')->count() * 100) / $user->deposits->count() : 0 }}%; height:18px;" role="progressbar">
                             </div>
                         </div>
-                        <p class="mb-2 d-flex  fs-16 text-black font-w500">Active
+                        <p class="mb-2 d-flex  fs-16 text-black font-w500">Approved
                             <span class="ms-auto text-dark fs-14 font-w400">{{ $user->deposits->where('status', 'approved')->count() . '/' . $user->deposits->count() }}</span>
                         </p>
                         <div class="progress mb-3" style="height:18px">
