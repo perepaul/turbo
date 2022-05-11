@@ -6,7 +6,7 @@
         <h2 class="mb-3 me-auto">@yield('title')</h2>
     </div> --}}
 <div class="row">
-    <div class="col-xl-3 col-md-6">
+    <div class="col-xl-3 col-sm-6">
         <div class="card">
             <div class="card-body">
                 <div class="d-flex align-items-center">
@@ -21,7 +21,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-md-6">
+    <div class="col-xl-3 col-sm-6">
         <div class="card">
             <div class="card-body">
                 <div class="d-flex align-items-center">
@@ -42,17 +42,13 @@
         <div class="card">
             <div class="card-body">
                 <div class="row order-card text-center">
-                    <div class="col-4 customer">
+                    <div class="col-6 customer">
                         <h2 class="mb-0  font-w600">{{ $trades->where('status', 'active')->count() }}</h2>
                         <p class="mb-0 font-w500">Active</p>
                     </div>
-                    <div class="col-4 customer">
+                    <div class="col-6">
                         <h2 class="mb-0 font-w600">{{ $trades->where('status', 'inactive')->count() }}</h2>
                         <p class="mb-0  font-w500">Inactive</p>
-                    </div>
-                    <div class="col-4 border-0 customer">
-                        <h2 class="mb-0 font-w600">{{ $trades->where('is_demo', 'yes')->count() }}</h2>
-                        <p class="mb-0 font-w500">Demo</p>
                     </div>
                 </div>
             </div>
@@ -70,7 +66,6 @@
                         <th>Currrency</th>
                         <th>Amount</th>
                         <th>Type</th>
-                        <th>Demo?</th>
                         <th>Profit/Loss</th>
                         <th>Status</th>
                         <th></th>
@@ -85,7 +80,6 @@
                         <td class="text-ov">{{ $trade?->trade_currency?->name }}</td>
                         <td>{{ format_money($trade->amount, $trade?->user?->currency?->symbol) }}</td>
                         <td>{{ ucfirst($trade->type) }}</td>
-                        <td>{{ ucfirst($trade->is_demo) }}</td>
                         <td>{{ format_money($trade->profit, $trade?->user?->currency?->symbol) }}</td>
                         <td><span class="badge badge-outline-{{$trade->status == 'active' ? 'success' : 'danger'}}">{{$trade->status == 'active' ? 'Open' : 'Closed'}}</span></td>
                         <td>
