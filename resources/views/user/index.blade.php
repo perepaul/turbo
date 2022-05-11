@@ -20,7 +20,7 @@
             <div class="card-body d-flex align-items-center justify-content-between">
                 <div class="card-data me-2">
                     <h5>Investment Profit</h5>
-                    <h6 class="fs-40 font-w600">{{ format_money($user->demo_balance) }}</h6>
+                    <h6 class="fs-40 font-w600">{{ format_money($user->trades()->where('status','active')->sum('profit')) }}</h6>
                 </div>
                 <div><span class="donut1" data-peity='{ "fill": ["rgb(255, 135, 35,1)", "rgba(242, 246, 252)"]}'>1</span>
                 </div>
