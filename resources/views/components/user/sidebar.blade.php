@@ -54,6 +54,9 @@
     </a>
     <ul aria-expanded="false">
         <li><a href="{{route('user.profile')}}">Profile</a></li>
+        <li><a href="{{route('user.security.password')}}">Change password</a></li>
+        <li><a href="{{route('user.security.two-factor')}}">2FA</a></li>
+        <li><a href="{{route('user.security.sessions')}}">Active Sessions</a></li>
         <li><a href="{{route('user.kyc.index')}}">KYC</a></li>
         <li><a href="{{route('user.subscriptions')}}">Subscriptions</a></li>
         {{--

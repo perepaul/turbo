@@ -56,8 +56,14 @@ Route::middleware(['active', 'subscribed'])->group(function () {
     Route::get('profile', [ProfileController::class, 'profile'])->name('profile');
     Route::post('profile/update', [ProfileController::class, 'updateProfile'])->name('profile.update');
 
-    Route::get('security', [ProfileController::class, 'security'])->name('security');
-    Route::post('security/update', [ProfileController::class, 'updateSecurity'])->name('security.update');
+    Route::prefix('secuirty')->as('security.')->group(function () {
+        Route::get('password', [ProfileController::class, 'password'])->name('password');
+        Route::post('password/update', [ProfileController::class, 'updatePassword'])->name('password.update');
+
+        Route::get('two-factor', [ProfileController::class, 'twoFactor'])->name('two-factor');
+
+        Route::get('sessions', [ProfileController::class, 'sessions'])->name('sessions');
+    });
 
     Route::get('preference', [ProfileController::class, 'preference'])->name('preference');
     Route::post('preference/update', [ProfileController::class, 'preferenceSecurity'])->name('preference.update');

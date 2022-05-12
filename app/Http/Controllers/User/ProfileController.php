@@ -46,12 +46,12 @@ class ProfileController extends Controller
         return redirect()->back();
     }
 
-    public function security()
+    public function password()
     {
-        return view('user.security');
+        return view('user.password');
     }
 
-    public function updateSecurity(Request $request)
+    public function updatePassword(Request $request)
     {
         $request->validate([
             'current_password' => 'required|string',
@@ -70,6 +70,16 @@ class ProfileController extends Controller
         $user->password = $request->password;
         $user->save();
         session()->flash('success', 'Password changed successfully');
+    }
+
+    public function twoFactor()
+    {
+        return view('user.two-factor');
+    }
+
+    public function sessions()
+    {
+        return view('user.sessions');
     }
 
     public function preference()
