@@ -4,7 +4,7 @@
 
 <div class="row">
     @if(Laravel\Fortify\Features::canManageTwoFactorAuthentication())
-    <div class="col-md-4 mx-auto">
+    <div class="col-md-5 mx-auto">
         <x-message />
         <div class="card">
             <div class="card-body">
@@ -16,10 +16,16 @@
                         <div class="my-4">
                             {!! auth()->user()->twoFactorQrCodeSvg() !!}
                         </div>
-                        <div class="">
+                        <p>scan the qrcode above with google authenticator or use the key below to set up.</p>
+                        <strong>{{decrypt(auth()->user()->two_factor_secret)}}</strong>
+                        <div class="my-4">
                             <button type="button" class="btn-outline-success btn btn-sm" id="recovery-modal-launcher" data-toggle="modal" data-target="#recovery-modal">Recovery Codes</button>
                             <button class="btn-outline-danger btn btn-sm">Disable 2FA</button>
                         </div>
+                        <hr>
+                        <p style="text-align: justify">
+                            PS, click on the recovery codes button see your recovery codes.Copy and save your codes in securly, as it can be used to reset your Two Factor Authentication status.
+                        </p>
                         @else
                         <button class="btn btn-outline-primary btn-sm align-self-center my-5">
                             Enable 2FA
