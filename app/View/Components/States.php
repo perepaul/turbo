@@ -7,22 +7,20 @@ use Illuminate\View\Component;
 
 class States extends Component
 {
-    public $country_id, $states;
+    public $states;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($id)
+    public function __construct(public $country)
     {
-        $this->country_id = $id;
         $this->getStates();
     }
 
     public function getStates()
     {
-        $helper = new CountryHelper();
-        $this->states = $helper->states($this->country_id)->toArray();
+        $this->states = (new CountryHelper)->states($this->country);
     }
 
     /**

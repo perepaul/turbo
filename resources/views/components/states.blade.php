@@ -1,3 +1,3 @@
 @foreach ($states as $state)
-<option value="{{$state['iso2']}}">{{$state['name']}}</option>
+<option value="{{$state}}">{{$state}}</option>
 @endforeach

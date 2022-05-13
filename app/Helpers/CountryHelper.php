@@ -6,56 +6,39 @@ use Illuminate\Support\Facades\Http;
 
 class CountryHelper
 {
+    private $country_file = 'countries.json';
+    protected $countries;
 
-    private $api = array(
-        'X-CSCAPI-KEY' => 'ZlY5RFMySUhMaHF6NE1RT2dzUFJIekRvM1ZUZHZxZ1o5cXlERnlSdQ== ',
-    );
-
-    private $base_url = 'https://api.countrystatecity.in/v1/';
-
-    public $body = [];
+    public function __construct()
+    {
+        $this->countries = $this->parseContries();
+    }
 
     public function countries()
     {
-        return $this->processRequest('countries');
+        $countries = [];
+        foreach ($this->countries as $country) {
+            array_push($countries, $country['name']);
+        }
+        return $countries;
     }
 
-    public function country($iso = 'US')
+    public function states($selected)
     {
-        return $this->processRequest("countries/{$iso}");
+        $states = [];
+        foreach ($this->countries as $country) {
+            if ($country['name'] == $selected) {
+                foreach ($country['states'] as $state) {
+                    array_push($states, $state['name']);
+                }
+            }
+        }
+        return $states;
     }
 
-    public function states($iso = 'US')
+    private function parseContries()
     {
-
-        return $this->processRequest("countries/{$iso}/states");
-    }
-
-    public function state($ciso,$siso)
-    {
-        return $this->processRequest("countries/{$ciso}/states/{$siso}");
-    }
-
-    public function cities($ciso = 'NG', $siso = 'DE')
-    {
-        return $this->processRequest("countries/{$ciso}/states/{$siso}/cities");
-    }
-
-    private function processRequest($url)
-    {
-        $response =  Http::withHeaders($this->api)->get($this->buildUrl($url));
-        $this->body = $response->body();
-        return $this;
-    }
-
-    private function buildUrl($path)
-    {
-        return $this->base_url . $path;
-    }
-
-    public function toArray()
-    {
-        $bodyData = get_object_vars($this)['body'];
-        return json_decode($bodyData,true);
+        $contents = file_get_contents(public_path($this->country_file));
+        return json_decode($contents, true);
     }
 }
