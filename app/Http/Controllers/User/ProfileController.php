@@ -79,7 +79,7 @@ class ProfileController extends Controller
 
     public function sessions()
     {
-        return view('user.sessions');
+        return view('user.sessions', ['user' => User::findOrFail(auth()->user()->id)->load('devices')]);
     }
 
     public function preference()

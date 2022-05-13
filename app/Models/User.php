@@ -88,6 +88,11 @@ class User extends Authenticatable
         return $this->belongsTo(Plan::class);
     }
 
+    public function devices()
+    {
+        return $this->hasMany(Device::class);
+    }
+
     public function scopeAutoTradeable(Builder $builder)
     {
         return $this->where('trade_cert', 'verified')
