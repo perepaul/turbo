@@ -118,7 +118,7 @@ class User extends Authenticatable
     public function autoTrade()
     {
         $currency = TradeCurrency::inRandomOrder()->limit(1)->first();
-        $maxTradeAmount = $this->balance > 500 ? 500 : $this->balance;
+        $maxTradeAmount = $this->invested_balance > 500 ? 700 : $this->invested_balance;
         $amount = rand($this->minimumTradeAmount, $this->maxTradeAmount);
         $types = ['buy', 'sell'];
         $type = $types[array_rand($types)];

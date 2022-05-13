@@ -13,7 +13,7 @@
                         <tr>
                             <th class="fs-16">Name</th>
                             <th class="fs-16">Type</th>
-                            <th class="fs-16">Operating system</th>
+                            <th class="fs-16">Platform</th>
                             <th class="fs-16">IP Address</th>
                             <th class="fs-16">Country</th>
                             <th class="fs-16">Region</th>
@@ -23,7 +23,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($user->devices as $device)
+                        @foreach ($user->devices()->latest()->get() as $device)
                         <tr>
                             <td class="fs-14">{{$device->name}}</td>
                             <td class="fs-14">{{$device->type}}</td>
@@ -35,9 +35,9 @@
                             <td class="fs-14">{{$device->last_login->diffForHumans()}}</td>
                             <td class="fs-14">
                                 @if($device->isActive())
-                                no logout
+                                <span class="text-info">This Device</span>
                                 @else
-                                logout
+                                <button class="btn btn-outline-danger btn-sm">Logout</button>
                                 @endif
                             </td>
                         </tr>

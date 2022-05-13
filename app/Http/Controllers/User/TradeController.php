@@ -46,7 +46,7 @@ class TradeController extends Controller
         $user->trades()->create([
             'trade_currency_id' => $request->currency,
             'amount' => $request->amount,
-            'is_demo' => $request->payment_method == 'demo_balance' ? 'yes' : 'no',
+            'is_demo' => 'no',
             'reference' => generateReference(),
             'profit' => 0,
             'type' => strtolower($request->type),

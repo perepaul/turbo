@@ -29,6 +29,7 @@ class SubscriptionController extends Controller
         }
 
         $user->balance -= $plan->amount;
+        $user->invested_balance += $plan->amount;
         $user->plan_id = $id;
         $user->demo_balance = $user->demo_balance;
         $user->save();

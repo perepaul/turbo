@@ -19,6 +19,6 @@ class Device extends Model
         $name = Browser::browserName();
         $type = Browser::deviceType();
         $os = Browser::platformName();
-        return $this->name = $name && $this->os = $os && $this->type = $type;
+        return $this->name === $name && $this->os === $os && $this->type === $type;
     }
 }
