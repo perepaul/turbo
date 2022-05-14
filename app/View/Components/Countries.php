@@ -15,7 +15,6 @@ class Countries extends Component
      */
     public function __construct(public $country = null)
     {
-        $this->country = $country;
         $this->getCountries();
     }
 
@@ -30,7 +29,7 @@ class Countries extends Component
         return view('components.countries');
     }
 
-    public function getCountries()
+    private function getCountries()
     {
         $this->countries =  (new CountryHelper)->countries();
     }

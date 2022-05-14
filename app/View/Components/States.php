@@ -13,14 +13,16 @@ class States extends Component
      *
      * @return void
      */
-    public function __construct(public $country)
+    public function __construct(public $country = null, public $selected = null)
     {
         $this->getStates();
     }
 
     public function getStates()
     {
-        $this->states = (new CountryHelper)->states($this->country);
+        $this->states = !is_null($this->country)
+            ?   (new CountryHelper)->states($this->country)
+            : [];
     }
 
     /**

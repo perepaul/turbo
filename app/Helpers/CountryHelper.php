@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class CountryHelper
 {
@@ -23,12 +24,12 @@ class CountryHelper
         return $countries;
     }
 
-    public function states($selected)
+    public function states($country)
     {
         $states = [];
-        foreach ($this->countries as $country) {
-            if ($country['name'] == $selected) {
-                foreach ($country['states'] as $state) {
+        foreach ($this->countries as $c) {
+            if ($c['name'] == $country) {
+                foreach ($c['states'] as $state) {
                     array_push($states, $state['name']);
                 }
             }

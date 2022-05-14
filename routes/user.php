@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\User\ActivationController;
 use App\Http\Controllers\User\Dashboard;
 use App\Http\Controllers\User\DepositController;
@@ -21,6 +22,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // Route::namespace('User')->group(function(){
+
+Route::get('get-states', [LocationController::class, 'getStates']);
+
 Route::as('activation.')->prefix('activation')->group(function () {
     Route::get('step-one', [ActivationController::class, 'stepOne'])->name('step.one');
     Route::post('step-one', [ActivationController::class, 'storeStepOne'])->name('store.step.one');

@@ -17,7 +17,10 @@ use App\Http\Controllers\Admin\TradeCurrencyController;
 use App\Http\Controllers\Admin\AccountCurrencyController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\MethodController;
+use App\Http\Controllers\LocationController;
 use App\Models\Withdrawal;
+use App\View\Components\States;
+use Illuminate\Support\Facades\Blade;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,18 +33,10 @@ use App\Models\Withdrawal;
 |
 */
 
-Route::get('/states', function (Request $request) {
-    $helper = new CountryHelper();
-    $states = $helper->states($request->country_id)->toArray();
-    $html = view()->make('components.states', ['id' => $request->country_id, 'states' => $states])->render();
-    return response()->json(['data' => $html]);
-})->name('state');
-Route::get('/cities', function (Request $request) {
-    $helper = new CountryHelper();
-    $cities = $helper->cities($request->country_id, $request->state_id)->toArray();
-    $html = view()->make('components.city', compact('cities'))->render();
-    return response()->json(['data' => $html]);
-})->name('city');
+
+
+Route::get('/get-states', [LocationController::class, 'getStates'])->name('state');
+
 
 Route::get('feature-field', function () {
     $view = view('includes.back.feature-field')->render();

@@ -293,7 +293,7 @@
                                                 <div class="form-group col-md-5">
                                                     <label for="">Account Currency</label>
                                                     <select name="prefered_account_currency" id="prefered_account_currency" class="form-select">
-                                                        <option value="">Select Country</option>
+                                                        <option value="">Select Currency</option>
                                                         @foreach ($currencies as $currency)
                                                         <option @if ($currency->id == $user->currency_id) selected="selected" @endif value="{{$currency->id}}">{{$currency->name}}</option>
                                                         @endforeach
@@ -311,8 +311,10 @@
                                                 </div>
 
                                                 <div class="mb-3 col-md-6">
-                                                    <label class="form-label">State</label>
-                                                    <input type="text" class="form-control" name="state" value="{{$user->state}}">
+                                                    <label class="form-label">State/Region</label>
+                                                    <select name="state" id="state" class="form-select">
+                                                        <x-states selected="{{$user->state}}" country="{{$user->country}}" />
+                                                    </select>
                                                     <x-error key="state" />
                                                 </div>
                                                 <div class="mb-3 col-md-6">
