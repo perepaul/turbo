@@ -53,6 +53,9 @@ class Trade extends Model
         $user->save();
         $this->status = 'inactive';
         $this->save();
+        if ($this->profit == 0) {
+            $this->addOrRemoveProfit();
+        }
     }
 
     public function addOrRemoveProfit()
