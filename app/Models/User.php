@@ -48,10 +48,10 @@ class User extends Authenticatable
         return $this->status == $value;
     }
 
-    public function setPasswordAttribute($value)
-    {
-        return $this->attributes['password'] = bcrypt($value);
-    }
+    // public function setPasswordAttribute($value)
+    // {
+    //     return $this->attributes['password'] = bcrypt($value);
+    // }
 
     public function getNameAttribute()
     {

@@ -24,7 +24,7 @@
                         </div>
                         <hr>
                         <p style="text-align: justify">
-                            PS, click on the recovery codes button see your recovery codes.Copy and save your codes in securly, as it can be used to reset your Two Factor Authentication status.
+                            Please click on the recovery codes button to see your recovery codes. Copy and save your codes securely, as it can be used to reset your two factor authentication status.
                         </p>
                         @else
                         <button class="btn btn-outline-primary btn-sm align-self-center my-5">
