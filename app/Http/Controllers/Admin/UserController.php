@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\AccountVerifiedMailable;
+use App\Mail\TradeCertMailable;
 
 class UserController extends Controller
 {
@@ -140,6 +141,7 @@ class UserController extends Controller
         $user->trade_cert = 'require';
         $user->save();
         session()->flash('success', 'requested for user trading certificate');
+        Mail::to($user)->send(new TradeCertMailable());
         return back();
     }
 
