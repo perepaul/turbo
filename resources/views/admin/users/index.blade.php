@@ -89,12 +89,12 @@ $status = ucfirst(request('status')).' Users';
                                 <a class="dropdown-item" href="{{ route('admin.users.edit', $user->id) }}">
                                     <i class="fa fa-edit"></i> Edit</a>
                                 <a class="dropdown-item" href="{{ route('admin.users.login-as', $user->id) }}" target="_blank"> <i class="fa fa-lock"></i> Login as</a>
-                                <form action="{{ route('admin.users.delete', $user->id) }}" method="POST">
+                                <form action="{{ route('admin.users.delete', $user->id) }}" method="POST" id="deleteForm{{$user->id}}">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="dropdown-item" href="{{ route('admin.users.delete', $user->id) }}">
-                                        <i class="fa fa-trash"></i> Delete</button>
                                 </form>
+                                <button class="dropdown-item deleteUser" data-form-id="deleteForm{{$user->id}}">
+                                    <i class="fa fa-trash"></i> Delete</button>
                             </div>
                         </div>
 
@@ -116,3 +116,41 @@ $status = ucfirst(request('status')).' Users';
     {{ $users->links() }}
 </div>
 @endsection
+
+@push('modals')
+
+<div class="modal fade" id="confirmDelete" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Are you sure?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <p>Are you sure you want to delete this user?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary light" data-bs-dismiss="modal">Nevermind</button>
+                <button type="button" class="btn btn-danger" id="deleteUser">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+@endpush
+
+@push('js')
+<script>
+    $(document).on('click','.deleteUser', e => {
+        console.log(e)
+        let formId = $(e.currentTarget).attr('data-form-id');
+        $('#deleteUser').attr('data-form-id',formId);
+        $('#confirmDelete').modal('show');
+    })
+
+    $(document).on('click','#deleteUser', e => {
+        let formId = $('#deleteUser').attr('data-form-id');
+        $(`#${formId}`).submit();
+    })
+</script>
+@endpush
