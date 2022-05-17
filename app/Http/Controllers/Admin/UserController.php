@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\Account\Activated;
+use App\Events\Account\Declined;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AccountVerifiedMailable;
 
 class UserController extends Controller
 {
@@ -42,9 +46,21 @@ class UserController extends Controller
         $user = User::find($id);
         $user->status = $request->status;
         $user->save();
+        $this->sendStatusNotification($user);
         session('success', 'Status updated successfully');
         return back();
     }
+
+    private function sendStatusNotification(User $user)
+    {
+        if ($user->status == 'active') {
+            event(new Activated($user));
+        } elseif ($user->status == 'rejected') {
+            event(new Declined($user));
+        }
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
