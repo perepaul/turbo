@@ -1,11 +1,11 @@
 @extends('layouts.back')
-@section('title','KYC')
+@section('title','Know Your Customer (KYC)')
 @section('content')
 <div class="row">
     <div class="col-md-5">
         <div class="card">
             <div class="card-header">
-                <h6 class="card-title">Kyc Status</h6>
+                <h6 class="card-title">Verification Status</h6>
             </div>
             <div class="card-body">
                 <p><strong class="pr-3 w-100">Account Status:</strong> <span class="text-success">Active</span></p>
