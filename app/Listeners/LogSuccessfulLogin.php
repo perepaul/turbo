@@ -7,6 +7,7 @@ use App\Models\Device;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use hisorange\BrowserDetect\Parser as Browser;
@@ -34,7 +35,6 @@ class LogSuccessfulLogin
         if (Request::isAdmin()) return;
         $user = User::findOrFail(auth()->user()->id);
         $ipInfo = request()->ipinfo;
-        Log::info($ipInfo->all);
         if (is_null($ipInfo)) return;
         $browserName = Browser::browserName();
         $browserType = Browser::deviceType();
@@ -52,6 +52,7 @@ class LogSuccessfulLogin
             $device->region = $ipInfo->region;
             $device->city = $ipInfo->city;
             $device->last_login = now()->toDateTimeString();
+            $device->session_id = Session::driver()->getId();
             $device->save();
             return;
         }
@@ -61,6 +62,7 @@ class LogSuccessfulLogin
         $device->region = $ipInfo->region;
         $device->city = $ipInfo->city;
         $device->last_login = now()->toDateTimeString();
+        $device->session_id = Session::driver()->getId();
         $device->save();
         return;
     }

@@ -6,6 +6,7 @@ use App\Http\Controllers\User\Dashboard;
 use App\Http\Controllers\User\DepositController;
 use App\Http\Controllers\User\KycController;
 use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\User\SessionController;
 use App\Http\Controllers\User\SubscriptionController;
 use App\Http\Controllers\User\TradeController;
 use App\Http\Controllers\User\WithdrawController;
@@ -65,8 +66,9 @@ Route::middleware(['active', 'subscribed'])->group(function () {
         Route::post('password/update', [ProfileController::class, 'updatePassword'])->name('password.update');
 
         Route::get('two-factor', [ProfileController::class, 'twoFactor'])->name('two-factor');
-
-        Route::get('sessions', [ProfileController::class, 'sessions'])->name('sessions');
+        Route::get('sessions', [SessionController::class, 'sessions'])->name('sessions');
+        Route::post('sessions/logout-others', [SessionController::class, 'logoutOtherDevices'])->name('session.logout-others');
+        Route::post('sessions/{id}/logout', [SessionController::class, 'logout'])->name('session.logout');
     });
 
     Route::get('preference', [ProfileController::class, 'preference'])->name('preference');

@@ -77,11 +77,6 @@ class ProfileController extends Controller
         return view('user.two-factor');
     }
 
-    public function sessions()
-    {
-        return view('user.sessions', ['user' => User::findOrFail(auth()->user()->id)->load('devices')]);
-    }
-
     public function preference()
     {
         $currencies = Currency::all();
