@@ -67,7 +67,7 @@ class ProfileController extends Controller
             session()->flash('error', 'Old password detected');
             return redirect()->back()->withInput();
         }
-        $user->password = $request->password;
+        $user->password = Hash::make($request->password);
         $user->save();
         session()->flash('success', 'Password changed successfully');
     }
