@@ -439,7 +439,7 @@
                         <dt class="wave wow fadeInUp" data-wow-delay="0.5s">How do I make a withdrawal?</dt>
                         <dd>
                             <p>
-                                Log into your account, go to the withdrawal section, input amount and the withdrawal method you prefer.
+                                Log into your account, go to the withdrawal section, input amount and the withdrawal method you prefer. (Withdrawals are only payable to the account type used in making deposit).
 
                                 <strong>Note</strong> bonuses can't be withdrawn without an available balance.
                             </p>
