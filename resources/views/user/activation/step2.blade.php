@@ -2,6 +2,14 @@
 @section('title', 'Step 2')
 
 @section('content')
+@if (auth('user')->user()->statusIs('rejected'))
+<div class="text-center">
+    <p>
+        The information provided for your account verification could not be processed, so your account was rejected, contact us on our live chat or send us an email to <a class="text-primary" href="mailto:{{'support@'.config('domain.base')}}">{{'support@'.config('domain.base')}}</a>
+    </p>
+</div>
+@else
+
 @if(config('app.need_address'))
 <h6 class="text-center mb-1">@yield('title') of 2</h6>
 @endif
@@ -84,6 +92,8 @@
         <button type="submit" class="btn btn-primary">Finish <i class="fa fa-check"></i></button>
     </div>
 </form>
+
+@endif
 @endsection
 
 @push('js')
