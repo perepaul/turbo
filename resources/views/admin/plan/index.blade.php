@@ -17,7 +17,8 @@
                                     <th>Name</th>
                                     <th>Amount</th>
                                     <th>Bonus</th>
-                                    <th>Demo</th>
+                                    <th>Referral COMM.</th>
+                                    <th>Trade tenure</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -27,7 +28,8 @@
                                     <td>{{ $plan->name }}</td>
                                     <td>{{ $plan->amount }}</td>
                                     <td>{{ $plan->bonus }}</td>
-                                    <td>{{ $plan->demo_balance }}</td>
+                                    <td>{{ $plan->referral_commission }}%</td>
+                                    <td>{{ $plan->trade_tenure }} days</td>
                                     <td>
                                         <form action="{{ route('admin.plan.destroy', $plan->id) }}" method="post">
                                             @csrf

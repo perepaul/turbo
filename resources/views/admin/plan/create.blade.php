@@ -13,22 +13,27 @@
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" class="form-control" value="{{old('name')}}">
-                            <x-error :key="'name'" />
+                            <x-error key="name" />
                         </div>
                         <div class="form-group">
                             <label for="amount">Minimum Deposit Amount</label>
                             <input type="text" id="amount" name="amount" class="form-control" value="{{old('amount')}}">
-                            <x-error :key="'amount'" />
+                            <x-error key="amount" />
                         </div>
                         <div class="form-group">
                             <label for="bonus">Topup Bonus</label>
                             <input type="text" id="bonus" name="bonus" class="form-control" value="{{old('bonus')}}">
-                            <x-error :key="'bonus'" />
+                            <x-error key="bonus" />
                         </div>
                         <div class="form-group">
-                            <label for="demo_balance">Demo Balance</label>
-                            <input type="text" id="demo_balance" name="demo_balance" class="form-control" value="{{old('demo_balance')}}">
-                            <x-error :key="'demo_balance'" />
+                            <label for="referral_commission">Referral Commission (%)</label>
+                            <input type="text" id="referral_commission" name="referral_commission" class="form-control" value="{{old('referral_commission')}}">
+                            <x-error key="referral_commission" />
+                        </div>
+                        <div class="form-group">
+                            <label for="trade_tenure">Trade Tenure (days)</label>
+                            <input type="text" id="trade_tenure" name="trade_tenure" class="form-control" value="{{old('trade_tenure')}}">
+                            <x-error key="trade_tenure" />
                         </div>
                     </div>
                     <div class="col-md-5">

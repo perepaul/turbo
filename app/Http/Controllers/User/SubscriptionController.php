@@ -31,7 +31,7 @@ class SubscriptionController extends Controller
         $user->balance -= $plan->amount;
         $user->invested_balance += $plan->amount;
         $user->plan_id = $id;
-        $user->demo_balance = $user->demo_balance;
+        $user->plan_expires_at = now()->addDays($plan->trade_tenure);
         $user->save();
         session()->flash('success', 'subscribed to ' . $plan->name);
         return redirect()->route('user.index');

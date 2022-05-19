@@ -14,9 +14,11 @@ class PlanController extends Controller
         'name' => ['required'],
         'amount' => ['required', 'numeric'],
         'bonus' => ['required', 'numeric'],
-        'demo_balance' => ['required', 'numeric'],
+        // 'demo_balance' => ['required', 'numeric'],
         'features' => ['required'],
         'features.*' => ['required', 'string', 'min:3'],
+        'referral_commission' => 'required|numeric',
+        'trade_tenure' => 'required|numeric',
     ];
     protected $messages = [
         'features.*.required' => 'This feature is required',
@@ -52,16 +54,17 @@ class PlanController extends Controller
      */
     public function store(Request $request)
     {
-        $valid = $request->validate($this->rules,$this->messages);
+        $valid = $request->validate($this->rules, $this->messages);
         DB::beginTransaction();
         try {
             Plan::create($valid);
             DB::commit();
+            session()->flash('success', 'Plan created successfully');
             return redirect()->route('admin.plan.index');
         } catch (\Throwable $th) {
             DB::rollBack();
             Log::error($th->getMessage());
-            session('error', "Failed to create Plan");
+            session()->flash('error', "Failed to create Plan");
             return redirect()->back();
         }
     }
@@ -74,7 +77,7 @@ class PlanController extends Controller
      */
     public function edit(Plan $plan)
     {
-        return view('admin.plan.edit',compact('plan'));
+        return view('admin.plan.edit', compact('plan'));
     }
 
     /**
@@ -86,16 +89,17 @@ class PlanController extends Controller
      */
     public function update(Request $request, Plan $plan)
     {
-        $valid = $request->validate($this->rules,$this->messages);
+        $valid = $request->validate($this->rules, $this->messages);
         DB::beginTransaction();
         try {
             $plan->update($valid);
             DB::commit();
+            session()->flash('success', 'Plan updated successfully');
             return redirect()->route('admin.plan.index');
         } catch (\Throwable $th) {
             DB::rollBack();
             Log::error($th->getMessage());
-            session('error', "Failed to create Plan");
+            session()->flash('error', "Failed to create Plan");
             return redirect()->back();
         }
     }
