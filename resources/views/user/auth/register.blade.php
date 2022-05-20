@@ -2,6 +2,11 @@
 @section('title', 'Register')
 @section('content')
 <h4 class="text-center mb-4">Sign up your account</h4>
+@if(is_null(session()->get('user')))
+<div class="alert alert-outline-danger">
+    The referral link is invalid.
+</div>
+@endif
 <form action="{{route('register')}}" method="POST">
     @csrf
     <div class="mb-3">
@@ -19,6 +24,12 @@
         <input type="email" class="form-control" placeholder="hello@example.com" value="{{old('email')}}" name="email">
         <x-error :key="'email'" />
     </div>
+    @if(!is_null(session()->get('user')))
+    <div class="mb-3">
+        <label class="mb-1"><strong>Referrer</strong></label>
+        <input type="text" class="form-control" placeholder="Lastname" value="{{session()->get('user')->name}}" name="lastname" disabled readonly>
+    </div>
+    @endif
     <div class="mb-3">
         <label class="mb-1"><strong>Password</strong></label>
         <input type="password" name="password" class="form-control" placeholder="Password">

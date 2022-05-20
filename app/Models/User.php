@@ -41,7 +41,6 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'plan_expires_at' => 'datetime',
     ];
 
     public function statusIs($value)
@@ -62,6 +61,11 @@ class User extends Authenticatable
     public function emails()
     {
         return $this->hasMany(Email::class);
+    }
+
+    public function referrals()
+    {
+        return $this->hasMany(User::class, 'referral_id');
     }
 
     public function withdrawals()

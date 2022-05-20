@@ -39,6 +39,8 @@ Route::as('activation.')->prefix('activation')->group(function () {
 Route::middleware(['active', 'subscribed'])->group(function () {
     Route::get('/', [Dashboard::class, 'index'])->name('index');
 
+    Route::get('referrals', [Dashboard::class, 'referrals'])->name('referrals');
+
     Route::prefix('trade')->name('trade.')->group(function () {
         Route::get('', [TradeController::class, 'index'])->name('index');
         Route::get('market-data', [TradeController::class, 'market'])->name('market');

@@ -48,6 +48,13 @@
             <li><a href="">Ticket History</a></li>
         </ul>
     </li> --}}
+
+<li><a href="{{ route('user.referrals') }}" class="" aria-expanded="false">
+        <i class="flaticon-381-user-1"></i>
+        <span class="nav-text">Referrals</span>
+    </a>
+</li>
+
 <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
         <i class="flaticon-381-settings-1"></i>
         <span class="nav-text">Settings</span>

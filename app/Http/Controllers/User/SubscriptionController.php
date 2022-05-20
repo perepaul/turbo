@@ -22,6 +22,15 @@ class SubscriptionController extends Controller
             return back()->withInput()->with('error', 'Your account is currently inactive as we have requested for your trading licence, your account will be activated when it is verified. ');
         }
         $plan = Plan::findOrFail($id);
+        if (empty($user->plan_expires_at)) {
+            $referred_user = User::find($user->referral_id);
+            // dd($referred_user);
+            if (!is_null($referred_user)) {
+                $commission = ($plan->referral_commission / 100) * $plan->amount;
+                $referred_user->referral_balance += $commission;
+                $referred_user->save();
+            }
+        }
         if ($plan->amount > $user->balance) {
             return redirect()
                 ->route('user.deposit.index')
@@ -31,7 +40,7 @@ class SubscriptionController extends Controller
         $user->balance -= $plan->amount;
         $user->invested_balance += $plan->amount;
         $user->plan_id = $id;
-        $user->plan_expires_at = now()->addDays($plan->trade_tenure);
+        $user->plan_expires_at = now()->addDays($plan->trade_tenure)->timestamp;
         $user->save();
         session()->flash('success', 'subscribed to ' . $plan->name);
         return redirect()->route('user.index');
