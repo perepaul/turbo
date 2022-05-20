@@ -2,7 +2,7 @@
 @section('title', 'Register')
 @section('content')
 <h4 class="text-center mb-4">Sign up your account</h4>
-@if(!isset(session()->get('user')))
+@if(!session()->has('user') && is_null(session()->get('user')))
 <div class="alert alert-outline-danger">
     The referral link is invalid.
 </div>
