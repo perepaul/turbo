@@ -22,12 +22,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($referrals as $referral)
+                        @forelse ($referrals as $referral)
                         <tr>
                             <td>{{$referral->firstname}}</td>
                             <td>{{$referral->lastname}}</td>
                             <td>{{$referral->email}}</td>
                             <td>{{$referral->created_at->diffForHumans()}}</td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="4" class="text-center text-muted">You have not reffered a user</td>
                         </tr>
                         @endforeach
                     </tbody>
