@@ -33,7 +33,7 @@
                         <tr>
                             <td colspan="4" class="text-center text-muted">You have not reffered a user</td>
                         </tr>
-                        @endforeach
+                        @endforelse
                     </tbody>
                 </table>
             </div>
