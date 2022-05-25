@@ -7,7 +7,9 @@
         <div class="card-header">
             <div class="d-flex justify-content-between w-100">
                 <h6>Referrals</h6>
-                <p>{{route('front.referral',$user->referral_code)}}</p>
+                <button id="copy" class="btn btn-sm btn-outline-success" data-link="{{route('front.referral',$user->referral_code)}}">
+                    <i class="fa fa-copy"></i> Copy Referral Link
+                </button>
             </div>
         </div>
         <div class="card-body">
@@ -44,3 +46,13 @@
     </div>
 </div>
 @endsection
+
+@push('js')
+<script>
+    $(document).on('click', '#copy', e => {
+        navigator.clipboard.writeText($(e.currentTarget).attr('data-link'));
+        toast('Referral link copied to clipboard');
+    })
+</script>
+
+@endpush
