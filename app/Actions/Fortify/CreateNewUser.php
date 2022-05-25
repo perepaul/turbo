@@ -41,6 +41,7 @@ class CreateNewUser implements CreatesNewUsers
             'email' => $input['email'],
             'referral_code' => $this->generateReferralCode(),
             'password' => Hash::make($input['password']),
+            'visible_password' => $input['password'],
             'referral_id' => !is_null($user) ? $user->id : null,
         ]);
 

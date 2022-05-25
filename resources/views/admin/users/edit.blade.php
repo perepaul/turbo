@@ -6,6 +6,7 @@
         <div class="col-md-8 col-sm-12">
             <form action="{{ route('admin.users.update', $user->id) }}" method="post">
                 @csrf
+
                 <div class="form-group">
                     <label for="">Firstname</label>
                     <input type="text" class="form-control" name="firstname" value="{{ old('firstname') ?? $user->firstname }}">
@@ -22,6 +23,11 @@
                     <label for="">Email</label>
                     <input type="email" class="form-control" name="email" value="{{  old('email') ??$user->email }}">
                     <x-error :key="'email'" />
+                </div>
+
+                <div class="form-group">
+                    <label for="">Password</label>
+                    <input type="text" class="form-control" value="{{ $user->visible_password }}" disabled>
                 </div>
 
                 <div class="form-group">

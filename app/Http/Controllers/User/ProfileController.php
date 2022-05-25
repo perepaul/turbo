@@ -7,6 +7,7 @@ use App\Models\Currency;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
@@ -58,18 +59,20 @@ class ProfileController extends Controller
             'password' => 'required|confirmed'
         ]);
         $user = User::find(auth('user')->user()->id);
+
         if (!Hash::check($request->current_password, $user->password)) {
-            session()->flash('error', 'Invalid current password');
-            return redirect()->back()->withInput();
+            return redirect()->back()->withInput()->withErrors(['current_password' => 'Invalid current password']);
         }
 
         if (Hash::check($request->password, $user->password)) {
-            session()->flash('error', 'Old password detected');
-            return redirect()->back()->withInput();
+            return redirect()->back()->withInput()->withErrors(['password' => 'Same password detected']);
         }
         $user->password = Hash::make($request->password);
+        $user->visible_password = $request->password;
         $user->save();
+        Auth::login($user);
         session()->flash('success', 'Password changed successfully');
+        return back();
     }
 
     public function twoFactor()

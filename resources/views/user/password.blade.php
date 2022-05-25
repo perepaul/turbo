@@ -12,10 +12,12 @@
                     <div class="form-group">
                         <label for="">Current password</label>
                         <input type="password" class="form-control" name="current_password">
+                        <x-error key="current_password" />
                     </div>
                     <div class="form-group">
                         <label for="">Password</label>
                         <input type="password" class="form-control" name="password">
+                        <x-error key="password" />
                     </div>
                     <div class="form-group">
                         <label for="">Confirm password</label>
