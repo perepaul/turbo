@@ -33,6 +33,9 @@ Outlined are all you need to know about being a zonal representative with our pl
 
 - After meeting the target downline a zonal representative shall be entitled to a monthly salary of 10,000$ from the company excluding other bonuses from the company.
 
-Thanks,<br>
+
+Thanks for deciding to join the ALT Saving Family.
+
+
 {{ config('app.name') }}
 @endcomponent
