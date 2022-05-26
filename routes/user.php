@@ -6,6 +6,7 @@ use App\Http\Controllers\User\Dashboard;
 use App\Http\Controllers\User\DepositController;
 use App\Http\Controllers\User\KycController;
 use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\User\ReferralController;
 use App\Http\Controllers\User\SessionController;
 use App\Http\Controllers\User\SubscriptionController;
 use App\Http\Controllers\User\TradeController;
@@ -39,7 +40,9 @@ Route::as('activation.')->prefix('activation')->group(function () {
 Route::middleware(['active', 'subscribed'])->group(function () {
     Route::get('/', [Dashboard::class, 'index'])->name('index');
 
-    Route::get('referrals', [Dashboard::class, 'referrals'])->name('referrals');
+    Route::get('referrals', [ReferralController::class, 'referrals'])->name('referrals');
+    Route::get('regional-representative', [ReferralController::class, 'representative'])->name('representative');
+    Route::post('regional-representative', [ReferralController::class, 'store']);
 
     Route::prefix('trade')->name('trade.')->group(function () {
         Route::get('', [TradeController::class, 'index'])->name('index');

@@ -16,11 +16,4 @@ class Dashboard extends Controller
         $user->load('trades', 'deposits', 'withdrawals');
         return view('user.index', compact('user'));
     }
-
-    public function referrals()
-    {
-        $user = User::find(auth()->user()->id)->load('referrals');
-        $referrals = $user->referrals()->paginate();
-        return view('user.referrals', compact('user', 'referrals'));
-    }
 }

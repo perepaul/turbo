@@ -49,11 +49,16 @@
         </ul>
     </li> --}}
 
-<li><a href="{{ route('user.referrals') }}" class="" aria-expanded="false">
-        <i class="flaticon-381-user-1"></i>
-        <span class="nav-text">Referrals</span>
+<li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+        <i class="flaticon-050-info"></i>
+        <span class="nav-text">Affiliate Program</span>
     </a>
+    <ul aria-expanded="false">
+        <li><a href="{{route('user.referrals')}}">Referrals</a></li>
+        <li><a href="{{route('user.representative')}}">Regional Rep.</a></li>
+    </ul>
 </li>
+
 
 <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
         <i class="flaticon-381-settings-1"></i>
