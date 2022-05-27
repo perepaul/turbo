@@ -54,9 +54,6 @@
     <div class="card-header">
         <div class="d-flex justify-content-between w-100">
             <h6>Referrals</h6>
-            <button class="btn btn-sm btn-outline-success copy m-0" data-link="{{route('front.referral',$user->referral_code)}}">
-                <i class="fa fa-copy"></i> Copy Referral Link
-            </button>
         </div>
     </div>
     <div class="card-body">
