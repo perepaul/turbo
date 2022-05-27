@@ -1,4 +1,10 @@
 <ul class="metismenu" id="menu">
+    <li><a href="{{ route('front.index') }}" class="" aria-expanded="false">
+            <i class="flaticon-381-home"></i>
+            <span class="nav-text">Home</span>
+        </a>
+    </li>
+
     <li><a href="{{ route('admin.index') }}" class="" aria-expanded="false">
             <i class="flaticon-025-dashboard"></i>
             <span class="nav-text">Dashboard</span>
