@@ -93,7 +93,6 @@
                         @endif
                     </label>
                     <x-error key="passport" />
-
                 </div>
 
                 <button class="btn btn-block btn-primary mt-3" @if(in_array($rep?->status, ['pending','approved'])) disabled="disabled" style="cursor: not-allowed;" @endif>
