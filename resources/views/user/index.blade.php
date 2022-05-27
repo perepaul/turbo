@@ -23,7 +23,7 @@
             <div class="card-body d-flex align-items-center justify-content-between">
                 <div class="card-data me-2">
                     <h5>Invested Amount</h5>
-                    <h6 class="fs-40 font-w600">{{ $user->invested_balance }}</h6>
+                    <h6 class="fs-40 font-w600">{{ format_money($user->invested_balance) }}</h6>
                 </div>
                 <div><span class="donut1" data-peity='{ "fill": ["rgb(56, 226, 93,1)", "rgba(242, 246, 252)"]}'>1</span>
                 </div>
@@ -32,72 +32,72 @@
     </div>
 
     {{-- // --}}
-    <div class="col-xl-3 col-sm-6">
+    {{-- <div class="col-xl-3 col-sm-6">
         <div class="card">
             <div class="card-body d-flex align-items-center justify-content-between">
                 <div class="card-data me-2">
                     <h5>Investment Profit</h5>
                     <h6 class="fs-40 font-w600">{{ format_money($user->trades()->where('status','active')->sum('profit')) }}</h6>
-                </div>
-                <div><span class="donut1" data-peity='{ "fill": ["rgb(255, 135, 35,1)", "rgba(242, 246, 252)"]}'>1</span>
-                </div>
+</div>
+<div><span class="donut1" data-peity='{ "fill": ["rgb(255, 135, 35,1)", "rgba(242, 246, 252)"]}'>1</span>
+</div>
+</div>
+</div>
+</div> --}}
+
+<div class="col-xl-3 col-sm-6">
+    <div class="card">
+        <div class="card-body d-flex align-items-center justify-content-between">
+            <div class="card-data me-2">
+                <h5>Deposits</h5>
+                <h6 class="fs-40 font-w600">{{ $user->deposits->count() }}</h6>
+            </div>
+            <div><span class="donut1" data-peity='{ "fill": ["rgb(56, 226, 93,1)", "rgba(242, 246, 252)"]}'>1</span>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="col-xl-3 col-sm-6">
-        <div class="card">
-            <div class="card-body d-flex align-items-center justify-content-between">
-                <div class="card-data me-2">
-                    <h5>Deposits</h5>
-                    <h6 class="fs-40 font-w600">{{ $user->deposits->count() }}</h6>
-                </div>
-                <div><span class="donut1" data-peity='{ "fill": ["rgb(56, 226, 93,1)", "rgba(242, 246, 252)"]}'>1</span>
-                </div>
+<div class="col-xl-3 col-sm-6">
+    <div class="card">
+        <div class="card-body d-flex align-items-center justify-content-between">
+            <div class="card-data me-2">
+                <h5>Active Trades</h5>
+                <h6 class="fs-40 font-w600">{{ $user->trades->where('status','active')->count() }}</h6>
+            </div>
+            <div><span class="donut1" data-peity='{ "fill": ["rgb(51, 62, 75,1)", "rgba(242, 246, 252)"]}'>1</span>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="col-xl-3 col-sm-6">
-        <div class="card">
-            <div class="card-body d-flex align-items-center justify-content-between">
-                <div class="card-data me-2">
-                    <h5>Active Trades</h5>
-                    <h6 class="fs-40 font-w600">{{ $user->trades->where('status','active')->count() }}</h6>
-                </div>
-                <div><span class="donut1" data-peity='{ "fill": ["rgb(51, 62, 75,1)", "rgba(242, 246, 252)"]}'>1</span>
-                </div>
+<div class="col-xl-3 col-sm-6">
+    <div class="card">
+        <div class="card-body d-flex align-items-center justify-content-between">
+            <div class="card-data me-2">
+                <h5>Total Traes</h5>
+                <h6 class="fs-40 font-w600">{{ $user->trades->count() }}</h6>
+            </div>
+            <div><span class="donut1" data-peity='{ "fill": ["var(--primary)", "rgb(153, 0, 0)"]}'>1</span>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="col-xl-3 col-sm-6">
-        <div class="card">
-            <div class="card-body d-flex align-items-center justify-content-between">
-                <div class="card-data me-2">
-                    <h5>Total Traes</h5>
-                    <h6 class="fs-40 font-w600">{{ $user->trades->count() }}</h6>
-                </div>
-                <div><span class="donut1" data-peity='{ "fill": ["var(--primary)", "rgb(153, 0, 0)"]}'>1</span>
-                </div>
+
+{{-- // --}}
+<div class="col-xl-3 col-sm-6">
+    <div class="card">
+        <div class="card-body d-flex align-items-center justify-content-between">
+            <div class="card-data me-2">
+                <h5>Referral Balance</h5>
+                <h6 class="fs-40 font-w600">{{ format_money($user->referral_balance) }}</h6>
+            </div>
+            <div><span class="donut1" data-peity='{ "fill": ["rgb(255, 135, 35,1)", "rgba(242, 246, 252)"]}'>1</span>
             </div>
         </div>
     </div>
-
-
-    {{-- // --}}
-    <div class="col-xl-3 col-sm-6">
-        <div class="card">
-            <div class="card-body d-flex align-items-center justify-content-between">
-                <div class="card-data me-2">
-                    <h5>Referral Balance</h5>
-                    <h6 class="fs-40 font-w600">{{ format_money($user->referral_balance) }}</h6>
-                </div>
-                <div><span class="donut1" data-peity='{ "fill": ["rgb(255, 135, 35,1)", "rgba(242, 246, 252)"]}'>1</span>
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
 
 </div>
 <div class="row">
