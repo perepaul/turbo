@@ -32,7 +32,7 @@
                         <h5 class="mb-0  font-w600">
                             {{ format_money($user->trades->where('status', 'active')->where('is_demo', 'no')->sum('amount') + $user->trades->where('status', 'active')->where('is_demo', 'no')->sum('profit')) }}
                         </h5>
-                        <p class="mb-0  font-w300">Estimated returns</p>
+                        <p class="mb-0  font-w300">Estimated returns from open trades</p>
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                     </div>
                     <div class="col-6">
                         <h2 class="mb-0 font-w600">{{ $trades->where('status', 'inactive')->count() }}</h2>
-                        <p class="mb-0  font-w500">Inactive</p>
+                        <p class="mb-0  font-w500">Closed</p>
                     </div>
                 </div>
             </div>

@@ -269,6 +269,13 @@
                                         <div class="col-sm-9 col-7"><span>{{$user->zip_code}}</span>
                                         </div>
                                     </div>
+                                    <div class="row mb-2">
+                                        <div class="col-sm-3 col-5">
+                                            <h5 class="f-w-500">Referral Link <span class="pull-end">:</span></h5>
+                                        </div>
+                                        <div class="col-sm-9 col-7"><span>{{route('front.referral',$user->referral_code)}}</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div id="profile-settings" class="tab-pane fade">
