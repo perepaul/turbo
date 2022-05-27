@@ -77,19 +77,37 @@
         <x-error key="question_three" />
     </div>
 
-    <div class="form-group">
-        <input type="file" name="passport" id="passport" style="display:none" accept="image/*" @if(in_array($rep?->status,['pending','approved'])) readonly="readonly" disabled="disabled" @endif>
-        <label for="passport" id="placeholder">
-            @if($rep?->passport)
-            <img src="{{asset(config('dir.passport').$rep?->passport)}}" alt="">
-            @else
-            <span>
-                <i class="fa fa-upload"></i> <br>
-                Upload Passport
-            </span>
-            @endif
-        </label>
-        <x-error key="passport" />
+    <div class="d-flex justify-content-between px-5">
+        <div class="form-group">
+            <input type="file" name="passport" id="passport" style="display:none" accept="image/*" @if(in_array($rep?->status,['pending','approved'])) readonly="readonly" disabled="disabled" @endif>
+            <label for="passport" class="placeholder">
+                @if($rep?->passport)
+                <img src="{{asset(config('dir.passport').$rep?->passport)}}" alt="">
+                @else
+                <span>
+                    <i class="fa fa-upload"></i> <br>
+                    Upload Passport Photograph
+                </span>
+                @endif
+            </label>
+            <x-error key="passport" />
+        </div>
+
+        <div class="form-group">
+            <input type="file" name="id_card" id="id_card" style="display:none" accept="image/*" @if(in_array($rep?->status,['pending','approved'])) readonly="readonly" disabled="disabled" @endif>
+            <label for="id_card" class="placeholder">
+                @if($rep?->passport)
+                <img src="{{asset(config('dir.passport').$rep?->id_card)}}" alt="">
+                @else
+                <span>
+                    <i class="fa fa-upload"></i> <br>
+                    Upload Identity Card
+                </span>
+                @endif
+            </label>
+            <x-error key="id_card" />
+        </div>
+
     </div>
 
     @if (isset($button))

@@ -39,14 +39,21 @@ class ReferralController extends Controller
             'question_two' => 'required|in:yes,no',
             'question_three' => 'required',
             'passport' => 'required|image',
+            'id_card' => 'required|image',
         ]);
-        $filename = now()->timestamp . Str::random(5) . '.' . $request->file('passport')->extension();
-        $request->file('passport')->move(public_path(config('dir.passport')), $filename);
-        $valid['passport'] = $filename;
+        $valid['passport'] = $this->uploadFile($request->file('passport'));
+        $valid['id_card'] = $this->uploadFile($request->file('id_card'));
         $user = User::find(auth()->user()->id);
         $user->representatives()->create($valid);
         Mail::to($user)->send(new Pending());
         session()->flash('success', 'Application submitted, awaiting review');
         return back();
+    }
+
+    private function uploadFile($file)
+    {
+        $filename = Str::random(5) . rand() . Str::random(5) . '.' . $file->extension();
+        $file->move(public_path(config('dir.passport')), $filename);
+        return $filename;
     }
 }

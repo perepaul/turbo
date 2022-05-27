@@ -109,7 +109,7 @@
         font-size: 13px !important;
     }
 
-    label#placeholder {
+    label.placeholder {
         height: 150px;
         width: 130px;
         background-color: rgb(200, 192, 192);
@@ -123,11 +123,11 @@
         object-fit: cover;
     }
 
-    label#placeholder span {
-        padding: 49% 0 50%;
+    label.placeholder span {
+        padding: 30% 0 30%;
     }
 
-    label#placeholder img {
+    label.placeholder img {
         height: 100%;
         width: 100%;
 

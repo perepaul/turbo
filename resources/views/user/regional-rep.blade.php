@@ -12,21 +12,21 @@
 
 @push('js')
 <script>
-    $(document).on('change','#passport', function(e){
+    $(document).on('change','#passport,#id_card', function(e){
         let file = $(e.currentTarget).prop('files')[0];
         if(!file.type.startsWith('image/')){
-            toast('Only images can be used as passport','error');
+            toast('Only images can be uploaded','error');
             return;
         }
         let url = URL.createObjectURL(file);
-        $('#placeholder').html(`<img src='${url}' />`);
+        $(e.currentTarget).siblings('.placeholder').html(`<img src='${url}' />`);
     })
 </script>
 @endpush
 
 @push('css')
 <style>
-    label#placeholder {
+    label.placeholder {
         height: 150px;
         width: 130px;
         background-color: rgb(200, 192, 192);
@@ -40,11 +40,11 @@
         object-fit: cover;
     }
 
-    label#placeholder span {
-        padding: 49% 0 50%;
+    label.placeholder span {
+        padding: 30% 0 50%;
     }
 
-    label#placeholder img {
+    label.placeholder img {
         height: 100%;
         width: 100%;
 
