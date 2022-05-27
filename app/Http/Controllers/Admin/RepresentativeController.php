@@ -40,5 +40,8 @@ class RepresentativeController extends Controller
 
     public function view($id)
     {
+        $rep = Representative::findOrFail($id);
+        $html = view('components.view-rep', ['rep' => $rep])->render();
+        return response()->json(['html' => $html]);
     }
 }

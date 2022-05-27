@@ -49,13 +49,13 @@
                                         </svg>
                                     </div>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        {{-- <a class="dropdown-item" href="{{route('admin.zonal-rep.view',$rep->id)}}">
-                                        <i class="fa fa-eye"></i> View
-                                        </a> --}}
-                                        <a class="dropdown-item" href="{{route('admin.zonal-rep.approve',$rep->id)}}">
+                                        <button class="dropdown-item view" data-link="{{route('admin.zonal-rep.view',$rep->id)}}">
+                                            <i class="fa fa-eye"></i> View
+                                        </button>
+                                        <a class="dropdown-item accept" href="{{route('admin.zonal-rep.approve',$rep->id)}}">
                                             <i class="fa fa-check"></i> Approve
                                         </a>
-                                        <a class="dropdown-item" href="{{route('admin.zonal-rep.reject',$rep->id)}}">
+                                        <a class="dropdown-item reject" href="{{route('admin.zonal-rep.reject',$rep->id)}}">
                                             <i class="fa fa-times"></i> Reject
                                         </a>
                                     </div>
@@ -78,6 +78,27 @@
 </div>
 @endsection
 
+@push('modals')
+<div class="modal fade" id="rep-data" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Representative data</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <div class="modal-body">
+                {{-- JS content here --}}
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-success" id="accept-btn">Accept</a>
+                <a class="btn btn-danger" id="reject-btn">Reject</a>
+            </div>
+        </div>
+    </div>
+</div>
+@endpush
+
 @push('css')
 <style>
     .table thead th {
@@ -87,11 +108,50 @@
     .table tbody td {
         font-size: 13px !important;
     }
+
+    label#placeholder {
+        height: 150px;
+        width: 130px;
+        background-color: rgb(200, 192, 192);
+        margin-top: 15px;
+        border-radius: 8px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        font-size: 14px;
+        object-fit: cover;
+    }
+
+    label#placeholder span {
+        padding: 49% 0 50%;
+    }
+
+    label#placeholder img {
+        height: 100%;
+        width: 100%;
+
+    }
 </style>
 @endpush
 
 @push('js')
 <script>
+    $(document).on('click','.view', function(e){
+        _this = $(e.currentTarget);
+        url = _this.attr('data-link');
+        $('#accept-btn').attr('href',_this.siblings('a.accept').attr('href'))
+        $('#reject-btn').attr('href',_this.siblings('a.reject').attr('href'))
+        fetch(url)
+        .then(res => res.json())
+        .then(res => {
+            $('#rep-data .modal-body').html(res.html);
+            $('#rep-data').modal('show')
+        },err => {
+            toast('Was unable to get representative information','error');
+        })
+    });
+
     $(document).on('change', '#filter', function(e){
         let url = '{{route("admin.zonal-rep.index")}}'
         let value = e.currentTarget.value;
