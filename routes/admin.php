@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\TradeCurrencyController;
 use App\Http\Controllers\Admin\AccountCurrencyController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\MethodController;
+use App\Http\Controllers\Admin\RepresentativeController;
 use App\Http\Controllers\LocationController;
 use App\Models\Withdrawal;
 use App\View\Components\States;
@@ -70,6 +71,14 @@ Route::as('withdrawals.')->prefix('withdrawals')->group(function () {
     Route::get('{id}/approve', [WithdrawController::class, 'approve'])->name('approve');
     Route::get('{id}/decline', [WithdrawController::class, 'decline'])->name('decline');
 });
+
+Route::as('zonal-rep.')->prefix('zonal-reps')->group(function () {
+    Route::get('', [RepresentativeController::class, 'index'])->name('index');
+    Route::get('view/{id}', [RepresentativeController::class, 'view'])->name('view');
+    Route::get('approve/{id}', [RepresentativeController::class, 'approve'])->name('approve');
+    Route::get('reject/{id}', [RepresentativeController::class, 'reject'])->name('reject');
+});
+
 Route::as('emails.')->prefix('emails')->group(function () {
     Route::get('/', [EmailController::class, 'index'])->name('index');
     Route::get('send', [EmailController::class, 'sendPage'])->name('send.page');

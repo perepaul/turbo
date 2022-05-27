@@ -1,4 +1,10 @@
 <ul class="metismenu" id="menu">
+    <li><a href="{{ route('front.index') }}" class="" aria-expanded="false">
+            <i class="flaticon-381-home"></i>
+            <span class="nav-text">Home</span>
+        </a>
+    </li>
+
     <li><a href="{{ route('user.index') }}" class="" aria-expanded="false">
             <i class="flaticon-025-dashboard"></i>
             <span class="nav-text">Dashboard</span>
@@ -55,7 +61,7 @@
     </a>
     <ul aria-expanded="false">
         <li><a href="{{route('user.referrals')}}">Referrals</a></li>
-        <li><a href="{{route('user.representative')}}">Regional Rep.</a></li>
+        <li><a href="{{route('user.representative')}}">Zonal Representative</a></li>
     </ul>
 </li>
 

@@ -1,12 +1,10 @@
 @component('mail::message')
-# Introduction
 
-The body of your message.
+Your Request to be a part of our zonal representative program has being received and approved.
 
-@component('mail::button', ['url' => ''])
-Button Text
-@endcomponent
+For more information on what this program entails you can chat our 24/7 support or alternatively contact your personal account relations officer.
 
-Thanks,<br>
+
+Welcome to the Family,<br>
 {{ config('app.name') }}
 @endcomponent

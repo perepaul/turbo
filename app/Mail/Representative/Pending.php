@@ -17,9 +17,9 @@ class Pending extends Mailable
      *
      * @return void
      */
-    public function __construct(public User $user)
+    public function __construct()
     {
-        //
+        $this->subject('Zonal Representative Application Received.');
     }
 
     /**

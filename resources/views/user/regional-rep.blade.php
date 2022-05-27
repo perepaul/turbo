@@ -1,5 +1,5 @@
 @extends('layouts.back')
-@section('title','Region Representative')
+@section('title','Zonal Representative')
 @section('content')
 <div class="col-md-8 mx-auto">
     <div class="card">

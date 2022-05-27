@@ -18,7 +18,7 @@ class Approved extends Mailable
      */
     public function __construct()
     {
-        //
+        $this->subject('Zonal Representative Application Approved');
     }
 
     /**

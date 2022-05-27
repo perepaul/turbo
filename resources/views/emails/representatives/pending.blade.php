@@ -1,5 +1,5 @@
 @component('mail::message')
-## Hello {{$user->firstname}}
+## Hello there,
 
 Your request to join our zonal representative program has been received after a review of the application we would send you a verdict mail to confirm application status.
 
@@ -34,7 +34,7 @@ Outlined are all you need to know about being a zonal representative with our pl
 - After meeting the target downline a zonal representative shall be entitled to a monthly salary of 10,000$ from the company excluding other bonuses from the company.
 
 
-Thanks for deciding to join the ALT Saving Family.
+Thanks for deciding to join the {{config('app.name')}} Family.
 
 
 {{ config('app.name') }}

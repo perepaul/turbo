@@ -18,7 +18,7 @@ class Rejected extends Mailable
      */
     public function __construct()
     {
-        //
+        $this->subject('Zonal Representative Application Declined');
     }
 
     /**

@@ -72,7 +72,11 @@
                                 </ul>
 
                                 <!-- Button -->
+                                @auth('user')
+                                <a href="{{route('user.index')}}" class="btn login-btn ml-50">Dashboard</a>
+                                @else
                                 <a href="{{route('login')}}" class="btn login-btn ml-50">Log in</a>
+                                @endauth
                             </div>
                             <!-- Nav End -->
                         </div>

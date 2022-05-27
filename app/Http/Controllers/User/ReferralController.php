@@ -45,7 +45,7 @@ class ReferralController extends Controller
         $valid['passport'] = $filename;
         $user = User::find(auth()->user()->id);
         $user->representatives()->create($valid);
-        Mail::to($user)->send(new Pending($user));
+        Mail::to($user)->send(new Pending());
         session()->flash('success', 'Application submitted, awaiting review');
         return back();
     }
