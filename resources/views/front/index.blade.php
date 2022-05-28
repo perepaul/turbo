@@ -465,7 +465,7 @@
 
 
 <!-- ##### Our Services Area Start ##### -->
-<section class="our_services_area section-padding-100-70 clearfix" id="services">
+<section class="our_services_area section-padding-100-70 clearfix" id="blog">
     <div class="container">
 
         <div class="section-heading text-center">
