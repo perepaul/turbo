@@ -318,6 +318,7 @@
 </section>
 <!-- ##### Our Services Area End ##### -->
 
+
 <!-- ##### Our roadmap Area start ##### -->
 <section class="roadmap" style="padding-bottom:0" id="roadmap">
     <div class="section-heading text-center">
@@ -461,6 +462,41 @@
         </div>
     </div>
 </div>
+
+
+<!-- ##### Our Services Area Start ##### -->
+<section class="our_services_area section-padding-100-70 clearfix" id="services">
+    <div class="container">
+
+        <div class="section-heading text-center">
+
+            <div class="dream-dots justify-content-center wow fadeInUp" data-wow-delay="0.2s">
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <h2 class="wow fadeInUp" data-wow-delay="0.3s">Our Blog</h2>
+            <p class="wow fadeInUp" data-wow-delay="0.4s">Our latest news updates</p>
+        </div>
+
+
+        <div class="row">
+            @foreach ($posts as $post)
+            <div class="col-md-4">
+                <a class="card blog-card" href="{{$post->link}}" target="_blank">
+                    <img class="card-img-top img-fluid" src="{{asset(config('dir.posts').$post->image)}}" alt="Card image cap">
+                    <div class="card-body blog-body">
+                        <h5 class="card-title">{{$post->title}}</h5>
+
+                        {{Str::limit($post->excerpt, 300)}}
+
+                        <p class="card-text text-muted text-right">{{$post->created_at->diffForHumans()}}</p>
+                    </div>
+                </a>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+<!-- ##### Our Services Area End ##### -->
 
 
 
@@ -625,3 +661,21 @@
 </div>
 <!-- ##### Contact Area End ##### -->
 @endsection
+
+@push('css')
+<style>
+    .card-img-top {
+        height: 300px;
+    }
+
+    .blog-body,
+    .card-title {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        color: rgb(39, 38, 38);
+    }
+
+    .blog-card:hover {
+        box-shadow: 10px 10px 8px #888888;
+    }
+</style>
+@endpush

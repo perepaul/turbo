@@ -26,6 +26,8 @@
         <!-- Responsive Stylesheet -->
         <link rel="stylesheet" href="/assets/front/css/responsive.css">
 
+        @stack('css')
+
     </head>
 
     <body class="darker-blue">
