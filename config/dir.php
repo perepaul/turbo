@@ -8,4 +8,5 @@ return [
     'profile' => 'uploads/profile/',
     'methods' => 'uploads/methods/',
     'passport' => 'uploads/passports/',
+    'posts' => 'uploads/posts/',
 ];

@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\TradeCurrencyController;
 use App\Http\Controllers\Admin\AccountCurrencyController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\MethodController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\RepresentativeController;
 use App\Http\Controllers\LocationController;
 use App\Models\Withdrawal;
@@ -45,6 +46,7 @@ Route::get('feature-field', function () {
 })->name('feature-field');
 
 Route::get('/', [Dashboard::class, 'index'])->name('index');
+Route::resource('post', PostController::class);
 Route::as('users.')->prefix('users')->group(function () {
     Route::get('/{status}', [UserController::class, 'index'])->name('index');
     Route::get('{id}/login-as', [UserController::class, 'loginAs'])->name('login-as');
