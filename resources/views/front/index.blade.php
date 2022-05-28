@@ -364,7 +364,7 @@
 
 
 <!-- ##### Subscribe Area start ##### -->
-<section class="container pt-5" style="padding-bottom: 0px" id="start">
+{{-- <section class="container pt-5" style="padding-bottom: 0px" id="start">
     <div class="subscribe">
         <div class="row">
             <div class="col-sm-12">
@@ -390,7 +390,7 @@
 
         </div>
     </div>
-</section>
+</section> --}}
 <!-- ##### Subscribe Area End ##### -->
 
 <!-- ##### FAQ & Timeline Area Start ##### -->
