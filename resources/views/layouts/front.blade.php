@@ -26,6 +26,9 @@
         <!-- Responsive Stylesheet -->
         <link rel="stylesheet" href="/assets/front/css/responsive.css">
 
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+
         @stack('css')
 
     </head>
@@ -169,10 +172,14 @@
 
         <script src="/assets/front/js/jquery.syotimer.min.js"></script>
 
+        <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
         <!-- script js -->
         <script src="/assets/front/js/script.js"></script>
 
         @include('includes.chat')
+
+        @stack('js')
 
     </body>
 

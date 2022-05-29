@@ -395,7 +395,7 @@
 
 <!-- ##### FAQ & Timeline Area Start ##### -->
 <div class="faq-timeline-area section-padding-100">
-    <div class="container">
+    <div class="">
         <div class="row">
             <div class="col-12 col-lg-8 col-md-12 offset-lg-2">
                 <div class="section-heading">
@@ -477,22 +477,23 @@
             <p class="wow fadeInUp" data-wow-delay="0.4s">Our latest news updates</p>
         </div>
 
+        <div class="carousel-wrapper" style="width: 100%; padding: 0 25px;">
+            <div class="carousel d-flex justify-content-center">
+                @foreach ($posts as $post)
+                <div class="px-3">
+                    <a class="card blog-card" href="{{$post->link}}" target="_blank">
+                        <img class="card-img-top img-fluid" src="{{asset(config('dir.posts').$post->image)}}" alt="Card image cap">
+                        <div class="card-body blog-body">
+                            <h5 class="card-title">{{$post->title}}</h5>
 
-        <div class="row">
-            @foreach ($posts as $post)
-            <div class="col-md-4">
-                <a class="card blog-card" href="{{$post->link}}" target="_blank">
-                    <img class="card-img-top img-fluid" src="{{asset(config('dir.posts').$post->image)}}" alt="Card image cap">
-                    <div class="card-body blog-body">
-                        <h5 class="card-title">{{$post->title}}</h5>
+                            {{Str::limit($post->excerpt, 300)}}
 
-                        {{Str::limit($post->excerpt, 300)}}
-
-                        <p class="card-text text-muted text-right">{{$post->created_at->diffForHumans()}}</p>
-                    </div>
-                </a>
+                            <p class="card-text text-muted text-right">{{$post->created_at->diffForHumans()}}</p>
+                        </div>
+                    </a>
+                </div>
+                @endforeach
             </div>
-            @endforeach
         </div>
     </div>
 </section>
@@ -672,10 +673,64 @@
     .card-title {
         font-family: Georgia, 'Times New Roman', Times, serif;
         color: rgb(39, 38, 38);
+        font-size: .8em;
+        text-align: justify;
+    }
+
+    .card-title {
+        font-size: 1.2em;
+        font-weight: 600;
     }
 
     .blog-card:hover {
         box-shadow: 10px 10px 8px #888888;
     }
+
+
+    .slick-dots li {
+        background-color: white;
+    }
 </style>
+@endpush
+
+@push('js')
+<script>
+    $('.carousel').slick({
+        speed: 300,
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        dots: true,
+        responsive:
+        [
+            {
+                breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
+                    }
+            },
+            {
+                breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2,
+                        infinite:true,
+                        dots:true,
+                    }
+            },
+            {
+                breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        infinite:true,
+                        dots:true,
+                }
+            }
+        ]
+    });
+</script>
 @endpush
