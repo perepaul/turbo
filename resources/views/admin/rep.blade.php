@@ -10,7 +10,6 @@
                     <option value="">All</option>
                     <option value="accepted" @if(request()->input('filter') == 'accepted') selected="selected" @endif>Accepted</option>
                     <option value="pending" @if(request()->input('filter') == 'pending') selected="selected" @endif>Pending</option>
-                    <option value="rejected" @if(request()->input('filter') == 'rejected') selected="selected" @endif>Rejected</option>
                 </select>
             </div>
         </div>
