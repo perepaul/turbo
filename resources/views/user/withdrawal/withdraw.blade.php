@@ -3,7 +3,7 @@
 @section('content')
 
 <x-message />
-<div class="col-lg-5 mx-auto">
+<div class="col-lg-4 mx-auto">
     <div class="card">
         <div class="card-body">
             <form action="{{ route('user.withdrawal.create') }}" method="POST" enctype="multipart/form-data">

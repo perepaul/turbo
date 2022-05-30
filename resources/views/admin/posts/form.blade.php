@@ -18,7 +18,11 @@ $post = null;
     </div>
 
     <div class="form-group">
-        <label for="excerpt">Excerpt</label>
+        <div class="d-flex justify-content-between">
+
+            <label for="excerpt w-100">Excerpt</label>
+            <span class=""><span id="count">0</span>/300</span>
+        </div>
         <textarea name="excerpt" id="excerpt" cols="30" rows="10" class="form-control" style="min-height: 100px;" placeholder="Summary of post">{{$post?->excerpt ?? old('excerpt')}}</textarea>
         <x-error key="excerpt" />
     </div>

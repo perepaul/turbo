@@ -18,6 +18,21 @@
     $(function(){
         var elem = document.getElementById('created_at')
         elem.valueAsDate = new Date(elem.getAttribute('data-val'));
+
+        var count = $('#excerpt').val().length;
+        $('#count').html(count);
+
+        $(document).on('input','#excerpt',function(e){
+            limit = 300;
+            text = $(e.currentTarget).val();
+            count = text.length
+
+            if( count >= limit){
+                text = text.slice(0,limit);
+            }
+            $('#count').html(text.length);
+            $(e.currentTarget).val(text)
+        })
     });
 </script>
 @endpush
