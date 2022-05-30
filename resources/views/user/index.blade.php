@@ -116,7 +116,6 @@
                                     <tr>
                                         <th>Reference</th>
                                         <th>Amount</th>
-                                        <th>User</th>
                                         <th>Date</th>
                                     </tr>
                                 </thead>
@@ -126,7 +125,6 @@
                                     <tr>
                                         <td>{{$deposit->reference}}</td>
                                         <td>{{format_money($deposit->amount)}}</td>
-                                        <td>{{$deposit->user->name}}</td>
                                         <td>{{$deposit->created_at->toDateTimeString()}}</td>
                                     </tr>
                                     @empty
@@ -154,7 +152,6 @@
                                     <tr>
                                         <th>Reference</th>
                                         <th>Amount</th>
-                                        <th>User</th>
                                         <th>Date</th>
                                     </tr>
                                 </thead>
@@ -164,7 +161,6 @@
                                     <tr>
                                         <td>{{$withdrawal->reference}}</td>
                                         <td>{{format_money($withdrawal->amount)}}</td>
-                                        <td>{{$withdrawal->user->name}}</td>
                                         <td>{{$withdrawal->created_at->toDateTimeString()}}</td>
                                     </tr>
                                     @empty
@@ -192,7 +188,6 @@
                                     <tr>
                                         <th>Reference</th>
                                         <th>Amount</th>
-                                        <th>User</th>
                                         <th>Date</th>
                                     </tr>
                                 </thead>
@@ -202,7 +197,6 @@
                                     <tr>
                                         <td>{{$trade->reference}}</td>
                                         <td>{{format_money($trade->amount,$trade->user?->currency?->symbol)}}</td>
-                                        <td>{{$trade->user->name}}</td>
                                         <td>{{$trade->created_at->toDateTimeString()}}</td>
                                     </tr>
                                     @empty
