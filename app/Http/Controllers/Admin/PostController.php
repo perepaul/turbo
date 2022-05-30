@@ -41,7 +41,7 @@ class PostController extends Controller
         $valid = $request->validate([
             'title' => ['required', 'string'],
             'link' => ['required', 'url'],
-            'excerpt' => ['required', 'string'],
+            'excerpt' => ['required', 'string', 'min:300'],
             'created_at' => ['required', 'date'],
             'image' => ['required', 'image']
         ]);
