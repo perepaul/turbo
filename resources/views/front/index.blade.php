@@ -485,7 +485,7 @@
                     <div class="card-body blog-body">
                         <h5 class="card-title">{{$post->title}}</h5>
 
-                        {{Str::limit($post->excerpt, 300)}}
+                        {{Str::limit($post->excerpt, 299)}}
 
                         <p class="card-text text-muted text-right">{{$post->created_at->diffForHumans()}}</p>
                     </div>
