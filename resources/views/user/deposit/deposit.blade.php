@@ -23,7 +23,7 @@
                 <div class="form-group method method{{ $method->id }}" style="display:none">
                     <div class="text-center py-3">
                         @production
-                        <img src="{!!QrCode::format('svg')->size(180)->merge(logo(),.3,true)->generate($method->address) !!}" alt="">
+                        <img src="{!!QrCode::format('svg')->size(180)->merge(logo())->generate($method->address) !!}" alt="">
                         @else
                         {!! QrCode::size(180)->merge(logo(),.3,true)->generate($method->address) !!}
                         @endproduction
