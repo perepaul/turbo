@@ -2,8 +2,8 @@
 @section('title', 'Withdraw')
 @section('content')
 
-<x-message />
-<div class="col-lg-4 mx-auto">
+{{-- <x-message /> --}}
+<div class="col-lg-5 mx-auto">
     <div class="card">
         <div class="card-body">
             <form action="{{ route('user.withdrawal.create') }}" method="POST" enctype="multipart/form-data">
@@ -13,18 +13,19 @@
                     <select name="method" id="" class="form-control">
                         <option value="">Select withdrawal Method</option>
                         @foreach ($methods as $method)
-                        <option @if (old('method')==$method->id) selected @endif value="{{ $method->id }}"
-                            data-target=".method" data-status="{{$method->status}}">
-                            {{ $method->name }}
+                        <option value="{{ $method->id }}" data-address="{{$method->address}}" @if (old('method')==$method->id) selected @endif>
+                            {{ $method->name }} ({{$method->method->name}})
                         </option>
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group method" style="display: none">
-                    <label for=""><strong>Wallet address</strong></label>
-                    <input type="text" class="form-control" name="address" value="{{ old('address') }}">
+
+                <div class="form-group" style="display: none" id="address-container">
+                    <label for="address"><strong>Wallet address</strong> <small>withdaral amount will be sent to this address</small> </label>
+                    <input type="text" class="form-control" name="address" id="address" placeholder="Wallet Address" value="" readonly disabled>
                     <x-error :key="'address'" />
                 </div>
+
                 <div class="form-group">
                     <label for=""><strong>Amount</strong></label>
                     <input type="text" class="form-control" name="amount" value="{{ old('amount') }}">
@@ -40,18 +41,33 @@
 
 @endsection
 
+@push('css')
+<style>
+    .form-group {
+        margin-top: 15px !important;
+        margin-bottom: 10px !important;
+    }
+</style>
+
+@endpush
+
 @push('js')
 <script>
-    $(document).on('change', '[name=method]', e => {
-            var c = '.method'
-            $(c).hide()
-            if($(e.currentTarget).find(`option[value=${$(e.currentTarget).val()}]`).data('status') == 'inactive'){
-            toast('The selected method is currently inactive','error');
-            return;
-            }
-            if ($(e.currentTarget).val() == '') return;
-            $(c).show()
-        })
+    $(document).on('change', 'select[name=method]', e => {
+        var elem = $(e.currentTarget);
+        var address = $('#address');
+        var addressParent = address.parent();
+
+        if(elem.val() == ''){
+            addressParent.hide();
+            return false;
+        }
+
+        var option = elem.children(`option[value=${elem.val()}]`);
+        address.val(option.data('address'))
+        addressParent.show();
+
+    })
 
         $(document).on('input', '[name=amount]', e => {
             $('#amount_error').html('');

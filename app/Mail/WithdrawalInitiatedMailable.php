@@ -11,16 +11,17 @@ class WithdrawalInitiatedMailable extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $withdrawal;
+    public $withdrawal, $contact;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($withdrawal)
+    public function __construct($withdrawal, $contact)
     {
         $this->withdrawal = $withdrawal;
+        $this->contact = $contact;
         $this->subject("Withdrawal {$withdrawal->reference} initiated");
     }
 

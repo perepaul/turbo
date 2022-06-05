@@ -20,6 +20,12 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="telegram">Telegram</label>
+                        <input type="text" id="telegram" name="telegram" class="form-control" value="{{ $contact->telegram ?? '' }}">
+                        <x-error key="telegram" />
+                    </div>
+
+                    <div class="form-group">
                         <label for="phone">Phone Number</label>
                         <input type="text" id="phone" name="phone" class="form-control" value="{{ $contact->phone ?? '' }}">
                         <x-error :key="'phone'" />

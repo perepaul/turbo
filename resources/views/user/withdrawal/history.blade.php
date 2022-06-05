@@ -61,7 +61,7 @@
                     <tr>
                         <th>Reference</th>
                         <th>Date</th>
-                        <th>User</th>
+                        <th>Method</th>
                         <th>Amount</th>
                         <th>Status</th>
                     </tr>
@@ -71,7 +71,7 @@
                     <tr>
                         <td>{{$withdrawal->reference}}</td>
                         <td class="wspace-no">{{$withdrawal->created_at->toDateString()}}</td>
-                        <td>{{$withdrawal->user->name}}</td>
+                        <td>{{$withdrawal->method->name}} ({{$withdrawal->method->method->name}})</td>
                         <td>{{format_money($withdrawal->amount,$withdrawal?->user?->currency?->symbol)}}</td>
                         <td>{{ucfirst($withdrawal->status)}}</td>
                     </tr>
