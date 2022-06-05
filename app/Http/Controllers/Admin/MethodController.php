@@ -44,7 +44,7 @@ class MethodController extends Controller
             'status' => 'required|in:active,inactive'
         ]);
         if ($request->hasFile('image')) {
-            $valid['image'] = uploadFile($request()->file('image'), public_path(config('dir.methods')));
+            $valid['image'] = uploadFile($request->file('image'), public_path(config('dir.methods')));
         }
         Method::create($valid);
         session()->flash('success', 'Created payment method successfully');
@@ -94,7 +94,7 @@ class MethodController extends Controller
 
         if ($request->hasFile('image')) {
             $dir = public_path(config('dir.methods'));
-            $valid['image'] = uploadFile($request()->file('image'), $dir);
+            $valid['image'] = uploadFile($request->file('image'), $dir);
             if (file_exists($file = $dir . $method->image)) unlink($dir);
         }
         $method->update($valid);
