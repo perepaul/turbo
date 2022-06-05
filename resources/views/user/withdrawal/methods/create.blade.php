@@ -11,13 +11,13 @@
                     <img src="{{asset(config('dir.methods').$method->image)}}" alt="" style="width: 140px;">
                 </div>
                 <div class="form-group">
-                    <label for="name">Name</label>
+                    <label for="name">Wallet aame</label>
                     <input type="text" class="form-control" name="name" id="name" placeholder="eg. Binance {{$method->name}}">
                     <x-error key="name" />
                 </div>
 
                 <div class="form-group">
-                    <label for="address">Wallet Address</label>
+                    <label for="address">Wallet address</label>
                     <input type="text" class="form-control" name="address" id="address" placeholder="{{$method->name}} Address">
                     <x-error key="address" />
                 </div>

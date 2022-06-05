@@ -26,19 +26,19 @@
                                 <td class="fs-12">{{$method->user->name}}</td>
                                 <td class="fs-12">{{$method->unlinked ? 'Unlinked': 'Linked'}}</td>
                                 <td class="fs-12">
-                                    <a href="" class="btn btn-outline-info btn-sm fs-12">
+                                    <span class="btn btn-outline-info btn-sm fs-12 view" data-url="{{route('admin.withdrawals.methods.view',$method->id)}}">
                                         <i class="fa fay-eye"></i> View
-                                    </a>
-                                    @if (!$method->unlinked)
+                                    </span>
+                                    {{-- @if (!$method->unlinked)
                                     <a href="" class="btn btn-outline-danger btn-sm fs-12">
                                         <i class="fa fa-times"></i> Unlink
                                     </a>
-                                    @endif
+                                    @endif --}}
                                 </td>
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="8" class="text-center">No Withdrawal found</td>
+                                <td colspan="8" class="text-center">No Withdrawal methods found</td>
                             </tr>
                             @endforelse
                         </tbody>
@@ -54,9 +54,33 @@
 @endsection
 
 @push('modals')
-
+<div class="modal fade" id="viewModal" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Withdrawal Method Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <div class="modal-body">
+                {{-- Js content here --}}
+            </div>
+        </div>
+    </div>
+</div>
 @endpush
 
 @push('js')
-
+<script>
+    $('.view').on('click', function(e){
+        var elem = $(e.currentTarget);
+        fetch(elem.data('url'))
+        .then( response => response.json())
+        .then(res => {
+            console.log(res)
+            $('#viewModal .modal-body').html(res.html);
+            $('#viewModal').modal('show');
+        })
+    })
+</script>
 @endpush

@@ -1,5 +1,5 @@
 @extends('layouts.back')
-@section('title', 'Withdraw Methods')
+@section('title', 'Withdrawal methods')
 @section('content')
 
 <div class="col-lg-10 mx-auto">

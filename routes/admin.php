@@ -70,6 +70,7 @@ Route::as('deposits.')->prefix('deposits')->group(function () {
 });
 Route::as('withdrawals.')->prefix('withdrawals')->group(function () {
     Route::get('/methods', [WithdrawController::class, 'methods'])->name('methods');
+    Route::get('/methods/{id}', [WithdrawController::class, 'view'])->name('methods.view');
     Route::get('/{status}', [WithdrawController::class, 'index'])->name('index');
     Route::get('{id}/approve', [WithdrawController::class, 'approve'])->name('approve');
     Route::get('{id}/decline', [WithdrawController::class, 'decline'])->name('decline');

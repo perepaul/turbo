@@ -1,5 +1,5 @@
 @extends('layouts.back')
-@section('title', 'Select Methods')
+@section('title', 'Select withdrawal method')
 @section('content')
 
 <x-message />

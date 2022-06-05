@@ -37,8 +37,8 @@
     </a>
     <ul aria-expanded="false">
         <li><a href="{{route('user.withdrawal.index')}}">Withdraw</a></li>
-        <li><a href="{{route('user.withdrawal.methods.index')}}">Methods</a></li>
-        <li><a href="{{route('user.withdrawal.history')}}">Withdrawal History</a></li>
+        <li><a href="{{route('user.withdrawal.methods.index')}}">Withdrawal methods</a></li>
+        <li><a href="{{route('user.withdrawal.history')}}">Withdraw history</a></li>
     </ul>
 </li>
 {{-- <li><a href="{{ route('user.index') }}" class="" aria-expanded="false">

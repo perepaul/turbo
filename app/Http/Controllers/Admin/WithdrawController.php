@@ -53,4 +53,11 @@ class WithdrawController extends Controller
         $methods = WithdrawalMethod::withoutGlobalScopes()->with('user', 'method')->paginate();
         return view('admin.withdrawals.methods', compact('methods'));
     }
+
+    public function view($id)
+    {
+        $method = WithdrawalMethod::withoutGlobalScopes()->findOrFail($id)->load('method', 'user');
+        $html = view('admin.withdrawals.modal-content', compact('method'))->render();
+        return response()->json(['html' => $html]);
+    }
 }
