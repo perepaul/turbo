@@ -21,13 +21,13 @@
                 </div>
                 @foreach ($methods as $method)
                 <div class="form-group method method{{ $method->id }}" style="display:none">
-                    <div class="text-center">
-                        <img src="{{ asset(config('dir.methods') . $method->image) }}" width="100" class="mt-2 mb-2" alt="">
+                    <div class="text-center py-3">
+                        {!! QrCode::format('png')->size(180)->merge(logo(),.3,true)->generate($method->address) !!}
                     </div>
                     <label for=""><strong>Address</strong></label>
                     <div class="input-group">
                         <input type="text" class="form-control copy-text" value="{{ $method->address }}" disabled>
-                        <span id="copy" class="input-group-text d-block text-white bg-primary" style="cursor: pointer">Copy</span>
+                        <span id="copy" class="input-group-text bg-primary text-white" style="cursor: pointer">Copy</span>
                     </div>
                     <x-error :key="'address'" />
                 </div>
