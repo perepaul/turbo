@@ -117,11 +117,7 @@
 
         $(document).on('click', '#copy', e => {
             value = $(e.currentTarget).siblings('input.copy-text').val();
-            element = document.createElement('input');
-            element.value = value;
-            $('body').append(element);
-            element.select();
-            document.execCommand('copy');
+            navigator.clipboard.writeText(value);
             toast('Address copied to clipboard')
         })
 </script>
