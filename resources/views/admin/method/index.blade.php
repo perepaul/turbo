@@ -15,8 +15,8 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Image</th>
                                     <th>Address</th>
+                                    <th>Image</th>
                                     <th>Status</th>
                                     <th></th>
                                 </tr>
