@@ -22,7 +22,7 @@
                 @foreach ($methods as $method)
                 <div class="form-group method method{{ $method->id }}" style="display:none">
                     <div class="text-center py-3">
-                        {!!QrCode::generate($method->address) !!}
+                        {!! QrCode::size(170)->BTC($method->address) !!}
                     </div>
                     <label for=""><strong>Address</strong></label>
                     <div class="input-group">
