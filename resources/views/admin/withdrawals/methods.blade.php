@@ -29,11 +29,15 @@
                                     <span class="btn btn-outline-info btn-sm fs-12 view" data-url="{{route('admin.withdrawals.methods.view',$method->id)}}">
                                         <i class="fa fay-eye"></i> View
                                     </span>
-                                    {{-- @if (!$method->unlinked)
-                                    <a href="" class="btn btn-outline-danger btn-sm fs-12">
+                                    @if (!$method->unlinked)
+                                    <a href="{{route('admin.withdrawals.methods.unlink', $method->id)}}" class="btn btn-outline-danger btn-sm fs-12">
                                         <i class="fa fa-times"></i> Unlink
                                     </a>
-                                    @endif --}}
+                                    @else
+                                    <a href="{{route('admin.withdrawals.methods.link', $method->id)}}" class="btn btn-outline-success btn-sm fs-12">
+                                        <i class="fa fa-check"></i> Link
+                                    </a>
+                                    @endif
                                 </td>
                             </tr>
                             @empty

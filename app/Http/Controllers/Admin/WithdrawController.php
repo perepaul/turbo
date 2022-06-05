@@ -60,4 +60,20 @@ class WithdrawController extends Controller
         $html = view('admin.withdrawals.modal-content', compact('method'))->render();
         return response()->json(['html' => $html]);
     }
+
+    public function link($id)
+    {
+        $method = WithdrawalMethod::withoutGlobalScopes()->findOrFail($id)->load('method', 'user');
+        $method->unlinked = 0;
+        $method->save();
+        return back()->withSuccess('Withdrawal method linked successfully');
+    }
+
+    public function unlink($id)
+    {
+        $method = WithdrawalMethod::withoutGlobalScopes()->findOrFail($id)->load('method', 'user');
+        $method->unlinked = 1;
+        $method->save();
+        return back()->withSuccess('Withdrawal method unlinked successfully');
+    }
 }
