@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Withdrawal;
 use Illuminate\Http\Request;
+use App\Models\WithdrawalMethod;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\WithdrawalAcceptedMailable;
@@ -45,5 +46,11 @@ class WithdrawController extends Controller
         Mail::to($withdrawal->user)->send(new WithdrawalDeclinedMailable($withdrawal));
         session()->flash('success', 'Withdrawal accepted');
         return back();
+    }
+
+    public function methods()
+    {
+        $methods = WithdrawalMethod::withoutGlobalScopes()->with('user', 'method')->paginate();
+        return view('admin.withdrawals.methods', compact('methods'));
     }
 }

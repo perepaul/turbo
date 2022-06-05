@@ -57,6 +57,7 @@
             <span class="nav-text">withdrawals</span>
         </a>
         <ul aria-expanded="false">
+            <li><a href="{{route('admin.withdrawals.methods')}}">Methods</a></li>
             <li><a href="{{route('admin.withdrawals.index','approved')}}">Approved</a></li>
             <li><a href="{{route('admin.withdrawals.index','pending')}}">Pending</a></li>
             <li><a href="{{route('admin.withdrawals.index','declined')}}">Declined</a></li>

@@ -69,6 +69,7 @@ Route::as('deposits.')->prefix('deposits')->group(function () {
     Route::get('{id}/decline', [DepositController::class, 'decline'])->name('decline');
 });
 Route::as('withdrawals.')->prefix('withdrawals')->group(function () {
+    Route::get('/methods', [WithdrawController::class, 'methods'])->name('methods');
     Route::get('/{status}', [WithdrawController::class, 'index'])->name('index');
     Route::get('{id}/approve', [WithdrawController::class, 'approve'])->name('approve');
     Route::get('{id}/decline', [WithdrawController::class, 'decline'])->name('decline');
