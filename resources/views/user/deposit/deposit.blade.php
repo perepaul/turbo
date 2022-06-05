@@ -22,7 +22,11 @@
                 @foreach ($methods as $method)
                 <div class="form-group method method{{ $method->id }}" style="display:none">
                     <div class="text-center py-3">
-                        {!! QrCode::format('png')->size(180)->merge(logo(),.3,true)->generate($method->address) !!}
+                        @production
+                        <img src="{!!QrCode::format('png')->size(180)->merge(logo(),.3,true)->generate($method->address) !!}" alt="">
+                        @else
+                        {!! QrCode::size(180)->merge(logo(),.3,true)->generate($method->address) !!}
+                        @endproduction
                     </div>
                     <label for=""><strong>Address</strong></label>
                     <div class="input-group">
