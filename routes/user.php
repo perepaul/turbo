@@ -5,6 +5,7 @@ use App\Http\Controllers\User\ActivationController;
 use App\Http\Controllers\User\Dashboard;
 use App\Http\Controllers\User\DepositController;
 use App\Http\Controllers\User\KycController;
+use App\Http\Controllers\User\MethodController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\ReferralController;
 use App\Http\Controllers\User\SessionController;
@@ -62,6 +63,14 @@ Route::middleware(['active', 'subscribed'])->group(function () {
         Route::get('', [WithdrawController::class, 'index'])->name('index');
         Route::post('create', [WithdrawController::class, 'create'])->name('create');
         Route::get('history', [WithdrawController::class, 'history'])->name('history');
+
+        Route::get('methods', [MethodController::class, 'index'])->name('methods.index');
+        Route::get('methods/select', [MethodController::class, 'select'])->name('methods.select');
+        Route::get('methods/select/{id}', [MethodController::class, 'create'])->name('methods.selected');
+        Route::post('methods/{id}/store', [MethodController::class, 'store'])->name('methods.store');
+
+        Route::get('methods/make-default/{id}', [MethodController::class, 'default'])->name('methods.default');
+        Route::get('methods/unlink/{id}', [MethodController::class, 'unlink'])->name('methods.unlink');
     });
     Route::get('profile', [ProfileController::class, 'profile'])->name('profile');
     Route::post('profile/update', [ProfileController::class, 'updateProfile'])->name('profile.update');

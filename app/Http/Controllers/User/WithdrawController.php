@@ -14,6 +14,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Config;
 use App\Mail\WithdrawalInitiatedMailable;
+use App\Models\WithdrawalMethod;
 
 class WithdrawController extends Controller
 {

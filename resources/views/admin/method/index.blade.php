@@ -1,14 +1,14 @@
 @extends('layouts.back')
-@section('title', 'Deposit method')
+@section('title', 'Payment methods')
 @section('content')
 <div class="row">
-    <div class="col-xl-12">
+    <div class="col-md-8 mx-auto">
         <x-alert />
         <div class="card">
             <div class="card-body">
                 <div class="p-lg-5">
                     <div class="text-end">
-                        <a href="{{ route('admin.settings.methods.create') }}" class="btn btn-success">Create Method</a>
+                        <a href="{{ route('admin.settings.methods.create') }}" class="btn btn-outline-success btn-sm mb-3"><i class="fa fa-plus"></i> Add Method</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table">
@@ -28,9 +28,7 @@
                                     <td>{{ $method->address }}</td>
                                     <td>@if($method->image)<img src="{{ asset(config('dir.methods').$method->image) }}" width="40px" />@endif</td>
                                     <td>
-                                        <a href="{{route('admin.settings.methods.show',$method->id)}}" @class([ 'badge badge-lg' , 'badge-outline-success text-success'=> $method->status == 'active',
-                                            'badge-outline-danger text-danger' => $method->status == 'inactive'
-                                            ]) style="cursor: pointer">
+                                        <a href="{{route('admin.settings.methods.show',$method->id)}}" class="badge fs-12 @if($method->status === 'active') badge-outline-success text-success @else badge-outline-danger text-danger @endif" style="cursor: pointer">
                                             {{ucfirst($method->status)}}
                                         </a>
                                     </td>

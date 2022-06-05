@@ -1,52 +1,51 @@
 @extends('layouts.back')
-@section('title', 'Create Payment method')
+@section('title', 'Edit Payment method')
 @section('content')
 <div class="row">
-    <div class="col-xl-12">
+    <div class="col-md-7 mx-auto">
         <x-alert />
         <div class="card">
             <div class="card-body">
-                <form action="{{ route('admin.settings.methods.update',$method->id) }}" method="post" enctype="multipart/form-data" class="row p-lg-3 d-flex justify-content-center">
+                <form action="{{ route('admin.settings.methods.update',$method->id) }}" method="post" enctype="multipart/form-data" class="p-lg-3">
                     @csrf
                     @method('PUT')
-                    <div class="col-md-7">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" class="form-control" value="{{ $method->name }}" placeholder="Bitcoin">
-                            <x-error :key="'name'" />
-                        </div>
-                        <div class="form-group">
-                            <label for="address">Address</label>
-                            <input type="text" id="address" name="address" class="form-control" value="{{ $method->address }}" placeholder="xxxxxxxxxxxxxxxxxxx">
-                            <x-error :key="'address'" />
-                        </div>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" class="form-control" value="{{ $method->name }}" placeholder="Bitcoin">
+                        <x-error :key="'name'" />
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="address" class="form-control" value="{{ $method->address }}" placeholder="xxxxxxxxxxxxxxxxxxx">
+                        <x-error :key="'address'" />
+                    </div>
 
-                        <div class="form-group">
-                            <label for="status">Address</label>
-                            <select name="status" id="status" class="form-select form-control-lg">
-                                <option value="active" @if(old('status') !='inactive' || $method->status == 'active' ) selected @endif>Active</option>
-                                <option value="inactive" @if(old('status')=='inactive' || $method->status == 'inactive') selected @endif>Inactive</option>
-                            </select>
-                            <x-error :key="'address'" />
-                        </div>
+                    <div class="form-group">
+                        <label for="status">Address</label>
+                        <select name="status" id="status" class="form-select form-control-lg">
+                            <option value="active" @if(old('status') !='inactive' || $method->status == 'active' ) selected @endif>Active</option>
+                            <option value="inactive" @if(old('status')=='inactive' || $method->status == 'inactive') selected @endif>Inactive</option>
+                        </select>
+                        <x-error :key="'address'" />
+                    </div>
 
-                        <div class="mb-3 col-md-4">
-                            <label class="mb-1 d-block"><strong>Image / QR Code</strong></label>
-                            <input type="file" name="image" id="image" style="display:none" accept="image/png;image/jpg;image/jpeg">
-                            <label for="image" class="mt-3">
-                                <span class="btn btn-outline-warning @if (!is_null($method->image)) d-none @endif">Upload <i class="fa fa-upload"></i></span>
-                                <div class="preview">
-                                    @if (!is_null($method->image))
-                                    <img src="{{ asset(config('dir.methods') . $method->image) }}" class="img-responsive" style="width:100%;height:auto;" />
-                                    @endif
-                                </div>
-                            </label>
-                            <x-error :key="'image'" />
+                    <div class="mb-3 col-md-4">
+                        <label class="mb-1 d-block"><strong>Image / QR Code</strong></label>
+                        <input type="file" name="image" id="image" style="display:none" accept="image/png;image/jpg;image/jpeg">
+                        <label for="image" class="mt-3">
+                            <span class="btn btn-outline-warning @if (!is_null($method->image)) d-none @endif">Upload <i class="fa fa-upload"></i></span>
+                            <div class="preview">
+                                @if (!is_null($method->image))
+                                <img src="{{ asset(config('dir.methods') . $method->image) }}" class="img-responsive" style="width:100%;height:auto;" />
+                                @endif
+                            </div>
+                        </label>
+                        <x-error :key="'image'" />
 
-                        </div>
-                        <div class="col-12 text-center">
-                            <button type="submit" class="btn btn-info mt-3">Update</button>
-                        </div>
+                    </div>
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-info mt-3">Update</button>
+                    </div>
                 </form>
             </div>
         </div>

@@ -98,6 +98,11 @@ class User extends Authenticatable
         return $this->hasMany(Device::class);
     }
 
+    public function methods()
+    {
+        return $this->hasMany(WithdrawalMethod::class);
+    }
+
     public function representatives()
     {
         return $this->hasOne(Representative::class);

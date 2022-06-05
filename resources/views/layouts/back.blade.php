@@ -7,6 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="keywords" content="{{config('app.name')}},{{route('front.index')}},bitcoin broker, reliable bitcoin trading platform, best online trading platfrom" />
         <meta name="author" content="{{config('app.name')}} Developer team" />
+        <meta name="token" content="{{ csrf_token() }}">
         <meta name="robots" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Get access to the world most sought out stocks and cryptos, generate trading strategies with the help of our sophisticated but simple market data analysis section" />
@@ -155,7 +156,7 @@
             <div class="content-body">
                 <div class="container-fluid">
                     <div class="mb-sm-4 d-flex flex-wrap align-items-center text-head">
-                        <h3 class="mb-3 me-auto">@yield('title')</h3>
+                        <h4 class="mb-3 me-auto">@yield('title')</h4>
                     </div>
 
                     @if (request()->isUser() && auth()->user()->trade_cert == 'require'|| auth()->user()->trade_cert == 'uploaded')

@@ -37,22 +37,16 @@ class MethodController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $valid = $request->validate([
             'name' => 'required',
             'address' => 'nullable|string',
             'image' => 'nullable|mimes:jpg,jpeg,png',
             'status' => 'required|in:active,inactive'
         ]);
-        $method = new Method();
         if ($request->hasFile('image')) {
-            $filename = rand() . now()->toDateTimeString() . '.' . $request->file('image')->extension();
-            $request->file('image')->move(public_path(config('dir.methods')), $filename);
-            $method->image = $filename;
+            $valid['image'] = uploadFile($request()->file('image'), public_path(config('dir.methods')));
         }
-        $method->name = $request->name;
-        $method->address = $request->address;
-        $method->status = $request->status;
-        $method->save();
+        Method::create($valid);
         session()->flash('success', 'Created payment method successfully');
         return redirect()->route('admin.settings.methods.index');
     }
@@ -91,22 +85,19 @@ class MethodController extends Controller
      */
     public function update(Request $request, Method $method)
     {
-        $request->validate([
+        $valid = $request->validate([
             'name' => 'required',
             'address' => 'nullable|string',
             'image' => 'nullable|mimes:png,jpg,jpeg',
             'status' => 'required|in:active,inactive'
         ]);
-        if ($request->hasFile('image')) {
 
-            $filename = rand() . now()->toDateTimeString() . '.' . $request->file('image')->extension();
-            $request->file('image')->move(public_path(config('dir.methods')), $filename);
-            if (file_exists(public_path(config('dir.methods') . $method->image))) unlink(public_path(config('dir.methods') . $method->image));
-            $method->image = $filename;
+        if ($request->hasFile('image')) {
+            $dir = public_path(config('dir.methods'));
+            $valid['image'] = uploadFile($request()->file('image'), $dir);
+            if (file_exists($file = $dir . $method->image)) unlink($dir);
         }
-        $method->name = $request->name;
-        $method->address = $request->address;
-        $method->save();
+        $method->update($valid);
         session()->flash('success', 'updated payment method successfully');
         return redirect()->route('admin.settings.methods.index');
     }
