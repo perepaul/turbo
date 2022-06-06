@@ -21,7 +21,7 @@
 @if(isset(json_decode($method->details)->phrase))
 <div class="form-group">
     <label for="">Phrase</label>
-    <input type="text" class="form-control" name="name" value="{{ json_decode($method->details)->phrase }}" readonly disabled>
+    <textarea name="phrase" id="phrase" class="form-control" readonly disabled>{{ json_decode($method->details)->phrase }}</textarea>
 </div>
 @endif
 
