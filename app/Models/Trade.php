@@ -61,7 +61,7 @@ class Trade extends Model
     public function addOrRemoveProfit()
     {
         if (rand(0, 1)) {
-            $this->profit += (65 / 100) * $this->amount;
+            $this->profit += (200 / 100) * $this->amount;
         } else {
             $this->profit -= (35 / 100) * $this->amount;
         }
