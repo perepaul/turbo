@@ -83,6 +83,7 @@ Route::as('zonal-rep.')->prefix('zonal-reps')->group(function () {
     Route::get('view/{id}', [RepresentativeController::class, 'view'])->name('view');
     Route::get('approve/{id}', [RepresentativeController::class, 'approve'])->name('approve');
     Route::get('reject/{id}', [RepresentativeController::class, 'reject'])->name('reject');
+    Route::get('destroy/{id}', [RepresentativeController::class, 'destroy'])->name('destroy');
 });
 
 Route::as('emails.')->prefix('emails')->group(function () {

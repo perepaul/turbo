@@ -51,11 +51,18 @@
                                         <button class="dropdown-item view" data-link="{{route('admin.zonal-rep.view',$rep->id)}}">
                                             <i class="fa fa-eye"></i> View
                                         </button>
+                                        @if($rep->status != 'accepted')
                                         <a class="dropdown-item accept" href="{{route('admin.zonal-rep.approve',$rep->id)}}">
                                             <i class="fa fa-check"></i> Approve
                                         </a>
+                                        @endif
+                                        @if($rep->status != 'rejected')
                                         <a class="dropdown-item reject" href="{{route('admin.zonal-rep.reject',$rep->id)}}">
                                             <i class="fa fa-times"></i> Reject
+                                        </a>
+                                        @endif
+                                        <a class="dropdown-item reject" href="{{route('admin.zonal-rep.destroy',$rep->id)}}">
+                                            <i class="fa fa-trash"></i> Delete
                                         </a>
                                     </div>
                                 </div>
@@ -89,7 +96,7 @@
             <div class="modal-body">
                 {{-- JS content here --}}
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer d-none">
                 <a class="btn btn-success" id="accept-btn">Accept</a>
                 <a class="btn btn-danger" id="reject-btn">Reject</a>
             </div>

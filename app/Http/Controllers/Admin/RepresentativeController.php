@@ -33,15 +33,25 @@ class RepresentativeController extends Controller
     public function reject($id)
     {
         $rep = Representative::findOrFail($id);
-        $rep->delete();
+        $rep->status = 'rejected';
+        $rep->save();
         Mail::to($rep->user)->send(new Rejected());
         return back();
     }
+
+
 
     public function view($id)
     {
         $rep = Representative::findOrFail($id);
         $html = view('components.view-rep', ['rep' => $rep])->render();
         return response()->json(['html' => $html]);
+    }
+
+    public function destory($id)
+    {
+        $rep = Representative::findOrFail($id);
+        $rep->delete();
+        return back();
     }
 }
