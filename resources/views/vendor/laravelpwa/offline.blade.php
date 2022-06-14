@@ -2,4 +2,4 @@
 
 @section('title', __('Offline'))
 @section('code', '')
-@section('message', __('Offline'))
+@section('message', __('You are currently offline, check your internet connection'))
