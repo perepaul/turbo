@@ -30,7 +30,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
 
         @stack('css')
-
+        @laravelPWA
     </head>
 
     <body class="darker-blue">

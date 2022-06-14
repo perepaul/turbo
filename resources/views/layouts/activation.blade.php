@@ -22,7 +22,7 @@
         <!-- FAVICONS ICON -->
         <link rel="shortcut icon" type="image/png" href="{{ favicon() }}" />
         <link href="/assets/back/css/style.css" rel="stylesheet">
-
+        @laravelPWA
     </head>
 
     <body class="vh-100">
