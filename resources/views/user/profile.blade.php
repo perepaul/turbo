@@ -50,7 +50,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-xl-4">
+    <!--<div class="col-xl-4">
         <div class="row">
             <div class="col-xl-12">
                 <div class="card">
@@ -182,9 +182,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 
-    <div class="col-xl-8">
+    <div class="col-xl-12">
         <div class="card" style="height: auto">
             <div class="card-body">
                 <div class="profile-tab">
