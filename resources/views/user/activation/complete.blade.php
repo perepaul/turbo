@@ -7,7 +7,7 @@
 <div class="text-justify">
     <h5>Congratulations!</h5>
     <p>Your account has been set up successfully, please hold on as our agents review your account, if more information
-        is required you will be conatacted via the email you submited.</p>
+        is required you will be contacted via the email you submited.</p>
     <p>You will be allowed to access your trading dashboard after the review excercise.</p>
     <p><strong>PS:</strong> Account review might take up to 3 working hours to complete.</p>
     <p>
