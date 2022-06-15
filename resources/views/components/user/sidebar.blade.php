@@ -37,10 +37,31 @@
     </a>
     <ul aria-expanded="false">
         <li><a href="{{route('user.withdrawal.index')}}">Withdraw</a></li>
-        <li><a href="{{route('user.withdrawal.methods.index')}}">Withdrawal methods</a></li>
         <li><a href="{{route('user.withdrawal.history')}}">Withdraw history</a></li>
     </ul>
 </li>
+
+
+<li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+        <i class="flaticon-381-settings-1"></i>
+        <span class="nav-text">Settings</span>
+    </a>
+    <ul aria-expanded="false">
+        <li><a href="{{route('user.profile')}}">Profile</a></li>
+        <li><a href="{{route('user.security.password')}}">Change password</a></li>
+        <li><a href="{{route('user.security.two-factor')}}">2FA</a></li>
+        <li><a href="{{route('user.security.sessions')}}">Active Sessions</a></li>
+        <li><a href="{{route('user.subscriptions')}}">Subscriptions</a></li>
+    </ul>
+</li>
+</ul>
+{{-- <li><a href="{{route('user.kyc.index')}}">KYC</a></li> --}}
+
+{{--
+    <li><a href="{{route('user.security')}}">Security</a>
+</li>
+<li><a href="{{route('user.preference')}}">Preferences</a></li>
+--}}
 {{-- <li><a href="{{ route('user.index') }}" class="" aria-expanded="false">
 <i class="flaticon-043-menu"></i>
 <span class="nav-text">Referrals</span>
@@ -64,25 +85,5 @@
         <li><a href="{{route('user.referrals')}}">Referrals</a></li>
 <li><a href="{{route('user.representative')}}">Zonal Representative</a></li>
 </ul>
-</li> --}}
-
-
-<li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
-        <i class="flaticon-381-settings-1"></i>
-        <span class="nav-text">Settings</span>
-    </a>
-    <ul aria-expanded="false">
-        <li><a href="{{route('user.profile')}}">Profile</a></li>
-        <li><a href="{{route('user.security.password')}}">Change password</a></li>
-        <li><a href="{{route('user.security.two-factor')}}">2FA</a></li>
-        <li><a href="{{route('user.security.sessions')}}">Active Sessions</a></li>
-        <li><a href="{{route('user.kyc.index')}}">KYC</a></li>
-        <li><a href="{{route('user.subscriptions')}}">Subscriptions</a></li>
-        {{--
-    <li><a href="{{route('user.security')}}">Security</a>
 </li>
-<li><a href="{{route('user.preference')}}">Preferences</a></li>
---}}
-</ul>
-</li>
-</ul>
+<li><a href="{{route('user.withdrawal.methods.index')}}">Withdrawal methods</a></li>--}}

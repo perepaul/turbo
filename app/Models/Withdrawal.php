@@ -18,6 +18,6 @@ class Withdrawal extends Model
 
     public function method()
     {
-        return $this->belongsTo(WithdrawalMethod::class);
+        return $this->belongsTo(Method::class);
     }
 }

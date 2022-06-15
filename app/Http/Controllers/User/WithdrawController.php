@@ -21,7 +21,7 @@ class WithdrawController extends Controller
     public function index()
     {
         $user = User::findOrFail(auth()->user()->id);
-        $methods = $user->methods()->with('method')->get();
+        $methods = Method::latest()->get();
         return view('user.withdrawal.withdraw', compact('methods'));
     }
 
@@ -40,11 +40,11 @@ class WithdrawController extends Controller
         ]);
         $user = User::find(auth()->user()->id);
 
-        $method = $user->methods()->whereId($request->input('method'))->first();
+        $method = Method::findOrFail($request->input('method'));
 
-        if (in_array($user->trade_cert, ['require', 'uploaded'])) {
-            return back()->withInput()->with('error', 'Your account is currently inactive as we have requested for your trading licence, your account will be activated when it is verified. ');
-        }
+        // if (in_array($user->trade_cert, ['require', 'uploaded'])) {
+        //     return back()->withInput()->with('error', 'Your account is currently inactive as we have requested for your trading licence, your account will be activated when it is verified. ');
+        // }
 
         DB::beginTransaction();
         try {
@@ -60,7 +60,7 @@ class WithdrawController extends Controller
                 'method_id' => $method->id,
                 'amount' => $request->amount,
                 'reference' => generateReference(Deposit::class),
-                'address' => $method->address,
+                'address' => $request->address,
             ]);
             $contact = Contact::find(1);
             if (!is_null($contact) && !empty($contact->notification_email)) {
@@ -72,7 +72,8 @@ class WithdrawController extends Controller
         } catch (\Throwable $th) {
             DB::rollBack();
             session()->flash('error', 'Failed to initiate withdrawal');
-            Log::error("$th->getMessage() file: $th->getFile() on line: $th->getLine()");
+            throw $th;
+            // Log::error("$th->getMessage() file: $th->getFile() on line: $th->getLine()");
         }
         return redirect()->back();
     }

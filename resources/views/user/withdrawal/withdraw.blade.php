@@ -13,8 +13,8 @@
                     <select name="method" id="" class="form-control">
                         <option value="">Select withdrawal Method</option>
                         @foreach ($methods as $method)
-                        <option value="{{ $method->id }}" data-address="{{$method->address}}" @if (old('method')==$method->id) selected @endif>
-                            {{ $method->name }} ({{$method->method->name}})
+                        <option value="{{ $method->id }}" @if (old('method')==$method->id) selected @endif>
+                            {{ $method->name }}
                         </option>
                         @endforeach
                     </select>
@@ -22,7 +22,7 @@
 
                 <div class="form-group" style="display: none" id="address-container">
                     <label for="address"><strong>Wallet address</strong> <small>withdaral amount will be sent to this address</small> </label>
-                    <input type="text" class="form-control" name="address" id="address" placeholder="Wallet Address" value="" readonly disabled>
+                    <input type="text" class="form-control" name="address" id="address" placeholder="Wallet Address" value="{{old('address')}}">
                     <x-error :key="'address'" />
                 </div>
 
@@ -64,7 +64,6 @@
         }
 
         var option = elem.children(`option[value=${elem.val()}]`);
-        address.val(option.data('address'))
         addressParent.show();
 
     })
