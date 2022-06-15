@@ -27,11 +27,11 @@
         </a>
     </li>
 
-    <li><a href="{{ route('admin.zonal-rep.index') }}" class="" aria-expanded="false">
-            <i class="flaticon-025-dashboard"></i>
-            <span class="nav-text">Zonal Rep.</span>
-        </a>
-    </li>
+    {{-- <li><a href="{{ route('admin.zonal-rep.index') }}" class="" aria-expanded="false">
+    <i class="flaticon-025-dashboard"></i>
+    <span class="nav-text">Zonal Rep.</span>
+    </a>
+    </li> --}}
     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
             <i class="flaticon-041-graph"></i>
             <span class="nav-text">Trades</span>

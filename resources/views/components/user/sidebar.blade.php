@@ -56,15 +56,15 @@
         </ul>
     </li> --}}
 
-<li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+{{-- <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
         <i class="flaticon-050-info"></i>
         <span class="nav-text">Affiliate Program</span>
     </a>
     <ul aria-expanded="false">
         <li><a href="{{route('user.referrals')}}">Referrals</a></li>
-        <li><a href="{{route('user.representative')}}">Zonal Representative</a></li>
-    </ul>
-</li>
+<li><a href="{{route('user.representative')}}">Zonal Representative</a></li>
+</ul>
+</li> --}}
 
 
 <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
