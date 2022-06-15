@@ -62,7 +62,7 @@
         ***********************************-->
             <div class="nav-header">
                 <a href="/" class="brand-logo">
-                    <img src="{{favicon()}}" alt="" style="width:180px; height:auto">
+                    <img src="{{favicon()}}" alt="" style="width:110px; height:auto">
                 </a>
                 <div class="nav-control">
                     <div class="hamburger">
