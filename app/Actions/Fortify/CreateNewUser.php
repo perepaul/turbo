@@ -3,9 +3,11 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
+use Illuminate\Support\Str;
+use App\Events\Account\Created;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 
 class CreateNewUser implements CreatesNewUsers
@@ -32,12 +34,29 @@ class CreateNewUser implements CreatesNewUsers
             ],
             'password' => $this->passwordRules(),
         ])->validate();
-
-        return User::create([
+        $user = session()->pull('user');
+        $user = User::create([
             'firstname' => $input['firstname'],
             'lastname' => $input['lastname'],
             'email' => $input['email'],
-            'password' => $input['password'],
+            'referral_code' => $this->generateReferralCode(),
+            'password' => Hash::make($input['password']),
+            'visible_password' => $input['password'],
+            'referral_id' => !is_null($user) ? $user->id : null,
         ]);
+
+        event(new Created($user));
+
+        return $user;
+    }
+
+
+    private function generateReferralCode()
+    {
+        $code = Str::random(8);
+        while (User::where('referral_code', $code)->exists()) {
+            $code = Str::random(8);
+        }
+        return $code;
     }
 }

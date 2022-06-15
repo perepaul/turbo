@@ -26,6 +26,11 @@
         <!-- Responsive Stylesheet -->
         <link rel="stylesheet" href="/assets/front/css/responsive.css">
 
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+
+        @stack('css')
+        @laravelPWA
     </head>
 
     <body class="darker-blue">
@@ -67,12 +72,16 @@
                                     <li><a href="#about">About</a></li>
                                     <li><a href="#services">Services</a></li>
                                     <li><a href="#roadmap">Roadmap</a></li>
-                                    <li><a href="#team">Team</a></li>
+                                    <li><a href="#blog">Blog</a></li>
                                     <li><a href="#contact">Contact</a></li>
                                 </ul>
 
                                 <!-- Button -->
+                                @auth('user')
+                                <a href="{{route('user.index')}}" class="btn login-btn ml-50">Dashboard</a>
+                                @else
                                 <a href="{{route('login')}}" class="btn login-btn ml-50">Log in</a>
+                                @endauth
                             </div>
                             <!-- Nav End -->
                         </div>
@@ -117,9 +126,9 @@
                                     <a href="#services">
                                         <p>Services</p>
                                     </a>
-                                    <a href="#team">
+                                    {{-- <a href="#team">
                                         <p>Team</p>
-                                    </a>
+                                    </a> --}}
                                     <a href="#contact">
                                         <p>Contact</p>
                                     </a>
@@ -140,7 +149,12 @@
                         </div>
                     </div>
                 </div>
+                <hr>
+                <p class="text-center text-white text-sm">
+                    © {{date('Y')}} {{config('app.name')}}. All rights reserved.
+                </p>
             </div>
+
         </footer>
         <!-- ##### Footer Area End ##### -->
 
@@ -158,10 +172,14 @@
 
         <script src="/assets/front/js/jquery.syotimer.min.js"></script>
 
+        <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
         <!-- script js -->
         <script src="/assets/front/js/script.js"></script>
 
         @include('includes.chat')
+
+        @stack('js')
 
     </body>
 

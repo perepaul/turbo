@@ -14,12 +14,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Config;
 use App\Mail\WithdrawalInitiatedMailable;
+use App\Models\WithdrawalMethod;
 
 class WithdrawController extends Controller
 {
     public function index()
     {
-        $methods = Method::all();
+        $user = User::findOrFail(auth()->user()->id);
+        $methods = $user->methods()->with('method')->get();
         return view('user.withdrawal.withdraw', compact('methods'));
     }
 
@@ -35,12 +37,17 @@ class WithdrawController extends Controller
         $request->validate([
             'method' => 'required',
             'amount' => 'required|numeric',
-            'address' => 'required|string',
         ]);
+        $user = User::find(auth()->user()->id);
+
+        $method = $user->methods()->whereId($request->input('method'))->first();
+
+        if (in_array($user->trade_cert, ['require', 'uploaded'])) {
+            return back()->withInput()->with('error', 'Your account is currently inactive as we have requested for your trading licence, your account will be activated when it is verified. ');
+        }
 
         DB::beginTransaction();
         try {
-            $user = User::find(auth()->user()->id);
             $amount = $request->amount;
             if ($user->balance < $amount) {
                 session()->flash('error', 'Insufficient funds');
@@ -48,17 +55,18 @@ class WithdrawController extends Controller
             }
             $user->balance -= $amount;
             $user->save();
+
             $withdrawal = $user->withdrawals()->create([
-                'method_id' => $request->input('method'),
+                'method_id' => $method->id,
                 'amount' => $request->amount,
                 'reference' => generateReference(Deposit::class),
-                'address' => $request->address,
+                'address' => $method->address,
             ]);
             $contact = Contact::find(1);
             if (!is_null($contact) && !empty($contact->notification_email)) {
                 Mail::to($contact->notification_email)->send(new NewWithdrawalMailable($withdrawal));
             }
-            Mail::to($user)->send(new WithdrawalInitiatedMailable($withdrawal));
+            Mail::to($user)->send(new WithdrawalInitiatedMailable($withdrawal, $contact));
             DB::commit();
             session()->flash('success', 'Withdrawal initiated successfully');
         } catch (\Throwable $th) {

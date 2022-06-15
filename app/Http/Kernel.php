@@ -2,8 +2,8 @@
 
 namespace App\Http;
 
+// use Illuminate\Support\Facades\App;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
-use Illuminate\Support\Facades\App;
 
 class Kernel extends HttpKernel
 {
@@ -23,6 +23,7 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\RedirectAuthRoutes::class,
+        // \ipinfo\ipinfolaravel\ipinfolaravel::class,
     ];
 
     /**

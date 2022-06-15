@@ -1,68 +1,63 @@
 @extends('layouts.back')
 @section('title', 'Deposit')
 @section('content')
-<div class="container-fluid">
-    <div class="mb-sm-4 d-flex flex-wrap align-items-center text-head">
-        <h2 class="mb-3 me-auto">@yield('title')</h2>
-    </div>
 
-    <div class="col-lg-5 col-sm-12 mx-auto">
-        <div class="card">
-            <div class="card-body">
-                <form action="{{ route('user.deposit.create') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
-                        <label for=""><strong>Deposit method</strong></label>
-                        <select name="method" id="" class="form-control">
-                            <option value="">Select Deposit Method</option>
-                            @foreach ($methods as $method)
-                            <option value="{{ $method->id }}" data-target=".method{{ $method->id }}" data-status="{{$method->status}}">
-                                {{ $method->name }}
-                            </option>
-                            @endforeach
-                        </select>
-                        <x-error :key="'method'" />
+<div class="col-lg-5 col-sm-12 mx-auto">
+    <div class="card">
+        <div class="card-body">
+            <form action="{{ route('user.deposit.create') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                    <label for=""><strong>Deposit method</strong></label>
+                    <select name="method" id="" class="form-control">
+                        <option value="">Select Deposit Method</option>
+                        @foreach ($methods as $method)
+                        <option value="{{ $method->id }}" data-target=".method{{ $method->id }}" data-status="{{$method->status}}">
+                            {{ $method->name }}
+                        </option>
+                        @endforeach
+                    </select>
+                    <x-error :key="'method'" />
+                </div>
+                @foreach ($methods as $method)
+                <div class="form-group method method{{ $method->id }}" style="display:none">
+                    <div class="text-center py-3">
+                        {!! QrCode::size(170)->generate($method->address) !!}
                     </div>
-                    @foreach ($methods as $method)
-                    <div class="form-group method method{{ $method->id }}" style="display:none">
-                        <div class="text-center">
-                            <img src="{{ asset(config('dir.methods') . $method->image) }}" width="100" class="mt-2 mb-2" alt="">
+                    <label for=""><strong>Address</strong></label>
+                    <div class="input-group">
+                        <input type="text" class="form-control copy-text" value="{{ $method->address }}" disabled>
+                        <span id="copy" class="input-group-text bg-primary text-white" style="cursor: pointer">Copy</span>
+                    </div>
+                    <x-error :key="'address'" />
+                </div>
+                @endforeach
+
+                <div class="form-group">
+                    <label for=""><strong>Amount</strong></label>
+                    <input type="text" class="form-control" name="amount" value="{{ old('amount') }}">
+                    <x-error :key="'amount'" />
+                </div>
+                <div class="mb-3 col-md-4">
+                    <label class="mb-1 d-block"><strong>Proof of Payment</strong></label>
+                    <input type="file" name="proof" id="proof" style="display:none" accept="image/png;image/jpg;image/jpeg">
+                    <label for="proof" class="mt-3">
+                        <span class="btn btn-outline-warning">Upload <i class="fa fa-upload"></i></span>
+                        <div class="preview">
+
                         </div>
-                        <label for=""><strong>Address</strong></label>
-                        <div class="input-group">
-                            <input type="text" class="form-control copy-text" value="{{ $method->address }}" disabled>
-                            <span id="copy" class="input-group-text d-block text-white bg-primary" style="cursor: pointer">Copy</span>
-                        </div>
-                        <x-error :key="'address'" />
-                    </div>
-                    @endforeach
+                    </label>
+                    <x-error :key="'image'" />
 
-                    <div class="form-group">
-                        <label for=""><strong>Amount</strong></label>
-                        <input type="text" class="form-control" name="amount" value="{{ old('amount') }}">
-                        <x-error :key="'amount'" />
-                    </div>
-                    <div class="mb-3 col-md-4">
-                        <label class="mb-1 d-block"><strong>Proof of Payment</strong></label>
-                        <input type="file" name="proof" id="proof" style="display:none" accept="image/png;image/jpg;image/jpeg">
-                        <label for="proof" class="mt-3">
-                            <span class="btn btn-outline-warning">Upload <i class="fa fa-upload"></i></span>
-                            <div class="preview">
-
-                            </div>
-                        </label>
-                        <x-error :key="'image'" />
-
-                    </div>
-                    <div class="d-flex justify-content-center mt-3">
-                        <input type="submit" class="btn btn-primary" value="Deposit">
-                    </div>
-                </form>
-            </div>
+                </div>
+                <div class="d-flex justify-content-center mt-3">
+                    <input type="submit" class="btn btn-primary" value="Deposit">
+                </div>
+            </form>
         </div>
     </div>
-
 </div>
+
 @endsection
 
 @push('js')
@@ -122,11 +117,7 @@
 
         $(document).on('click', '#copy', e => {
             value = $(e.currentTarget).siblings('input.copy-text').val();
-            element = document.createElement('input');
-            element.value = value;
-            $('body').append(element);
-            element.select();
-            document.execCommand('copy');
+            navigator.clipboard.writeText(value);
             toast('Address copied to clipboard')
         })
 </script>

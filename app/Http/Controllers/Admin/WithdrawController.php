@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Withdrawal;
 use Illuminate\Http\Request;
+use App\Models\WithdrawalMethod;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\WithdrawalAcceptedMailable;
@@ -45,5 +46,34 @@ class WithdrawController extends Controller
         Mail::to($withdrawal->user)->send(new WithdrawalDeclinedMailable($withdrawal));
         session()->flash('success', 'Withdrawal accepted');
         return back();
+    }
+
+    public function methods()
+    {
+        $methods = WithdrawalMethod::withoutGlobalScopes()->with('user', 'method')->paginate();
+        return view('admin.withdrawals.methods', compact('methods'));
+    }
+
+    public function view($id)
+    {
+        $method = WithdrawalMethod::withoutGlobalScopes()->findOrFail($id)->load('method', 'user');
+        $html = view('admin.withdrawals.modal-content', compact('method'))->render();
+        return response()->json(['html' => $html]);
+    }
+
+    public function link($id)
+    {
+        $method = WithdrawalMethod::withoutGlobalScopes()->findOrFail($id)->load('method', 'user');
+        $method->unlinked = 0;
+        $method->save();
+        return back()->withSuccess('Withdrawal method linked successfully');
+    }
+
+    public function unlink($id)
+    {
+        $method = WithdrawalMethod::withoutGlobalScopes()->findOrFail($id)->load('method', 'user');
+        $method->unlinked = 1;
+        $method->save();
+        return back()->withSuccess('Withdrawal method unlinked successfully');
     }
 }

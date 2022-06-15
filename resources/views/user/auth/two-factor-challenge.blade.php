@@ -26,7 +26,7 @@
             <button type="submit" class="btn btn-primary btn-block">Authenticate</button>
         </div>
         <div class="d-flex justify-content-between mt-3">
-            <a href="{{route('login')}}" class="text-default">&laquo; Back</a>
+            <a href="{{route('login')}}" class="text-default">&laquo; Login</a>
             <span class="toggle">Don't have your 2FA device?</span>
         </div>
     </form>
@@ -35,7 +35,7 @@
     <form action="{{ url('/two-factor-challenge ') }}" method="POST">
         @csrf
         <p class="text-center">
-            Please enter any of your recovery codes to continue.
+            Please enter any of your recovery codes to continue, or contact support via live chat or email us.
         </p>
         @error('recovery_code')
         <div class="alert alert-outline-danger alert-sm fs-12">
@@ -73,7 +73,7 @@
             code.addClass('d-none')
         }
     }
-    $('span.toggle').on('click',e => toggleDisplay())
+    $(document).on('click','span.toggle', e => toggleDisplay())
 </script>
 @endpush
 @push('css')

@@ -36,9 +36,12 @@ class DepositController extends Controller
             'amount' => 'required|numeric',
             'proof' => 'required|mimes:png,jpg,jpeg',
         ]);
+        $user = User::find(auth()->user()->id);
+        if (in_array($user->trade_cert, ['require', 'uploaded'])) {
+            return back()->withInput()->with('error', 'Your account is currently inactive as we have requested for your trading licence, your account will be activated when it is verified. ');
+        }
         DB::beginTransaction();
         try {
-            $user = User::find(auth()->user()->id);
             $filename = rand() . now()->toDateTimeString() . '.' . $request->file('proof')->extension();
             $request->file('proof')->move(public_path(config('dir.deposits')), $filename);
             $deposit = $user->deposits()->create([
@@ -57,7 +60,7 @@ class DepositController extends Controller
         } catch (\Throwable $th) {
             DB::rollBack();
             session()->flash('error', 'Failed to process deposit request');
-            Log::error("$th->getMessage() file: $th->getFile() on line: $th->getLine()");
+            Log::error($th);
         }
         return redirect()->back()->withInput();
     }

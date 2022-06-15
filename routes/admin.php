@@ -17,7 +17,12 @@ use App\Http\Controllers\Admin\TradeCurrencyController;
 use App\Http\Controllers\Admin\AccountCurrencyController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\MethodController;
+use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\RepresentativeController;
+use App\Http\Controllers\LocationController;
 use App\Models\Withdrawal;
+use App\View\Components\States;
+use Illuminate\Support\Facades\Blade;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,18 +35,10 @@ use App\Models\Withdrawal;
 |
 */
 
-Route::get('/states', function (Request $request) {
-    $helper = new CountryHelper();
-    $states = $helper->states($request->country_id)->toArray();
-    $html = view()->make('components.states', ['id' => $request->country_id, 'states' => $states])->render();
-    return response()->json(['data' => $html]);
-})->name('state');
-Route::get('/cities', function (Request $request) {
-    $helper = new CountryHelper();
-    $cities = $helper->cities($request->country_id, $request->state_id)->toArray();
-    $html = view()->make('components.city', compact('cities'))->render();
-    return response()->json(['data' => $html]);
-})->name('city');
+
+
+Route::get('/get-states', [LocationController::class, 'getStates'])->name('state');
+
 
 Route::get('feature-field', function () {
     $view = view('includes.back.feature-field')->render();
@@ -49,11 +46,14 @@ Route::get('feature-field', function () {
 })->name('feature-field');
 
 Route::get('/', [Dashboard::class, 'index'])->name('index');
+Route::resource('post', PostController::class);
 Route::as('users.')->prefix('users')->group(function () {
     Route::get('/{status}', [UserController::class, 'index'])->name('index');
     Route::get('{id}/login-as', [UserController::class, 'loginAs'])->name('login-as');
     Route::post('{id}/status', [UserController::class, 'status'])->name('status');
     Route::get('{id}/edit', [UserController::class, 'edit'])->name('edit');
+    Route::get('{id}/request-trade-cert', [UserController::class, 'tradeCert'])->name('request-trade-cert');
+    Route::get('{id}/verify-trade-cert', [UserController::class, 'verifyTradeCert'])->name('verify-trade-cert');
     Route::post('{id}/update', [UserController::class, 'update'])->name('update');
     Route::delete('{id}/delete', [UserController::class, 'destroy'])->name('delete');
 });
@@ -69,10 +69,23 @@ Route::as('deposits.')->prefix('deposits')->group(function () {
     Route::get('{id}/decline', [DepositController::class, 'decline'])->name('decline');
 });
 Route::as('withdrawals.')->prefix('withdrawals')->group(function () {
+    Route::get('/methods', [WithdrawController::class, 'methods'])->name('methods');
+    Route::get('/methods/{id}', [WithdrawController::class, 'view'])->name('methods.view');
+    Route::get('/methods/{id}/link', [WithdrawController::class, 'link'])->name('methods.link');
+    Route::get('/methods/{id}/unlink', [WithdrawController::class, 'unlink'])->name('methods.unlink');
     Route::get('/{status}', [WithdrawController::class, 'index'])->name('index');
     Route::get('{id}/approve', [WithdrawController::class, 'approve'])->name('approve');
     Route::get('{id}/decline', [WithdrawController::class, 'decline'])->name('decline');
 });
+
+Route::as('zonal-rep.')->prefix('zonal-reps')->group(function () {
+    Route::get('', [RepresentativeController::class, 'index'])->name('index');
+    Route::get('view/{id}', [RepresentativeController::class, 'view'])->name('view');
+    Route::get('approve/{id}', [RepresentativeController::class, 'approve'])->name('approve');
+    Route::get('reject/{id}', [RepresentativeController::class, 'reject'])->name('reject');
+    Route::get('destroy/{id}', [RepresentativeController::class, 'destroy'])->name('destroy');
+});
+
 Route::as('emails.')->prefix('emails')->group(function () {
     Route::get('/', [EmailController::class, 'index'])->name('index');
     Route::get('send', [EmailController::class, 'sendPage'])->name('send.page');

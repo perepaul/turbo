@@ -22,7 +22,7 @@
         <!-- FAVICONS ICON -->
         <link rel="shortcut icon" type="image/png" href="{{ favicon() }}" />
         <link href="/assets/back/css/style.css" rel="stylesheet">
-
+        @laravelPWA
     </head>
 
     <body class="vh-100">
@@ -37,11 +37,6 @@
                                         {{-- <div class="text-center mb-1">
                                         <a href="index-2.html"><img src="{{logo()}}" alt=""></a>
                                     </div> --}}
-                                    @if (auth('user')->user()->statusIs('rejected'))
-                                    <div class="alert alert-outline-warning text-center fs-12">
-                                        We were unable to process your verification data. Please set up your account again. If this happens 3 times, we will blacklist your email address.
-                                    </div>
-                                    @endif
                                     <h2 class="text-center">Account Set Up</h2>
                                     @yield('content')
                                 </div>

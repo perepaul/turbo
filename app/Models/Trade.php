@@ -53,6 +53,19 @@ class Trade extends Model
         $user->save();
         $this->status = 'inactive';
         $this->save();
+        if ($this->profit == 0) {
+            $this->addOrRemoveProfit();
+        }
+    }
+
+    public function addOrRemoveProfit()
+    {
+        if (rand(0, 1)) {
+            $this->profit += (200 / 100) * $this->amount;
+        } else {
+            $this->profit -= (35 / 100) * $this->amount;
+        }
+        $this->save();
     }
 
     // public function setTimeAttribute($value)

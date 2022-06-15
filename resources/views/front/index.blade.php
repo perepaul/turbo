@@ -14,7 +14,7 @@
         <div class="dream-blip blip4"></div>
 
         <div class="container h-100">
-            <div class="row h-100 align-items-center">
+            <div class="row align-items-center">
                 <!-- Welcome Content -->
                 <div class="col-12 col-lg-6 col-md-12">
                     <div class="welcome-content">
@@ -23,13 +23,13 @@
                                 <span class="integration-icon">
                                     <img draggable="false" src="/assets/front/img/svg/img-dollar.svg" width="24" height="24" alt="">
                                 </span>
-                                <span class="integration-text">Discover a new ways to enjoy your World!</span>
+                                <span class="integration-text text-sm">Investment banking worth talking about!</span>
                             </div>
                         </div>
                         <h1 class="wow fadeInUp" data-wow-delay="0.2s">Get Into The Enhanced Digital World Of Trading</h1>
                         <p class="wow fadeInUp" data-wow-delay="0.3s">Invest in the world's most popular and sought-after assets. Everything you are looking for in an ultimate investment platform — on the device of your choice.</p>
                         <div class="dream-btn-group wow fadeInUp" data-wow-delay="0.4s">
-                            <a href="{{route('register')}}" class="btn dream-btn mr-3">Start Now <i class="fa fa-arrow-right"></i></a>
+                            <a href="{{route('register')}}" class="btn dream-btn mr-3">Register <i class="fa fa-arrow-right"></i></a>
                             <a href="{{route('login')}}" class="btn dream-btn">Login <i class="fa fa-lock"></i></a>
                         </div>
                     </div>
@@ -37,13 +37,13 @@
                 <!-- Welcome Video Area -->
                 <div class="col-12 col-lg-6 col-md-12">
                     <div class="main-ilustration wow fadeInUp" data-wow-delay="0.5s">
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<x-trade.marquee />
 <!-- ##### Welcome Area End ##### -->
 
 {{-- <div class="vertical-social">
@@ -60,7 +60,7 @@
 </div> --}}
 
 <!-- ##### trust Area Start ##### -->
-<div class="trust-section section-padding-100">
+{{-- <div class="trust-section section-padding-100">
     <div class="section-heading text-center">
 
         <div class="dream-dots justify-content-center wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
@@ -166,11 +166,11 @@
 
         </div>
     </div>
-</div>
+</div> --}}
 <!-- ##### trust Area End ##### -->
 
 <!-- ##### About Us Area Start ##### -->
-<section class="about-us-area section-padding-0-100 clearfix" id="about">
+<section class="about-us-area section-padding-0-100 clearfix mt-5" id="about">
     <div class="container">
         <div class="row align-items-center">
 
@@ -318,6 +318,7 @@
 </section>
 <!-- ##### Our Services Area End ##### -->
 
+
 <!-- ##### Our roadmap Area start ##### -->
 <section class="roadmap" style="padding-bottom:0" id="roadmap">
     <div class="section-heading text-center">
@@ -325,7 +326,7 @@
         <div class="dream-dots justify-content-center wow fadeInUp" data-wow-delay="0.2s">
             <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
         </div>
-        <h2 class="wow fadeInUp" data-wow-delay="0.3s">4 simple steps</h2>
+        <h2 class="wow fadeInUp" data-wow-delay="0.3s">3 simple steps</h2>
         <p class="wow fadeInUp" data-wow-delay="0.4s">All it takes to trade and make profit.</p>
     </div>
     <div class="container">
@@ -333,10 +334,10 @@
             <div class="timeline-split">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="timeline section-box-margin">
-                        <div class="block block-left">
+                        {{-- <div class="block block-left">
                             <h3>Practice</h3>
                             <p>Sign up, subscribe to a trading account, get free credit according to the plan you subscribed to. Start practicing with those funds.</p>
-                        </div>
+                        </div> --}}
 
                         <div class="block block-right mt-30">
                             <h3>Deposit</h3>
@@ -363,7 +364,7 @@
 
 
 <!-- ##### Subscribe Area start ##### -->
-<section class="container pt-5" style="padding-bottom: 0px" id="start">
+{{-- <section class="container pt-5" style="padding-bottom: 0px" id="start">
     <div class="subscribe">
         <div class="row">
             <div class="col-sm-12">
@@ -389,12 +390,12 @@
 
         </div>
     </div>
-</section>
+</section> --}}
 <!-- ##### Subscribe Area End ##### -->
 
 <!-- ##### FAQ & Timeline Area Start ##### -->
 <div class="faq-timeline-area section-padding-100">
-    <div class="container">
+    <div class="">
         <div class="row">
             <div class="col-12 col-lg-8 col-md-12 offset-lg-2">
                 <div class="section-heading">
@@ -409,20 +410,11 @@
                 <div class="dream-faq-area">
                     <dl>
                         <!-- Single FAQ Area -->
-                        <dt class="wave wow fadeInUp" data-wow-delay="0.2s">How much money can I make on the practice account?</dt>
-                        <dd class="wow fadeInUp" data-wow-delay="0.3s">
-                            <p>You can't take any profit from transactions you complete on the practice account. You get virtual funds and make virtual transactions. It is intended for training purposes only. To trade using real money, you need to deposit funds to a real account.</p>
-                        </dd>
-                        <!-- Single FAQ Area -->
                         <dt class="wave wow fadeInUp" data-wow-delay="0.3s">How much money can I make?</dt>
                         <dd>
-                            <p>Your success depends on your skills and patience, your chosen trading strategy, and the amount you are able to invest. Beginner traders can try out their skills and practice on the practice account.</p>
+                            <p>Your success depends on your skills and patience, your chosen trading strategy, and the amount you are able to invest. Practicing traders can try out their trading skills and practice with the practice account.</p>
                         </dd>
-                        <!-- Single FAQ Area -->
-                        <dt class="wave wow fadeInUp" data-wow-delay="0.4s">How do i switch between the practice account and my real account.</dt>
-                        <dd>
-                            <p>On the trading page use the demo account to make the trade.</p>
-                        </dd>
+
                         <!-- Single FAQ Area -->
                         <dt class="wave wow fadeInUp" data-wow-delay="0.5s">How long does it take for the money I deposited to be credited to my account?</dt>
                         <dd>
@@ -441,16 +433,16 @@
                         <dd>
                             <p>It takes 3 hours on weekdays and upto 48 hours on weekends.</p>
                         </dd>
-                        <dt class="wave wow fadeInUp" data-wow-delay="0.5s">Why did you charge 5% of my withdrawal?</dt>
+                        <dt class="wave wow fadeInUp" data-wow-delay="0.5s">Why did you charge 2% of my withdrawal?</dt>
                         <dd>
-                            <p>The 5% charge is our commission that we take to run the platform and provide you the opportunity to access to trade.</p>
+                            <p>The 2% charge is our commission that we take to run the platform and provide you the opportunity to access to trade.</p>
                         </dd>
                         <dt class="wave wow fadeInUp" data-wow-delay="0.5s">How do I make a withdrawal?</dt>
                         <dd>
                             <p>
-                                Log into your account, go to the withdrawal section, input amount and the withdrawal method you prefer.
+                                Log into your account, go to the withdrawal section, input amount and the withdrawal method you prefer. (Withdrawals are only payable to the account type used in making deposit).
 
-                                <strong>Note</strong> Funds on your demo account cannot be withdrawn.
+                                <strong>Note</strong> bonuses can't be withdrawn without an available balance.
                             </p>
                         </dd>
                         <dt class="wave wow fadeInUp" data-wow-delay="0.5s">What are the min and max withdrawal amounts?</dt>
@@ -472,10 +464,44 @@
 </div>
 
 
+<!-- ##### Our Services Area Start ##### -->
+<section class="our_services_area section-padding-100-70 clearfix" id="blog">
+    <div class="container">
+
+        <div class="section-heading text-center">
+
+            <div class="dream-dots justify-content-center wow fadeInUp" data-wow-delay="0.2s">
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <h2 class="wow fadeInUp" data-wow-delay="0.3s">Our Blog</h2>
+            <p class="wow fadeInUp" data-wow-delay="0.4s">Our latest news updates</p>
+        </div>
+
+        <div class="carousel">
+            @foreach ($posts as $post)
+            <div class="px-3">
+                <a class="card blog-card" href="{{$post->link}}" target="_blank">
+                    <img class="card-img-top img-fluid" src="{{asset(config('dir.posts').$post->image)}}" alt="Card image cap">
+                    <div class="card-body blog-body">
+                        <h5 class="card-title">{{$post->title}}</h5>
+
+                        {{Str::limit($post->excerpt, 299)}}
+
+                        <p class="card-text text-muted text-right">{{$post->created_at->diffForHumans()}}</p>
+                    </div>
+                </a>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+<!-- ##### Our Services Area End ##### -->
+
+
 
 
 <!-- ##### Team Area Start ##### -->
-<section class="our_team_area section-padding-0-0 clearfix" id="team">
+{{-- <section class="our_team_area section-padding-0-0 clearfix" id="team">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -560,7 +586,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 <!-- ##### Team Area End ##### -->
 
 <!-- ##### Contact Area Start ##### -->
@@ -634,3 +660,88 @@
 </div>
 <!-- ##### Contact Area End ##### -->
 @endsection
+
+@push('css')
+<style>
+    .card-img-top {
+        height: 300px;
+    }
+
+    .blog-body,
+    .card-title {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        color: rgb(39, 38, 38);
+        font-size: .8em;
+        text-align: justify;
+    }
+
+    .card-title {
+        font-size: 1.2em;
+        font-weight: 600;
+    }
+
+    .blog-card:hover {
+        box-shadow: 10px 10px 8px #888888;
+    }
+
+    .carousel {
+        padding: 0 25px;
+    }
+
+
+    .slick-dots li {
+        background-color: white;
+    }
+</style>
+@endpush
+
+@push('js')
+<script>
+    $('.carousel').slick({
+        speed: 300,
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        dots: true,
+        responsive:
+        [
+            {
+                breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 4,
+                        infinite: true,
+                        dots: true
+                    }
+            },
+            {
+                breakpoint: 992,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
+                }
+            },
+            {
+                breakpoint: 768,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2,
+                        infinite:true,
+                        dots:true,
+                    }
+            },
+            {
+                breakpoint: 576,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        infinite:true,
+                        dots:true,
+                }
+            }
+        ]
+    });
+</script>
+@endpush

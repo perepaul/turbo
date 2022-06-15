@@ -4,15 +4,20 @@ namespace App\Providers;
 
 use Illuminate\Http\Request;
 use Laravel\Fortify\Fortify;
+use Illuminate\Contracts\Auth\Guard;
 use App\Actions\Fortify\CreateNewUser;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Cache\RateLimiting\Limit;
 use App\Actions\Fortify\ResetUserPassword;
 use App\Actions\Fortify\UpdateUserPassword;
 use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Database\ConnectionInterface;
 use Laravel\Fortify\Contracts\LoginResponse;
+use Illuminate\Contracts\Container\Container;
+use Illuminate\Session\DatabaseSessionHandler as BaseDatabaseSessionHandler;
 use Laravel\Fortify\Contracts\RegisterResponse;
 use App\Actions\Fortify\UpdateUserProfileInformation;
+use App\Extensions\DatabaseSessionHandler;
 use App\Responses\LoginResponse as ResponsesLoginResponse;
 use App\Responses\RegisterResponse as ResponsesRegisterResponse;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
@@ -31,20 +36,7 @@ class FortifyServiceProvider extends ServiceProvider
         // $this->app->bind(LoginResponse::class, ResponsesLoginResponse::class);
         $this->app->bind(RegisterResponse::class, ResponsesRegisterResponse::class);
 
-        // $this->app->instance(LogoutResponse::class, new class implements LogoutResponse
-        // {
-        //     public function toResponse($request)
-        //     {
-        //         return redirect('/');
-        //     }
-        // });
-        // $this->app->instance(LoginResponse::class, new class implements ContractsLoginResponse
-        // {
-        //     public function toResponse($request)
-        //     {
-        //         return redirect('/');
-        //     }
-        // });
+        $this->app->instance(BaseDatabaseSessionHandler::class, DatabaseSessionHandler::class);
     }
 
     /**
@@ -66,6 +58,14 @@ class FortifyServiceProvider extends ServiceProvider
 
         Fortify::registerView(function () {
             return view('user.auth.register');
+        });
+
+        Fortify::requestPasswordResetLinkView(function () {
+            return view('user.auth.forgot-password');
+        });
+
+        Fortify::resetPasswordView(function ($request) {
+            return view('user.auth.reset-password', ['request' => $request]);
         });
 
         Fortify::twoFactorChallengeView(fn () => view('user.auth.two-factor-challenge'));
