@@ -465,7 +465,7 @@
 
 
 <!-- ##### Our Services Area Start ##### -->
-<section class="our_services_area section-padding-100-70 clearfix" id="blog">
+<!--<section class="our_services_area section-padding-100-70 clearfix" id="blog">
     <div class="container">
 
         <div class="section-heading text-center">
@@ -494,7 +494,7 @@
             @endforeach
         </div>
     </div>
-</section>
+</section> -->
 <!-- ##### Our Services Area End ##### -->
 
 

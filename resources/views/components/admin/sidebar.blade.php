@@ -21,11 +21,11 @@
             <li><a href="{{route('admin.users.index','rejected')}}">Rejected</a></li>
         </ul>
     </li>
-    <li><a href="{{ route('admin.post.index') }}" class="" aria-expanded="false">
-            <i class="flaticon-381-note"></i>
-            <span class="nav-text">Posts</span>
-        </a>
-    </li>
+    {{-- <li><a href="{{ route('admin.post.index') }}" class="" aria-expanded="false">
+    <i class="flaticon-381-note"></i>
+    <span class="nav-text">Posts</span>
+    </a>
+    </li> --}}
 
     {{-- <li><a href="{{ route('admin.zonal-rep.index') }}" class="" aria-expanded="false">
     <i class="flaticon-025-dashboard"></i>
