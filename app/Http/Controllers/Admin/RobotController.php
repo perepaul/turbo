@@ -70,7 +70,7 @@ class RobotController extends Controller
 
     public function edit(Robot $robot)
     {
-        return view('admin.robots.users', ['robot' => $robot]);
+        return view('admin.robots.users', ['users' => $robot->users()->paginate()]);
     }
 
     /**

@@ -20,7 +20,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($robot->users as $user)
+                            @forelse ($users as $user)
                                 <tr>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->pivot->created_at?->format('d/m/Y') }}</td>
@@ -35,7 +35,9 @@
                 </div>
             </div>
         </div>
-
+        <div class="d-flex jusify-content-center">
+            {{ $users->links() }}
+        </div>
     </div>
 
 @endsection
