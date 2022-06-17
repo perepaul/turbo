@@ -103,6 +103,11 @@ class User extends Authenticatable
         return $this->hasMany(WithdrawalMethod::class);
     }
 
+    public function robots()
+    {
+        return $this->belongsToMany(Robot::class);
+    }
+
     public function representatives()
     {
         return $this->hasOne(Representative::class);

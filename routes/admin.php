@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\MethodController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\RepresentativeController;
+use App\Http\Controllers\Admin\RobotController;
 use App\Http\Controllers\LocationController;
 use App\Models\Withdrawal;
 use App\View\Components\States;
@@ -96,6 +97,8 @@ Route::as('emails.')->prefix('emails')->group(function () {
 Route::resource('plan', PlanController::class)->except(['show']);
 Route::resource('currency', AccountCurrencyController::class)->except(['show']);
 Route::resource('trade-currency', TradeCurrencyController::class)->except(['show']);
+Route::resource('robots', RobotController::class)->except('edit');
+
 
 Route::as('settings.')->prefix('settings')->group(function () {
     Route::get('contact', [ContactController::class, 'index'])->name('contact.index');

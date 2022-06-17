@@ -52,6 +52,12 @@
         </ul>
     </li>
 
+    <li><a href="{{ route('admin.robots.index') }}" class="" aria-expanded="false">
+            <i class="flaticon-381-user-5"></i>
+            <span class="nav-text">Robots</span>
+        </a>
+    </li>
+
     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
             <i class="flaticon-050-info"></i>
             <span class="nav-text">withdrawals</span>
