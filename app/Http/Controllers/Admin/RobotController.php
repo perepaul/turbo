@@ -68,6 +68,11 @@ class RobotController extends Controller
         ]);
     }
 
+    public function edit(Robot $robot)
+    {
+        return view('admin.robots.users', ['robot' => $robot]);
+    }
+
     /**
      * Update the specified resource in storage.
      *

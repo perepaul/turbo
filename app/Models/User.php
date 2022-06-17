@@ -105,7 +105,7 @@ class User extends Authenticatable
 
     public function robots()
     {
-        return $this->belongsToMany(Robot::class);
+        return $this->belongsToMany(Robot::class)->withTimestamps();
     }
 
     public function representatives()

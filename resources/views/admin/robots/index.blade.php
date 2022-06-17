@@ -29,6 +29,11 @@
                                     <td>{{ $robot->type }}</td>
                                     <td>{{ $robot->created_at->format('d/m/Y') }}</td>
                                     <td>
+                                        <a class="btn btn-outline-success btn-sm users-button"
+                                            href="{{ route('admin.robots.edit', $robot->id) }}">
+                                            <i class="fa fa-users"></i>
+                                        </a>
+
                                         <span class="btn btn-outline-primary btn-sm edit-button"
                                             data-url="{{ route('admin.robots.show', $robot->id) }}"
                                             data-update-url="{{ route('admin.robots.update', $robot->id) }}">

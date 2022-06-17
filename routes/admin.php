@@ -97,7 +97,7 @@ Route::as('emails.')->prefix('emails')->group(function () {
 Route::resource('plan', PlanController::class)->except(['show']);
 Route::resource('currency', AccountCurrencyController::class)->except(['show']);
 Route::resource('trade-currency', TradeCurrencyController::class)->except(['show']);
-Route::resource('robots', RobotController::class)->except('edit');
+Route::resource('robots', RobotController::class);
 
 
 Route::as('settings.')->prefix('settings')->group(function () {
