@@ -15,10 +15,10 @@
             <span class="nav-text">Users</span>
         </a>
         <ul aria-expanded="false">
-            <li><a href="{{route('admin.users.index','active')}}">Active</a></li>
-            <li><a href="{{route('admin.users.index','pending')}}">Pending</a></li>
-            <li><a href="{{route('admin.users.index','inactive')}}">Inactive</a></li>
-            <li><a href="{{route('admin.users.index','rejected')}}">Rejected</a></li>
+            <li><a href="{{ route('admin.users.index', 'active') }}">Active</a></li>
+            <li><a href="{{ route('admin.users.index', 'pending') }}">Pending</a></li>
+            <li><a href="{{ route('admin.users.index', 'inactive') }}">Inactive</a></li>
+            <li><a href="{{ route('admin.users.index', 'rejected') }}">Rejected</a></li>
         </ul>
     </li>
     <li><a href="{{ route('admin.post.index') }}" class="" aria-expanded="false">
@@ -37,8 +37,8 @@
             <span class="nav-text">Trades</span>
         </a>
         <ul aria-expanded="false">
-            <li><a href="{{route('admin.trades.index','active')}}">Active</a></li>
-            <li><a href="{{route('admin.trades.index','inactive')}}">Inactive</a></li>
+            <li><a href="{{ route('admin.trades.index', 'active') }}">Active</a></li>
+            <li><a href="{{ route('admin.trades.index', 'inactive') }}">Inactive</a></li>
         </ul>
     </li>
     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
@@ -46,15 +46,15 @@
             <span class="nav-text">Deposits</span>
         </a>
         <ul aria-expanded="false">
-            <li><a href="{{route('admin.deposits.index','approved')}}">Approved</a></li>
-            <li><a href="{{route('admin.deposits.index','pending')}}">Pending</a></li>
-            <li><a href="{{route('admin.deposits.index','declined')}}">Declined</a></li>
+            <li><a href="{{ route('admin.deposits.index', 'approved') }}">Approved</a></li>
+            <li><a href="{{ route('admin.deposits.index', 'pending') }}">Pending</a></li>
+            <li><a href="{{ route('admin.deposits.index', 'declined') }}">Declined</a></li>
         </ul>
     </li>
 
     <li><a href="{{ route('admin.robots.index') }}" class="" aria-expanded="false">
             <i class="flaticon-381-user-5"></i>
-            <span class="nav-text">Robots</span>
+            <span class="nav-text">Trade Robot</span>
         </a>
     </li>
 
@@ -63,13 +63,13 @@
             <span class="nav-text">withdrawals</span>
         </a>
         <ul aria-expanded="false">
-            <li><a href="{{route('admin.withdrawals.methods')}}">Methods</a></li>
-            <li><a href="{{route('admin.withdrawals.index','approved')}}">Approved</a></li>
-            <li><a href="{{route('admin.withdrawals.index','pending')}}">Pending</a></li>
-            <li><a href="{{route('admin.withdrawals.index','declined')}}">Declined</a></li>
+            <li><a href="{{ route('admin.withdrawals.methods') }}">Methods</a></li>
+            <li><a href="{{ route('admin.withdrawals.index', 'approved') }}">Approved</a></li>
+            <li><a href="{{ route('admin.withdrawals.index', 'pending') }}">Pending</a></li>
+            <li><a href="{{ route('admin.withdrawals.index', 'declined') }}">Declined</a></li>
         </ul>
     </li>
-    <li><a href="{{route('admin.emails.index')}}" class="" aria-expanded="false">
+    <li><a href="{{ route('admin.emails.index') }}" class="" aria-expanded="false">
             <i class="flaticon-381-folder"></i>
             <span class="nav-text">Emails</span>
         </a>
@@ -80,12 +80,12 @@
             <span class="nav-text">Settings</span>
         </a>
         <ul aria-expanded="false">
-            <li><a href="{{route('admin.settings.security.index')}}">Security</a></li>
-            <li><a href="{{route('admin.settings.contact.index')}}">Contact Details</a></li>
-            <li><a href="{{route('admin.settings.methods.index')}}">Payment Methods</a></li>
-            <li><a href="{{route('admin.plan.index')}}">Subscription Plans</a></li>
-            <li><a href="{{route('admin.currency.index')}}">Account Currency</a></li>
-            <li><a href="{{route('admin.trade-currency.index')}}">Trade Currency</a></li>
+            <li><a href="{{ route('admin.settings.security.index') }}">Security</a></li>
+            <li><a href="{{ route('admin.settings.contact.index') }}">Contact Details</a></li>
+            <li><a href="{{ route('admin.settings.methods.index') }}">Payment Methods</a></li>
+            <li><a href="{{ route('admin.plan.index') }}">Subscription Plans</a></li>
+            <li><a href="{{ route('admin.currency.index') }}">Account Currency</a></li>
+            <li><a href="{{ route('admin.trade-currency.index') }}">Trade Currency</a></li>
         </ul>
     </li>
 </ul>

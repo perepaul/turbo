@@ -8,6 +8,7 @@ use App\Http\Controllers\User\KycController;
 use App\Http\Controllers\User\MethodController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\ReferralController;
+use App\Http\Controllers\User\RobotController;
 use App\Http\Controllers\User\SessionController;
 use App\Http\Controllers\User\SubscriptionController;
 use App\Http\Controllers\User\TradeController;
@@ -44,6 +45,12 @@ Route::middleware(['active', 'subscribed'])->group(function () {
     Route::get('referrals', [ReferralController::class, 'referrals'])->name('referrals');
     Route::get('regional-representative', [ReferralController::class, 'representative'])->name('representative');
     Route::post('regional-representative', [ReferralController::class, 'store']);
+
+    Route::prefix('robots')->as('robots.')->controller(RobotController::class)->group(function () {
+        Route::get('', 'index')->name('index');
+        Route::post('link', 'link')->name('link');
+        Route::post('upgrade', 'upgrade')->name('upgrade');
+    });
 
     Route::prefix('trade')->name('trade.')->group(function () {
         Route::get('', [TradeController::class, 'index'])->name('index');
