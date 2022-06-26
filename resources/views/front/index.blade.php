@@ -35,7 +35,7 @@
                             <p class="wow fadeInUp" data-wow-delay="0.3s">Invest in the world's most popular and
                                 sought-after assets. Everything you are looking for in an ultimate investment platform — on
                                 the device of your choice.</p>
-                            <div class="dream-btn-group wow fadeInUp" data-wow-delay="0.4s" style="margin-bottom: 40px;">
+                            <div class="dream-btn-group wow fadeInUp" data-wow-delay="0.4s">
                                 <a href="{{ route('register') }}" class="btn dream-btn mr-3">Register <i
                                         class="fa fa-arrow-right"></i></a>
                                 <a href="{{ route('login') }}" class="btn dream-btn">Login <i class="fa fa-lock"></i></a>
