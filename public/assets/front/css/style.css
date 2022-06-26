@@ -1006,7 +1006,7 @@ ol {
 }
 
 .welcome-content h1 {
-    font-size: 45px;
+    /* font-size: 45px; */
     font-weight: 500;
     margin-bottom: 20px;
 }
