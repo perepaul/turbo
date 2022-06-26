@@ -100,9 +100,8 @@
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area bg-img" style="background-image: url(/assets/front/img/core-img/pattern.png);">
 
-
-
-        <div class="footer-content-area " style="background-image: url(/assets/front/img/core-img/footer-bg1.png);">
+        <div class="footer-content-area "
+            style="background-image: url(/assets/front/img/core-img/footer-bg1.png); padding-bottom: 5px;">
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-md-6">
@@ -141,7 +140,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-4">
+                    <div class="col-6 col-md-4">
                         <!-- Content Info -->
                         <div class="contact_info_area">
                             <!-- Content Info -->
@@ -149,7 +148,8 @@
                                 <h5>CONTACT US</h5>
                                 <p>{{ $contact?->address }}</p>
                                 <p><a href="tel:{{ $contact?->phone }}">{{ $contact?->phone }}</a></p>
-                                <p><a href="mailto:{{ $contact?->support_email }}">{{ $contact?->support_email }}</a>
+                                <p><a
+                                        href="mailto:{{ $contact?->support_email }}">{{ $contact?->support_email }}</a>
                                 </p>
                             </div>
                         </div>
