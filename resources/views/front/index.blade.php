@@ -311,10 +311,10 @@
                             <dd>
                                 <p>It takes 3 hours on weekdays and upto 48 hours on weekends.</p>
                             </dd>
-                            <dt class="wave wow fadeInUp" data-wow-delay="0.5s">Why did you charge 2% of my withdrawal?
+                            <dt class="wave wow fadeInUp" data-wow-delay="0.5s">Why did you charge 25% of my withdrawal?
                             </dt>
                             <dd>
-                                <p>The 2% charge is our commission that we take to run the platform and provide you the
+                                <p>The 25% charge is our commission that we take to run the platform and provide you the
                                     opportunity to access to trade.</p>
                             </dd>
                             <dt class="wave wow fadeInUp" data-wow-delay="0.5s">How do I make a withdrawal?</dt>
