@@ -1,5 +1,5 @@
 @if(empty($states))
-<option value="">Please choose a country</option>
+<option value="">Select a State/Region</option>
 @else
 <option value="">Select a State/Region</option>
 @foreach ($states as $state)
