@@ -1,13 +1,11 @@
 @component('mail::message')
 ## Hello {{$user->firstname}}
 
-Your Document have been Reviewed and Verification Process Completed Successfully.
+Your Documents have been reviewed and your account has been verified.
 
 
-Login Now to Access Your Dashboard where you can make a deposit, subscribe to a plan and commence trading.
+Login access your customised dashboard where you can make a deposit, subscribe to a plan and commence trading.
 
-
-Cheers to profitable trading.
 
 
 Warm Regards,<br>
