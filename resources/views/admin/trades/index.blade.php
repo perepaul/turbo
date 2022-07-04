@@ -8,6 +8,7 @@
                 <thead>
                     <tr>
                         <th>Order ID</th>
+                        <th>Account</th>
                         <th>Date</th>
                         <th>User</th>
                         <th>Currrency</th>
@@ -22,6 +23,9 @@
                     @forelse ($trades as $trade)
                     <tr>
                         <td>{{ $trade->reference }}</td>
+                        <td>
+                            <span class="badge badge-outline-{{$trade->is_demo == 'yes' ? 'warning' : 'success'}}">{{$trade->is_demo == 'yes' ? 'Demo Account' : 'Main Account'}}</span>
+                        </td>
                         <td class="wspace-no">{{ $trade->created_at->toDateString() }}</td>
                         <td>{{ $trade->user->name }}</td>
                         <td class="text-ov">{{ $trade->trade_currency->name }}</td>

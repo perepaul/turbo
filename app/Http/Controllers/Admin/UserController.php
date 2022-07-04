@@ -121,16 +121,16 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email,' . $id,
             'phone' => 'required|regex:/^[+][0-9]{9,14}/',
             'trading_balance' => 'nullable|numeric',
-            'trade_mode' => 'required|in:automatic,manual,dual',
+            'trade_mode' => 'nullable|in:automatic,manual,dual',
             'demo_balance' => 'nullable|numeric',
             'balance' => 'nullable|numeric',
             'country' => 'nullable|string',
             'state' => 'nullable|string',
             'city' => 'nullable|string',
+            'zip_code' => 'nullable|string',
             'address' => 'nullable|string',
         ]);
-        $user = User::find($id);
-        $user->update($valid);
+        $user = User::where('id', $id)->update($valid);
         session()->flash('success', 'User Updated');
         return redirect()->route('admin.users.index', 'acitve');
     }

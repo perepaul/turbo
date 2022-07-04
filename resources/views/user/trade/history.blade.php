@@ -42,11 +42,15 @@
         <div class="card">
             <div class="card-body">
                 <div class="row order-card text-center">
-                    <div class="col-6 customer">
+                    <div class="col-4 customer">
                         <h2 class="mb-0  font-w600">{{ $trades->where('status', 'active')->count() }}</h2>
                         <p class="mb-0 font-w500">Active</p>
                     </div>
-                    <div class="col-6">
+                    <div class="col-4 customer">
+                        <h2 class="mb-0  font-w600">{{ $trades->where('is_demo', 'yes')->count() }}</h2>
+                        <p class="mb-0 font-w500">Demo Trades</p>
+                    </div>
+                    <div class="col-4">
                         <h2 class="mb-0 font-w600">{{ $trades->where('status', 'inactive')->count() }}</h2>
                         <p class="mb-0  font-w500">Closed</p>
                     </div>
@@ -61,11 +65,12 @@
                 <thead>
                     <tr>
                         <th>Order ID</th>
+                        <th>Account</th>
                         <th>Date</th>
                         <th>Time</th>
                         <th>Currrency</th>
                         <th>Amount</th>
-                        <th>Type</th>
+                        <th>Trade Type</th>
                         <th>Profit/Loss</th>
                         <th>Status</th>
                         <th></th>
@@ -75,6 +80,9 @@
                     @forelse ($trades as $trade)
                     <tr>
                         <td>{{ $trade->reference }}</td>
+                        <td>
+                            <span class="badge badge-outline-{{$trade->is_demo == 'yes' ? 'warning' : 'success'}}">{{$trade->is_demo == 'yes' ? 'Demo Account' : 'Main Account'}}</span>
+                        </td>
                         <td class="wspace-no">{{ $trade->created_at->toDateString() }}</td>
                         <td>{{ $trade->time }}</td>
                         <td class="text-ov">{{ $trade?->trade_currency?->name }}</td>

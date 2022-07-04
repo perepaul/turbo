@@ -16,6 +16,20 @@
         </div>
     </div>
 
+    <div class="col-xl-3 col-sm-6">
+    <div class="card">
+        <div class="card-body d-flex align-items-center justify-content-between">
+            <div class="card-data me-2">
+                <h5>Demo Balance</h5>
+                <h6 class="fs-40 font-w600">{{ format_money($user->demo_balance) }}</h6>
+            </div>
+            <div><span class="donut1" data-peity='{ "fill": ["rgb(251, 125, 35,1)", "rgba(222, 246, 151)"]}'>1</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
     {{-- // --}}
 
     <div class="col-xl-3 col-sm-6">
