@@ -89,7 +89,7 @@
     <div class="card">
         <div class="card-body d-flex align-items-center justify-content-between">
             <div class="card-data me-2">
-                <h5>Total Traes</h5>
+                <h5>Total Trades</h5>
                 <h6 class="fs-40 font-w600">{{ $user->trades->count() }}</h6>
             </div>
             <div><span class="donut1" data-peity='{ "fill": ["var(--primary)", "rgb(153, 0, 0)"]}'>1</span>
