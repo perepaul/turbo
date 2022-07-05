@@ -113,7 +113,7 @@
     @if (isset($button))
     <button class="btn btn-block btn-primary mt-3" @if(in_array($rep?->status, ['pending','accepted','rejected'])) disabled="disabled" style="cursor: not-allowed;" @endif>
         @if($rep?->status == 'pending')
-        Application submited
+        Application submitted
         @elseif($rep?->status == 'accepted')
         Application Accepted
         @elseif($rep?->status == 'rejected')
