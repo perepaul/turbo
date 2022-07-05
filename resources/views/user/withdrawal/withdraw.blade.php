@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="form-group" style="display: none" id="address-container">
-                    <label for="address"><strong>Wallet address</strong> <small>withdaral amount will be sent to this address</small> </label>
+                    <label for="address"><strong>Wallet address</strong> <small>withdrawal amount will be sent to this address</small> </label>
                     <input type="text" class="form-control" name="address" id="address" placeholder="Wallet Address" value="{{old('address')}}">
                     <x-error :key="'address'" />
                 </div>
