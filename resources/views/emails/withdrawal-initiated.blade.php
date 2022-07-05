@@ -5,12 +5,17 @@ Your withdrawal of {{format_money($withdrawal->amount)}} to your **{{$withdrawal
 
 If your withdrawal is not available in your wallet in about 1-2 hours, you can communicate with any of our livechat hot lines available below:
 
-Whatsapp: {{$contact->phone}}
+@isset($contact?->phone)
+Whatsapp: {{$contact?->phone}}
+@endisset
 
-Telegram: <a href="{{$contact->telegram}}">Visit Link</a>
+@isset($contact?->telegram)
+Telegram: <a href="{{$contact?->telegram}}">Visit Link</a>
+@endisset
 
-
-Email: {{$contact->support_email}}
+@isset($contact?->support_email)
+Email: {{$contact?->support_email}}
+@endisset
 
 Or you can communicate via the 247 livechat.
 
