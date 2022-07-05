@@ -51,7 +51,7 @@
 
                 </div>
                 <div class="d-flex justify-content-center mt-3">
-                    <input type="submit" class="btn btn-primary" value="Deposit">
+                    <input type="submit" class="btn btn-primary" value="Submit">
                 </div>
             </form>
         </div>
