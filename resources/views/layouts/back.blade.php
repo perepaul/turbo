@@ -23,6 +23,7 @@
         <link href="/assets/back/vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
         <link rel="stylesheet" href="/assets/back/vendor/dotted-map/css/contrib/jquery.smallipop-0.3.0.min.css" type="text/css" media="all" />
         <link rel="stylesheet" href="/assets/back/vendor/toastr/css/toastr.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <!-- Style css -->
         <link href="/assets/back/css/style.css" rel="stylesheet">
         <style>

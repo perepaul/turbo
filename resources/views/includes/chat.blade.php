@@ -8,5 +8,5 @@
 @if(!empty($contact->chat_script))
 {!! $contact->chat_script !!}
 @endif
-@endif)
+@endif
 @endproduction
