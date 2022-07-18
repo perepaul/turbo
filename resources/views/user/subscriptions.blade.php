@@ -27,11 +27,11 @@
                     <ul class="list-group list-group-flush text-sm rounded p-0">
                         <li class="list-group-item pl-0 pr-0"><i class="fa fa-check text-success">
                             </i>&nbsp;&nbsp; Get
-                            {{ $plan->bonus }}% bonus of your first deposit
+                            ${{ number_format($plan->bonus,2) }}% bonus of your first deposit
                         </li>
                         <li class="list-group-item pl-0 pr-0"><i class="fa fa-check text-success">
                             </i>&nbsp;&nbsp;
-                            {{ $plan->bonus }} Days Plan Tenure
+                            {{ $plan->trade_tenure }} Days Plan Tenure
                         </li>
                         @foreach ($plan->features as $feature)
                         <li class="list-group-item pl-0 pr-0"><i class="fa fa-check text-success">
