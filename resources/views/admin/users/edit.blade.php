@@ -1,30 +1,29 @@
 @extends('layouts.back')
-@section('title', 'Edit user');
+@section('title', 'Edit user')
 @section('content')
 <div class="col-md-10 mx-auto">
     <div class="card">
         <div class="card-body">
             <form action="{{ route('admin.users.update', $user->id) }}" method="post">
                 @csrf
-
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label for="">Firstname</label>
                         <input type="text" class="form-control" name="firstname" value="{{ old('firstname') ?? $user->firstname }}">
-                        <x-error :key="'firstname'" />
+                        <x-error key="firstname" />
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="">Lastname</label>
                         <input type="text" class="form-control" name="lastname" value="{{  old('lastname') ??$user->lastname }}">
-                        <x-error :key="'lastname'" />
+                        <x-error key="lastname" />
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="">Email</label>
                     <input type="email" class="form-control" name="email" value="{{  old('email') ??$user->email }}">
-                    <x-error :key="'email'" />
+                    <x-error key="email" />
                 </div>
 
                 <div class="form-group">
@@ -35,7 +34,7 @@
                 <div class="form-group">
                     <label for="">Phone</label>
                     <input type="text" class="form-control" name="phone" value="{{ old('phone') ?? $user->phone }}">
-                    <x-error :key="'phone'" />
+                    <x-error key="phone" />
                 </div>
 
                 <div class="form-group">
@@ -46,7 +45,7 @@
                         <option {{$user->trade_mode == $mode ? 'selected="selected"': ''}} value="{{$mode}}">{{ucfirst($mode)}}</option>
                         @endforeach
                     </select>
-                    <x-error :key="'phone'" />
+                    <x-error key="phone" />
                 </div>
 
                 <div class="form-group">
@@ -87,7 +86,7 @@
 
                 <div class="text-center mt-3">
                     <button type="submit" class="btn btn-secondary">
-                        Update
+                        Update User
                     </button>
                 </div>
             </form>
