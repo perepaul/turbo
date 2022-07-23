@@ -53,20 +53,22 @@
                     <x-error :key="'balance'" />
                 </div>
 
-                <div class="form-group col-md-7">
-                    <label for="">Country</label>
-                    <select name="country" id="country" class="form-select">
-                        <x-countries country="{{$user->country}}" />
-                    </select>
-                    <x-error key="country" />
-                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="">Country</label>
+                        <select name="country" id="country" class="form-select">
+                            <x-countries country="{{$user->country}}" />
+                        </select>
+                        <x-error key="country" />
+                    </div>
 
-                <div class="mb-3 col-md-6">
-                    <label class="form-label">State/Region</label>
-                    <select name="state" id="state" class="form-select">
-                        <x-states selected="{{$user->state}}" country="{{$user->country}}" />
-                    </select>
-                    <x-error key="state" />
+                    <div class="mb-3 col-md-6">
+                        <label class="form-label">State/Region</label>
+                        <select name="state" id="state" class="form-select">
+                            <x-states selected="{{$user->state}}" country="{{$user->country}}" />
+                        </select>
+                        <x-error key="state" />
+                    </div>
                 </div>
 
                 <div class="form-group">
