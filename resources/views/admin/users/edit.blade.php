@@ -3,7 +3,7 @@
 @section('content')
 <div class="card">
     <div class="card-body d-flex justify-content-center">
-        <div class="col-md-8 col-sm-12">
+        <div class="col-md-8" style="height: auto;">
             <form action="{{ route('admin.users.update', $user->id) }}" method="post">
                 @csrf
 
