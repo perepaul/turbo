@@ -1,22 +1,24 @@
 @extends('layouts.back')
 @section('title', 'Edit user');
 @section('content')
-<div class="card">
-    <div class="card-body">
-        <div class="col-md-8" style="min-height: 100%">
+<div class="col-md-10 mx-auto">
+    <div class="card">
+        <div class="card-body">
             <form action="{{ route('admin.users.update', $user->id) }}" method="post">
                 @csrf
 
-                <div class="form-group">
-                    <label for="">Firstname</label>
-                    <input type="text" class="form-control" name="firstname" value="{{ old('firstname') ?? $user->firstname }}">
-                    <x-error :key="'firstname'" />
-                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="">Firstname</label>
+                        <input type="text" class="form-control" name="firstname" value="{{ old('firstname') ?? $user->firstname }}">
+                        <x-error :key="'firstname'" />
+                    </div>
 
-                <div class="form-group">
-                    <label for="">Lastname</label>
-                    <input type="text" class="form-control" name="lastname" value="{{  old('lastname') ??$user->lastname }}">
-                    <x-error :key="'lastname'" />
+                    <div class="form-group col-md-6">
+                        <label for="">Lastname</label>
+                        <input type="text" class="form-control" name="lastname" value="{{  old('lastname') ??$user->lastname }}">
+                        <x-error :key="'lastname'" />
+                    </div>
                 </div>
 
                 <div class="form-group">
