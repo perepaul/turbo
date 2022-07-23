@@ -2,8 +2,8 @@
 @section('title', 'Edit user');
 @section('content')
 <div class="card">
-    <div class="card-body d-flex justify-content-center">
-        <div class="col-md-8" style="height: auto;">
+    <div class="card-body">
+        <div class="col-md-8" style="height: 100%">
             <form action="{{ route('admin.users.update', $user->id) }}" method="post">
                 @csrf
 
