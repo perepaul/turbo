@@ -31,7 +31,7 @@
                         </li>
                         <li class="list-group-item pl-0 pr-0"><i class="fa fa-check text-success">
                             </i>&nbsp;&nbsp;
-                            {{ $plan->bonus }} Days Plan Tenure
+                            {{ $plan->trade_tenure }} Days Plan Tenure
                         </li>
                         @foreach ($plan->features as $feature)
                         <li class="list-group-item pl-0 pr-0"><i class="fa fa-check text-success">

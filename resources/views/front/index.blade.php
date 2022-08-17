@@ -301,7 +301,7 @@
                                 <p>No. All deposit means must belong to you, as well as the ownership of cards, CPF and
                                     other data.</p>
                             </dd>
-                            <dt class="wave wow fadeInUp" data-wow-delay="0.5s">How so I make a deposit?</dt>
+                            <dt class="wave wow fadeInUp" data-wow-delay="0.5s">How do I make a deposit?</dt>
                             <dd>
                                 <p>Log into your account, go to the deposit page where you can make deposit. The minimum
                                     deposit amount depends on your subscription plan.</p>
