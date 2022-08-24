@@ -51,7 +51,13 @@
                 <div class="form-group">
                     <label for="">Main Balance</label>
                     <input type="text" class="form-control" name="balance" value="{{ old('balance') ?? $user->balance }}">
-                    <x-error :key="'balance'" />
+                    <x-error key="balance" />
+                </div>
+
+                <div class="form-group">
+                    <label for="">Invested Balance</label>
+                    <input type="text" class="form-control" name="invested_balance" value="{{ old('invested_balance') ?? $user->invested_balance }}">
+                    <x-error key="invested_balance" />
                 </div>
 
                 <div class="row">

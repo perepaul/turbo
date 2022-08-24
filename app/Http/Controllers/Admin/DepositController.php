@@ -43,7 +43,7 @@ class DepositController extends Controller
         $deposit->status = 'declined';
         $deposit->save();
         Mail::to($deposit->user)->send(new DepositDeclinedMailable($deposit));
-        session()->flash('success', 'Approved Successfully');
+        session()->flash('success', 'Declined Successfully');
         return back();
     }
 }
