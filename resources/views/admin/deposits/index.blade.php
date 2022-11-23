@@ -28,7 +28,7 @@
                                     <td>{{ $deposit->user->name }}</td>
                                     <td>{{ $deposit->method->name }}</td>
                                     <td class="text-ov">{{ $deposit->address }}</td>
-                                    <td>{{ format_money($deposit->amount, $deposit->user?->currency?->symbol) }}</td>
+                                    <td>{{ format_money($deposit->amount, $deposit->user?->currency?->symbol ?? 0) }}</td>
                                     <td>
                                         <a href="{{ asset(config('dir.deposits').$deposit->proof) }}" target="_blank"  class="btn btn-primary"><i class="fa fa-eye"></i></a>
                                         @if ($deposit->status == 'pending')
