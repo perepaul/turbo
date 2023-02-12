@@ -22,6 +22,9 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
+        if($input['username'] != ''){
+            return redirect()->to('/');
+        }
         Validator::make($input, [
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],

@@ -39,6 +39,7 @@
         <label class="mb-1"><strong>Password</strong></label>
         <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password">
     </div>
+    <input type="text" name="username" style="display:none;">
     <div class="text-center mt-4">
         <button type="submit" class="btn btn-primary btn-block">Sign up</button>
     </div>
