@@ -7,7 +7,7 @@
     The referral link is invalid.
 </div>
 @endif
-<form action="{{route('register')}}" method="POST">
+<form action="{{route('register')}}" method="POST" id="register-form">
     @csrf
     <div class="mb-3">
         <label class="mb-1"><strong>First Name</strong></label>
@@ -53,7 +53,7 @@
  <script src="https://www.google.com/recaptcha/api.js"></script>
     <script>
         function onSubmit(token) {
-            document.getElementById("demo-form").submit();
+            document.getElementById("register-form").submit();
         }
     </script>
 @endpush
