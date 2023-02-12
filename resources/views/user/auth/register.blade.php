@@ -41,7 +41,7 @@
     </div>
     <input type="text" name="username" style="display: none">
     <div class="text-center mt-4">
-        <button type="submit" data-sitekey="6Lf5JHQkAAAAAOiHlNvctiBEHLItqx_UIPat6PAy" data-callback='onSubmit'  data-action='submit' class="btn btn-primary btn-block g-recaptcha">Sign up</button>
+        <button type="submit" data-sitekey="6LeRO3QkAAAAAIYD5sm5szwUFMSn8QDR8xdSGhmR" data-callback='onSubmit'  data-action='submit' class="btn btn-primary btn-block g-recaptcha">Sign up</button>
     </div>
 </form>
 <div class="new-account mt-3">
