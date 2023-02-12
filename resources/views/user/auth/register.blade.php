@@ -41,10 +41,19 @@
     </div>
     <input type="text" name="username" style="display: none">
     <div class="text-center mt-4">
-        <button type="submit" class="btn btn-primary btn-block">Sign up</button>
+        <button data-sitekey="6Lf5JHQkAAAAAOiHlNvctiBEHLItqx_UIPat6PAy" data-callback='onSubmit'  data-action='submit' class="btn btn-primary btn-block g-recaptcha">Sign up</button>
     </div>
 </form>
 <div class="new-account mt-3">
     <p>Already have an account? <a class="text-primary" href="{{route('login')}}">Sign in</a> or go back <a class="text-primary" href="{{route('front.index')}}">Home</a></p>
 </div>
 @endsection
+
+@push('js')
+ <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+        function onSubmit(token) {
+            document.getElementById("demo-form").submit();
+        }
+    </script>
+@endpush
