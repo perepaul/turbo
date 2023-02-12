@@ -22,7 +22,7 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
-        if($input['username'] != ''){
+        if(isset($input['username'])){
             return redirect()->to('/');
         }
         Validator::make($input, [
