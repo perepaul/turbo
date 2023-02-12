@@ -40,20 +40,12 @@
         <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password">
     </div>
     <input type="text" name="username" style="display: none">
+    {!! htmlFormSnippet() !!}
     <div class="text-center mt-4">
-        <button type="submit" data-sitekey="6LeRO3QkAAAAAIYD5sm5szwUFMSn8QDR8xdSGhmR" data-callback='onSubmit'  data-action='submit' class="btn btn-primary btn-block g-recaptcha">Sign up</button>
+        <button type="submit" class="btn btn-primary btn-block g-recaptcha" id="submit-register">Sign up</button>
     </div>
 </form>
 <div class="new-account mt-3">
     <p>Already have an account? <a class="text-primary" href="{{route('login')}}">Sign in</a> or go back <a class="text-primary" href="{{route('front.index')}}">Home</a></p>
 </div>
 @endsection
-
-@push('js')
- <script src="https://www.google.com/recaptcha/api.js"></script>
-    <script>
-        function onSubmit(token) {
-            document.getElementById("register-form").submit();
-        }
-    </script>
-@endpush
