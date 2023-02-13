@@ -3,6 +3,7 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
+use App\Rules\Recaptcha;
 use Illuminate\Support\Str;
 use App\Events\Account\Created;
 use Illuminate\Validation\Rule;
@@ -22,10 +23,8 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
-        if(isset($input['username'])){
-            abort(500);
-        }
         Validator::make($input, [
+            'g-recaptcha-response' => ['required', new ReCaptcha],
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
             'email' => [
@@ -36,6 +35,8 @@ class CreateNewUser implements CreatesNewUsers
                 Rule::unique(User::class),
             ],
             'password' => $this->passwordRules(),
+        ], [
+                'g-recaptcha-response.required' => 'The recaptcha field is required'
         ])->validate();
         $user = session()->pull('user');
         $user = User::create([
