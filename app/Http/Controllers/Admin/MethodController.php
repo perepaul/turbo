@@ -114,14 +114,13 @@ class MethodController extends Controller
         return redirect()->route('admin.settings.methods.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Method  $method
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Method $method)
     {
+        if ($method->deposits()->count()) {
+            session()->flash('error', 'Cannot delete method has it has deposts.');
+            return back();
+        }
         is_file(public_path(config('dir.methods') . $method->image)) ? unlink(public_path(config('dir.methods') . $method->image)) : null;
         $method->delete();
         session()->flash('success', 'deleted payment method successfully');
