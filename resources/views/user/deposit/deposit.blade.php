@@ -23,6 +23,7 @@
                 <div class="form-group method method{{ $method->id }}" style="display:none">
                     <div class="text-center py-3">
                         {{-- {!! QrCode::size(300)->generate($method->address) !!} --}}
+                        <img src="{{asset(config('dir.methods').$method->qrcode_image)}}" alt="" style="width: 50%; heicht: auto">
                     </div>
                     <label for=""><strong>Address</strong></label>
                     <div class="input-group">

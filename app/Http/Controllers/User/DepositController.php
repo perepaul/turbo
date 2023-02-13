@@ -18,7 +18,7 @@ class DepositController extends Controller
 {
     public function index()
     {
-        $methods = Method::all();
+        $methods = Method::where('is_bank', 0)->where('status', 'active')->get();
         return view('user.deposit.deposit', compact('methods'));
     }
 

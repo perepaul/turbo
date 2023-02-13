@@ -16,6 +16,7 @@
                                 <th>Name</th>
                                 <th>Address</th>
                                 <th>Image</th>
+                                <th>Qrcode</th>
                                 <th>Status</th>
                                 <th></th>
                             </tr>
@@ -26,6 +27,7 @@
                                 <td>{{ $method->name }}</td>
                                 <td>{{ $method->address }}</td>
                                 <td>@if($method->image)<img src="{{ asset(config('dir.methods').$method->image) }}" width="40px" />@endif</td>
+                                <td>@if($method->qrcode_image)<img src="{{ asset(config('dir.methods').$method->qrcode_image) }}" width="40px" />@endif</td>
                                 <td>
                                     <a href="{{route('admin.settings.methods.show',$method->id)}}" class="badge fs-12 @if($method->status === 'active') badge-outline-success text-success @else badge-outline-danger text-danger @endif" style="cursor: pointer">
                                         {{ucfirst($method->status)}}

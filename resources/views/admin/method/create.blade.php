@@ -18,24 +18,46 @@
                         <input type="text" id="address" name="address" class="form-control" value="{{ old('address') }}" placeholder="xxxxxxxxxxxxxxxxxxx">
                         <x-error :key="'address'" />
                     </div>
+
                     <div class="form-group">
-                        <label for="status">Address</label>
+                        <label for="is_bank">Is a Bank</label>
+                        <select name="is_bank" id="is_bank" class="form-select form-control-lg">
+                            <option value="0" @if(old('is_bank') !='0' ) selected @endif>No</option>
+                            <option value="1" @if(old('is_bank')=='1' ) selected @endif>Yes</option>
+                        </select>
+                        <x-error key="is_bank" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status">Status</label>
                         <select name="status" id="status" class="form-select form-control-lg">
                             <option value="active" @if(old('status') !='inactive' ) selected @endif>Active</option>
                             <option value="inactive" @if(old('status')=='inactive' ) selected @endif>Inactive</option>
                         </select>
-                        <x-error :key="'address'" />
+                        <x-error key="status" />
                     </div>
 
                     <div class="mb-3 col-md-4">
                         <label class="mb-1 d-block"><strong>Icon</strong></label>
                         <input type="file" name="image" id="image" style="display:none" accept="image/png;image/jpg;image/jpeg">
                         <label for="image" class="mt-3">
-                            <span class="btn btn-outline-warning">Upload <i class="fa fa-upload"></i></span>
+                            <span class="btn btn-outline-primary btn-sm">Upload <i class="fa fa-upload"></i></span>
                             <div class="preview">
                             </div>
                         </label>
                         <x-error :key="'image'" />
+
+                    </div>
+
+                    <div class="mb-3 col-md-4">
+                        <label class="mb-1 d-block"><strong>Qr code image</strong></label>
+                        <input type="file" name="qrcode_image" id="qrcode_image" style="display:none" accept="image/png;image/jpg;image/jpeg">
+                        <label for="qrcode_image" class="mt-3">
+                            <span class="btn btn-outline-primary btn-sm">Upload <i class="fa fa-upload"></i></span>
+                            <div class="preview">
+                            </div>
+                        </label>
+                        <x-error key="qrcode_image" />
 
                     </div>
                     <div class="col-12 text-center">

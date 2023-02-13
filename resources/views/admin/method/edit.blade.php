@@ -21,19 +21,28 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="status">Address</label>
+                        <label for="is_bank">Is a Bank</label>
+                        <select name="is_bank" id="is_bank" class="form-select form-control-lg">
+                            <option value="0" @if(old('is_bank') !='0' || $method->is_bank == 1 ) selected @endif>No</option>
+                            <option value="1" @if(old('is_bank')=='1' || $method->is_bank == 0 ) selected @endif>Yes</option>
+                        </select>
+                        <x-error key="is_bank" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status">Status</label>
                         <select name="status" id="status" class="form-select form-control-lg">
                             <option value="active" @if(old('status') !='inactive' || $method->status == 'active' ) selected @endif>Active</option>
                             <option value="inactive" @if(old('status')=='inactive' || $method->status == 'inactive') selected @endif>Inactive</option>
                         </select>
-                        <x-error :key="'address'" />
+                        <x-error :key="'status'" />
                     </div>
 
                     <div class="mb-3 col-md-4">
-                        <label class="mb-1 d-block"><strong>Image / QR Code</strong></label>
+                        <label class="mb-1 d-block"><strong>Icon</strong></label>
                         <input type="file" name="image" id="image" style="display:none" accept="image/png;image/jpg;image/jpeg">
                         <label for="image" class="mt-3">
-                            <span class="btn btn-outline-warning @if (!is_null($method->image)) d-none @endif">Upload <i class="fa fa-upload"></i></span>
+                            <span class="btn btn-outline-primary btn-sm @if (!is_null($method->image)) d-none @endif">Upload <i class="fa fa-upload"></i></span>
                             <div class="preview">
                                 @if (!is_null($method->image))
                                 <img src="{{ asset(config('dir.methods') . $method->image) }}" class="img-responsive" style="width:100%;height:auto;" />
@@ -43,6 +52,23 @@
                         <x-error :key="'image'" />
 
                     </div>
+
+                    <div class="mb-3 col-md-4">
+                        <label class="mb-1 d-block"><strong>Qr code image</strong></label>
+                        <input type="file" name="qrcode_image" id="qrcode_image" style="display:none" accept="image/png;image/jpg;image/jpeg">
+                        <label for="qrcode_image" class="mt-3">
+                            <span class="btn btn-outline-primary btn-sm  @if (!is_null($method->qrcode_image)) d-none @endif">Upload <i class="fa fa-upload"></i></span>
+                            <div class="preview">
+                                @if (!is_null($method->qrcode_image))
+                                <img src="{{ asset(config('dir.methods') . $method->qrcode_image) }}" class="img-responsive" style="width:100%;height:auto;" />
+                                @endif
+                            </div>
+                        </label>
+                        <x-error key="qrcode_image" />
+
+                    </div>
+
+
                     <div class="col-12 text-center">
                         <button type="submit" class="btn btn-info mt-3">Update</button>
                     </div>
