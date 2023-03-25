@@ -72,7 +72,7 @@ class WithdrawController extends Controller
         } catch (\Throwable $th) {
             DB::rollBack();
             session()->flash('error', 'Failed to initiate withdrawal');
-            Log::error("$th?->getMessage()  file: $th->getFile() on line: $th->getLine()");
+            report($th);
         }
         return redirect()->back();
     }
