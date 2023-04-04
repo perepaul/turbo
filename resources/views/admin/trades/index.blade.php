@@ -24,15 +24,15 @@
                     <tr>
                         <td>{{ $trade->reference }}</td>
                         <td>
-                            <span class="badge badge-outline-{{$trade->is_demo == 'yes' ? 'warning' : 'success'}}">{{$trade->is_demo == 'yes' ? 'Demo Account' : 'Main Account'}}</span>
+                            <span class="badge badge-outline-{{$trade?->is_demo == 'yes' ? 'warning' : 'success'}}">{{$trade?->is_demo == 'yes' ? 'Demo Account' : 'Main Account'}}</span>
                         </td>
-                        <td class="wspace-no">{{ $trade->created_at->toDateString() }}</td>
-                        <td>{{ $trade->user->name }}</td>
-                        <td class="text-ov">{{ $trade->trade_currency->name }}</td>
-                        <td>{{ format_money($trade->amount, $trade->user->currency->symbol) }}</td>
-                        <td>{{ ucfirst($trade->type) }}</td>
-                        <td>{{ $trade->time }}</td>
-                        <td>{{ format_money($trade->profit, $trade->user->currency->symbol) }}</td>
+                        <td class="wspace-no">{{ $trade?->created_at?->toDateString() }}</td>
+                        <td>{{ $trade?->user?->name }}</td>
+                        <td class="text-ov">{{ $trade?->trade_currency?->name }}</td>
+                        <td>{{ format_money($trade?->amount, $trade?->user?->currency?->symbol) }}</td>
+                        <td>{{ ucfirst($trade?->type) }}</td>
+                        <td>{{ $trade?->time }}</td>
+                        <td>{{ format_money($trade?->profit, $trade?->user?->currency?->symbol) }}</td>
                         <td>
                             <div class="dropdown ml-auto">
                                 <div class="btn-link" data-bs-toggle="dropdown">
@@ -46,9 +46,9 @@
                                     </svg>
                                 </div>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    @if ($trade->status == 'active')
-                                    <a class="dropdown-item text-black" href="{{ route('admin.trades.edit', $trade->id) }}">Edit</a>
-                                    <a class="dropdown-item text-black" href="{{ route('admin.trades.end', $trade->id) }}">End Trade</a>
+                                    @if ($trade?->status == 'active')
+                                    <a class="dropdown-item text-black" href="{{ route('admin.trades.edit', $trade?->id) }}">Edit</a>
+                                    <a class="dropdown-item text-black" href="{{ route('admin.trades.end', $trade?->id) }}">End Trade</a>
                                     @endif
                                 </div>
                             </div>
