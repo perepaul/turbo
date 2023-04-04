@@ -32,6 +32,7 @@
                             <a href="{{ route('admin.deposits.decline', $deposit?->id) }}" class="btn btn-danger"><i class="fa fa-times"></i></a>
                             @endif
                         </td>
+
                     </tr>
                     @empty
                     <tr>
