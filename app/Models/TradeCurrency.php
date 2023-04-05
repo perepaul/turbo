@@ -9,4 +9,9 @@ class TradeCurrency extends Model
 {
     public $timestamps = false;
     use HasFactory;
+
+    public function trade()
+    {
+        return $this->belongsTo(Trade::class);
+    }
 }
