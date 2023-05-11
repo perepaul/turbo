@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for=""><strong>Statuss</strong></label>
+                        <label for=""><strong>Status</strong></label>
                         <select name="status" id="status" class="form-select">
                             <option value="">Select Method</option>
                             <option value="pending" @if(old("status")=='pending' ) selected @endif>Pending</option>
