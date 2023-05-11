@@ -20,11 +20,11 @@
                         <tbody>
                             @forelse ($methods as $method)
                             <tr>
-                                <td class="fs-12">{{$method->name}}</td>
-                                <td class="fs-12">{{$method->method->name}}</td>
-                                <td class="fs-12">{{$method->created_at->format('d m, Y')}}</td>
-                                <td class="fs-12">{{$method->user->name}}</td>
-                                <td class="fs-12">{{$method->unlinked ? 'Unlinked': 'Linked'}}</td>
+                                <td class="fs-12">{{$method?->name}}</td>
+                                <td class="fs-12">{{$method?->method?->name}}</td>
+                                <td class="fs-12">{{$method?->created_at?->format('d m, Y')}}</td>
+                                <td class="fs-12">{{$method?->user?->name}}</td>
+                                <td class="fs-12">{{$method?->unlinked ? 'Unlinked': 'Linked'}}</td>
                                 <td class="fs-12">
                                     <span class="btn btn-outline-info btn-sm fs-12 view" data-url="{{route('admin.withdrawals.methods.view',$method->id)}}">
                                         <i class="fa fa-eye"></i> View
