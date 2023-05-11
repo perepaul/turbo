@@ -15,7 +15,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\AccountVerifiedMailable;
+use App\Models\TradeCurrency;
 use App\Models\Withdrawal;
+use Carbon\CarbonPeriod;
 use Illuminate\Support\Carbon as SupportCarbon;
 
 class UserController extends Controller
@@ -272,6 +274,79 @@ class UserController extends Controller
             report($th);
         }
         return back();
+    }
+
+    public function generateTradesView($id)
+    {
+        $user = User::findOrFail($id);
+        return view('admin.users.generate-trades', compact('user'));
+    }
+
+    public function generateTrades(Request $request, $id)
+    {
+        $request->validate([
+            'total_trades' => ['required', 'integer'],
+            'start_date' => ['required', 'string'],
+            'end_date' => ['required', 'string'],
+            'min_amount' => ['required', 'numeric', 'lt:max_amount'],
+            'max_amount' => ['required', 'numeric', 'gt:min_amount'],
+            'min_profit' => ['required', 'numeric', 'lt:max_profit'],
+            'max_profit' => ['required', 'numeric', 'gt:min_profit'],
+            'min_loss' => ['required', 'numeric', 'lt:max_loss'],
+            'max_loss' => ['required', 'numeric', 'gt:min_loss'],
+        ]);
+
+        DB::beginTransaction();
+
+        try {
+            $start_date = SupportCarbon::parse($request->input('start_date'));
+            $end_date = SupportCarbon::parse($request->input('end_date'));
+            $dates = CarbonPeriod::create($start_date, $end_date)->toArray();
+            $currencies = TradeCurrency::all();
+            $trades = [];
+            for ($i = 0; $i < $request->input('total_trades'); $i++) {
+                $trade = [
+                    'reference' => generateReference(),
+                    'trade_currency_id' => $currencies->random(1)?->first()?->id,
+                    'amount' => rand($request->input('min_amount'), $request->input('max_amount')),
+                    'is_demo' => 'no',
+                    'type' => collect(['buy', 'sell'])->random(1)?->first(),
+                    'time' => collect([
+                        '10 minutes',
+                        '30 minutes',
+                        '1 hour',
+                        '3 hours',
+                        '6 hours',
+                        '12 hours',
+                        '1 day',
+                        '2 days',
+                        '5 days'
+                    ])->random(1)?->first(),
+                    'created_at' => collect($dates)->random(1)?->first()
+                ];
+
+                if (rand(0, 1)) {
+                    $trade['profit'] = rand($request->input('min_profit'), $request->input('max_profit'));
+                } else {
+                    $trade['profit'] = (int) - (rand($request->input('min_loss'), $request->input('max_loass')));
+                }
+
+                $trades[] = $trade;
+            }
+
+            $user = User::findOrFail($id);
+            $user->trades()->createMany($trades);
+            DB::commit();
+            session()->flash('success', 'Trades generated successfully');
+            return back();
+        } catch (\Throwable $th) {
+            report($th);
+            DB::rollBack();
+            session()->flash('error', 'Failed to generate trades');
+            return back();
+        }
+
+        //
     }
 
     /**
