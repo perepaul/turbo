@@ -92,6 +92,9 @@ $status = ucfirst(request('status')).' Users';
                                 <a class="dropdown-item" href="{{ route('admin.users.add-deposit', $user->id) }}">
                                     <i class="fa fa-plus-circle"></i> Add Deposit
                                 </a>
+                                <a class="dropdown-item" href="{{ route('admin.users.add-withdrawal', $user->id) }}">
+                                    <i class="fa fa-minus-circle"></i> Add Withdrawal
+                                </a>
                                 <a class="dropdown-item" href="{{ route('admin.users.login-as', $user->id) }}" target="_blank"> <i class="fa fa-lock"></i> Login as</a>
                                 <form action="{{ route('admin.users.delete', $user->id) }}" method="POST" id="deleteForm{{$user->id}}">
                                     @csrf

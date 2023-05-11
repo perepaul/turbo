@@ -41,12 +41,12 @@
                     <div class="form-group">
                         <label for=""><strong>Status</strong></label>
                         <select name="status" id="status" class="form-select">
-                            <option value="">Select Method</option>
+                            <option value="">Select status</option>
                             <option value="pending" @if(old("status")=='pending' ) selected @endif>Pending</option>
                             <option value="approved" @if(old("status")=='approved' ) selected @endif>Approved</option>
                             <option value="declined" @if(old("status")=='declined' ) selected @endif>Declined</option>
                         </select>
-                        <x-error key="method" />
+                        <x-error key="status" />
                     </div>
 
                     <div class="mb-3 col-md-4">

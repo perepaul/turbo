@@ -14,6 +14,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Config;
 use App\Mail\WithdrawalInitiatedMailable;
+use App\Models\Withdrawal;
 use App\Models\WithdrawalMethod;
 
 class WithdrawController extends Controller
@@ -59,7 +60,7 @@ class WithdrawController extends Controller
             $withdrawal = $user->withdrawals()->create([
                 'method_id' => $method->id,
                 'amount' => $request->amount,
-                'reference' => generateReference(Deposit::class),
+                'reference' => generateReference(Withdrawal::class),
                 'address' => $method->address,
             ]);
             $contact = Contact::find(1);

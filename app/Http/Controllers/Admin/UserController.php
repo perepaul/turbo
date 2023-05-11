@@ -15,6 +15,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\AccountVerifiedMailable;
+use App\Models\Withdrawal;
 use Illuminate\Support\Carbon as SupportCarbon;
 
 class UserController extends Controller
@@ -241,6 +242,34 @@ class UserController extends Controller
 
     public function addWithdrawal(Request $request, $id)
     {
+        $request->validate([
+            'method' => ['required'],
+            'amount' => ['required', 'numeric'],
+            'date' => ['required', 'string'],
+            'status' => ['required', 'in:pending,approved,declined']
+        ]);
+
+        DB::beginTransaction();
+        try {
+            $created_at = SupportCarbon::createFromTimeString($request->input('date'));
+            $user = User::findOrFail($id);
+
+            $method = $user->methods()->whereId($request->input('method'))->first();
+            $withdrawal = $user->withdrawals()->create([
+                'method_id' => $method->id,
+                'amount' => $request->amount,
+                'reference' => generateReference(Withdrawal::class),
+                'address' => $method->address,
+                'created_at' => $created_at
+            ]);
+            DB::commit();
+            session()->flash('success', 'Withdrawal initiated successfully');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            session()->flash('error', 'Failed to initiate withdrawal');
+            report($th);
+        }
+        return back();
     }
 
     /**

@@ -58,6 +58,8 @@ Route::as('users.')->prefix('users')->group(function () {
     Route::post('{id}/update', [UserController::class, 'update'])->name('update');
     Route::get('{id}/add-deposit', [UserController::class, 'addDepositView'])->name('add-deposit');
     Route::post('{id}/add-deposit', [UserController::class, 'addDeposit']);
+    Route::get('{id}/add-withdrawal', [UserController::class, 'addWithdrawalView'])->name('add-withdrawal');
+    Route::post('{id}/add-withdrawal', [UserController::class, 'addWithdrawal']);
     Route::delete('{id}/delete', [UserController::class, 'destroy'])->name('delete');
 });
 Route::as('trades.')->prefix('trades')->group(function () {
