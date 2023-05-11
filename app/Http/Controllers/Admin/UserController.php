@@ -220,6 +220,7 @@ class UserController extends Controller
                 'amount' => $request->amount,
                 'proof' => $filename,
                 'reference' => generateReference(Deposit::class),
+                'status' => $request->input('status'),
                 'type' => $request->input('status'),
                 'created_at' => $created_at
             ]);
@@ -260,6 +261,7 @@ class UserController extends Controller
                 'amount' => $request->amount,
                 'reference' => generateReference(Withdrawal::class),
                 'address' => $method->address,
+                'status' => $request->input('status'),
                 'created_at' => $created_at
             ]);
             DB::commit();
