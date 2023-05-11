@@ -80,6 +80,7 @@ Route::as('deposits.')->prefix('deposits')->group(function () {
 Route::as('withdrawals.')->prefix('withdrawals')->group(function () {
     Route::get('/methods', [WithdrawController::class, 'methods'])->name('methods');
     Route::get('/methods/{id}', [WithdrawController::class, 'view'])->name('methods.view');
+    Route::post('/methods/{id}/change-date', [WithdrawController::class, 'changeDate'])->name('methods.change-date');
     Route::get('/methods/{id}/link', [WithdrawController::class, 'link'])->name('methods.link');
     Route::get('/methods/{id}/unlink', [WithdrawController::class, 'unlink'])->name('methods.unlink');
     Route::get('/{status}', [WithdrawController::class, 'index'])->name('index');

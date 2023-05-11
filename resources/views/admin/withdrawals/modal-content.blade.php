@@ -46,3 +46,17 @@
     <textarea name="json" id="json" style="min-height: 300px" class="form-control" readonly disabled>@json(json_decode($method->details)->json)</textarea>
 </div>
 @endif
+
+@if(request()->has('update_date') && request()->get('update_date') == true)
+<form action="{{route('admin.withdrawals.methods.change-date', $method->id)}}" method="post">
+    @csrf
+    <div class="form-group">
+        <label for=""><strong>Date</strong></label>
+        <input class="form-control" type="datetime-local" name="created_at" value="{{$method->created_at}}">
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-outline-primary" type="submit">Update Date</button>
+    </div>
+</form>
+@endif

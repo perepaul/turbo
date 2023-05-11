@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\WithdrawalAcceptedMailable;
 use App\Mail\WithdrawalDeclinedMailable;
+use App\Models\Method;
+use Illuminate\Support\Carbon;
 
 class WithdrawController extends Controller
 {
@@ -59,6 +61,21 @@ class WithdrawController extends Controller
         $method = WithdrawalMethod::withoutGlobalScopes()->findOrFail($id)->load('method', 'user');
         $html = view('admin.withdrawals.modal-content', compact('method'))->render();
         return response()->json(['html' => $html]);
+    }
+
+    public function changeDate(Request $request, $id)
+    {
+        if (!$request->filled('created_at')) {
+            session()->flash('error', 'Please fill the date field with a valid date');
+            return back();
+        }
+
+        $created_at = Carbon::createFromTimeString($request->input('created_at'));
+        $method = WithdrawalMethod::findOrFail($id);
+        // dd($method);
+        $method->update(['created_at' => $created_at]);
+        session()->flash('success', 'Date changed successfully');
+        return back();
     }
 
     public function link($id)

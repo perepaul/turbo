@@ -27,7 +27,10 @@
                                 <td class="fs-12">{{$method->unlinked ? 'Unlinked': 'Linked'}}</td>
                                 <td class="fs-12">
                                     <span class="btn btn-outline-info btn-sm fs-12 view" data-url="{{route('admin.withdrawals.methods.view',$method->id)}}">
-                                        <i class="fa fay-eye"></i> View
+                                        <i class="fa fa-eye"></i> View
+                                    </span>
+                                    <span class="btn btn-outline-primary btn-sm fs-12 view" data-url="{{route('admin.withdrawals.methods.view',['id' => $method->id, 'update_date'=>true])}}">
+                                        <i class="fa fa-clock"></i> Change date
                                     </span>
                                     @if (!$method->unlinked)
                                     <a href="{{route('admin.withdrawals.methods.unlink', $method->id)}}" class="btn btn-outline-danger btn-sm fs-12">
@@ -76,15 +79,15 @@
 
 @push('js')
 <script>
-    $('.view').on('click', function(e){
+    $('.view').on('click', function(e) {
         var elem = $(e.currentTarget);
         fetch(elem.data('url'))
-        .then( response => response.json())
-        .then(res => {
-            console.log(res)
-            $('#viewModal .modal-body').html(res.html);
-            $('#viewModal').modal('show');
-        })
+            .then(response => response.json())
+            .then(res => {
+                console.log(res)
+                $('#viewModal .modal-body').html(res.html);
+                $('#viewModal').modal('show');
+            })
     })
 </script>
 @endpush
