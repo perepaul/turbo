@@ -49,7 +49,7 @@
                         <x-error key="date" />
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-outline-primary w-100 mt-3" type="submit">Withdraw</button>
+                        <button class="btn btn-outline-primary w-100 mt-3" type="submit">Deposit</button>
                     </div>
             </form>
         </div>
