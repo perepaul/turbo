@@ -37,6 +37,18 @@
                         <input type="datetime-local" class="form-control" name="date" id="date" value="{{old('date')}}">
                         <x-error key="date" />
                     </div>
+
+                    <div class="form-group">
+                        <label for=""><strong>Statuss</strong></label>
+                        <select name="status" id="status" class="form-select">
+                            <option value="">Select Method</option>
+                            <option value="pending" @if(old("status")=='pending' ) selected @endif>Pending</option>
+                            <option value="approved" @if(old("status")=='approved' ) selected @endif>Approved</option>
+                            <option value="declined" @if(old("status")=='declined' ) selected @endif>Declined</option>
+                        </select>
+                        <x-error key="method" />
+                    </div>
+
                     <div class="mb-3 col-md-4">
                         <label class="mb-1 d-block"><strong>Proof of Payment</strong></label>
                         <input type="file" name="proof" id="proof" style="display:none" accept="image/png;image/jpg;image/jpeg">

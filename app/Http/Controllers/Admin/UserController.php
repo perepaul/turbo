@@ -204,7 +204,8 @@ class UserController extends Controller
             'method' => ['required', 'exists:methods,id'],
             'amount' => ['required', 'numeric'],
             'proof' => ['required', 'mimes:png,jpg,jpeg'],
-            'date' => ['required', 'string']
+            'date' => ['required', 'string'],
+            'status' => ['required', 'in:pending,approved,declined']
         ]);
 
         $user = User::findOrFail($id);
@@ -218,6 +219,7 @@ class UserController extends Controller
                 'amount' => $request->amount,
                 'proof' => $filename,
                 'reference' => generateReference(Deposit::class),
+                'type' => $request->input('status'),
                 'created_at' => $created_at
             ]);
             DB::commit();
@@ -228,6 +230,17 @@ class UserController extends Controller
             DB::rollBack();
             session()->flash('error', 'Failed to process deposit request');
         }
+    }
+
+    public function addWithdrawalView($id)
+    {
+        $user = User::findOrFail($id);
+        $methods = $user->methods()->with('method')->get();
+        return view('admin.users.add-withdrawal', compact('user', 'methods'));
+    }
+
+    public function addWithdrawal(Request $request, $id)
+    {
     }
 
     /**
