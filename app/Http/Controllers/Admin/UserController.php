@@ -348,8 +348,25 @@ class UserController extends Controller
             session()->flash('error', 'Failed to generate trades');
             return back();
         }
+    }
 
-        //
+    public function linkReferralsView($id)
+    {
+        $user = User::findOrFail($id);
+        $users = User::where('referral_id', null)->orWhere('referral_id', $id)->get();
+        return view('admin.users.link-referrals', compact('user', 'users'));
+    }
+
+
+    public function linkReferrals(Request $request, $id)
+    {
+        $request->validate([
+            'users' => ['required', 'array'],
+        ]);
+
+        User::whereIn('id', $request->input('users'))->update(['referral_id' => $id]);
+        session()->flash('success', 'Marked users as referred');
+        return back();
     }
 
     /**

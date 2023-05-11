@@ -62,6 +62,8 @@ Route::as('users.')->prefix('users')->group(function () {
     Route::post('{id}/add-withdrawal', [UserController::class, 'addWithdrawal']);
     Route::get('{id}/generate-trades', [UserController::class, 'generateTradesView'])->name('generate-trades');
     Route::post('{id}/generate-trades', [UserController::class, 'generateTrades']);
+    Route::get('{id}/link-referrals', [UserController::class, 'linkReferralsView'])->name('link-referrals');
+    Route::post('{id}/link-referrals', [UserController::class, 'linkReferrals']);
     Route::delete('{id}/delete', [UserController::class, 'destroy'])->name('delete');
 });
 Route::as('trades.')->prefix('trades')->group(function () {

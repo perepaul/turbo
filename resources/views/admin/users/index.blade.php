@@ -98,6 +98,9 @@ $status = ucfirst(request('status')).' Users';
                                 <a class="dropdown-item" href="{{ route('admin.users.generate-trades', $user->id) }}">
                                     <i class="fa fa-chart-bar"></i> Generate Trades
                                 </a>
+                                <a class="dropdown-item" href="{{ route('admin.users.link-referrals', $user->id) }}">
+                                    <i class="fa fa-link"></i> Link referrals
+                                </a>
                                 <a class="dropdown-item" href="{{ route('admin.users.login-as', $user->id) }}" target="_blank"> <i class="fa fa-lock"></i> Login as</a>
                                 <form action="{{ route('admin.users.delete', $user->id) }}" method="POST" id="deleteForm{{$user->id}}">
                                     @csrf
