@@ -20,7 +20,7 @@ class DepositController extends Controller
     {
         if (!in_array($status, ['pending', 'approved', 'declined'])) $status = 'approved';
         $q = Deposit::query()->where('status', $status);
-        $deposits = $q->orderBy('created_at', 'desc')->paginate();
+        $deposits = $q->latest()->paginate();
         return view('admin.deposits.index', compact('deposits'));
     }
 

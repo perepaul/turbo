@@ -22,7 +22,7 @@ class WithdrawController extends Controller
         if (!in_array($status, ['pending', 'approved', 'declined'])) $status = 'approved';
         // dd(Withdrawal::where('status','pending')->get());
         $q = Withdrawal::query()->where('status', $status);
-        $withdrawals = $q->orderBy('created_at', 'desc')->paginate();
+        $withdrawals = $q->latest()->paginate();
         return view('admin.withdrawals.index', compact('withdrawals'));
     }
 

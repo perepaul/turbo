@@ -29,7 +29,7 @@ class WithdrawController extends Controller
     public function history()
     {
         $user = User::find(auth()->user()->id);
-        $withdrawals = $user->withdrawals()->orderBy('created_at', 'desc')->paginate();
+        $withdrawals = $user->withdrawals()->latest()->paginate();
         return view('user.withdrawal.history', compact('withdrawals'));
     }
 

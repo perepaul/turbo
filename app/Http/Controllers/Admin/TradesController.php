@@ -17,7 +17,7 @@ class TradesController extends Controller
     {
         if (!in_array($status, ['active', 'inactive'])) $status = 'active';
         $q = Trade::query()->where('status', $status);
-        $trades = $q->orderBy('created_at', 'desc')->paginate();
+        $trades = $q->latest()->paginate();
         return view('admin.trades.index', compact('trades'));
     }
 

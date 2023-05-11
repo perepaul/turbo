@@ -137,8 +137,10 @@ class UserController extends Controller
             'state' => 'nullable|string',
             'city' => 'nullable|string',
             'address' => 'nullable|string',
+            'created_at' => ['required', 'string']
         ]);
         $user = User::find($id);
+        $valid['created_at'] = Carbon::createFromTimeString($valid['created_at']);
         $user->update($valid);
         session()->flash('success', 'User Updated');
         return redirect()->route('admin.users.index', 'acitve');

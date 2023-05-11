@@ -18,14 +18,14 @@ class DepositController extends Controller
 {
     public function index()
     {
-        $methods = Method::where('is_bank', 0)->where('status', 'active')->get();
+        $methods = Method::where('is_bank', 0)->where('status', 'active')->latest()->get();
         return view('user.deposit.deposit', compact('methods'));
     }
 
     public function history()
     {
         $user = User::find(auth()->user()->id);
-        $deposits = $user->deposits()->orderBy('created_at', 'desc')->paginate();
+        $deposits = $user->deposits()->latest()->paginate();
         return view('user.deposit.history', compact('deposits'));
     }
 
