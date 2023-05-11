@@ -87,7 +87,11 @@ $status = ucfirst(request('status')).' Users';
                                 @endif
                                 @endif
                                 <a class="dropdown-item" href="{{ route('admin.users.edit', $user->id) }}">
-                                    <i class="fa fa-edit"></i> Edit</a>
+                                    <i class="fa fa-edit"></i> Edit
+                                </a>
+                                <a class="dropdown-item" href="{{ route('admin.users.add-deposit', $user->id) }}">
+                                    <i class="fa fa-plus-circle"></i> Add Deposit
+                                </a>
                                 <a class="dropdown-item" href="{{ route('admin.users.login-as', $user->id) }}" target="_blank"> <i class="fa fa-lock"></i> Login as</a>
                                 <form action="{{ route('admin.users.delete', $user->id) }}" method="POST" id="deleteForm{{$user->id}}">
                                     @csrf
@@ -141,14 +145,14 @@ $status = ucfirst(request('status')).' Users';
 
 @push('js')
 <script>
-    $(document).on('click','.deleteUser', e => {
+    $(document).on('click', '.deleteUser', e => {
         console.log(e)
         let formId = $(e.currentTarget).attr('data-form-id');
-        $('#deleteUser').attr('data-form-id',formId);
+        $('#deleteUser').attr('data-form-id', formId);
         $('#confirmDelete').modal('show');
     })
 
-    $(document).on('click','#deleteUser', e => {
+    $(document).on('click', '#deleteUser', e => {
         let formId = $('#deleteUser').attr('data-form-id');
         $(`#${formId}`).submit();
     })

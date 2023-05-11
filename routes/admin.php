@@ -56,6 +56,8 @@ Route::as('users.')->prefix('users')->group(function () {
     Route::get('{id}/request-trade-cert', [UserController::class, 'tradeCert'])->name('request-trade-cert');
     Route::get('{id}/verify-trade-cert', [UserController::class, 'verifyTradeCert'])->name('verify-trade-cert');
     Route::post('{id}/update', [UserController::class, 'update'])->name('update');
+    Route::get('{id}/add-deposit', [UserController::class, 'addDepositView'])->name('add-deposit');
+    Route::post('{id}/add-deposit', [UserController::class, 'addDeposit']);
     Route::delete('{id}/delete', [UserController::class, 'destroy'])->name('delete');
 });
 Route::as('trades.')->prefix('trades')->group(function () {

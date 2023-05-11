@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Events\Account\Activated;
-use App\Events\Account\Declined;
+use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Method;
+use App\Models\Deposit;
 use Illuminate\Http\Request;
+use App\Mail\TradeCertMailable;
+use App\Events\Account\Declined;
+use App\Events\Account\Activated;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\AccountVerifiedMailable;
-use App\Mail\TradeCertMailable;
+use Illuminate\Support\Carbon as SupportCarbon;
 
 class UserController extends Controller
 {
@@ -152,6 +157,77 @@ class UserController extends Controller
         $user->trade_cert = 'verified';
         $user->save();
         return back()->with('message', 'Trade certificate submitted');
+    }
+
+    // public function addOrRemoveFundsView($id)
+    // {
+    //     $user = User::findOrFail($id);
+    //     return view('admin.users.add-or-remove-funds', compact('user'));
+    // }
+
+    // public function addOrRemoveFunds(Request $request, $id)
+    // {
+    //     $request->validate([
+    //         'action' => ['required', 'string', 'in:add,remove'],
+    //         'account' => ['required', 'string', 'in:balance,referral_balance'],
+    //         'amount' => ['required', 'numberic'],
+    //         'date' => ['required', 'string']
+    //     ]);
+
+    //     $user = User::findOrFail($id);
+
+    //     try {
+    //         $created_at = Carbon::createFromTimeString($request->input('date'));
+    //         if ($request->input('action') == 'add') {
+    //             $user->increment($request->input('account'), $request->input('amount'));
+    //         } else {
+    //             $user->decrement($request->input('account'), $request->input('amount'));
+    //         }
+    //         $user->update([])
+    //     } catch (\Throwable $th) {
+    //         report($th);
+    //         return back();
+    //     }
+    // }
+
+
+    public function addDepositView($id)
+    {
+        $user = User::findOrFail($id);
+        $methods = Method::where('is_bank', 0)->where('status', 'active')->get();
+        return view('admin.users.add-deposit', compact('user', 'methods'));
+    }
+
+    public function addDeposit(Request $request, $id)
+    {
+        $request->validate([
+            'method' => ['required', 'exists:methods,id'],
+            'amount' => ['required', 'numeric'],
+            'proof' => ['required', 'mimes:png,jpg,jpeg'],
+            'date' => ['required', 'string']
+        ]);
+
+        $user = User::findOrFail($id);
+        DB::beginTransaction();
+        try {
+            $created_at = SupportCarbon::createFromTimeString($request->input('date'));
+            $filename = rand() . now()->toDateTimeString() . '.' . $request->file('proof')->extension();
+            $request->file('proof')->move(public_path(config('dir.deposits')), $filename);
+            $deposit = $user->deposits()->create([
+                'method_id' => $request->input('method'),
+                'amount' => $request->amount,
+                'proof' => $filename,
+                'reference' => generateReference(Deposit::class),
+                'created_at' => $created_at
+            ]);
+            DB::commit();
+            session()->flash('success', 'Deposited successfully, waiting for approvals');
+            return back();
+        } catch (\Throwable $th) {
+            report($th);
+            DB::rollBack();
+            session()->flash('error', 'Failed to process deposit request');
+        }
     }
 
     /**
