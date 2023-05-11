@@ -63,7 +63,7 @@
                     <tr>
                         <th>First name</th>
                         <th>Last name</th>
-                        <th>Email</th>
+                        <!-- <th>Email</th> -->
                         <th>Joined on</th>
                     </tr>
                 </thead>
@@ -72,7 +72,7 @@
                     <tr>
                         <td>{{$referral->firstname}}</td>
                         <td>{{$referral->lastname}}</td>
-                        <td>{{$referral->email}}</td>
+                        <!-- <td>{{$referral->email}}</td> -->
                         <td>{{$referral->created_at->diffForHumans()}}</td>
                     </tr>
                     @empty
