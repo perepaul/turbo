@@ -133,6 +133,7 @@ class UserController extends Controller
             'demo_balance' => 'nullable|numeric',
             'balance' => 'nullable|numeric',
             'invested_balance' => 'nullable|numeric',
+            'referral_balance' => 'nullable|numeric',
             'country' => 'nullable|string',
             'state' => 'nullable|string',
             'city' => 'nullable|string',

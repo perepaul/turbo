@@ -48,13 +48,19 @@
                         <x-error key="phone" />
                     </div>
 
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label for="">Main Balance</label>
                         <input type="text" class="form-control" name="balance" value="{{ old('balance') ?? $user->balance }}">
                         <x-error key="balance" />
                     </div>
 
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
+                        <label for="">Referral Balance</label>
+                        <input type="text" class="form-control" name="referral_balance" value="{{ old('referral_balance') ?? $user->referral_balance ?? 0 }}">
+                        <x-error key="referral_balance" />
+                    </div>
+
+                    <div class="form-group col-md-4">
                         <label for="">Invested Balance</label>
                         <input type="text" class="form-control" name="invested_balance" value="{{ old('invested_balance') ?? $user->invested_balance }}">
                         <x-error key="invested_balance" />
