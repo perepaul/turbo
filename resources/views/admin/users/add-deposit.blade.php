@@ -1,5 +1,5 @@
 @extends('layouts.back')
-@section('title', 'Add or Remove Funds')
+@section('title', 'Add Deposit')
 @section('content')
 <div class="col-md-5 mx-auto">
     <div class="card">
