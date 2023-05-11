@@ -311,6 +311,7 @@ class UserController extends Controller
                     'amount' => rand($request->input('min_amount'), $request->input('max_amount')),
                     'is_demo' => 'no',
                     'type' => collect(['buy', 'sell'])->random(1)?->first(),
+                    'status' => 'inactive',
                     'time' => collect([
                         '10 minutes',
                         '30 minutes',
