@@ -104,7 +104,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($user->deposits->sortBy('created_at')->take(5) as $deposit )
+                                    @forelse ($user->deposits->latest()->take(5) as $deposit )
 
                                     <tr>
                                         <td>{{$deposit->reference}}</td>
@@ -140,7 +140,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($user->withdrawals->sortBy('created_at')->take(5) as $withdrawal )
+                                    @forelse ($user->withdrawals->latest()->take(5) as $withdrawal )
 
                                     <tr>
                                         <td>{{$withdrawal->reference}}</td>
@@ -176,7 +176,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($user->trades->sortBy('created_at')->take(5) as $trade )
+                                    @forelse ($user->trades->latest()->take(5) as $trade )
 
                                     <tr>
                                         <td>{{$trade->reference}}</td>
