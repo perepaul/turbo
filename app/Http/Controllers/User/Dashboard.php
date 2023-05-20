@@ -14,6 +14,17 @@ class Dashboard extends Controller
     {
         $user = User::find(auth('user')->user()->id);
         $user->load('trades', 'deposits', 'withdrawals');
-        return view('user.index', compact('user'));
+        $trades = $user->trades()->latest()->take(5)->get();
+        $deposits = $user->deposits()->latest()->take(5)->get();
+        $withdrawals = $user->withdrawals()->latest()->take(5)->get();
+        return view(
+            'user.index',
+            compact(
+                'user',
+                'withdrawals',
+                'deposits',
+                'trades'
+            )
+        );
     }
 }

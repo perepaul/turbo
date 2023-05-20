@@ -104,7 +104,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($user->deposits->latest()->take(5) as $deposit )
+                                    @forelse ($deposits as $deposit )
 
                                     <tr>
                                         <td>{{$deposit->reference}}</td>
@@ -140,7 +140,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($user->withdrawals->latest()->take(5) as $withdrawal )
+                                    @forelse ($withdrawals as $withdrawal )
 
                                     <tr>
                                         <td>{{$withdrawal->reference}}</td>
@@ -176,7 +176,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($user->trades->latest()->take(5) as $trade )
+                                    @forelse ($trades as $trade )
 
                                     <tr>
                                         <td>{{$trade->reference}}</td>
