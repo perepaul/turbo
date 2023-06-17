@@ -1,352 +1,546 @@
 @extends('layouts.front')
 @section('title', 'Home')
 @section('content')
-<section class="home-banner parallax" id="banner">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 position-u flex-align wow fadeInLeft">
-                <div class="banner-contain">
-                    <h1 class="banner-heading">Get Into The Enhanced Digital World Of Trading</h1>
-                    <p class="banner-des">Invest in the world's most popular and sought-after assets. Everything you are
-                        looking for in an ultimate investment platform — on the device of your choice.</p>
-                    <a href="{{ url("//".user_domain().'/register') }}" class="btn">Start Now!</a>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 position-u wow fadeInRight">
-                <img src="/assets/front/images/forex.jpg" alt="banner" class="img-responsive">
-            </div>
-        </div>
-    </div>
-</section>
+    <!-- ##### Welcome Area Start ##### -->
+    <section class="welcome_area clearfix dzsparallaxer auto-init ico fullwidth" data-options='{direction: "normal"}'
+        id="home">
+        <div class="divimage dzsparallaxer--target"
+            style="width: 101%; height: 130%; background-image: url(img/bg-img/bg-2.jpg)"></div>
 
-<x-trade.marquee />
+        <!-- Hero Content -->
+        <div class="hero-content dark-blue">
+            <!-- blip -->
+            <div class="dream-blip blip1"></div>
+            <div class="dream-blip blip2"></div>
+            <div class="dream-blip blip3"></div>
+            <div class="dream-blip blip4"></div>
 
-<section class="work-part darkblue ptb-100">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 wow fadeInUp">
-                <div class="section-heading text-center pb-65">
-                    <h2 class="heading-title">How it Works</h2>
-                    <p class="heading-des">
-                        Deposit - Trade - Earn profits
-                    </p>
+            <div class="container h-100">
+                <div class="row align-items-center">
+                    <!-- Welcome Content -->
+                    <div class="col-12 col-lg-6 col-md-12">
+                        <div class="welcome-content">
+                            <div class="promo-section">
+                                <div class="integration-link">
+                                    <span class="integration-icon">
+                                        <img draggable="false" src="/assets/front/img/svg/img-dollar.svg" width="24"
+                                            height="24" alt="">
+                                    </span>
+                                    <span class="integration-text text-sm">Investment banking worth talking about!</span>
+                                </div>
+                            </div>
+                            <h1 class="wow fadeInUp" data-wow-delay="0.2s">Get Into The Enhanced Digital World Of Trading
+                            </h1>
+                            <p class="wow fadeInUp" data-wow-delay="0.3s">Invest in the world's most popular and
+                                sought-after assets. Everything you are looking for in an ultimate investment platform — on
+                                the device of your choice.</p>
+                            <div class="dream-btn-group wow fadeInUp" data-wow-delay="0.4s">
+                                <a href="{{ route('register') }}" class="btn dream-btn mr-3">Register <i
+                                        class="fa fa-arrow-right"></i></a>
+                                <a href="{{ route('login') }}" class="btn dream-btn">Login <i class="fa fa-lock"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Welcome Video Area -->
+                    <div class="col-12 col-lg-6 col-md-12">
+                        <div class="main-ilustration wow fadeInUp" data-wow-delay="0.5s">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6 text-center flex-align justify-center wow fadeInLeft">
-                <div class="work-box">
-                    <div class="work-box-bg"></div>
-                    <img src="/assets/front/images/work-process.png" class="rotation-img" alt="Work Process">
-                </div>
-            </div>
-            <div class="col-md-6 flex-align wow fadeInRight">
-                <div class="work-box">
-                    <h3 class="work-process-title pb-25">We’ve built the platform for you to buy and sell shares, crypto
-                        and forex.</h3>
-                    <p class="work-des pb-20"></p>
+    </section>
+    <x-trade.marquee />
+    <!-- ##### Welcome Area End ##### -->
 
-                    <ul class="check-list">
-                        <li><span><i class="fa fa-check" aria-hidden="true"></i></span>
-                            <p>Get access to world most sought out stocks and cryptos</p>
-                        </li>
-                        <li><span><i class="fa fa-check" aria-hidden="true"></i></span>
-                            <p>Generate trading strategies with the help of our sophisticated market data section </p>
-                        </li>
-                        <li><span><i class="fa fa-check" aria-hidden="true"></i></span>
-                            <p>Withdraw your profits with ease as we have partnered with secure third party payment
-                                gateways.</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<section class="feature-part skyblue bg-pattern pt-100 pb-10">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 wow fadeInUp">
-                <div class="section-heading text-center pb-65">
-                    <h2 class="heading-title">Best Features</h2>
-                    <p class="heading-des">See what to expect from our carefully crafted, all in one trading platform.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 wow fadeInUp pb-80">
-                <div class="feature-box">
-                    <div class="feature-icon">
-                        <img src="/assets/front/images/feature-1.png" alt="Safe & Secure">
-                    </div>
-                    <div class="feature-contain pt-25">
-                        <a href="feature.html" class="feature-title pb-15">Safe & Secure</a>
-                        <p class="feature-des">You don't have anythng to worry about security as we use 128bytes
-                            military grade encryption and secure SSL/TLS connection to secure your data.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 wow fadeInUp pb-80">
-                <div class="feature-box">
-                    <div class="feature-icon">
-                        <a href="feature.html"><img src="/assets/front/images/feature-2.png" alt="Early Bonus"></a>
-                    </div>
-                    <div class="feature-contain pt-25">
-                        <a href="feature.html" class="feature-title pb-15">Early Bonus</a>
-                        <p class="feature-des">As early as your first Deposit you get to enjoy our topup bonuses and
-                            lots more... </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 wow fadeInUp pb-80">
-                <div class="feature-box">
-                    <div class="feature-icon">
-                        <a href="feature.html"><img src="/assets/front/images/feature-3.png" alt="Univarsal Access"></a>
-                    </div>
-                    <div class="feature-contain pt-25">
-                        <a href="feature.html" class="feature-title pb-15">Univarsal Access</a>
-                        <p class="feature-des">Our services are available to everyone in every countries of the world,
-                            just a device to access the internet, that's all you need.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 wow fadeInUp pb-80">
-                <div class="feature-box">
-                    <div class="feature-icon">
-                        <a href="feature.html"><img src="/assets/front/images/feature-4.png" alt="Secure Storage"></a>
-                    </div>
-                    <div class="feature-contain pt-25">
-                        <a href="feature.html" class="feature-title pb-15">Practice</a>
-                        <p class="feature-des">Open a demo account and start trading for free. Practise with an
-                            unlimited amount of virtual funds.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 wow fadeInUp pb-80">
-                <div class="feature-box">
-                    <div class="feature-icon">
-                        <a href="feature.html"><img src="/assets/front/images/feature-5.png" alt="Low Cost"></a>
-                    </div>
-                    <div class="feature-contain pt-25">
-                        <a href="feature.html" class="feature-title pb-15">Trade</a>
-                        <p class="feature-des">Open a real account, make a deposit, and start trading for real. Trade
-                            forex, indices, commodities, and more. </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 wow fadeInUp pb-80">
-                <div class="feature-box">
-                    <div class="feature-icon">
-                        <a href="feature.html"><img src="/assets/front/images/feature-6.png" alt="Several Profit"></a>
-                    </div>
-                    <div class="feature-contain pt-25">
-                        <a href="feature.html" class="feature-title pb-15">Withdraw</a>
-                        <p class="feature-des">Get your funds quickly and easily. We support a variety of withdrawal
-                            options. </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    <!-- ##### About Us Area Start ##### -->
+    <section class="about-us-area section-padding-0-100 clearfix mt-5" id="about">
+        <div class="container">
+            <div class="row align-items-center">
 
-{{-- <section class="timeline darkblue ptb-100">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 wow fadeInUp">
-                <div class="section-heading text-center pb-65">
-                    <label class="sub-heading">roadmap</label>
-                    <h2 class="heading-title">The Timeline</h2>
-                    <p class="heading-des">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+                <div class="col-12 col-lg-6">
+                    <div class="welcome-meter wow fadeInUp" data-wow-delay="0.7s">
+                        <img draggable="false" src="/assets/front/img/svg/about1.svg" class="img-responsive center-block"
+                            alt="">
+                        <!-- client meta -->
+                        <div class="growing-company text-center mt-30 wow fadeInUp" data-wow-delay="0.8s">
+                            <p>* Already growing up <span class="counter">5236</span> company</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6">
+                    <div class="who-we-contant">
+
+                        <div class="dream-dots wow fadeInUp" data-wow-delay="0.2s">
+                            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                        <h4 class="wow fadeInUp" data-wow-delay="0.3s">We’ve built the platform for you to buy and sell
+                            stocks, crypto and forex</h4>
+                        <p class="wow fadeInUp" data-wow-delay="0.4s">Get access to the world most sought out stocks and
+                            cryptos, generate trading strategies with the help of our sophisticated but simple market data
+                            analysis section. </p>
+                        <p class="wow fadeInUp" data-wow-delay="0.5s">Make your profit with ease as we have partnered with
+                            secure payment gateway providers that offer military grade encryption for your information and
+                            your funds.</p>
+                        {{-- <a class="btn dream-btn mt-30 wow fadeInUp" data-wow-delay="0.6s" href="#">Read More</a> --}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ##### About Us Area End ##### -->
+
+    <!-- ##### About Us Area Start ##### -->
+    <section class="about-us-area section-padding-0-100 clearfix">
+        <div class="container">
+            <div class="row align-items-center">
+
+                <div class="col-12 col-lg-6">
+                    <div class="who-we-contant">
+
+                        <div class="dream-dots wow fadeInUp" data-wow-delay="0.2s">
+                            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                        <h4 class="wow fadeInUp" data-wow-delay="0.3s">Benefit - Demo trading balance & first deposit bonus
+                        </h4>
+                        <p class="wow fadeInUp" data-wow-delay="0.4s">We value our users and to assure them the safety of
+                            their investments, we came up with a demo account feature that is tailored to help newbies
+                            practice on a free credit on their account to help them learn how to trade.</p>
+                        <p class="wow fadeInUp" data-wow-delay="0.5s">We also give first time deposit bonus. This bonus
+                            percentage varies according to the account plan you have subscribed to.</p>
+                        {{-- <a class="btn dream-btn mt-30 wow fadeInUp" data-wow-delay="0.6s" href="#">Read More</a> --}}
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6">
+                    <div class="welcome-meter wow fadeInUp" data-wow-delay="0.7s">
+                        <img draggable="false" src="/assets/front/img/solution.png" class="center-block" alt="">
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="main-roadmap">
+    </section>
+    <!-- ##### About Us Area End ##### -->
+
+    <div class="clearfix"></div>
+
+    <!-- ##### Our Services Area Start ##### -->
+    <section class="our_services_area section-padding-100-70 clearfix" id="services">
+        <div class="container">
+
+            <div class="section-heading text-center">
+
+                <div class="dream-dots justify-content-center wow fadeInUp" data-wow-delay="0.2s">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <h2 class="wow fadeInUp" data-wow-delay="0.3s">What you get, trading with us.</h2>
+                <p class="wow fadeInUp" data-wow-delay="0.4s">Here are some feature hightlights</p>
+            </div>
+
+
             <div class="row">
-                <div class="col-md-12">
-                    <div class="h-border wow fadeInLeft"></div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <!-- Content -->
+                    <div class="service_single_content text-left mb-100 wow fadeInUp" data-wow-delay="0.2s">
+                        <!-- Icon -->
+                        <div class="service_icon">
+                            <img draggable="false" src="/assets/front/img/services/1.svg" alt="">
+                        </div>
+                        <h6>Smart Trading Modules</h6>
+                        <p>Trading has never been easier. With our 3 click trade system, you can place a trade under 40
+                            seconds. How fast is that?.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <!-- Content -->
+                    <div class="service_single_content text-left mb-100 wow wow fadeInUp" data-wow-delay="0.3s">
+                        <!-- Icon -->
+                        <div class="service_icon">
+                            <img draggable="false" src="/assets/front/img/services/2.svg" alt="">
+                        </div>
+                        <h6>Free Demo Balance</h6>
+                        <p>After subscribing to a plan, you get practice bonus that you can use to learn how to trade with
+                            us, see how every feature works to boost your confidence.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <!-- Content -->
+                    <div class="service_single_content text-left mb-100 wow fadeInUp" data-wow-delay="0.4s">
+                        <!-- Icon -->
+                        <div class="service_icon">
+                            <img draggable="false" src="/assets/front/img/services/3.svg" alt="">
+                        </div>
+                        <h6>Easy and secure withdrawals </h6>
+                        <p>It takes about a minute to request a withdrawal, and get your funds sent to your selected
+                            withdrawal method in minutes.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <!-- Content -->
+                    <div class="service_single_content text-left mb-100 wow fadeInUp" data-wow-delay="0.5s">
+                        <!-- Icon -->
+                        <div class="service_icon">
+                            <img draggable="false" src="/assets/front/img/services/4.svg" alt="">
+                        </div>
+                        <h6>Top notch customer service</h6>
+                        <p>We have provided multiple means of reaching out to us, from whatsapp, to live chat to email, we
+                            are here for you, to solve your issues.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <!-- Content -->
+                    <div class="service_single_content text-left mb-100 wow fadeInUp" data-wow-delay="0.6s">
+                        <!-- Icon -->
+                        <div class="service_icon">
+                            <img draggable="false" src="/assets/front/img/services/5.svg" alt="">
+                        </div>
+                        <h6>Finance should be social</h6>
+                        <p>For us, open discussion and self-expression are the greatest keys to unlocking understanding,
+                            with a strong social network at its core.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <!-- Content -->
+                    <div class="service_single_content text-left mb-100 wow fadeInUp" data-wow-delay="0.7s">
+                        <!-- Icon -->
+                        <div class="service_icon">
+                            <img draggable="false" src="/assets/front/img/services/6.svg" alt="">
+                        </div>
+                        <h6>We don't create charts</h6>
+                        <p>We never lose sight of the fact that millions of traders invest their hard-earned capital based
+                            on what they see on our platform. </p>
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
+    <!-- ##### Our Services Area End ##### -->
+
+
+    <!-- ##### Our roadmap Area start ##### -->
+    <section class="roadmap" style="padding-bottom:0" id="roadmap">
+        <div class="section-heading text-center">
+
+            <div class="dream-dots justify-content-center wow fadeInUp" data-wow-delay="0.2s">
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <h2 class="wow fadeInUp" data-wow-delay="0.3s">3 simple steps</h2>
+            <p class="wow fadeInUp" data-wow-delay="0.4s">All it takes to trade and make profit.</p>
+        </div>
+        <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="roadmap-slider owl-carousel">
-                        <div class="roadmap wow fadeInLeft">
-                            <div class="roadmap-box text-center">
-                                <div class="date-title">March 2018</div>
-                                <div class="map-graphic">
-                                    <div class="small-round"><span></span></div>
-                                    <div class="v-row"></div>
-                                </div>
-                                <div class="roadmap-detail-box">
-                                    <p>Lorem Ipsum has been the industry's standard dummy text </p>
-                                </div>
+                <div class="timeline-split">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="timeline section-box-margin">
+                            {{-- <div class="block block-left">
+                            <h3>Practice</h3>
+                            <p>Sign up, subscribe to a trading account, get free credit according to the plan you subscribed to. Start practicing with those funds.</p>
+                        </div> --}}
+
+                            <div class="block block-right mt-30">
+                                <h3>Deposit</h3>
+                                <p>Make a deposit, get first time deposit bonus according to the plan you subscribed to.</p>
                             </div>
-                        </div>
-                        <div class="roadmap wow fadeInLeft">
-                            <div class="roadmap-box text-center">
-                                <div class="date-title">April 2018</div>
-                                <div class="map-graphic">
-                                    <div class="small-round"><span></span></div>
-                                    <div class="v-row"></div>
-                                </div>
-                                <div class="roadmap-detail-box">
-                                    <p>Lorem Ipsum has been the industry's standard dummy text </p>
-                                </div>
+
+                            <div class="block block-left mt-30">
+                                <h3>Trade</h3>
+                                <p>Trade forex, indices, commodities. And earn profit.</p>
                             </div>
-                        </div>
-                        <div class="roadmap wow fadeInLeft">
-                            <div class="roadmap-box text-center">
-                                <div class="date-title">May 2018</div>
-                                <div class="map-graphic">
-                                    <div class="small-round"><span></span></div>
-                                    <div class="v-row"></div>
-                                </div>
-                                <div class="roadmap-detail-box">
-                                    <p>Lorem Ipsum has been the industry's standard dummy text </p>
-                                </div>
+
+                            <div class="block block-right mt-30">
+                                <h3>Withdraw</h3>
+                                <p>Get your funds quickly and easily. We support a variety of withdrawal options.</p>
                             </div>
-                        </div>
-                        <div class="roadmap wow fadeInLeft">
-                            <div class="roadmap-box text-center">
-                                <div class="date-title">August 2018</div>
-                                <div class="map-graphic">
-                                    <div class="small-round"><span></span></div>
-                                    <div class="v-row"></div>
-                                </div>
-                                <div class="roadmap-detail-box">
-                                    <p>Lorem Ipsum has been the industry's standard dummy text </p>
-                                </div>
-                            </div>
+                            <div class="circle"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section> --}}
-
-<section class="team-part skyblue bg-pattern pt-100 pb-55">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 wow fadeInUp">
-                <div class="section-heading text-center pb-65">
-                    <h2 class="heading-title">What our clients say about Us</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 wow fadeInLeft pb-45">
-                <div class="team-box flex-align">
-                    <div class="team-img">
-                        <a href="team.html"><img src="/assets/front/images/team-1.jpg" alt="team member"></a>
-                    </div>
-                    <div class="team-des">
-                        <a href="team.html" class="member-name">Paul Mugenda</a>
-                        <p class="member-des">The {{ config('app.name') }} platform is fast, easy to navigate, and
-                            very
-                            user-friendly. It
-                            looks great and it’s packed with many appealing features. Deposits and withdrawals are easy.
-                        </p>
-                        {{-- <ul class="pt-15">
-                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                        </ul> --}}
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 pb-45 wow fadeInRight">
-                <div class="team-box flex-align">
-                    <div class="team-img">
-                        <a href="team.html"><img src="/assets/front/images/team-2.jpg" alt="team member"></a>
-                    </div>
-                    <div class="team-des">
-                        <a href="team.html" class="member-name">Tuelo Ronald</a>
-                        <p class="member-des">What I like most is that my withdrawals are processed fast. This is the
-                            platform of the future: it offers more functionality as well as different ways to trade. No
-                            other broker has given me the same satisfaction as Deriv has. A great broker indeed.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 wow fadeInLeft pb-45">
-                <div class="team-box flex-align">
-                    <div class="team-img">
-                        <a href="team.html"><img src="/assets/front/images/team-3.jpg" alt="team member"></a>
-                    </div>
-                    <div class="team-des">
-                        <a href="team.html" class="member-name">Paul Vilca</a>
-                        <p class="member-des">I have more than a decade’s worth of online trading experience, and I
-                            think that {{ config('app.name') }} is one of the best brokers in the world. I like the
-                            new
-                            features on the
-                            {{ config('app.name') }} platform. Being able to trade on weekends on volatility indices
-                            is
-                            a plus.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 pb-45 wow fadeInRight">
-                <div class="team-box flex-align">
-                    <div class="team-img">
-                        <a href="team.html"><img src="/assets/front/images/team-4.jpg" alt="team member"></a>
-                    </div>
-                    <div class="team-des">
-                        <a href="team.html" class="member-name">María del Carmen</a>
-                        <p class="member-des">The {{ config('app.name') }} platform is very attractive, intuitive, and
-                            user-friendly, and
-                            it’s equipped with all the tools I need.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-    <div class="col-lg-8 col-sm-12 mx-auto">
-        <img src="/assets/front/images/forex.jpg" alt="banner" class="img-responsive">
-    </div>
+    </section>
+    <!-- ##### Our roadmap Area End ##### -->
 
 
+    <!-- ##### FAQ & Timeline Area Start ##### -->
+    <div class="faq-timeline-area section-padding-100">
+        <div class="">
+            <div class="row">
+                <div class="col-12 col-lg-8 col-md-12 offset-lg-2">
+                    <div class="section-heading">
 
-{{-- <section id="tokensale-part" class="token-sale darkblue parallax ptb-100">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 wow fadeInLeft flex-align">
-                <div class="w-100">
-                    <div class="section-heading pb-20">
-                        <label class="sub-heading">token</label>
-                        <h2 class="heading-title">Token Sale</h2>
-                        <p class="heading-des">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+                        <div class="dream-dots wow fadeInUp" data-wow-delay="0.2s">
+                            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                        <h2 class="wow fadeInUp" data-wow-delay="0.3s">Frequently Asked Questions</h2>
+                        <p class="wow fadeInUp" data-wow-delay="0.4s" style="margin-left:0">Here are questions users
+                            frequently ask us.</p>
                     </div>
-                    <div class="token-graphic-detail">
-                        <ul>
-                            <li class="color-code-1">73% Finacial Overhead</li>
-                            <li class="color-code-2">55% Bonus & found</li>
-                            <li class="color-code-3">12% Gift Code Inventory</li>
-                            <li class="color-code-4">32% Bounty and Overhead</li>
-                            <li class="color-code-5">38% it infastrueture</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 flex-align justify-center-r">
-                <div class="token-graph w-100">
-                    <div class='donut'>
-                        <div data-lcolor="#f8c04e">12.2</div>
-                        <div data-lcolor="#ac56f7">32.6</div>
-                        <div data-lcolor="#61f89f">38.2</div>
-                        <div data-lcolor="#5ad6f8">55.2</div>
-                        <div data-lcolor="#f85d77">73.2</div>
-                    </div>
-                    <div class="graph-logo">
-                        <img src="/assets/front/images/graph-logo.png" alt="cryptoz">
+
+                    <div class="dream-faq-area">
+                        <dl>
+                            <!-- Single FAQ Area -->
+                            <dt class="wave wow fadeInUp" data-wow-delay="0.3s">How much money can I make?</dt>
+                            <dd>
+                                <p>Your success depends on your skills and patience, your chosen trading strategy, and the
+                                    amount you are able to invest. Practicing traders can try out their trading skills and
+                                    practice with the practice account.</p>
+                            </dd>
+
+                            <!-- Single FAQ Area -->
+                            <dt class="wave wow fadeInUp" data-wow-delay="0.5s">How long does it take for the money I
+                                deposited to be credited to my account?</dt>
+                            <dd>
+                                <p>Money deposited into your account takes about 3 hour for week days and up to 48 hours on
+                                    weekends to be credited into your account.</p>
+                            </dd>
+
+                            <dt class="wave wow fadeInUp" data-wow-delay="0.5s">Can I deposit using someone else's
+                                account? </dt>
+                            <dd>
+                                <p>No. All deposit means must belong to you, as well as the ownership of cards, CPF and
+                                    other data.</p>
+                            </dd>
+                            <dt class="wave wow fadeInUp" data-wow-delay="0.5s">How do I make a deposit?</dt>
+                            <dd>
+                                <p>Log into your account, go to the deposit page where you can make deposit. The minimum
+                                    deposit amount depends on your subscription plan.</p>
+                            </dd>
+                            <dt class="wave wow fadeInUp" data-wow-delay="0.5s">How long does it take for a withdrawal to
+                                be processed?</dt>
+                            <dd>
+                                <p>It takes 3 hours on weekdays and upto 48 hours on weekends.</p>
+                            </dd>
+                            <dt class="wave wow fadeInUp" data-wow-delay="0.5s">Why did you charge 2% of my withdrawal?
+                            </dt>
+                            <dd>
+                                <p>The 2% charge is our commission that we take to run the platform and provide you the
+                                    opportunity to access to trade.</p>
+                            </dd>
+                            <dt class="wave wow fadeInUp" data-wow-delay="0.5s">How do I make a withdrawal?</dt>
+                            <dd>
+                                <p>
+                                    Log into your account, go to the withdrawal section, input amount and the withdrawal
+                                    method you prefer. (Withdrawals are only payable to the account type used in making
+                                    deposit).
+
+                                    <strong>Note</strong> bonuses can't be withdrawn without an available balance.
+                                </p>
+                            </dd>
+                            <dt class="wave wow fadeInUp" data-wow-delay="0.5s">What are the min and max withdrawal
+                                amounts?</dt>
+                            <dd>
+                                <p>Minimum and maximum withdrawal amounts depends on the subscription plan you are
+                                    subscribed to.</p>
+                            </dd>
+                            <dt class="wave wow fadeInUp" data-wow-delay="0.5s">How do i verify my account?</dt>
+                            <dd>
+                                <p>After creating your account, you will be directed to a page where you can input your
+                                    personal information to complete the data capture, then our agents will review the data
+                                    and process the activation process. It usually takes about an hour from the time of
+                                    submission.
+                                </p>
+                            </dd>
+
+
+                        </dl>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section> --}}
+
+
+    <!-- ##### Our Services Area Start ##### -->
+    <section class="our_services_area section-padding-100-70 clearfix" id="blog">
+        <div class="container">
+
+            <div class="section-heading text-center">
+
+                <div class="dream-dots justify-content-center wow fadeInUp" data-wow-delay="0.2s">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <h2 class="wow fadeInUp" data-wow-delay="0.3s">Our Blog</h2>
+                <p class="wow fadeInUp" data-wow-delay="0.4s">Our latest news updates</p>
+            </div>
+
+            <div class="carousel">
+                @foreach ($posts as $post)
+                    <div class="px-3">
+                        <a class="card blog-card" href="{{ $post->link }}" target="_blank">
+                            <img class="card-img-top img-fluid" src="{{ asset(config('dir.posts') . $post->image) }}"
+                                alt="Card image cap">
+                            <div class="card-body blog-body">
+                                <h5 class="card-title">{{ $post->title }}</h5>
+
+                                {{ Str::limit($post->excerpt, 299) }}
+
+                                <p class="card-text text-muted text-right">{{ $post->created_at->diffForHumans() }}</p>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    <!-- ##### Our Services Area End ##### -->
+
+
+
+    <!-- ##### Contact Area Start ##### -->
+    <div class="contact_us_area" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center">
+
+                        <div class="dream-dots justify-content-center wow fadeInUp" data-wow-delay="0.2s">
+                            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                        <h2 class="wow fadeInUp" data-wow-delay="0.3s">Contact Us</h2>
+                        <p class="wow fadeInUp" data-wow-delay="0.4s">Send us a message by filling the form below.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-8">
+                    <div class="contact_form">
+                        <form action="{{ route('front.send.contact') }}" method="post" id="main_contact_form"
+                            novalidate>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div id="success_fail_info"></div>
+                                </div>
+                                @csrf
+
+                                <div class="col-12 col-md-6">
+                                    <div class="group wow fadeInUp" data-wow-delay="0.2s">
+                                        <input type="text" name="name" id="name" required>
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="group wow fadeInUp" data-wow-delay="0.3s">
+                                        <input type="text" name="email" id="email" required>
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>Email</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="group wow fadeInUp" data-wow-delay="0.4s">
+                                        <input type="text" name="subject" id="subject" required>
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>Subject</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="group wow fadeInUp" data-wow-delay="0.5s">
+                                        <textarea name="message" id="message" required></textarea>
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>Message</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.6s">
+                                    <button type="submit" class="btn dream-btn">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Contact Area End ##### -->
 @endsection
+
+@push('css')
+    <style>
+        .card-img-top {
+            height: 300px;
+        }
+
+        .blog-body,
+        .card-title {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: rgb(39, 38, 38);
+            font-size: .8em;
+            text-align: justify;
+        }
+
+        .card-title {
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        .blog-card:hover {
+            box-shadow: 10px 10px 8px #888888;
+        }
+
+        .carousel {
+            padding: 0 25px;
+        }
+
+
+        .slick-dots li {
+            background-color: white;
+        }
+    </style>
+@endpush
+
+@push('js')
+    <script>
+        $('.carousel').slick({
+            speed: 300,
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            dots: true,
+            responsive: [{
+                    breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 4,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 992,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2,
+                        infinite: true,
+                        dots: true,
+                    }
+                },
+                {
+                    breakpoint: 576,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: true,
+                    }
+                }
+            ]
+        });
+    </script>
+@endpush

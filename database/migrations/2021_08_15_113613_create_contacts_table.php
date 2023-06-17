@@ -19,6 +19,8 @@ class CreateContactsTable extends Migration
             $table->string('support_email')->nullable();
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
+            $table->longText('chat_script')->nullable();
+            $table->enum('whatsapp', ['active', 'inactive'])->nullable();
             $table->timestamps();
         });
     }

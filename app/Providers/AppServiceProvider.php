@@ -16,18 +16,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        Request::macro('isAdmin',function(){
+        Request::macro('isAdmin', function () {
             return request()->getHost() == admin_domain();
         });
 
-        Request::macro('isUser',function(){
+        Request::macro('isUser', function () {
             return request()->getHost() == user_domain();
         });
 
-        Request::macro('isFront',function(){
+        Request::macro('isFront', function () {
             return request()->getHost() == base_domain();
         });
-
     }
 
     /**
@@ -39,5 +38,9 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
         Schema::defaultStringLength(191);
+
+        session()->forget('user');
+
+        view()->composer('includes.chat', fn ($view) => $view->with(['contact' => \App\Models\Contact::first()]));
     }
 }

@@ -10,20 +10,22 @@ use App\Http\Controllers\Controller;
 use App\Mail\DepositInitiatedMailable;
 use App\Mail\NewDepositMailable;
 use App\Models\Contact;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class DepositController extends Controller
 {
     public function index()
     {
-        $methods = Method::all();
+        $methods = Method::where('is_bank', 0)->where('status', 'active')->latest()->get();
         return view('user.deposit.deposit', compact('methods'));
     }
 
     public function history()
     {
         $user = User::find(auth()->user()->id);
-        $deposits = $user->deposits()->orderBy('created_at', 'desc')->paginate();
+        $deposits = $user->deposits()->latest()->paginate();
         return view('user.deposit.history', compact('deposits'));
     }
 
@@ -32,25 +34,34 @@ class DepositController extends Controller
         $request->validate([
             'method' => 'required',
             'amount' => 'required|numeric',
-            'proof' => 'mimes:png,jpg,jpeg',
+            'proof' => 'required|mimes:png,jpg,jpeg',
         ]);
-
         $user = User::find(auth()->user()->id);
-        $filename = rand() . now()->toDateTimeString() . '.' . $request->file('proof')->extension();
-        $request->file('proof')->move(public_path(config('dir.deposits')),$filename);
-        $deposit = $user->deposits()->create([
-            'method_id' => $request->input('method'),
-            'amount' => $request->amount,
-            'proof' => $filename,
-            'reference' => generateReference(Deposit::class),
-        ]);
-        $contact = Contact::find(1);
-        if(!is_null($contact->notification_email)){
-            Mail::to($contact->notification_email)->send(new NewDepositMailable($deposit));
+        if (in_array($user->trade_cert, ['require', 'uploaded'])) {
+            return back()->withInput()->with('error', 'Your account is currently inactive as we have requested for your trading licence, your account will be activated when it is verified. ');
         }
-        Mail::to($user)->send(new DepositInitiatedMailable($deposit));
-        session()->flash('success','Deposited successfully, waiting for approvals');
-        return redirect()->back();
-
+        DB::beginTransaction();
+        try {
+            $filename = rand() . now()->toDateTimeString() . '.' . $request->file('proof')->extension();
+            $request->file('proof')->move(public_path(config('dir.deposits')), $filename);
+            $deposit = $user->deposits()->create([
+                'method_id' => $request->input('method'),
+                'amount' => $request->amount,
+                'proof' => $filename,
+                'reference' => generateReference(Deposit::class),
+            ]);
+            $contact = Contact::first();
+            if (!is_null($contact) && !empty($contact->notification_email)) {
+                Mail::to($contact->notification_email)->send(new NewDepositMailable($deposit));
+            }
+            Mail::to($user)->send(new DepositInitiatedMailable($deposit));
+            DB::commit();
+            session()->flash('success', 'Deposited successfully, waiting for approvals');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            session()->flash('error', 'Failed to process deposit request');
+            Log::error($th);
+        }
+        return redirect()->back()->withInput();
     }
 }

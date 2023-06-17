@@ -31,7 +31,7 @@
             ],
             "showSymbolLogo": true,
             "colorTheme": "light",
-            "isTransparent": true,
+            "isTransparent": false,
             "displayMode": "adaptive",
             "locale": "en"
         }

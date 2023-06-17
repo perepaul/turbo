@@ -8,22 +8,14 @@ use Illuminate\Http\Request;
 
 class MethodController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $methods = Method::paginate();
         return view('admin.method.index', compact('methods'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         return view('admin.method.create');
@@ -37,18 +29,23 @@ class MethodController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $valid = $request->validate([
             'name' => 'required',
-            'address' => 'required|string',
-            'image' => 'mimes:jpg,jpeg,png'
+            'address' => 'nullable|string',
+            'is_bank' => 'required|in:1,0',
+            'image' => 'nullable|mimes:jpg,jpeg,png',
+            'qrcode_image' => 'nullable|required_if:is_bank,0|mimes:jpg,jpeg,png',
+            'status' => 'required|in:active,inactive',
         ]);
-        $filename = rand() . now()->toDateTimeString() . '.' . $request->file('image')->extension();
-        $request->file('image')->move(public_path(config('dir.methods')), $filename);
-        $method = new Method();
-        $method->name = $request->name;
-        $method->address = $request->address;
-        $method->image = $filename;
-        $method->save();
+        if ($request->hasFile('image')) {
+            $valid['image'] = uploadFile($request->file('image'), public_path(config('dir.methods')));
+        }
+
+        if ($request->hasFile('qrcode_image')) {
+            $valid['qrcode_image'] = uploadFile($request->file('qrcode_image'), public_path(config('dir.methods')));
+        }
+
+        Method::create($valid);
         session()->flash('success', 'Created payment method successfully');
         return redirect()->route('admin.settings.methods.index');
     }
@@ -61,7 +58,10 @@ class MethodController extends Controller
      */
     public function show(Method $method)
     {
-        //
+        $method->status = $method->status == 'active' ? 'inactive' : 'active';
+        $method->save();
+        session()->flash('success', 'Payment method updated');
+        return redirect()->back();
     }
 
     /**
@@ -84,33 +84,44 @@ class MethodController extends Controller
      */
     public function update(Request $request, Method $method)
     {
-        $request->validate([
+        $valid = $request->validate([
             'name' => 'required',
-            'address' => 'required|string',
-            'image' => 'nullable|mimes:png,jpg,jpeg'
+            'address' => 'nullable|string',
+            'image' => 'nullable|mimes:png,jpg,jpeg',
+            'qrcode_image' => 'nullable|required_if:is_bank,0|mimes:png,jpg,jpeg',
+            'status' => 'required|in:active,inactive',
+            'is_bank' => 'required|in:1,0',
         ]);
-        if ($request->hasFile('image')) {
 
-            $filename = rand() . now()->toDateTimeString() . '.' . $request->file('image')->extension();
-            $request->file('image')->move(public_path(config('dir.methods')), $filename);
-            $method->image = $filename;
+        if ($request->hasFile('image')) {
+            $dir = public_path(config('dir.methods'));
+            $valid['image'] = uploadFile($request->file('image'), $dir);
+            if (is_file($file = $dir . $method->image) && file_exists($file)) {
+                unlink($file);
+            }
         }
-        $method->name = $request->name;
-        $method->address = $request->address;
-        $method->save();
+
+        if ($request->hasFile('qrcode_image')) {
+            $dir = public_path(config('dir.methods'));
+            $valid['qrcode_image'] = uploadFile($request->file('qrcode_image'), $dir);
+            if (is_file($file = $dir . $method->qrcode_image) && file_exists($file)) {
+                unlink($file);
+            }
+        }
+
+        $method->update($valid);
         session()->flash('success', 'updated payment method successfully');
         return redirect()->route('admin.settings.methods.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Method  $method
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Method $method)
     {
-        is_file(public_path(config('dir.methods').$method->image)) ? unlink(public_path(config('dir.methods').$method->image)): null ;
+        if ($method->deposits()->count()) {
+            session()->flash('error', 'Cannot delete method has it has deposts.');
+            return back();
+        }
+        is_file(public_path(config('dir.methods') . $method->image)) ? unlink(public_path(config('dir.methods') . $method->image)) : null;
         $method->delete();
         session()->flash('success', 'deleted payment method successfully');
         return redirect()->route('admin.settings.methods.index');

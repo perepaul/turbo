@@ -13,10 +13,10 @@ class Dashboard extends Controller
 {
     public function index()
     {
-        $users = User::all();
-        $deposits = Deposit::all();
-        $withdrawals = Withdrawal::all();
+        $users = User::latest()->get();
+        $deposits = Deposit::latest()->get();
+        $withdrawals = Withdrawal::latest()->get();
         $trades = Trade::all();
-        return view('admin.index', compact('users', 'deposits', 'withdrawals','trades'));
+        return view('admin.index', compact('users', 'deposits', 'withdrawals', 'trades'));
     }
 }

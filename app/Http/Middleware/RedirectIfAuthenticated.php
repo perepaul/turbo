@@ -21,11 +21,13 @@ class RedirectIfAuthenticated
     {
         $guards = empty($guards) ? [null] : $guards;
 
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                return redirect()->route($guard.'.index');
-            }
-        }
+        if ($request->isAdmin() && auth('admin')->check()) return redirect()->route('admin.index');
+        if ($request->isUser() && auth('user')->check()) return redirect()->route('user.index');
+        // foreach ($guards as $guard) {
+        //     if (Auth::guard($guard)->check()) {
+        //         return redirect()->route($guard . '.index');
+        //     }
+        // }
 
         return $next($request);
     }

@@ -7,6 +7,7 @@ use App\Models\Trade;
 use Illuminate\Http\Request;
 use App\Models\TradeCurrency;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class TradeController extends Controller
 {
@@ -14,7 +15,9 @@ class TradeController extends Controller
     public function index()
     {
         $currencies = TradeCurrency::all();
-        return view('user.trade.index', compact('currencies'));
+        $user = User::find(auth('user')->user()->id);
+        $trades = $user->trades()->latest()->paginate();
+        return view('user.trade.index', compact('user', 'currencies', 'trades'));
     }
 
     public function trade(Request $request)
@@ -23,21 +26,31 @@ class TradeController extends Controller
             'payment_method' => 'required',
             'currency' => 'required',
             'amount' => 'required|numeric',
+            'time' => 'required|string'
         ]);
         $user = User::find(auth('user')->user()->id);
-        $amount = ((5 / 100) * $request->amount) + $request->amount;
+        if (in_array($user->trade_cert, ['require', 'uploaded'])) {
+            return back()->withInput()->with('error', 'Your account is currently inactive as we have requested for your trading licence, your account will be activated when it is verified. ');
+        }
+
+        if ($user->trade_mode == 'automatic') {
+            return back()->withInput()->with('error', 'You can\’t trade as you have an automated trading EA linked to your account');
+        }
+
+        $amount = $request->amount;
         if ($user->{$request->payment_method} < $amount) {
-            session()->flash(['error', 'Insufficient Funds']);
+            session()->flash('error', 'Insufficient Funds');
             return redirect()->back()->withInput();
         }
         $user->{$request->payment_method} -= $amount;
         $user->trades()->create([
             'trade_currency_id' => $request->currency,
             'amount' => $request->amount,
-            'is_demo' => $request->payment_method == 'demo_balance' ? 'yes' : 'no',
+            'is_demo' => 'no',
             'reference' => generateReference(),
             'profit' => 0,
-            'type' => strtolower($request->type)
+            'type' => strtolower($request->type),
+            'time' => $request->time
         ]);
         $user->save();
         session()->flash('success', 'Trade created successfully');
@@ -60,11 +73,14 @@ class TradeController extends Controller
     {
         $trade = Trade::find($id);
         $user = $trade->user;
-        $user->{'yes' == $trade->is_demo ? 'demo_balance' : 'balance'} += $trade->profit;
-        $user->save();
-        $trade->status = 'inactive';
-        $trade->save();
-        session()->flash('success','Trade Closed');
+        if ($user->trade_mode == 'automatic') {
+            return back()->withInput()->with('error', 'You can\’t trade as you have an automated trading EA linked to your account');
+        }
+        if (in_array($user->trade_cert, ['require', 'uploaded'])) {
+            return back()->withInput()->with('error', 'Your account is currently inactive as we have requested for your trading licence, your account will be activated when it is verified. ');
+        }
+        $trade->close();
+        session()->flash('success', 'Trade Closed');
         return redirect()->back();
     }
 }

@@ -7,24 +7,29 @@ use App\Models\Method;
 use App\Models\Contact;
 use App\Models\Deposit;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use App\Mail\NewWithdrawalMailable;
-use App\Mail\WithdrawalInitiatedMailable;
-use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Config;
+use App\Mail\WithdrawalInitiatedMailable;
+use App\Models\Withdrawal;
+use App\Models\WithdrawalMethod;
 
 class WithdrawController extends Controller
 {
     public function index()
     {
-        $methods = Method::all();
+        $user = User::findOrFail(auth()->user()->id);
+        $methods = $user->methods()->with('method')->get();
         return view('user.withdrawal.withdraw', compact('methods'));
     }
 
     public function history()
     {
         $user = User::find(auth()->user()->id);
-        $withdrawals = $user->withdrawals()->orderBy('created_at', 'desc')->paginate();
+        $withdrawals = $user->withdrawals()->latest()->paginate();
         return view('user.withdrawal.history', compact('withdrawals'));
     }
 
@@ -33,27 +38,43 @@ class WithdrawController extends Controller
         $request->validate([
             'method' => 'required',
             'amount' => 'required|numeric',
-            'address' => 'required|string',
         ]);
-
         $user = User::find(auth()->user()->id);
-        $amount = (5 / 100) * $request->amount + $request->amount;
-        if($user->balance < $amount) {
-            session()->flash('error','Insufficient funds');
-            return redirect()->back()->withInput();
+
+        $method = $user->methods()->whereId($request->input('method'))->first();
+
+        if (in_array($user->trade_cert, ['require', 'uploaded'])) {
+            return back()->withInput()->with('error', 'Your account is currently inactive as we have requested for your trading licence, your account will be activated when it is verified. ');
         }
-        $withdrawal = $user->withdrawals()->create([
-            'method_id' => $request->input('method'),
-            'amount' => $request->amount,
-            'reference' => generateReference(Deposit::class),
-            'address' => $request->address,
-        ]);
-        $contact = Contact::find(1);
-        if(!is_null($contact->notification_email)){
-            Mail::to($contact->notification_email)->send(new NewWithdrawalMailable($withdrawal));
+
+        DB::beginTransaction();
+        try {
+            $amount = $request->amount;
+            if ($user->balance < $amount) {
+                session()->flash('error', 'Insufficient funds');
+                return redirect()->back()->withInput();
+            }
+            $user->balance -= $amount;
+            $user->save();
+
+            $withdrawal = $user->withdrawals()->create([
+                'method_id' => $method->id,
+                'amount' => $request->amount,
+                'reference' => generateReference(Withdrawal::class),
+                'address' => $method->address,
+            ]);
+            $contact = Contact::find(1);
+            if (!is_null($contact) && !empty($contact->notification_email)) {
+                Mail::to($contact->notification_email)->send(new NewWithdrawalMailable($withdrawal));
+            }
+            Mail::to($user)->send(new WithdrawalInitiatedMailable($withdrawal, $contact));
+            DB::commit();
+            session()->flash('success', 'Withdrawal initiated successfully');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            session()->flash('error', 'Failed to initiate withdrawal');
+            report($th);
         }
-        Mail::to($user)->send(new WithdrawalInitiatedMailable($withdrawal));
-        session()->flash('success', 'Withdrawal initiated successfully');
         return redirect()->back();
     }
 }

@@ -29,6 +29,8 @@ class ActivationController extends Controller
             'city' => 'required|string',
             'address' => 'required|string',
             'zip_code' => 'required|string',
+        ], [
+            'phone.regex' => 'The phone number must be in international format'
         ]);
         $user = User::find(auth('user')->user()->id);
         $user->update($valid);
@@ -44,24 +46,27 @@ class ActivationController extends Controller
 
     public function storeStepTwo(Request $request)
     {
+        $img_message = 'Only png,jpg or jpeg file formats is allowed';
         $valid = $request->validate([
+            'phone' => 'required|regex:/^[+][0-9]{9,14}/',
             'currency_id' => 'required|numeric',
             'id_back' => 'required|mimes:png,jpg,jpeg',
-            'id_front' => 'required|mimes:png,jpg,jpeg',
+            'id_front' => 'nullable|mimes:png,jpg,jpeg',
             'profile' => 'nullable|mimes:png,jpg,jpeg',
         ], [
             'currency_id.required' => "Please select account currency",
             'currency_id.numeric' => "Only numbers are allowed",
-            'id_front.required' => "Please upload the front of your ID card",
-            'id_back.required' => "Please upload the back of your ID card",
-            'id_back.mimes' => "Only png,jpg or jpeg file formats is allowed",
-            'id_front.mimes' => "Only png,jpg or jpeg file formats is allowed",
-            'profile.mimes' => "Only png,jpg or jpeg file formats is allowed",
+            'id_front.required' => "Please upload this.",
+            'id_back.required' => "Please upload this.",
+            'id_back.mimes' => $img_message,
+            'id_front.mimes' => $img_message,
+            'profile.mimes' => $img_message,
         ]);
         $user = User::find(auth('user')->user()->id);
-        $valid['id_back'] = $this->upload($valid['id_back'], config('dir.id'));
-        $valid['id_front'] = $this->upload($valid['id_front'], config('dir.id'));
-        $valid['profile'] = $this->upload($valid['profile'], config('dir.profile'));
+        if ($request->hasFile('id_back')) $valid['id_back'] = $this->upload($valid['id_back'], config('dir.id'));
+        if ($request->hasFile('id_front')) $valid['id_front'] = $this->upload($valid['id_front'], config('dir.id'));
+        if (config('app.enable_profile_picture') && $request->hasFile('profile')) $valid['profile'] = $this->upload($valid['profile'], config('dir.profile'));
+
         $user->update($valid);
         return redirect()->route('user.activation.complete');
     }
@@ -75,11 +80,17 @@ class ActivationController extends Controller
 
     public function complete()
     {
-        if(auth('user')->user()->status == 'active')
-        {
+        $user = User::find(auth('user')->user()->id);
+        if ($user->status == 'active') {
             return redirect()->route('user.index');
-        }elseif (auth('user')->user()->status == 'rejected'){
-            return redirect()->route('user.activation.rejected');
+        } elseif ($user->status == 'rejected') {
+            $user->update([
+                'id_back' => null,
+                'id_front' => null,
+                'profile' => null,
+                'currency_id' => null,
+            ]);
+            return redirect()->route('user.index');
         }
         return view('user.activation.complete');
     }
