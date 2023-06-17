@@ -19,9 +19,9 @@
 @import url(../vendor/perfect-scrollbar/css/perfect-scrollbar.css);
 @import url(../vendor/metismenu/css/metisMenu.min.css);
 :root {
-    --primary: #216fed;
+    --primary: #951e3d;
     --secondary: #943eff;
-    --primary-hover: #1058cb;
+    --primary-hover: #95364f;
     --primary-dark: #092f6c;
     --rgba-primary-1: rgba(33, 111, 237, 0.1);
     --rgba-primary-2: rgba(33, 111, 237, 0.2);
