@@ -27,12 +27,10 @@ class Recaptcha implements Rule
     public function passes($attribute, $value)
     {
         try {
-            $response = Http::post(config('recaptcha.site_url'), [
+            return Http::post(config('recaptcha.site_url'), [
                 'secret' => config('recaptcha.secret_key'),
                 'response' => $value
-            ]);
-            dd($response);
-            return $response->successful();
+            ])->successful();
         } catch (\Throwable $th) {
             report($th);
             return false;
