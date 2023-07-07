@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Trade;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
 
 function base_domain($path = '')
@@ -59,8 +60,15 @@ function profile_picture($image = null)
 {
     $picture = 'default.png';
     if (auth('user')->user() && request()->isUser()) $picture = auth('user')->user()->profile;
-    if(!is_null($image)) $picture = $image;
+    if (!is_null($image)) $picture = $image;
 
-    if(empty($picture) || is_null($picture)) $picture = 'default.png';
+    if (empty($picture) || is_null($picture)) $picture = 'default.png';
     return asset(config('dir.profile') . $picture);
+}
+
+function uploadFile(UploadedFile $file, string $directory)
+{
+    $filename = Str::random(5) . now()->timestamp . '.' . $file->extension();
+    $file->move($directory, $filename);
+    return $filename;
 }

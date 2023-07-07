@@ -84,6 +84,10 @@ class TradeCurrencyController extends Controller
      */
     public function destroy(TradeCurrency $tradeCurrency)
     {
+        if ($tradeCurrency->trade()->count()) {
+            session()->flash('error', 'Cannot delete, because the currncy is attached to one or more trades.');
+            return back();
+        }
         $tradeCurrency->delete();
         session()->flash('success','Updated successfully');
         return redirect()->route('admin.trade-currency.index');

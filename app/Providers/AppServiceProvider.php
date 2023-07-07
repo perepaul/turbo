@@ -39,6 +39,8 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
         Schema::defaultStringLength(191);
 
+        session()->forget('user');
+
         view()->composer('includes.chat', fn ($view) => $view->with(['contact' => \App\Models\Contact::first()]));
     }
 }

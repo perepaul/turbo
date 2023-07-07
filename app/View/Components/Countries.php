@@ -7,24 +7,17 @@ use Illuminate\View\Component;
 
 class Countries extends Component
 {
-    public $country,$countries;
+    public $countries;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($country = null)
+    public function __construct(public $country = null)
     {
-        $this->country = $country;
         $this->getCountries();
-        // dd($this->countries);
     }
 
-    public function getCountries()
-    {
-        $helper = new CountryHelper();
-        $this->countries = $helper->countries()->toArray();
-    }
 
     /**
      * Get the view / contents that represent the component.
@@ -34,5 +27,10 @@ class Countries extends Component
     public function render()
     {
         return view('components.countries');
+    }
+
+    private function getCountries()
+    {
+        $this->countries =  (new CountryHelper)->countries();
     }
 }

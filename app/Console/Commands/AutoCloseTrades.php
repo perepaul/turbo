@@ -44,6 +44,6 @@ class AutoCloseTrades extends Command
         foreach (Trade::active()->expired()->get() as $trade) {
             $trade->close();
         }
-        $this->info('ended old trades');
+        return 0;
     }
 }

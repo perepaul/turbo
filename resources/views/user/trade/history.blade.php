@@ -6,7 +6,7 @@
         <h2 class="mb-3 me-auto">@yield('title')</h2>
     </div> --}}
 <div class="row">
-    <div class="col-xl-3 col-md-6">
+    <div class="col-xl-3 col-sm-6">
         <div class="card">
             <div class="card-body">
                 <div class="d-flex align-items-center">
@@ -14,14 +14,14 @@
                         <i class="fas fa-user text-white bg-primary"></i>
                     </div>
                     <div class="ms-4 customer">
-                        <h2 class="mb-0  font-w600">{{ $trades->count() }}</h2>
+                        <h2 class="mb-0  font-w600">{{ $user->trades->count() }}</h2>
                         <p class="mb-0 font-w500">Total Trades</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-md-6">
+    <div class="col-xl-3 col-sm-6">
         <div class="card">
             <div class="card-body">
                 <div class="d-flex align-items-center">
@@ -30,9 +30,9 @@
                     </div>
                     <div class="ms-4 customer">
                         <h5 class="mb-0  font-w600">
-                            {{ format_money($trades->where('status', 'active')->where('is_demo', 'no')->sum('amount') + $trades->where('status', 'active')->where('is_demo', 'no')->sum('profit')) }}
+                            {{ format_money($user->trades->where('status', 'active')->where('is_demo', 'no')->sum('amount') + $user->trades->where('status', 'active')->where('is_demo', 'no')->sum('profit')) }}
                         </h5>
-                        <p class="mb-0  font-w300">Estimated returns</p>
+                        <p class="mb-0  font-w300">Estimated returns from open trades</p>
                     </div>
                 </div>
             </div>
@@ -47,12 +47,12 @@
                         <p class="mb-0 font-w500">Active</p>
                     </div>
                     <div class="col-4 customer">
-                        <h2 class="mb-0 font-w600">{{ $trades->where('status', 'inactive')->count() }}</h2>
-                        <p class="mb-0  font-w500">Inactive</p>
+                        <h2 class="mb-0  font-w600">{{ $trades->where('is_demo', 'yes')->count() }}</h2>
+                        <p class="mb-0 font-w500">Demo Trades</p>
                     </div>
-                    <div class="col-4 border-0 customer">
-                        <h2 class="mb-0 font-w600">{{ $trades->where('is_demo', 'yes')->count() }}</h2>
-                        <p class="mb-0 font-w500">Demo</p>
+                    <div class="col-4">
+                        <h2 class="mb-0 font-w600">{{ $trades->where('status', 'inactive')->count() }}</h2>
+                        <p class="mb-0  font-w500">Closed</p>
                     </div>
                 </div>
             </div>
@@ -65,12 +65,12 @@
                 <thead>
                     <tr>
                         <th>Order ID</th>
+                        <th>Account</th>
                         <th>Date</th>
                         <th>Time</th>
                         <th>Currrency</th>
                         <th>Amount</th>
-                        <th>Type</th>
-                        <th>Demo?</th>
+                        <th>Trade Type</th>
                         <th>Profit/Loss</th>
                         <th>Status</th>
                         <th></th>
@@ -80,12 +80,14 @@
                     @forelse ($trades as $trade)
                     <tr>
                         <td>{{ $trade->reference }}</td>
+                        <td>
+                            <span class="badge badge-outline-{{$trade->is_demo == 'yes' ? 'warning' : 'success'}}">{{$trade->is_demo == 'yes' ? 'Demo Account' : 'Main Account'}}</span>
+                        </td>
                         <td class="wspace-no">{{ $trade->created_at->toDateString() }}</td>
                         <td>{{ $trade->time }}</td>
                         <td class="text-ov">{{ $trade?->trade_currency?->name }}</td>
                         <td>{{ format_money($trade->amount, $trade?->user?->currency?->symbol) }}</td>
                         <td>{{ ucfirst($trade->type) }}</td>
-                        <td>{{ ucfirst($trade->is_demo) }}</td>
                         <td>{{ format_money($trade->profit, $trade?->user?->currency?->symbol) }}</td>
                         <td><span class="badge badge-outline-{{$trade->status == 'active' ? 'success' : 'danger'}}">{{$trade->status == 'active' ? 'Open' : 'Closed'}}</span></td>
                         <td>
@@ -117,6 +119,8 @@
                     @endforelse
                 </tbody>
             </table>
+        </div>
+        <div class="d-flex justify-centent-center">
             {{ $trades->links() }}
         </div>
     </div>

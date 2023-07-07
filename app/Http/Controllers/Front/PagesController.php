@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Http\Controllers\Controller;
-use App\Mail\SendContactMail;
+use App\Models\User;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use App\Mail\SendContactMail;
+use App\Http\Controllers\Controller;
+use App\Models\Post;
 use Illuminate\Support\Facades\Mail;
 
 class PagesController extends Controller
@@ -13,8 +15,16 @@ class PagesController extends Controller
     public function index()
     {
         $contact = Contact::find(1);
+        $posts = Post::latest()->take(6)->get();
         // dd($contact);
-        return view('front.index', compact('contact'));
+        return view('front.index', compact('contact', 'posts'));
+    }
+
+    public function referral($referral_code)
+    {
+        $user = User::where('referral_code', $referral_code)->where('status', 'active')->first();
+        session()->put('user', $user);
+        return redirect()->route('register');
     }
 
     public function about()

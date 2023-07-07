@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\Account\Activated;
+use App\Events\Account\Declined;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AccountVerifiedMailable;
+use App\Mail\TradeCertMailable;
 
 class UserController extends Controller
 {
@@ -42,9 +47,21 @@ class UserController extends Controller
         $user = User::find($id);
         $user->status = $request->status;
         $user->save();
+        $this->sendStatusNotification($user);
         session('success', 'Status updated successfully');
         return back();
     }
+
+    private function sendStatusNotification(User $user)
+    {
+        if ($user->status == 'active') {
+            event(new Activated($user));
+        } elseif ($user->status == 'rejected') {
+            event(new Declined($user));
+        }
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -104,17 +121,36 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email,' . $id,
             'phone' => 'required|regex:/^[+][0-9]{9,14}/',
             'trading_balance' => 'nullable|numeric',
+            'trade_mode' => 'nullable|in:automatic,manual,dual',
             'demo_balance' => 'nullable|numeric',
             'balance' => 'nullable|numeric',
             'country' => 'nullable|string',
             'state' => 'nullable|string',
             'city' => 'nullable|string',
+            'zip_code' => 'nullable|string',
             'address' => 'nullable|string',
         ]);
-        $user = User::find($id);
-        $user->update($valid);
+        $user = User::where('id', $id)->update($valid);
         session()->flash('success', 'User Updated');
         return redirect()->route('admin.users.index', 'acitve');
+    }
+
+    function tradeCert(int $id)
+    {
+        $user = User::findOrFail($id);
+        $user->trade_cert = 'require';
+        $user->save();
+        session()->flash('success', 'requested for user trading certificate');
+        Mail::to($user)->send(new TradeCertMailable());
+        return back();
+    }
+
+    function verifyTradeCert($id)
+    {
+        $user = User::findOrFail($id);
+        $user->trade_cert = 'verified';
+        $user->save();
+        return back()->with('message', 'Trade certificate submitted');
     }
 
     /**
@@ -125,5 +161,12 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        $user = User::find($id);
+        $user->emails()->delete();
+        $user->withdrawals()->delete();
+        $user->trades()->delete();
+        $user->deposits()->delete();
+        $user->delete();
+        return back()->with('success', 'User Deleted');
     }
 }

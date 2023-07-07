@@ -30,7 +30,7 @@
             autoplay: true,
             smartSpeed: 1500,
             nav: true,
-            navText: ["<i class='ti-angle-left'</i>", "<i class='ti-angle-right'</i>"],
+            navText: [ "<i class='ti-angle-left'</i>", "<i class='ti-angle-right'</i>" ],
             dots: true,
             animateIn: 'fadeIn',
             animateOut: 'fadeOut'
@@ -121,12 +121,12 @@
     })
 
     // :: ScrollUp Active Code
-    if ($.fn.scrollUp) {
-        $.scrollUp({
-            scrollSpeed: 1500,
-            scrollText: 'Scroll Top'
-        });
-    }
+    // if ($.fn.scrollUp) {
+    //     $.scrollUp({
+    //         scrollSpeed: 1500,
+    //         scrollText: 'Scroll Top'
+    //     });
+    // }
 
     // :: onePageNav Active Code
     if ($.fn.onePageNav) {

@@ -31,6 +31,7 @@ class ContactController extends Controller
         $valid = $request->validate([
             'notification_email' => 'required|email',
             'support_email' => 'required|email',
+            'telegram' => 'required|string',
             'phone' => 'required',
             'address' => 'required|string',
             'chat_script' => 'required|string',
