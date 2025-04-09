@@ -177,6 +177,10 @@
         $(`#${formId}`).submit();
     })
 
+    $(document).on('load', function() {
+        $('.user-select').prop('checked', false);
+    });
+
     $(document).on('click', '#user-select-all', function() {
         if ($(this).is(':checked')) {
             $('.user-select').prop('checked', true);
