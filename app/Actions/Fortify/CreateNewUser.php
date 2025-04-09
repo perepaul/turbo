@@ -8,7 +8,9 @@ use Illuminate\Support\Str;
 use App\Events\Account\Created;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 
 class CreateNewUser implements CreatesNewUsers
@@ -23,8 +25,12 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
+        if(isset($input['username'])){
+            return redirect()->route('login');
+        }
+        
         Validator::make($input, [
-            'g-recaptcha-response' => ['required', new ReCaptcha],
+            'cf-turnstile-response' => ['required', 'string'],
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
             'email' => [
@@ -36,9 +42,25 @@ class CreateNewUser implements CreatesNewUsers
             ],
             'password' => $this->passwordRules(),
         ], [
-                'g-recaptcha-response.required' => 'The recaptcha field is required'
+                'cf-turnstile-response.required' => 'Please verify you are not a robot',
         ])->validate();
+
+        $response = Http::post('https://challenges.cloudflare.com/turnstile/v0/siteverify', [
+            'secret' => config('turnstile.secret_key'),
+            'response' => $input['cf-turnstile-response'],
+            'remoteip' => request()->ip(),
+        ]);
+
+        if ($response->failed() || !$response->json('success')) {
+            throw ValidationException::withMessages([
+                'cf-turnstile-response' => 'We were unable to verify you are not a robot. Please try again.',
+            ]);
+        }
+
+
         $user = session()->pull('user');
+
+
         $user = User::create([
             'firstname' => $input['firstname'],
             'lastname' => $input['lastname'],

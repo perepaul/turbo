@@ -2,11 +2,19 @@
 @section('title', 'Register')
 
 @push('css')
-    <script
+    {{-- <script
         src="https://www.google.com/recaptcha/api.js"
         async
         defer
-    ></script>
+    ></script> --}}
+
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer></script>
+
+    <style>
+        input[name="username"] {
+            visibility: hidden;
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -91,11 +99,11 @@
         <input
             type="text"
             name="username"
-            style="display: none"
         >
-        <div class="g-recaptcha" id="feedback-recaptcha" data-sitekey="{{ config('recaptcha.site_key') }}">
-        </div>
-        <x-error key="g-recaptcha-response" />
+        {{-- <div class="g-recaptcha" id="feedback-recaptcha" data-sitekey="{{ config('recaptcha.site_key') }}"> --}}
+            <div class="cf-turnstile" data-size="flexible" data-sitekey="{{ config('turnstile.site_key') }}" data-theme="light"  data-callback="turnstileCallbak"></div>
+        {{-- </div> --}}
+        <x-error key="cf-turnstile-response" />
         <div class="text-center mt-4">
             <button
                 type="submit"
@@ -115,4 +123,11 @@
     </div>
 @endsection
 @push('js')
+
+<script>
+    function turnstileCallbak(token) {
+        console.log(token);
+        // document.getElementById('submit-register').disabled = false;
+    }
+</script>
 @endpush
