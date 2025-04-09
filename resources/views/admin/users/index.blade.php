@@ -1,16 +1,26 @@
 @extends('layouts.back')
-@php
-$status = ucfirst(request('status')).' Users';
-@endphp
-@section('title', $status);
+@section('title',  ucfirst(request('status')).' Users');
 @section('content')
 <div class="row contacts-list-area">
     <div class="col-xl-12">
-        <div class="d-flex flex-wrap">
-            <div class="table-search mb-3 pe-3">
-                <div class="input-group search-area">
-                    <input type="text" class="form-control" placeholder="Search customer name here">
-                    <span class="input-group-text"><a href="javascript:void(0)"><i class="flaticon-381-search-2"></i></a></span>
+        <div class="d-flex flex-wrap justify-content-between pb-3 px-4">
+            <div class="">
+                <input type="checkbox" class="form-check-input me-3" id="user-select-all">
+            </div>
+            <div>
+                <div class="dropdown ms-4  mt-auto mb-auto">
+                    <div class="btn-link" data-bs-toggle="dropdown">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12Z" stroke="#737B8B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M18 12C18 12.5523 18.4477 13 19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12Z" stroke="#737B8B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M4 12C4 12.5523 4.44772 13 5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12Z" stroke="#737B8B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <button class="dropdown-item" onclick="deleteMultipleUsers()">
+                            <i class="fa fa-trash text-danger"></i> Delete Selected
+                        </buttom>
+                    </div>
                 </div>
             </div>
         </div>
@@ -21,6 +31,7 @@ $status = ucfirst(request('status')).' Users';
             <div class="card-body">
                 <div class="row">
                     <div class="col-xl-3  col-lg-6 col-sm-12 align-items-center customers">
+                        <input type="checkbox" class="form-check-input me-3 user-select" value="{{ $user->id }}">
                         <img class="me-sm-4 me-1 img-fluid " style="width: 30px; height:30px;" src="{{ profile_picture($user->profile) }}" alt="DexignZone">
                         <div class="media-body">
                             <h3 class="fs-12 text-black font-w600">{{ $user->name }}</h3>
@@ -165,5 +176,58 @@ $status = ucfirst(request('status')).' Users';
         let formId = $('#deleteUser').attr('data-form-id');
         $(`#${formId}`).submit();
     })
+
+    $(document).on('click', '#user-select-all', function() {
+        if ($(this).is(':checked')) {
+            $('.user-select').prop('checked', true);
+        } else {
+            $('.user-select').prop('checked', false);
+        }
+    });
+
+
+
+    function deleteMultipleUsers(){
+
+        if(! confirm('Are you sure you want to delete selected users?')){
+            return;
+        }
+
+        let selectedUsers = [];
+        $('.user-select:checked').each(function() {
+            selectedUsers.push($(this).val());
+        });
+        if (selectedUsers.length > 0) {
+            fetch("{{ route('admin.users.delete-multiple') }}",{
+                method: "post",
+                body: JSON.stringify({
+                    _token: "{{ csrf_token() }}",
+                    ids: selectedUsers,
+                    _method: 'delete'
+                }),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            }).then(async res => {
+                let data = await res.json();
+                if (res.status == 200) {
+                    toast(data.message, 'success');
+                    setTimeout(() => {
+                        location.reload();
+                    }, 2000);
+                } else {
+                    toast(data.message, 'error');
+                }
+            }).catch(err => {
+                console.log(err);
+                toast('Something went wrong', 'error');
+            });
+                
+        } else {
+            alert('Please select at least one user to delete.');
+        }
+    }
+    
 </script>
 @endpush

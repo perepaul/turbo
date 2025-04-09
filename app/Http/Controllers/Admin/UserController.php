@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Email;
+use App\Models\Trade;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Method;
@@ -370,12 +372,7 @@ class UserController extends Controller
         return back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function destroy($id)
     {
         $user = User::find($id);
@@ -385,5 +382,27 @@ class UserController extends Controller
         $user->deposits()->delete();
         $user->delete();
         return back()->with('success', 'User Deleted');
+    }
+
+    public function deleteMultiple(Request $request)
+    {
+        $request->validate([
+            'ids' => ['required', 'array']
+        ]);
+        DB::beginTransaction();
+        try {
+            Email::whereIn('user_id', $request->input('ids'))->delete();
+            Withdrawal::whereIn('user_id', $request->input('ids'))->delete();
+            Trade::whereIn('user_id', $request->input('ids'))->delete();
+            Deposit::whereIn('user_id', $request->input('ids'))->delete();
+            User::whereIn('id', $request->input('ids'))->delete();
+            DB::commit();
+            return response()->json(['message' =>  'Users Deleted']);
+
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            report($th);
+            return response()->json(['message' => 'Failed to delete users'], 500);
+        }
     }
 }

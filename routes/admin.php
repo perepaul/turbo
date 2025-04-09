@@ -65,6 +65,7 @@ Route::as('users.')->prefix('users')->group(function () {
     Route::get('{id}/link-referrals', [UserController::class, 'linkReferralsView'])->name('link-referrals');
     Route::post('{id}/link-referrals', [UserController::class, 'linkReferrals']);
     Route::delete('{id}/delete', [UserController::class, 'destroy'])->name('delete');
+    Route::delete('delete-multiple', [UserController::class, 'deleteMultiple'])->name('delete-multiple');
 });
 Route::as('trades.')->prefix('trades')->group(function () {
     Route::get('/{status}', [TradesController::class, 'index'])->name('index');
